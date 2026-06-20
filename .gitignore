@@ -1,0 +1,21 @@
+# Local Claude / editor state
+.claude/
+.vscode/
+.idea/
+
+# OS junk
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Project context / handover material — kept locally, not on GitHub
+Handover/
+Org docs/
+*.docx
+*.pdf
+
+# Logs
+*.log
+
+# Node (in case we ever add tooling)
+node_modules/

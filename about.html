@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>אודות | בית חולמים - Dreamers Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ─── ROOT — identical palette to the home page ─── */
+      :root {
+        --blue: #004378;
+        --blue-dk: #002952;
+        --teal: #48d9d3;
+        --teal-lt: #7de8e4;
+        --gold: #f5a623;
+        --gold-lt: #ffd166;
+        --white: #ffffff;
+        --off: #f6faff;
+        --off-warm: #fffbf3;
+        --text: #1a2d3e;
+        --text-mid: #4a637c;
+        --text-lt: #7a99b0;
+        --shadow: rgba(0, 67, 120, 0.15);
+        --g-main: linear-gradient(
+          140deg,
+          #002952 0%,
+          #004378 55%,
+          #0c6080 100%
+        );
+        --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
+        --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Heebo", system-ui, sans-serif;
+        direction: rtl;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .rev {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.9rem;
+      }
+      .h3d {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--blue);
+        text-shadow:
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
+        margin-bottom: 1.1rem;
+      }
+      .h3d-white {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
+      }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 640px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: "Heebo", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
+      .btn-gold {
+        background: var(--g-gold);
+        color: #4a2800;
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+      }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+
+      /* ═══ NAV (same as home) ═══ */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 1.3rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.4s ease;
+        background: rgba(0, 25, 55, 0.96);
+        backdrop-filter: blur(20px);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+      }
+      .logo-img {
+        height: 58px;
+        display: block;
+        border-radius: 50%;
+        transition: opacity 0.3s;
+      }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.8rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+      }
+      .nav-links a.active {
+        color: var(--teal);
+      }
+      .nav-cta {
+        background: var(--g-teal) !important;
+        color: var(--blue-dk) !important;
+        font-weight: 700 !important;
+        padding: 0.48rem 1.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s !important;
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+
+      /* ═══ PAGE HEADER ═══ */
+      #page-header {
+        padding: 11rem 2rem 5.5rem;
+        background: var(--g-main);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      #page-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(72, 217, 211, 0.18),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .crumbs {
+        position: relative;
+        z-index: 2;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+      }
+      .crumbs a {
+        color: #ffe8a0;
+        font-weight: 600;
+      }
+      .crumbs a:hover {
+        text-decoration: underline;
+      }
+      #page-header .h3d {
+        position: relative;
+        z-index: 2;
+      }
+      #page-header .sub {
+        position: relative;
+        z-index: 2;
+        margin: 0 auto;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      /* ═══ GENERIC TEXT SECTION ═══ */
+      .ab-sec {
+        padding: 6.5rem 2rem;
+      }
+      .ab-sec.bg-white {
+        background: var(--white);
+      }
+      .ab-sec.bg-sky {
+        background: linear-gradient(
+          160deg,
+          #e8f6ff 0%,
+          #f0fbfb 40%,
+          #eaf3ff 100%
+        );
+      }
+      .ab-sec.bg-warm {
+        background: linear-gradient(
+          135deg,
+          #fffbf0 0%,
+          #fff8e8 50%,
+          #fffcf2 100%
+        );
+        border-top: 1px solid rgba(245, 166, 35, 0.15);
+        border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+      }
+      .ab-sec.bg-blue-gray {
+        background: linear-gradient(160deg, #f2f8ff 0%, #eef9f9 100%);
+      }
+      .ab-hdr {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .ab-hdr .sub {
+        margin: 0 auto;
+        text-align: center;
+      }
+      .ab-body {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 800px;
+        margin: 0 auto 1.3rem;
+      }
+
+      /* ═══ TEAM CARDS / CAROUSEL ═══ */
+      .carousel {
+        position: relative;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .carousel-viewport {
+        overflow: hidden;
+        border-radius: 22px;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      .carousel-page {
+        flex: 0 0 100%;
+        display: grid;
+        gap: 1.7rem;
+        padding: 0.4rem;
+      }
+      .carousel-page.cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .carousel-page.cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .team-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 2.4rem 1.6rem 2.1rem;
+        text-align: center;
+        box-shadow: 0 14px 45px var(--shadow);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+      .team-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        background: var(--g-teal);
+        border-radius: 0 0 24px 24px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 32px 65px rgba(0, 67, 120, 0.18);
+      }
+      .team-card:hover::after {
+        opacity: 1;
+      }
+      .team-photo {
+        width: 116px;
+        height: 116px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 1.3rem;
+        border: 4px solid var(--off);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+      }
+      .team-name {
+        font-weight: 800;
+        color: var(--blue);
+        font-size: 1.05rem;
+        margin-bottom: 0.35rem;
+      }
+      .team-role {
+        font-size: 0.86rem;
+        color: var(--text-mid);
+        line-height: 1.65;
+      }
+
+      .carousel-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        margin-top: 2.3rem;
+      }
+      .car-btn {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid rgba(0, 67, 120, 0.15);
+        box-shadow: 0 6px 20px var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--blue);
+        font-size: 1.15rem;
+        transition: all 0.3s;
+        flex-shrink: 0;
+      }
+      .car-btn:hover {
+        background: var(--g-teal);
+        color: var(--blue-dk);
+        transform: scale(1.08);
+      }
+      .car-dots {
+        display: flex;
+        gap: 0.55rem;
+      }
+      .car-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: rgba(0, 67, 120, 0.2);
+        cursor: pointer;
+        transition: all 0.3s;
+        border: none;
+      }
+      .car-dot.active {
+        background: var(--teal);
+        width: 24px;
+        border-radius: 5px;
+      }
+
+      /* ═══ ACADEMIC FORUM (static grid) ═══ */
+      .acad-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.7rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* ═══ CLOSING QUOTE ═══ */
+      #quote-band {
+        padding: 5.5rem 2rem;
+        background: var(--g-main);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      #quote-band::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 60% at 50% 50%,
+          rgba(245, 166, 35, 0.12),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .quote-text {
+        position: relative;
+        z-index: 2;
+        font-family: "Playfair Display", Georgia, serif;
+        font-style: italic;
+        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+        color: #fff;
+        max-width: 760px;
+        margin: 0 auto;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ═══ FOOTER (same as home) ═══ */
+      footer {
+        background: linear-gradient(
+          135deg,
+          #e0f7f6 0%,
+          #d0f0ff 40%,
+          #e8f9ff 100%
+        );
+        color: var(--blue);
+        padding: 5rem 2rem 2.5rem;
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+      }
+      .footer-logo-img {
+        height: 80px;
+        display: block;
+      }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-mid);
+        max-width: 340px;
+        margin-top: 1rem;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: var(--text-mid);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--blue);
+      }
+      .footer-nav a.active {
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .footer-col-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--blue);
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .footer-contact p {
+        font-size: 1rem;
+        color: var(--text-mid);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+      }
+      .footer-contact a {
+        color: var(--blue);
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: rgba(0, 67, 120, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--blue);
+        font-size: 1rem;
+        font-weight: 700;
+        transition: all 0.3s;
+        border: 1px solid rgba(0, 67, 120, 0.15);
+      }
+      .fsoc:hover {
+        background: var(--teal);
+        color: var(--blue-dk);
+        transform: translateY(-3px);
+        border-color: var(--teal);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(0, 67, 120, 0.12);
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: var(--text-mid);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* ═══ RESPONSIVE ═══ */
+      @media (max-width: 900px) {
+        .acad-grid {
+          grid-template-columns: 1fr;
+          max-width: 480px;
+        }
+        .carousel-page.cols-3,
+        .carousel-page.cols-2 {
+          grid-template-columns: 1fr;
+          max-width: 420px;
+          margin: 0 auto;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        #page-header {
+          padding: 9rem 1.5rem 4rem;
+        }
+        .footer-top {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════════════ NAV ════════════ -->
+    <nav id="nav">
+      <a href="index.html#hero" class="logo">
+        <img
+          src="Org docs/Logo beit holmim.png"
+          alt="בית חולמים - Dreamers Home"
+          class="logo-img"
+        />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#intro">דף הבית</a></li>
+        <li><a href="about.html" class="active">אודות</a></li>
+        <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+        <li><a href="index.html#activities">אזור למידה</a></li>
+        <li><a href="index.html#footer" class="nav-cta">צרו איתנו קשר</a></li>
+      </ul>
+    </nav>
+
+    <!-- ════════════ PAGE HEADER ════════════ -->
+    <header id="page-header">
+      <div class="crumbs">
+        <a href="index.html">דף הבית</a> &nbsp;/&nbsp; אודות
+      </div>
+      <h1 class="h3d h3d-white">אודות בית חולמים</h1>
+      <p class="sub">מי אנחנו, במה אנחנו מאמינים, ומי עומד מאחורי הדרך</p>
+    </header>
+
+    <!-- ════════════ INTRO ════════════ -->
+    <section class="ab-sec bg-white">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev">• בית חולמים •</span>
+          <h2 class="h3d rev">בית חולמים</h2>
+        </div>
+        <p class="ab-body rev">
+          אנחנו חיים בזמנים יוצאי-דופן בהיסטוריה האנושית ומתמודדים עם אתגרים
+          שדורות קודמים לא ניצבו בפניהם. אלה ימים שקוראים לכולנו להשתנות בעצמנו
+          ולסייע זה לזו להשתנות בדרך להחלמת ותיקון חברה ועולם.
+        </p>
+        <p class="ab-body rev d1">
+          עמותת בית חולמים פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות
+          החברתית. באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות
+          ומודלים מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
+          לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
+        </p>
+        <p class="ab-body rev d2">
+          התוכניות שמפעילה העמותה משלבות לימוד של חוכמה עתיקה ומודרנית ושואבות
+          השראה מפילוסופיות מזרחיות ומערביות כאחד, על מנת לסייע לא.נשים מכל
+          המגזרים, בכל הגילים ומכל שכבות החברה, להתמודד עם האתגרים של המאה ה-21
+          ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ GOALS ════════════ -->
+    <section class="ab-sec bg-sky">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev">• מטרות העמותה •</span>
+          <h2 class="h3d rev">מטרות העמותה</h2>
+        </div>
+        <p class="ab-body rev">
+          עמותת בית חולמים הביאה את התוכנית הבינלאומית, 16 המעלות, לישראל בשנת
+          2020 והפכה להיות הנציגה הרשמית של התוכנית בישראל.
+        </p>
+        <p class="ab-body rev d1">
+          תוכנית 16 המעלות פותחה על ידי הארגון הבינלאומי לפיתוח חמלה וחוכמה
+          (FDCW – Foundation for Developing Compassion and Wisdom). הארגון הוקם
+          בשנת 2005, והיום התוכנית נגישה בכל העולם עם מנחים ומנחות מוסמכים ב-22
+          מדינות.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ ABOUT FDCW ════════════ -->
+    <section class="ab-sec bg-white" id="fdcw">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev">• על ארגון FDCW •</span>
+          <h2 class="h3d rev">על ארגון FDCW</h2>
+        </div>
+        <p class="ab-body rev">
+          ארגון FDCW מסייע לאנשים לפתח את החמלה והחוכמה שלהם ולטפח חיים מאושרים
+          יותר.
+        </p>
+        <p class="ab-body rev d1">
+          ב-FDCW נלהבים מכך שלכל אדם תהיה ההזדמנות לחיות את חייו הטובים ביותר,
+          לפתח את התכונות הפנימיות שלו ולהגשים את הפוטנציאל האנושי שלו לחיים
+          משמעותיים ומספקים יותר. אנו מאמינים שהמפתח לכך הוא טיפוח לב חם ותודעה
+          חכמה (Wise). באמצעות הבנה מעמיקה של תודעתנו, התבוננות ברגשותינו והכרה
+          ביחסי הגומלין הרבים בינינו, מתפתחת חכמה ואכפתיות לזולת. זה נותן לנו
+          אומץ ומפתח חוסן ומאפשר לנו להיות מקור כוח, השראה ונחמה לאחרים. כך,
+          בהדרגה, נבנית תחושה של אחריות כלפי עצמנו וכלפי הזולת והסביבה.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ MANAGEMENT — CAROUSEL ════════════ -->
+    <section class="ab-sec bg-warm" id="management">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow-gold eyebrow rev">• וועד ההנהלה •</span>
+          <h2 class="h3d rev">וועד ההנהלה</h2>
+          <p class="sub rev">האנשים שמובילים את החזון של בית חולמים</p>
+        </div>
+
+        <div class="carousel rev" id="car-mgmt">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-page cols-3">
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/niv_agam.jpg"
+                    alt="ניב אגם"
+                  />
+                  <div class="team-name">ניב אגם</div>
+                  <div class="team-role">
+                    פסיכולוג קליני-מדריך, מייסד ויו"ר העמותה והמנהל המקצועי שלה
+                  </div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/miran_brodbar.jpg"
+                    alt="מירן ברודבר"
+                  />
+                  <div class="team-name">מירן ברודבר</div>
+                  <div class="team-role">מומחה לחדשנות טכנולוגית</div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/tania_amer.jpg"
+                    alt="טניה עמר"
+                  />
+                  <div class="team-name">טניה עמר</div>
+                  <div class="team-role">מייסדת ומנכ"לית CXP Consulting</div>
+                </div>
+              </div>
+              <div class="carousel-page cols-3">
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/yael_kaminski.jpg"
+                    alt="יעל קמינסקי"
+                  />
+                  <div class="team-name">יעל קמינסקי</div>
+                  <div class="team-role">
+                    פסיכולוגית קלינית ו-HR Business Partner ב-Wix
+                  </div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/nitzan_aviv.jpg"
+                    alt="ניצן אביב"
+                  />
+                  <div class="team-name">ניצן אביב</div>
+                  <div class="team-role">
+                    סגן מנהל מחוז מרכז של החברה למתנ"סים
+                  </div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/noya_shila.jpg"
+                    alt="ד״ר נויה שילה"
+                  />
+                  <div class="team-name">ד״ר נויה שילה</div>
+                  <div class="team-role">
+                    רופאה פנימאית בכירה ומנהלת מרכז שבים לחיים, שיבא
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-page cols-3">
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/avir_fedaus.avif"
+                    alt="עביר פדעוס"
+                  />
+                  <div class="team-name">עביר פדעוס</div>
+                  <div class="team-role">
+                    מורה ומחנכת במשרד החינוך; מטפלת ברפואה אינטגרטיבית מאחדת
+                  </div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/ran_hofer.avif"
+                    alt="רן הופר"
+                  />
+                  <div class="team-name">רן הופר</div>
+                  <div class="team-role">מנכ"ל מרכז גוף-נפש ברמת-השרון</div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/nadav_pari.jpg"
+                    alt="נדב פארי"
+                  />
+                  <div class="team-name">נדב פארי</div>
+                  <div class="team-role">מנהל המערך העסקי, Lineup Games</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-nav">
+            <button class="car-btn car-prev" aria-label="הקודם">›</button>
+            <div class="car-dots">
+              <button class="car-dot active" aria-label="שקופית 1"></button>
+              <button class="car-dot" aria-label="שקופית 2"></button>
+              <button class="car-dot" aria-label="שקופית 3"></button>
+            </div>
+            <button class="car-btn car-next" aria-label="הבא">‹</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ STAFF — CAROUSEL ════════════ -->
+    <section class="ab-sec bg-blue-gray" id="staff">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev">• צוות •</span>
+          <h2 class="h3d rev">צוות</h2>
+          <p class="sub rev">האנשים שמריצים את העמותה יום-יום</p>
+        </div>
+
+        <div class="carousel rev" id="car-staff">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-page cols-2">
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/adi_artzi_shelo.jpg"
+                    alt="עדי ארצי שלו"
+                  />
+                  <div class="team-name">עדי ארצי שלו</div>
+                  <div class="team-role">מנהלת שיווק, עמותת בית חולמים</div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/adi_ben_paz.jpg"
+                    alt="עדי בן פזי"
+                  />
+                  <div class="team-name">עדי בן פזי</div>
+                  <div class="team-role">מנהלת תפעול, עמותת בית חולמים</div>
+                </div>
+              </div>
+              <div class="carousel-page cols-2">
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/gilad_kadmi.jpg"
+                    alt="רו״ח גלעד קדמי"
+                  />
+                  <div class="team-name">רו״ח גלעד קדמי</div>
+                  <div class="team-role">רואה חשבון מבקר של העמותה</div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/team/yana_posukhov.jpg"
+                    alt="יאנה פוסוכוב"
+                  />
+                  <div class="team-name">יאנה פוסוכוב</div>
+                  <div class="team-role">מנהלת כספים וחשבת שכר</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-nav">
+            <button class="car-btn car-prev" aria-label="הקודם">›</button>
+            <div class="car-dots">
+              <button class="car-dot active" aria-label="שקופית 1"></button>
+              <button class="car-dot" aria-label="שקופית 2"></button>
+            </div>
+            <button class="car-btn car-next" aria-label="הבא">‹</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ ACADEMIC FORUM ════════════ -->
+    <section class="ab-sec bg-white" id="academic">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev">• פורום אקדמי •</span>
+          <h2 class="h3d rev">פורום אקדמי</h2>
+          <p class="sub rev">
+            אנחנו מאמינים שלאקדמיה אחריות חברתית כלפי הסביבה האקדמית בפרט וכלפי
+            החברה בכלל. הפורום האקדמי של העמותה נוסד על-מנת לפתח תורות למידה
+            ומודלים מקצועיים יישומיים, שיסייעו בקידום טרנספורמציות אישיות
+            וחברתיות — תוך דגש על הגשמת התורות הללו הלכה למעשה, בהוראה, בהכשרה
+            ובמחקר.
+          </p>
+        </div>
+
+        <div class="acad-grid">
+          <div class="team-card rev">
+            <img
+              class="team-photo"
+              src="assets/team/ricardo_tarrasch.avif"
+              alt="פרופ׳ ריקרדו טרש"
+            />
+            <div class="team-name">פרופ׳ ריקרדו טרש</div>
+            <div class="team-role">
+              יו"ר הפורום האקדמי. בית-הספר לחינוך ובית-הספר למדעי המוח,
+              אוניברסיטת תל אביב
+            </div>
+          </div>
+          <div class="team-card rev d1">
+            <img
+              class="team-photo"
+              src="assets/team/michal_al_yagon.jpg"
+              alt="פרופ׳ מיכל אל-יגון"
+            />
+            <div class="team-name">פרופ׳ מיכל אל-יגון</div>
+            <div class="team-role">
+              ראשת בית-הספר לחינוך, אוניברסיטת תל-אביב
+            </div>
+          </div>
+          <div class="team-card rev d2">
+            <img
+              class="team-photo"
+              src="assets/team/pninit_russo_netzer.jpg"
+              alt="פרופ׳ פנינית רוסו-נצר"
+            />
+            <div class="team-name">פרופ׳ פנינית רוסו-נצר</div>
+            <div class="team-role">
+              ראש מכון המחקר והפיתוח קהילה.משמעות.החלמה (ק.מ.ה), הפקולטה
+              לפסיכולוגיה, המכללה האקדמית אחוה
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3.2rem" class="rev">
+          <p class="ab-body" style="margin-bottom: 1.6rem">
+            מנחי תוכנית 16 המעלות בישראל עברו הכשרה והוסמכו על ידי עמותת בית
+            חולמים ו-FDCW, וממשיכים ללמוד ביחד במסגרת הקהילה המקומית
+            והבינלאומית.
+          </p>
+          <a href="index.html#footer" class="btn btn-blue">צרו איתנו קשר</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ CLOSING QUOTE ════════════ -->
+    <section id="quote-band">
+      <p class="quote-text rev">
+        "כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים."
+      </p>
+    </section>
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="Org docs/Logo beit holmim.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+            <div class="socials">
+              <a href="#" class="fsoc" title="YouTube">▷</a>
+              <a href="#" class="fsoc" title="Facebook">f</a>
+              <a href="#" class="fsoc" title="Instagram">▶</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">ניווט</div>
+            <ul class="footer-nav">
+              <li><a href="index.html#intro">דף הבית</a></li>
+              <li><a href="about.html" class="active">אודות</a></li>
+              <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+              <li><a href="index.html#activities">אזור למידה</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <div class="footer-col-title">צרו קשר</div>
+            <p><a href="mailto:info@dreamers.com">info@dreamers.com</a></p>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+            <p style="margin-top: 1rem">
+              <a
+                href="index.html#virtues"
+                class="btn btn-gold"
+                style="font-size: 0.85rem; padding: 0.6rem 1.4rem"
+                >לתרומה</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 by Dreamers Home</span>
+          <span style="color: var(--blue); font-weight: 600; font-style: italic"
+            >כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════ JS ════════════ -->
+    <script>
+      (function () {
+        /* Scroll reveal */
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* Carousel factory */
+        function initCarousel(rootId, pageCount, autoplayMs) {
+          const root = document.getElementById(rootId);
+          if (!root) return;
+          const track = root.querySelector(".carousel-track");
+          const dots = root.querySelectorAll(".car-dot");
+          let idx = 0;
+          let timer;
+
+          function go(i) {
+            idx = (i + pageCount) % pageCount;
+            track.style.transform = `translateX(${idx * 100}%)`;
+            dots.forEach((d, j) => d.classList.toggle("active", j === idx));
+          }
+
+          root
+            .querySelector(".car-next")
+            .addEventListener("click", () => go(idx + 1));
+          root
+            .querySelector(".car-prev")
+            .addEventListener("click", () => go(idx - 1));
+          dots.forEach((d, j) => d.addEventListener("click", () => go(j)));
+
+          function startAuto() {
+            clearInterval(timer);
+            timer = setInterval(() => go(idx + 1), autoplayMs);
+          }
+          function stopAuto() {
+            clearInterval(timer);
+          }
+          root.addEventListener("mouseenter", stopAuto);
+          root.addEventListener("mouseleave", startAuto);
+
+          go(0);
+          startAuto();
+        }
+
+        initCarousel("car-mgmt", 3, 6000);
+        initCarousel("car-staff", 2, 6500);
+      })();
+    </script>
+  </body>
+</html>
