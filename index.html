@@ -27,13 +27,26 @@
         --text-mid: #4a637c;
         --text-lt: #7a99b0;
         --shadow: rgba(0, 67, 120, 0.15);
-        --g-main: linear-gradient(140deg, #002952 0%, #004378 55%, #0c6080 100%);
+        --g-main: linear-gradient(
+          140deg,
+          #002952 0%,
+          #004378 55%,
+          #0c6080 100%
+        );
         --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
         --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
       }
 
-      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: "Heebo", system-ui, sans-serif;
         direction: rtl;
@@ -42,23 +55,44 @@
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
       }
-      img { display: block; max-width: 100%; }
-      a { text-decoration: none; }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
 
       /* ─── REVEAL ─── */
       .rev {
         opacity: 0;
         transform: translateY(40px) scale(0.97);
-        transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
-                    transform 0.85s cubic-bezier(0.16,1,0.3,1);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .rev.in { opacity: 1; transform: none; }
-      .d1 { transition-delay: 0.1s; }
-      .d2 { transition-delay: 0.2s; }
-      .d3 { transition-delay: 0.3s; }
-      .d4 { transition-delay: 0.4s; }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+      .d4 {
+        transition-delay: 0.4s;
+      }
 
-      .wrap { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
 
       .eyebrow {
         display: inline-block;
@@ -69,7 +103,9 @@
         color: var(--teal);
         margin-bottom: 0.9rem;
       }
-      .eyebrow-gold { color: var(--gold); }
+      .eyebrow-gold {
+        color: var(--gold);
+      }
 
       /* ─── 3D HEADINGS ─── */
       .h3d {
@@ -78,28 +114,35 @@
         line-height: 1.2;
         color: var(--blue);
         text-shadow:
-          0 1px 0 rgba(0,67,120,0.2),
-          0 3px 0 rgba(0,67,120,0.13),
-          0 7px 12px rgba(0,0,0,0.1),
-          0 14px 28px rgba(0,0,0,0.07);
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
         margin-bottom: 1.1rem;
       }
       .h3d-white {
         color: #fff;
         text-shadow:
-          0 1px 0 rgba(0,0,0,0.35),
-          0 3px 0 rgba(0,0,0,0.25),
-          0 8px 15px rgba(0,0,0,0.3),
-          0 16px 35px rgba(0,0,0,0.18);
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
       }
-      .sub { font-size: 1.06rem; line-height: 1.9; color: var(--text-mid); max-width: 600px; }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 600px;
+      }
 
       /* ═══════════════════════════════
          NAV
       ═══════════════════════════════ */
       #nav {
         position: fixed;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         z-index: 900;
         padding: 1.1rem 2.5rem;
         display: flex;
@@ -108,11 +151,11 @@
         transition: all 0.4s ease;
       }
       #nav.on {
-        background: rgba(0,25,55,0.96);
+        background: rgba(0, 25, 55, 0.96);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         padding: 0.7rem 2.5rem;
-        box-shadow: 0 4px 45px rgba(0,0,0,0.45);
+        box-shadow: 0 4px 45px rgba(0, 0, 0, 0.45);
       }
       /* Right group: logo + links together */
       .nav-right {
@@ -132,8 +175,13 @@
         border-radius: 50%;
         transition: opacity 0.3s;
       }
-      .logo-img:hover { opacity: 0.85; }
-      .footer-logo-img { height: 80px; display: block; }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .footer-logo-img {
+        height: 80px;
+        display: block;
+      }
 
       .nav-links {
         display: flex;
@@ -142,24 +190,31 @@
         align-items: center;
       }
       .nav-links a {
-        color: rgba(255,255,255,0.82);
-        font-size: 0.88rem;
-        font-weight: 500;
-        transition: color 0.3s;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        transition:
+          color 0.3s,
+          transform 0.2s;
       }
-      .nav-links a:hover { color: var(--teal); }
-      .nav-cta {
-        background: var(--g-teal) !important;
+      .nav-links a:hover {
+        color: var(--teal);
+        transform: translateY(-1px);
+      }
+      .nav-contact-link {
+        background: var(--g-teal);
         color: var(--blue-dk) !important;
         font-weight: 700 !important;
-        padding: 0.48rem 1.5rem;
+        padding: 0.42rem 1.3rem;
         border-radius: 50px;
-        box-shadow: 0 4px 20px rgba(72,217,211,0.35);
-        transition: all 0.3s !important;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s;
       }
-      .nav-cta:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 28px rgba(72,217,211,0.5) !important;
+      .nav-contact-link:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5);
+        color: var(--blue-dk) !important;
       }
 
       /* ═══════════════════════════════
@@ -184,11 +239,11 @@
         inset: 0;
         background: linear-gradient(
           170deg,
-          rgba(100,40,0,0.28) 0%,
-          rgba(180,80,15,0.22) 20%,
-          rgba(240,160,40,0.12) 42%,
-          rgba(20,60,130,0.52) 72%,
-          rgba(0,30,70,0.72) 100%
+          rgba(100, 40, 0, 0.28) 0%,
+          rgba(180, 80, 15, 0.22) 20%,
+          rgba(240, 160, 40, 0.12) 42%,
+          rgba(20, 60, 130, 0.52) 72%,
+          rgba(0, 30, 70, 0.72) 100%
         );
       }
       .h-glow {
@@ -196,8 +251,8 @@
         inset: 0;
         background: radial-gradient(
           ellipse 80% 50% at 50% 65%,
-          rgba(255,200,70,0.45) 0%,
-          rgba(255,140,30,0.25) 35%,
+          rgba(255, 200, 70, 0.45) 0%,
+          rgba(255, 140, 30, 0.25) 35%,
           transparent 65%
         );
       }
@@ -217,43 +272,69 @@
         animation: waveSlide 8s linear infinite;
       }
       @keyframes waveSlide {
-        0%   { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
       }
-      .h-wave-2 svg { animation: waveSlide 12s linear infinite reverse; opacity: 0.6; }
+      .h-wave-2 svg {
+        animation: waveSlide 12s linear infinite reverse;
+        opacity: 0.6;
+      }
 
       /* Gold particles */
-      #pts { position: absolute; inset: 0; pointer-events: none; }
+      #pts {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
       .pt {
         position: absolute;
         border-radius: 50%;
-        background: rgba(255,210,80,0.85);
+        background: rgba(255, 210, 80, 0.85);
         animation: rise linear infinite;
       }
       @keyframes rise {
-        0%   { transform: translateY(0) scale(0); opacity: 0; }
-        8%   { opacity: 1; }
-        88%  { opacity: 0.5; }
-        100% { transform: translateY(-90vh) scale(0.4); opacity: 0; }
+        0% {
+          transform: translateY(0) scale(0);
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        88% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(-90vh) scale(0.4);
+          opacity: 0;
+        }
       }
 
       /* Floating rings */
       .h-ring {
         position: absolute;
         border-radius: 50%;
-        border: 1.5px solid rgba(255,210,80,0.28);
+        border: 1.5px solid rgba(255, 210, 80, 0.28);
         animation: orb linear infinite;
         pointer-events: none;
       }
       @keyframes orb {
-        from { transform: perspective(600px) rotateX(0) rotateY(0) rotateZ(0); }
-        to   { transform: perspective(600px) rotateX(360deg) rotateY(360deg) rotateZ(180deg); }
+        from {
+          transform: perspective(600px) rotateX(0) rotateY(0) rotateZ(0);
+        }
+        to {
+          transform: perspective(600px) rotateX(360deg) rotateY(360deg)
+            rotateZ(180deg);
+        }
       }
 
       /* Hero content — positioned right + lower */
       .h-content {
         position: absolute;
-        top: 20%;
+        top: calc(20% + 5cm);
         right: 15%;
         z-index: 10;
         text-align: right;
@@ -267,16 +348,21 @@
         margin-bottom: 0.9rem;
         animation: fadU 0.9s ease 0.15s both;
         text-shadow:
-          0 2px 0 rgba(0,0,0,0.28),
-          0 5px 12px rgba(0,0,0,0.38),
-          0 18px 38px rgba(0,0,0,0.22);
+          0 2px 0 rgba(0, 0, 0, 0.28),
+          0 5px 12px rgba(0, 0, 0, 0.38),
+          0 18px 38px rgba(0, 0, 0, 0.22);
       }
       .h-grad {
-        background: linear-gradient(135deg, #ffd166 0%, #f5a623 45%, #ff8c42 100%);
+        background: linear-gradient(
+          135deg,
+          #ffd166 0%,
+          #f5a623 45%,
+          #ff8c42 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        filter: drop-shadow(0 3px 5px rgba(200,90,0,0.45));
+        filter: drop-shadow(0 3px 5px rgba(200, 90, 0, 0.45));
       }
       .h-sub {
         font-size: clamp(0.95rem, 1.8vw, 1.25rem);
@@ -284,10 +370,13 @@
         opacity: 0.92;
         margin-bottom: 2.2rem;
         animation: fadU 0.9s ease 0.3s both;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
         text-align: right;
       }
-      .h-sub strong { font-weight: 800; color: #ffe8a0; }
+      .h-sub strong {
+        font-weight: 800;
+        color: #ffe8a0;
+      }
       .h-ctas {
         display: flex;
         gap: 1rem;
@@ -306,16 +395,26 @@
         font-family: "Heebo", sans-serif;
         cursor: pointer;
         border: none;
-        transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
       .btn-gold {
         background: var(--g-gold);
         color: #4a2800;
-        box-shadow: 0 10px 35px rgba(245,166,35,0.5);
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
       }
-      .btn-gold:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 22px 50px rgba(245,166,35,0.6); }
-      .btn-blue { background: var(--g-main); color: #fff; box-shadow: 0 10px 30px rgba(0,67,120,0.4); }
-      .btn-blue:hover { transform: translateY(-5px); box-shadow: 0 20px 45px rgba(0,67,120,0.5); }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
 
       .h-arrow {
         position: absolute;
@@ -326,7 +425,7 @@
         flex-direction: column;
         align-items: center;
         gap: 0.4rem;
-        color: rgba(255,255,255,0.4);
+        color: rgba(255, 255, 255, 0.4);
         font-size: 0.7rem;
         letter-spacing: 0.12em;
         cursor: pointer;
@@ -336,25 +435,49 @@
       .h-arrow-line {
         width: 1px;
         height: 40px;
-        background: linear-gradient(to bottom, transparent, rgba(255,200,80,0.6));
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 200, 80, 0.6)
+        );
       }
       @keyframes bob {
-        0%, 100% { transform: translateX(-50%) translateY(0); }
-        50%       { transform: translateX(-50%) translateY(9px); }
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(9px);
+        }
       }
       @keyframes fadD {
-        from { opacity: 0; transform: translateY(-18px); }
-        to   { opacity: 1; transform: none; }
+        from {
+          opacity: 0;
+          transform: translateY(-18px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
       @keyframes fadU {
-        from { opacity: 0; transform: translateY(28px); }
-        to   { opacity: 1; transform: none; }
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
 
       /* ═══════════════════════════════
          PROGRAM INTRO
       ═══════════════════════════════ */
-      #intro { padding: 7rem 2rem; background: var(--white); }
+      #intro {
+        padding: 7rem 2rem;
+        background: var(--white);
+      }
       .intro-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -383,11 +506,12 @@
         font-weight: 500;
       }
       .pl-dot {
-        width: 10px; height: 10px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         flex-shrink: 0;
         background: var(--g-teal);
-        box-shadow: 0 0 8px rgba(72,217,211,0.5);
+        box-shadow: 0 0 8px rgba(72, 217, 211, 0.5);
       }
       /* Single intro image replacing the collage */
       .iv-single {
@@ -406,7 +530,7 @@
         padding: 1.8rem 2rem;
         border-radius: 18px;
         background: linear-gradient(135deg, #e8f4ff, #f0fbfb);
-        border: 1px solid rgba(72,217,211,0.3);
+        border: 1px solid rgba(72, 217, 211, 0.3);
       }
       .ijb-text {
         font-size: 1rem;
@@ -420,30 +544,55 @@
       ═══════════════════════════════ */
       #virtues {
         padding: 8rem 2rem;
-        background: linear-gradient(160deg, #e8f6ff 0%, #f0fbfb 40%, #eaf3ff 100%);
+        background: linear-gradient(
+          160deg,
+          #e8f6ff 0%,
+          #f0fbfb 40%,
+          #eaf3ff 100%
+        );
         position: relative;
         overflow: hidden;
       }
       #virtues::before {
         content: "";
         position: absolute;
-        top: -80px; right: -80px;
-        width: 400px; height: 400px;
+        top: -80px;
+        right: -80px;
+        width: 400px;
+        height: 400px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(72,217,211,0.12), transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(72, 217, 211, 0.12),
+          transparent 70%
+        );
         pointer-events: none;
       }
       #virtues::after {
         content: "";
         position: absolute;
-        bottom: -60px; left: -60px;
-        width: 300px; height: 300px;
+        bottom: -60px;
+        left: -60px;
+        width: 300px;
+        height: 300px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(245,166,35,0.08), transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(245, 166, 35, 0.08),
+          transparent 70%
+        );
         pointer-events: none;
       }
-      .vhdr { text-align: center; margin-bottom: 4.5rem; position: relative; z-index: 2; }
-      .vhdr .sub { margin: 0 auto; text-align: center; }
+      .vhdr {
+        text-align: center;
+        margin-bottom: 4.5rem;
+        position: relative;
+        z-index: 2;
+      }
+      .vhdr .sub {
+        margin: 0 auto;
+        text-align: center;
+      }
 
       .pgrid {
         display: grid;
@@ -459,42 +608,84 @@
         overflow: hidden;
         cursor: default;
         transform-style: preserve-3d;
-        transition: transform 0.15s ease, box-shadow 0.4s ease;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.4s ease;
       }
       .pc::after {
         content: "";
-        position: absolute; inset: 0;
+        position: absolute;
+        inset: 0;
         background: repeating-linear-gradient(
-          -48deg, transparent, transparent 18px,
-          rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 19px
+          -48deg,
+          transparent,
+          transparent 18px,
+          rgba(255, 255, 255, 0.018) 18px,
+          rgba(255, 255, 255, 0.018) 19px
         );
         pointer-events: none;
       }
       .pc::before {
         content: "";
         position: absolute;
-        top: 0; right: 0; left: 0;
+        top: 0;
+        right: 0;
+        left: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
       }
       .pc-meaning {
-        background: linear-gradient(145deg, #1a0d00 0%, #5c2800 40%, #9a5000 100%);
-        box-shadow: 0 22px 65px rgba(92,40,0,0.55), 0 0 0 1px rgba(255,180,60,0.15);
+        background: linear-gradient(
+          145deg,
+          #1a0d00 0%,
+          #5c2800 40%,
+          #9a5000 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(92, 40, 0, 0.55),
+          0 0 0 1px rgba(255, 180, 60, 0.15);
       }
       .pc-relating {
-        background: linear-gradient(145deg, #001530 0%, #002d6b 40%, #004494 100%);
-        box-shadow: 0 22px 65px rgba(0,45,107,0.55), 0 0 0 1px rgba(60,130,255,0.15);
+        background: linear-gradient(
+          145deg,
+          #001530 0%,
+          #002d6b 40%,
+          #004494 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(0, 45, 107, 0.55),
+          0 0 0 1px rgba(60, 130, 255, 0.15);
       }
       .pc-acting {
-        background: linear-gradient(145deg, #00241a 0%, #005c3d 40%, #007a55 100%);
-        box-shadow: 0 22px 65px rgba(0,92,61,0.55), 0 0 0 1px rgba(60,220,120,0.15);
+        background: linear-gradient(
+          145deg,
+          #00241a 0%,
+          #005c3d 40%,
+          #007a55 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(0, 92, 61, 0.55),
+          0 0 0 1px rgba(60, 220, 120, 0.15);
       }
       .pc-thinking {
-        background: linear-gradient(145deg, #001a1a 0%, #005555 40%, #007a7a 100%);
-        box-shadow: 0 22px 65px rgba(0,85,85,0.55), 0 0 0 1px rgba(60,220,220,0.15);
+        background: linear-gradient(
+          145deg,
+          #001a1a 0%,
+          #005555 40%,
+          #007a7a 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(0, 85, 85, 0.55),
+          0 0 0 1px rgba(60, 220, 220, 0.15);
       }
       .pc-ico {
-        width: 82px; height: 82px;
+        width: 82px;
+        height: 82px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -508,76 +699,227 @@
       .pc-ico::before {
         content: "";
         position: absolute;
-        top: 6px; left: 10px;
-        width: 32px; height: 24px;
+        top: 6px;
+        left: 10px;
+        width: 32px;
+        height: 24px;
         border-radius: 50%;
-        background: rgba(255,255,255,0.22);
+        background: rgba(255, 255, 255, 0.22);
         filter: blur(5px);
       }
       .pc-ico::after {
         content: "";
         position: absolute;
-        bottom: 7px; right: 9px;
-        width: 18px; height: 14px;
+        bottom: 7px;
+        right: 9px;
+        width: 18px;
+        height: 14px;
         border-radius: 50%;
-        background: rgba(0,0,0,0.25);
+        background: rgba(0, 0, 0, 0.25);
         filter: blur(4px);
       }
       .pc-meaning .pc-ico {
-        background: radial-gradient(circle at 35% 30%, #ffd166, #f59e0b 55%, #5c2800 100%);
-        box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(255,220,80,0.3),
-                    0 12px 35px rgba(200,120,0,0.65), 0 0 0 1px rgba(255,200,60,0.25);
+        background: radial-gradient(
+          circle at 35% 30%,
+          #ffd166,
+          #f59e0b 55%,
+          #5c2800 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(255, 220, 80, 0.3),
+          0 12px 35px rgba(200, 120, 0, 0.65),
+          0 0 0 1px rgba(255, 200, 60, 0.25);
         animation: glowA 3s ease infinite;
       }
       .pc-relating .pc-ico {
-        background: radial-gradient(circle at 35% 30%, #80b0ff, #0055d0 55%, #001840 100%);
-        box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(130,180,255,0.3),
-                    0 12px 35px rgba(0,85,200,0.65), 0 0 0 1px rgba(80,150,255,0.25);
+        background: radial-gradient(
+          circle at 35% 30%,
+          #80b0ff,
+          #0055d0 55%,
+          #001840 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(130, 180, 255, 0.3),
+          0 12px 35px rgba(0, 85, 200, 0.65),
+          0 0 0 1px rgba(80, 150, 255, 0.25);
         animation: glowB 3s ease infinite;
       }
       .pc-acting .pc-ico {
-        background: radial-gradient(circle at 35% 30%, #40f0a0, #00a060 55%, #002810 100%);
-        box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(80,255,160,0.3),
-                    0 12px 35px rgba(0,160,90,0.65), 0 0 0 1px rgba(60,220,120,0.25);
+        background: radial-gradient(
+          circle at 35% 30%,
+          #40f0a0,
+          #00a060 55%,
+          #002810 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(80, 255, 160, 0.3),
+          0 12px 35px rgba(0, 160, 90, 0.65),
+          0 0 0 1px rgba(60, 220, 120, 0.25);
         animation: glowC 3s ease infinite;
       }
       .pc-thinking .pc-ico {
-        background: radial-gradient(circle at 35% 30%, #80ffee, #00bbaa 55%, #002020 100%);
-        box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(80,255,230,0.3),
-                    0 12px 35px rgba(0,187,170,0.65), 0 0 0 1px rgba(60,220,210,0.25);
+        background: radial-gradient(
+          circle at 35% 30%,
+          #80ffee,
+          #00bbaa 55%,
+          #002020 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(80, 255, 230, 0.3),
+          0 12px 35px rgba(0, 187, 170, 0.65),
+          0 0 0 1px rgba(60, 220, 210, 0.25);
         animation: glowD 3s ease infinite;
       }
       @keyframes glowA {
-        0%,100% { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(255,220,80,0.3), 0 12px 35px rgba(200,120,0,0.65), 0 0 0 1px rgba(255,200,60,0.25); }
-        50%     { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(255,220,80,0.3), 0 18px 50px rgba(200,120,0,0.8), 0 0 30px rgba(255,180,0,0.3); }
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(255, 220, 80, 0.3),
+            0 12px 35px rgba(200, 120, 0, 0.65),
+            0 0 0 1px rgba(255, 200, 60, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(255, 220, 80, 0.3),
+            0 18px 50px rgba(200, 120, 0, 0.8),
+            0 0 30px rgba(255, 180, 0, 0.3);
+        }
       }
       @keyframes glowB {
-        0%,100% { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(130,180,255,0.3), 0 12px 35px rgba(0,85,200,0.65), 0 0 0 1px rgba(80,150,255,0.25); }
-        50%     { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(130,180,255,0.3), 0 18px 50px rgba(0,85,200,0.8), 0 0 30px rgba(60,130,255,0.3); }
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(130, 180, 255, 0.3),
+            0 12px 35px rgba(0, 85, 200, 0.65),
+            0 0 0 1px rgba(80, 150, 255, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(130, 180, 255, 0.3),
+            0 18px 50px rgba(0, 85, 200, 0.8),
+            0 0 30px rgba(60, 130, 255, 0.3);
+        }
       }
       @keyframes glowC {
-        0%,100% { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(80,255,160,0.3), 0 12px 35px rgba(0,160,90,0.65), 0 0 0 1px rgba(60,220,120,0.25); }
-        50%     { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(80,255,160,0.3), 0 18px 50px rgba(0,160,90,0.8), 0 0 30px rgba(40,220,100,0.3); }
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 160, 0.3),
+            0 12px 35px rgba(0, 160, 90, 0.65),
+            0 0 0 1px rgba(60, 220, 120, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 160, 0.3),
+            0 18px 50px rgba(0, 160, 90, 0.8),
+            0 0 30px rgba(40, 220, 100, 0.3);
+        }
       }
       @keyframes glowD {
-        0%,100% { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(80,255,230,0.3), 0 12px 35px rgba(0,187,170,0.65), 0 0 0 1px rgba(60,220,210,0.25); }
-        50%     { box-shadow: inset -4px -4px 9px rgba(0,0,0,0.5), inset 3px 3px 7px rgba(80,255,230,0.3), 0 18px 50px rgba(0,187,170,0.8), 0 0 30px rgba(40,220,200,0.3); }
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 230, 0.3),
+            0 12px 35px rgba(0, 187, 170, 0.65),
+            0 0 0 1px rgba(60, 220, 210, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 230, 0.3),
+            0 18px 50px rgba(0, 187, 170, 0.8),
+            0 0 30px rgba(40, 220, 200, 0.3);
+        }
       }
-      .pc-title { font-size: 1.05rem; font-weight: 800; line-height: 1.35; margin-bottom: 1.3rem; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-      .pc-hr { height: 1px; margin: 1.2rem 0; border: none; }
-      .pc-meaning .pc-hr  { background: linear-gradient(90deg, transparent, rgba(255,200,80,0.35), transparent); }
-      .pc-relating .pc-hr { background: linear-gradient(90deg, transparent, rgba(80,150,255,0.35), transparent); }
-      .pc-acting .pc-hr   { background: linear-gradient(90deg, transparent, rgba(60,220,120,0.35), transparent); }
-      .pc-thinking .pc-hr { background: linear-gradient(90deg, transparent, rgba(60,220,210,0.35), transparent); }
-      .vlist { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-      .vi { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.85); font-size: 1.16rem; font-weight: 500; }
-      .vi-icon { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)) brightness(1.1); }
+      .pc-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        line-height: 1.35;
+        margin-bottom: 1.3rem;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      }
+      .pc-hr {
+        height: 1px;
+        margin: 1.2rem 0;
+        border: none;
+      }
+      .pc-meaning .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 200, 80, 0.35),
+          transparent
+        );
+      }
+      .pc-relating .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(80, 150, 255, 0.35),
+          transparent
+        );
+      }
+      .pc-acting .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(60, 220, 120, 0.35),
+          transparent
+        );
+      }
+      .pc-thinking .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(60, 220, 210, 0.35),
+          transparent
+        );
+      }
+      .vlist {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .vi {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.16rem;
+        font-weight: 500;
+      }
+      .vi-icon {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6)) brightness(1.1);
+      }
 
       /* ═══════════════════════════════
          ACTIVITIES
       ═══════════════════════════════ */
-      #activities { padding: 7.5rem 2rem; background: var(--white); }
-      .act-hdr { text-align: center; margin-bottom: 0.5rem; }
+      #activities {
+        padding: 7.5rem 2rem;
+        background: var(--white);
+      }
+      .act-hdr {
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
       .act-desc {
         font-size: 1.05rem;
         line-height: 1.85;
@@ -603,27 +945,54 @@
         overflow: hidden;
         box-shadow:
           0 14px 45px var(--shadow),
-          0 4px 8px rgba(0,0,0,0.08),
-          0 -2px 4px rgba(255,255,255,0.8);
-        transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+          0 4px 8px rgba(0, 0, 0, 0.08),
+          0 -2px 4px rgba(255, 255, 255, 0.8);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
         cursor: pointer;
         transform-style: preserve-3d;
       }
       .ac:hover {
-        transform: perspective(900px) rotateY(-4deg) rotateX(2deg) translateY(-12px);
+        transform: perspective(900px) rotateY(-4deg) rotateX(2deg)
+          translateY(-12px);
         box-shadow:
-          0 38px 75px rgba(0,67,120,0.22),
-          8px 16px 30px rgba(0,67,120,0.12);
+          0 38px 75px rgba(0, 67, 120, 0.22),
+          8px 16px 30px rgba(0, 67, 120, 0.12);
       }
-      .ac-img-w { position: relative; height: 210px; overflow: hidden; }
-      .ac-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-      .ac:hover .ac-img { transform: scale(1.07); }
+      .ac-img-w {
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+      }
+      .ac-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+      .ac:hover .ac-img {
+        transform: scale(1.07);
+      }
       .ac-ov {
-        position: absolute; inset: 0;
-        background: linear-gradient(to top, rgba(0,30,70,0.65) 0%, transparent 55%);
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 30, 70, 0.65) 0%,
+          transparent 55%
+        );
       }
-      .ac-body { background: #fff; padding: 1.5rem; }
-      .ac-title { font-size: 1.05rem; font-weight: 800; color: var(--blue); margin-bottom: 0.3rem; }
+      .ac-body {
+        background: #fff;
+        padding: 1.5rem;
+      }
+      .ac-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--blue);
+        margin-bottom: 0.3rem;
+      }
       .ac-link {
         display: inline-flex;
         align-items: center;
@@ -634,30 +1003,46 @@
         margin-top: 0.7rem;
         transition: gap 0.3s;
       }
-      .ac:hover .ac-link { gap: 0.6rem; }
+      .ac:hover .ac-link {
+        gap: 0.6rem;
+      }
 
       /* ═══════════════════════════════
          NUMBERS
       ═══════════════════════════════ */
       #numbers {
         padding: 6rem 2rem;
-        background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 50%, #fffcf2 100%);
-        border-top: 1px solid rgba(245,166,35,0.15);
-        border-bottom: 1px solid rgba(245,166,35,0.15);
+        background: linear-gradient(
+          135deg,
+          #fffbf0 0%,
+          #fff8e8 50%,
+          #fffcf2 100%
+        );
+        border-top: 1px solid rgba(245, 166, 35, 0.15);
+        border-bottom: 1px solid rgba(245, 166, 35, 0.15);
         position: relative;
         overflow: hidden;
       }
       #numbers::before {
         content: "";
         position: absolute;
-        top: -50%; left: 50%;
+        top: -50%;
+        left: 50%;
         transform: translateX(-50%);
-        width: 600px; height: 600px;
+        width: 600px;
+        height: 600px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(245,166,35,0.07), transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(245, 166, 35, 0.07),
+          transparent 70%
+        );
         pointer-events: none;
       }
-      .num-hdr { text-align: center; margin-bottom: 3.5rem; }
+      .num-hdr {
+        text-align: center;
+        margin-bottom: 3.5rem;
+      }
       .num-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -670,9 +1055,11 @@
       .nc {
         text-align: center;
         padding: 2.5rem 1rem;
-        border-right: 1px solid rgba(245,166,35,0.2);
+        border-right: 1px solid rgba(245, 166, 35, 0.2);
       }
-      .nc:last-child { border-right: none; }
+      .nc:last-child {
+        border-right: none;
+      }
       .nn {
         display: block;
         font-size: clamp(2.8rem, 4.5vw, 4rem);
@@ -682,10 +1069,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        filter: drop-shadow(0 3px 6px rgba(180,100,0,0.25));
+        filter: drop-shadow(0 3px 6px rgba(180, 100, 0, 0.25));
         margin-bottom: 0.6rem;
       }
-      .nl { font-size: 0.92rem; color: var(--text-mid); line-height: 1.5; }
+      .nl {
+        font-size: 0.92rem;
+        color: var(--text-mid);
+        line-height: 1.5;
+      }
 
       /* ═══════════════════════════════
          TESTIMONIALS
@@ -694,7 +1085,10 @@
         padding: 7.5rem 2rem;
         background: linear-gradient(160deg, #f2f8ff 0%, #eef9f9 100%);
       }
-      .testi-hdr { text-align: center; margin-bottom: 4rem; }
+      .testi-hdr {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
       .testi-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -706,10 +1100,10 @@
         padding: 2.4rem;
         box-shadow:
           0 10px 38px var(--shadow),
-          0 4px 8px rgba(0,0,0,0.06),
-          0 20px 40px rgba(0,67,120,0.08),
-          inset 0 1px 0 rgba(255,255,255,0.9);
-        transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+          0 4px 8px rgba(0, 0, 0, 0.06),
+          0 20px 40px rgba(0, 67, 120, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
         display: flex;
         flex-direction: column;
@@ -719,7 +1113,9 @@
       .tc::after {
         content: "";
         position: absolute;
-        bottom: 0; right: 0; left: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
         height: 4px;
         background: var(--g-teal);
         border-radius: 0 0 24px 24px;
@@ -727,14 +1123,25 @@
         transition: opacity 0.3s;
       }
       .tc:hover {
-        transform: perspective(900px) rotateY(3deg) rotateX(-2deg) translateY(-10px);
+        transform: perspective(900px) rotateY(3deg) rotateX(-2deg)
+          translateY(-10px);
         box-shadow:
-          0 32px 65px rgba(0,67,120,0.16),
-          -6px 12px 25px rgba(0,67,120,0.1);
+          0 32px 65px rgba(0, 67, 120, 0.16),
+          -6px 12px 25px rgba(0, 67, 120, 0.1);
       }
-      .tc:hover::after { opacity: 1; }
-      .tc-stars { display: flex; gap: 2px; margin-bottom: 0.9rem; justify-content: flex-start; }
-      .star { color: #f59e0b; font-size: 0.82rem; }
+      .tc:hover::after {
+        opacity: 1;
+      }
+      .tc-stars {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 0.9rem;
+        justify-content: flex-start;
+      }
+      .star {
+        color: #f59e0b;
+        font-size: 0.82rem;
+      }
       .tc-q {
         font-size: 3.2rem;
         font-family: "Playfair Display", Georgia, serif;
@@ -752,19 +1159,25 @@
         margin-bottom: 1.8rem;
         text-align: right;
       }
-      .tc-author { display: flex; align-items: center; gap: 1rem; }
+      .tc-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
       .tc-av {
-        width: 56px; height: 56px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
         object-fit: cover;
         object-position: center top;
         border: 3px solid var(--off);
-        box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
         flex-shrink: 0;
       }
       /* Fallback initials avatar */
       .tc-av-init {
-        width: 56px; height: 56px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -774,15 +1187,27 @@
         color: #fff;
         flex-shrink: 0;
         border: 3px solid var(--off);
-        box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
       }
-      .tc-name { font-weight: 700; font-size: 0.95rem; color: var(--blue); }
-      .tc-role { font-size: 0.76rem; color: var(--text-lt); margin-top: 0.1rem; line-height: 1.4; }
+      .tc-name {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--blue);
+      }
+      .tc-role {
+        font-size: 0.76rem;
+        color: var(--text-lt);
+        margin-top: 0.1rem;
+        line-height: 1.4;
+      }
 
       /* ═══════════════════════════════
          MISSION
       ═══════════════════════════════ */
-      #mission { padding: 8rem 2rem; background: var(--white); }
+      #mission {
+        padding: 8rem 2rem;
+        background: var(--white);
+      }
       .mission-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -796,11 +1221,20 @@
         position: relative;
         box-shadow: 0 35px 80px var(--shadow);
       }
-      .m-img-w img { width: 100%; height: 100%; object-fit: cover; }
+      .m-img-w img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
       .m-img-w::after {
         content: "";
-        position: absolute; inset: 0;
-        background: linear-gradient(to top, rgba(0,41,82,0.4) 0%, transparent 50%);
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 41, 82, 0.4) 0%,
+          transparent 50%
+        );
       }
       .mission-body {
         font-size: 1.05rem;
@@ -821,12 +1255,20 @@
          FOOTER
       ═══════════════════════════════ */
       footer {
-        background: linear-gradient(135deg, #e0f7f6 0%, #d0f0ff 40%, #e8f9ff 100%);
+        background: linear-gradient(
+          135deg,
+          #e0f7f6 0%,
+          #d0f0ff 40%,
+          #e8f9ff 100%
+        );
         color: var(--blue);
         padding: 5rem 2rem 2.5rem;
-        border-top: 2px solid rgba(72,217,211,0.3);
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
       }
-      .footer-inner { max-width: 1200px; margin: 0 auto; }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
       .footer-top {
         display: flex;
         justify-content: space-between;
@@ -835,34 +1277,81 @@
         gap: 3rem;
         margin-bottom: 3.5rem;
       }
-      .footer-desc { font-size: 1rem; line-height: 1.8; color: var(--text-mid); max-width: 340px; margin-top: 1rem; }
-      .footer-nav { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
-      .footer-nav a { font-size: 1rem; color: var(--text-mid); transition: color 0.3s; font-weight: 500; }
-      .footer-nav a:hover { color: var(--blue); }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-mid);
+        max-width: 340px;
+        margin-top: 1rem;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: var(--text-mid);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--blue);
+      }
       .footer-col-title {
-        font-size: 0.78rem; font-weight: 800; letter-spacing: 0.2em;
-        color: var(--blue); text-transform: uppercase;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--blue);
+        text-transform: uppercase;
         margin-bottom: 1.1rem;
-        border-bottom: 2px solid rgba(72,217,211,0.5);
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
         padding-bottom: 0.5rem;
         display: inline-block;
       }
-      .footer-contact p { font-size: 1rem; color: var(--text-mid); margin-bottom: 0.6rem; font-weight: 500; }
-      .footer-contact a { color: var(--blue); font-weight: 600; transition: color 0.3s; }
-      .footer-contact a:hover { color: var(--teal); }
-      .socials { display: flex; gap: 0.75rem; margin-top: 1.4rem; }
-      .fsoc {
-        width: 46px; height: 46px;
-        border-radius: 14px;
-        background: rgba(0,67,120,0.1);
-        display: flex; align-items: center; justify-content: center;
-        color: var(--blue); font-size: 1rem; font-weight: 700;
-        transition: all 0.3s;
-        border: 1px solid rgba(0,67,120,0.15);
+      .footer-contact p {
+        font-size: 1rem;
+        color: var(--text-mid);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
       }
-      .fsoc:hover { background: var(--teal); color: var(--blue-dk); transform: translateY(-3px); border-color: var(--teal); }
+      .footer-contact a {
+        color: var(--blue);
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: rgba(0, 67, 120, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--blue);
+        font-size: 1rem;
+        font-weight: 700;
+        transition: all 0.3s;
+        border: 1px solid rgba(0, 67, 120, 0.15);
+      }
+      .fsoc:hover {
+        background: var(--teal);
+        color: var(--blue-dk);
+        transform: translateY(-3px);
+        border-color: var(--teal);
+      }
       .footer-bottom {
-        border-top: 1px solid rgba(0,67,120,0.12);
+        border-top: 1px solid rgba(0, 67, 120, 0.12);
         padding-top: 2rem;
         display: flex;
         justify-content: space-between;
@@ -874,46 +1363,148 @@
       }
 
       /* ═══════════════════════════════
+         CAROUSEL
+      ═══════════════════════════════ */
+      .carousel-outer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .carousel-viewport {
+        overflow: hidden;
+        flex: 1;
+      }
+      .carousel-track {
+        display: flex;
+        direction: ltr;
+        gap: 2rem;
+        transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .carousel-track .tc {
+        flex: 0 0 calc(33.333% - 1.35rem);
+        min-width: 0;
+        direction: rtl;
+      }
+      .car-arrow {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 67, 120, 0.2);
+        background: #fff;
+        color: var(--blue);
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        box-shadow: 0 4px 14px var(--shadow);
+      }
+      .car-arrow:hover:not(:disabled) {
+        background: var(--blue);
+        color: #fff;
+        border-color: var(--blue);
+        transform: scale(1.1);
+      }
+      .car-arrow:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+      .car-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+        margin-top: 2rem;
+      }
+      .car-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 67, 120, 0.2);
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 0;
+      }
+      .car-dot.active {
+        background: var(--blue);
+        transform: scale(1.3);
+      }
+
+      /* ═══════════════════════════════
          RESPONSIVE
       ═══════════════════════════════ */
       @media (max-width: 1024px) {
-        .pgrid { grid-template-columns: repeat(2, 1fr); }
-        .act-grid { grid-template-columns: repeat(2, 1fr); }
-        .act-row2 { grid-template-columns: 1fr; }
-        .testi-grid { grid-template-columns: 1fr 1fr; }
-        .num-grid { grid-template-columns: repeat(2, 1fr); }
-        .h-content { right: 8%; max-width: 60%; }
+        .pgrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .act-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .act-row2 {
+          grid-template-columns: 1fr;
+        }
+        .testi-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .num-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .h-content {
+          right: 8%;
+          max-width: 60%;
+        }
       }
       @media (max-width: 768px) {
-        .nav-links { display: none; }
-        .intro-grid, .mission-grid { grid-template-columns: 1fr; }
-        .iv-single, .m-img-w { height: 300px; }
-        .pgrid, .act-grid, .act-row2 { grid-template-columns: 1fr; }
-        .num-grid { grid-template-columns: repeat(2, 1fr); }
-        .testi-grid { grid-template-columns: 1fr; }
-        .footer-top { flex-direction: column; }
-        .h-content { right: 5%; left: 5%; max-width: 90%; top: 15%; }
+        .nav-links {
+          display: none;
+        }
+        .intro-grid,
+        .mission-grid {
+          grid-template-columns: 1fr;
+        }
+        .iv-single,
+        .m-img-w {
+          height: 300px;
+        }
+        .pgrid,
+        .act-grid,
+        .act-row2 {
+          grid-template-columns: 1fr;
+        }
+        .num-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .testi-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-top {
+          flex-direction: column;
+        }
+        .h-content {
+          right: 5%;
+          left: 5%;
+          max-width: 90%;
+          top: 15%;
+        }
       }
       @media (max-width: 480px) {
-        .num-grid { grid-template-columns: 1fr 1fr; }
-        .nc { padding: 1.8rem 0.5rem; }
+        .num-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .nc {
+          padding: 1.8rem 0.5rem;
+        }
       }
     </style>
   </head>
   <body>
     <!-- ════════════ NAV ════════════ -->
     <nav id="nav">
-      <!-- Left: CTA button -->
-      <a href="#footer" class="nav-cta" style="font-size:0.88rem;font-weight:700;padding:0.48rem 1.5rem;border-radius:50px;background:var(--g-teal);color:var(--blue-dk);box-shadow:0 4px 20px rgba(72,217,211,0.35);">צרו איתנו קשר</a>
-      <!-- Right: Logo + links -->
       <div class="nav-right">
-        <ul class="nav-links">
-          <li><a href="#intro">דף הבית</a></li>
-          <li><a href="about.html">אודות</a></li>
-          <li><a href="#virtues">תוכנית 16 המעלות</a></li>
-          <li><a href="#activities">הפעילויות שלנו</a></li>
-          <li><a href="#activities">אזור למידה</a></li>
-        </ul>
+        <!-- Logo — far right -->
         <a href="#hero" class="logo">
           <img
             src="assets/img/logo-beit-holmim.png"
@@ -921,6 +1512,15 @@
             class="logo-img"
           />
         </a>
+        <!-- Links — left of logo, RTL order -->
+        <ul class="nav-links">
+          <li><a href="#intro">דף הבית</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="#virtues">תוכנית 16 המעלות</a></li>
+          <li><a href="#activities">הפעילויות שלנו</a></li>
+          <li><a href="#activities">אזור למידה</a></li>
+          <li><a href="#footer" class="nav-contact-link">צרו איתנו קשר</a></li>
+        </ul>
       </div>
     </nav>
 
@@ -933,27 +1533,61 @@
 
       <!-- Animated wave layers -->
       <div class="h-wave">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1440,0 1440,40 L1440,80 L0,80 Z M1440,40 C1620,80 1800,0 1980,40 C2160,80 2340,0 2520,40 C2700,80 2880,0 2880,40 L2880,80 L1440,80 Z" fill="rgba(0,30,70,0.35)"/>
+        <svg
+          viewBox="0 0 1440 80"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1440,0 1440,40 L1440,80 L0,80 Z M1440,40 C1620,80 1800,0 1980,40 C2160,80 2340,0 2520,40 C2700,80 2880,0 2880,40 L2880,80 L1440,80 Z"
+            fill="rgba(0,30,70,0.35)"
+          />
         </svg>
       </div>
-      <div class="h-wave h-wave-2" style="bottom:20px;opacity:0.5;">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 C1680,60 1920,0 2160,30 C2400,60 2640,0 2880,30 L2880,60 L0,60 Z" fill="rgba(72,217,211,0.15)"/>
+      <div class="h-wave h-wave-2" style="bottom: 20px; opacity: 0.5">
+        <svg
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 C1680,60 1920,0 2160,30 C2400,60 2640,0 2880,30 L2880,60 L0,60 Z"
+            fill="rgba(72,217,211,0.15)"
+          />
         </svg>
       </div>
 
       <div
         class="h-ring"
-        style="width:280px;height:280px;top:7%;right:4%;animation-duration:30s;"
+        style="
+          width: 280px;
+          height: 280px;
+          top: 7%;
+          right: 4%;
+          animation-duration: 30s;
+        "
       ></div>
       <div
         class="h-ring"
-        style="width:150px;height:150px;top:60%;left:6%;animation-duration:22s;animation-delay:5s;"
+        style="
+          width: 150px;
+          height: 150px;
+          top: 60%;
+          left: 6%;
+          animation-duration: 22s;
+          animation-delay: 5s;
+        "
       ></div>
       <div
         class="h-ring"
-        style="width:210px;height:210px;bottom:49%;right:48%;animation-duration:38s;animation-delay:10s;"
+        style="
+          width: 210px;
+          height: 210px;
+          bottom: 49%;
+          right: 48%;
+          animation-duration: 38s;
+          animation-delay: 10s;
+        "
       ></div>
 
       <div class="h-content">
@@ -972,7 +1606,11 @@
 
       <div
         class="h-arrow"
-        onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})"
+        onclick="
+          document
+            .getElementById('intro')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
       >
         <div class="h-arrow-line"></div>
         <span>גלול</span>
@@ -984,22 +1622,36 @@
       <div class="wrap">
         <div class="intro-grid">
           <div>
+            <h2 class="h3d rev">תוכנית 16 המעלות</h2>
             <p class="intro-body rev">
-              התוכנית נותנת כלים מעשיים לשיפור חיי היומיום שלנו ומבוססת על ארבעה נושאי ליבה:
+              התוכנית נותנת כלים מעשיים לשיפור חיי היומיום שלנו ומבוססת על ארבעה
+              נושאי ליבה:
             </p>
             <ul class="pillars-list rev">
-              <li class="pl-item"><span class="pl-dot"></span>הדרך שאנו חושבים</li>
-              <li class="pl-item"><span class="pl-dot"></span>הדרך שאנו פועלים</li>
-              <li class="pl-item"><span class="pl-dot"></span>הדרך שאנו מתייחסים לזולת</li>
-              <li class="pl-item"><span class="pl-dot"></span>הדרך שאנו מוצאים משמעות</li>
+              <li class="pl-item">
+                <span class="pl-dot"></span>הדרך שאנו חושבים
+              </li>
+              <li class="pl-item">
+                <span class="pl-dot"></span>הדרך שאנו פועלים
+              </li>
+              <li class="pl-item">
+                <span class="pl-dot"></span>הדרך שאנו מתייחסים לזולת
+              </li>
+              <li class="pl-item">
+                <span class="pl-dot"></span>הדרך שאנו מוצאים משמעות
+              </li>
             </ul>
             <p class="intro-body rev">
-              בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר מייצרות שפה לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות, קהילות, ובחברה כולה.
+              בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר מייצרות שפה
+              לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות, קהילות, ובחברה
+              כולה.
             </p>
             <div class="intro-join-box rev d1">
-              <p class="ijb-text">עמותת בית חולמים היא הנציגה הרשמית של התוכנית בישראל</p>
+              <p class="ijb-text">
+                עמותת בית חולמים היא הנציגה הרשמית של התוכנית בישראל
+              </p>
             </div>
-            <div style="margin-top:1.8rem" class="rev d2">
+            <div style="margin-top: 1.8rem" class="rev d2">
               <a href="#virtues" class="btn btn-blue">למידע נוסף</a>
             </div>
           </div>
@@ -1015,9 +1667,17 @@
     <section id="virtues">
       <div class="wrap">
         <div class="vhdr">
-          <h2 class="h3d rev" style="text-align:center">מהן 16 המעלות</h2>
-          <p class="sub rev" style="text-align:center;margin:0 auto;max-width:640px">
-            באמצעות לימוד ותרגול של ארבעת נושאי הליבה ו-16 המעלות, מתאפשרת הכרות מעמיקה יותר עם עצמנו, שיפור מערכות היחסים שלנו, קבלת החלטות טובות יותר ומציאת שלוות-נפש וחוסן. הטמעת הערכים מקדמת חיים חברתיים וקהילתיים משותפים באקלים מיטבי גם בזמנים מורכבים. שיח על המעלות הללו ותרגול מעשי תהליכי בקבוצות, בזוגות ובאופן אישי מייצר תחושת שייכות, מקדם תחושת מסוגלות ורווחה נפשית ומפתח יכולת לדיאלוג מקרב.
+          <h2 class="h3d rev" style="text-align: center">מהן 16 המעלות</h2>
+          <p
+            class="sub rev"
+            style="text-align: center; margin: 0 auto; max-width: 640px"
+          >
+            באמצעות לימוד ותרגול של ארבעת נושאי הליבה ו-16 המעלות, מתאפשרת הכרות
+            מעמיקה יותר עם עצמנו, שיפור מערכות היחסים שלנו, קבלת החלטות טובות
+            יותר ומציאת שלוות-נפש וחוסן. הטמעת הערכים מקדמת חיים חברתיים
+            וקהילתיים משותפים באקלים מיטבי גם בזמנים מורכבים. שיח על המעלות הללו
+            ותרגול מעשי תהליכי בקבוצות, בזוגות ובאופן אישי מייצר תחושת שייכות,
+            מקדם תחושת מסוגלות ורווחה נפשית ומפתח יכולת לדיאלוג מקרב.
           </p>
         </div>
 
@@ -1027,10 +1687,34 @@
             <h3 class="pc-title">הדרך בה אנחנו<br />מוצאות.ים משמעות</h3>
             <hr class="pc-hr" />
             <ul class="vlist">
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_635c08e4bba44afc96a41cee555948f6~mv2.png" alt="שאיפות" /><span class="vi-name">שאיפות</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_142f5898764d4f408dec401a623c2346~mv2.png" alt="עקרונות" /><span class="vi-name">עקרונות</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_af2e7a47893c4ab3aaa82ca59238b131~mv2.png" alt="שירות" /><span class="vi-name">שירות</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_adf01b5e832149498d06ce4514fd714e~mv2.png" alt="אומץ" /><span class="vi-name">אומץ</span></li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_635c08e4bba44afc96a41cee555948f6~mv2.png"
+                  alt="שאיפות"
+                /><span class="vi-name">שאיפות</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_142f5898764d4f408dec401a623c2346~mv2.png"
+                  alt="עקרונות"
+                /><span class="vi-name">עקרונות</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_af2e7a47893c4ab3aaa82ca59238b131~mv2.png"
+                  alt="שירות"
+                /><span class="vi-name">שירות</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_adf01b5e832149498d06ce4514fd714e~mv2.png"
+                  alt="אומץ"
+                /><span class="vi-name">אומץ</span>
+              </li>
             </ul>
           </div>
 
@@ -1039,10 +1723,34 @@
             <h3 class="pc-title">הדרך בה אנחנו<br />מתייחסות.ים לזולת</h3>
             <hr class="pc-hr" />
             <ul class="vlist">
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_fe7d87b5ee5e43e6a6fe99ae5a55b392~mv2.png" alt="כבוד" /><span class="vi-name">כבוד</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_8e987cc35e72451197f0b65f6ebd80de~mv2.png" alt="סליחה" /><span class="vi-name">סליחה</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_e519b826561041e4b0edb7454c6482a9~mv2.png" alt="הכרת תודה" /><span class="vi-name">הכרת תודה</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_b358bb4a48ca46c4b14084ffff38fd7a~mv2.png" alt="נאמנות" /><span class="vi-name">נאמנות</span></li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_fe7d87b5ee5e43e6a6fe99ae5a55b392~mv2.png"
+                  alt="כבוד"
+                /><span class="vi-name">כבוד</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_8e987cc35e72451197f0b65f6ebd80de~mv2.png"
+                  alt="סליחה"
+                /><span class="vi-name">סליחה</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_e519b826561041e4b0edb7454c6482a9~mv2.png"
+                  alt="הכרת תודה"
+                /><span class="vi-name">הכרת תודה</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_b358bb4a48ca46c4b14084ffff38fd7a~mv2.png"
+                  alt="נאמנות"
+                /><span class="vi-name">נאמנות</span>
+              </li>
             </ul>
           </div>
 
@@ -1051,10 +1759,34 @@
             <h3 class="pc-title">הדרך בה אנחנו<br />פועלות.ים</h3>
             <hr class="pc-hr" />
             <ul class="vlist">
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_4737efce88bb4579bf7697c135f7d060~mv2.png" alt="טוב לב" /><span class="vi-name">טוב לב</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_b7cf9304ce7e4d11b88f01471a3b4cca~mv2.png" alt="כנות" /><span class="vi-name">כנות</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_6c275eb6de894c6eade911a8be3eb824~mv2.png" alt="נדיבות" /><span class="vi-name">נדיבות</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_dd9fe060266445fc945d2de8f8cb0a36~mv2.png" alt="דיבור מטיב" /><span class="vi-name">דיבור מטיב</span></li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_4737efce88bb4579bf7697c135f7d060~mv2.png"
+                  alt="טוב לב"
+                /><span class="vi-name">טוב לב</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_b7cf9304ce7e4d11b88f01471a3b4cca~mv2.png"
+                  alt="כנות"
+                /><span class="vi-name">כנות</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_6c275eb6de894c6eade911a8be3eb824~mv2.png"
+                  alt="נדיבות"
+                /><span class="vi-name">נדיבות</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_dd9fe060266445fc945d2de8f8cb0a36~mv2.png"
+                  alt="דיבור מטיב"
+                /><span class="vi-name">דיבור מטיב</span>
+              </li>
             </ul>
           </div>
 
@@ -1063,15 +1795,39 @@
             <h3 class="pc-title">הדרך בה אנחנו<br />חושבות.ים</h3>
             <hr class="pc-hr" />
             <ul class="vlist">
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_417a29db7be748eeb8a5ba483daea3bb~mv2.png" alt="ענווה" /><span class="vi-name">ענווה</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_26500d19293f4a84a2a69f714651e8b1~mv2.png" alt="סבלנות" /><span class="vi-name">סבלנות</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_66150fa8d6b640c4b16bb51168912b49~mv2.png" alt="שביעות רצון" /><span class="vi-name">שביעות רצון</span></li>
-              <li class="vi"><img class="vi-icon" src="https://static.wixstatic.com/media/895252_b2f3e456217f494cad084aa6d51ba00e~mv2.png" alt="חדווה" /><span class="vi-name">חדווה</span></li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_417a29db7be748eeb8a5ba483daea3bb~mv2.png"
+                  alt="ענווה"
+                /><span class="vi-name">ענווה</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_26500d19293f4a84a2a69f714651e8b1~mv2.png"
+                  alt="סבלנות"
+                /><span class="vi-name">סבלנות</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_66150fa8d6b640c4b16bb51168912b49~mv2.png"
+                  alt="שביעות רצון"
+                /><span class="vi-name">שביעות רצון</span>
+              </li>
+              <li class="vi">
+                <img
+                  class="vi-icon"
+                  src="https://static.wixstatic.com/media/895252_b2f3e456217f494cad084aa6d51ba00e~mv2.png"
+                  alt="חדווה"
+                /><span class="vi-name">חדווה</span>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div style="text-align:center;margin-top:3rem" class="rev">
+        <div style="text-align: center; margin-top: 3rem" class="rev">
           <a href="#activities" class="btn btn-blue">למידע נוסף</a>
         </div>
       </div>
@@ -1081,45 +1837,76 @@
     <section id="activities">
       <div class="wrap">
         <div class="act-hdr">
-          <h2 class="h3d rev" style="text-align:center">הפעילות שלנו</h2>
+          <h2 class="h3d rev" style="text-align: center">הפעילות שלנו</h2>
         </div>
         <div class="act-desc rev">
-          <p>נדרשת שפה ערכית, חומלת וסבלנית יותר. אתיקה אוניברסלית לעולם שלם.</p>
-          <p style="margin-top:1rem">התוכניות שמפעילה העמותה משלבות לימוד של חוכמה עתיקה ומודרנית ושואבות השראה מפילוסופיות מזרחיות ומערביות כאחד, על מנת לסייע לא.נשים מכל המגזרים, בכל הגילים ומכל שכבות החברה, להתמודד עם האתגרים של המאה ה-21 ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.</p>
+          <p>
+            נדרשת שפה ערכית, חומלת וסבלנית יותר. אתיקה אוניברסלית לעולם שלם.
+          </p>
+          <p style="margin-top: 1rem">
+            התוכניות שמפעילה העמותה משלבות לימוד של חוכמה עתיקה ומודרנית ושואבות
+            השראה מפילוסופיות מזרחיות ומערביות כאחד, על מנת לסייע לא.נשים מכל
+            המגזרים, בכל הגילים ומכל שכבות החברה, להתמודד עם האתגרים של המאה
+            ה-21 ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.
+          </p>
         </div>
 
         <!-- Row 1: 3 cards -->
         <div class="act-grid">
           <div class="ac rev">
             <div class="ac-img-w">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="16 המעלות בעסקים" class="ac-img" />
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                alt="16 המעלות בעסקים"
+                class="ac-img"
+              />
               <div class="ac-ov"></div>
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בעסקים</div>
-              <a href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA" class="ac-link">מידע נוסף →</a>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                class="ac-link"
+                >מידע נוסף →</a
+              >
             </div>
           </div>
 
           <div class="ac rev d1">
             <div class="ac-img-w">
-              <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="16 המעלות בחינוך" class="ac-img" />
+              <img
+                src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80"
+                alt="16 המעלות בחינוך"
+                class="ac-img"
+              />
               <div class="ac-ov"></div>
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בחינוך</div>
-              <a href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA" class="ac-link">מידע נוסף →</a>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                class="ac-link"
+                >מידע נוסף →</a
+              >
             </div>
           </div>
 
           <div class="ac rev d2">
             <div class="ac-img-w">
-              <img src="assets/img/mindfulness.png" alt="16 המעלות בבריאות הנפש" class="ac-img" />
+              <img
+                src="assets/img/mindfulness.png"
+                alt="16 המעלות בבריאות הנפש"
+                class="ac-img"
+              />
               <div class="ac-ov"></div>
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בבריאות הנפש</div>
-              <a href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA" class="ac-link">מידע נוסף →</a>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                class="ac-link"
+                >מידע נוסף →</a
+              >
             </div>
           </div>
         </div>
@@ -1128,23 +1915,39 @@
         <div class="act-row2">
           <div class="ac rev">
             <div class="ac-img-w">
-              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="קבוצות תרגול וסדנאות פרטיות" class="ac-img" />
+              <img
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
+                alt="קבוצות תרגול וסדנאות פרטיות"
+                class="ac-img"
+              />
               <div class="ac-ov"></div>
             </div>
             <div class="ac-body">
               <div class="ac-title">קבוצות תרגול וסדנאות פרטיות</div>
-              <a href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA" class="ac-link">מידע נוסף →</a>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                class="ac-link"
+                >מידע נוסף →</a
+              >
             </div>
           </div>
 
           <div class="ac rev d1">
             <div class="ac-img-w">
-              <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="16 המעלות בקהילה" class="ac-img" />
+              <img
+                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80"
+                alt="16 המעלות בקהילה"
+                class="ac-img"
+              />
               <div class="ac-ov"></div>
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בקהילה</div>
-              <a href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA" class="ac-link">מידע נוסף →</a>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                class="ac-link"
+                >מידע נוסף →</a
+              >
             </div>
           </div>
         </div>
@@ -1155,7 +1958,7 @@
     <section id="numbers">
       <div class="wrap">
         <div class="num-hdr">
-          <h2 class="h3d rev" style="text-align:center">בית חולמים במספרים</h2>
+          <h2 class="h3d rev" style="text-align: center">בית חולמים במספרים</h2>
         </div>
         <div class="num-grid">
           <div class="nc rev">
@@ -1167,11 +1970,11 @@
             <span class="nl">משתתפים</span>
           </div>
           <div class="nc rev d2">
-            <span class="nn" data-t="80">0</span>
+            <span class="nn" data-t="80" data-no-plus="true">0</span>
             <span class="nl">מנחים</span>
           </div>
           <div class="nc rev d3">
-            <span class="nn" data-t="22">0</span>
+            <span class="nn" data-t="22" data-no-plus="true">0</span>
             <span class="nl">מדינות ברחבי העולם</span>
           </div>
         </div>
@@ -1182,94 +1985,192 @@
     <section id="testi">
       <div class="wrap">
         <div class="testi-hdr">
-          <h2 class="h3d rev" style="text-align:center">קולות מהשטח</h2>
+          <h2 class="h3d rev" style="text-align: center">קולות מהשטח</h2>
         </div>
-        <div class="testi-grid">
+        <div class="carousel-outer">
+          <button class="car-arrow" id="carPrev" aria-label="הקודם">
+            &#8250;
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carTrack">
+              <!-- 1. דליה לין -->
+              <div class="tc rev">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  מציאות של מגפות, מלחמות וקיטוב חברתי מחייבת שפה משותפת של
+                  ערכים אנושיים אוניברסליים, שנוכל לחיות ולחנך על פיהם. תוכנית
+                  "16 המעלות" מעניקה כלים מעשיים לפיתוח חוסן רגשי וחברתי בקרב
+                  צוותי חינוך, תלמידים וקהילות, ולכן נבחרה כתוכנית הדגל של מנהל
+                  החינוך בעיריית תל אביב-יפו.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/דליה לין.jpeg"
+                    alt="דליה לין"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">דליה לין</div>
+                    <div class="tc-role">
+                      מנהלת מנהל חינוך בעיריית תל-אביב-יפו
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <!-- 1. דליה לין -->
-          <div class="tc rev">
-            <div class="tc-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <div class="tc-q">"</div>
-            <p class="tc-text">מציאות של מגפות, מלחמות וקיטוב חברתי מחייבת שפה משותפת של ערכים אנושיים אוניברסליים, שנוכל לחיות ולחנך על פיהם. תוכנית "16 המעלות" מעניקה כלים מעשיים לפיתוח חוסן רגשי וחברתי בקרב צוותי חינוך, תלמידים וקהילות, ולכן נבחרה כתוכנית הדגל של מנהל החינוך בעיריית תל אביב-יפו.</p>
-            <div class="tc-author">
-              <img src="assets/img/דליה לין.jpeg" alt="דליה לין" class="tc-av" />
-              <div>
-                <div class="tc-name">דליה לין</div>
-                <div class="tc-role">מנהלת מנהל חינוך בעיריית תל-אביב-יפו</div>
+              <!-- 2. ד"ר עודד ארבל -->
+              <div class="tc rev d1">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  העבודה עם תוכנית 16 המעלות מחזירה את מימד הערכים והרוח לשיח
+                  היומיומי באופן נגיש, פשוט וישים לכל אדם. בעיניי, זהו מרכיב
+                  קריטי בתהליכי שיקום, הן ברמה האישית והן ברמה החברתית.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/עודד ארבל.png"
+                    alt="ד״ר עודד ארבל"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">ד"ר עודד ארבל</div>
+                    <div class="tc-role">
+                      פסיכיאטר, מנהל מחלקת טיפול יום במרכז הממשלתי לבריאות הנפש
+                      "בארות" בבאר-שבע
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. חאלד שקרא -->
+              <div class="tc rev d2">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  סדנת 16 המעלות חיזקה את תחושת השייכות, הלכידות והתקשורת בצוות
+                  רב-תרבותי. אני רואה ב-16 המעלות תוכנית שמצליחה לגעת גם ברמה
+                  האנושית וגם ברמה המקצועית, ולתת לצוותי חינוך שפה משותפת שמחברת
+                  בין אנשים ולא מטשטשת את השונות ביניהם.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/חאלד שקרא.png"
+                    alt="חאלד שקרא"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">חאלד שקרא</div>
+                    <div class="tc-role">מנהל בי"ס אג'יאל ביפו</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. תומר גביש -->
+              <div class="tc rev">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  התרגול של המעלה "ענווה" לימד אותי שמנהל טוב שואל לפני שהוא
+                  עונה. כשהצוות מאמץ את השפה המשותפת של 16 המעלות, אנחנו מפסיקים
+                  להיות "מומחים שיודעים מה הילד צריך" והופכים ל"שותפים שלומדים
+                  יחד עם הילד".
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/תומר גביש.png"
+                    alt="תומר גביש"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">תומר גביש</div>
+                    <div class="tc-role">מנהלת בי"ס עירוני י"א בתל-אביב</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. חן ווינשטיין -->
+              <div class="tc rev d1">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  תוכנית 16 המעלות שינתה לי את הדרך שבה אני מתייחס לעצמי
+                  ולסביבתי. לראשונה הרגשתי שיש לי כלים אמיתיים, לא טיפים, לא
+                  עצות. כלים שאני לוקח איתי לכל מקום.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/חן ווינשטיין.jpeg"
+                    alt="חן ווינשטיין"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">חן ווינשטיין</div>
+                    <div class="tc-role">מנחת סדנאות</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. יעל קמינסקי -->
+              <div class="tc rev d2">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  הטכנולוגיה משנה את הדרך שבה אנו עובדים, אך האתגר הגדול ביותר
+                  נותר אנושי. תוכנית כמו "16 המעלות" מסייעת לבנות ערכים משותפים,
+                  ביטחון פסיכולוגי ומערכות יחסים משמעותיות, ומאפשרת לארגונים
+                  גלובליים להתמודד בהצלחה עם אי-הוודאות של ימינו, תוך טיפוח
+                  צוותים מצוינים לאורך זמן.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/יעל קמינסקי.jpeg"
+                    alt="יעל קמינסקי"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">יעל קמינסקי</div>
+                    <div class="tc-role">מנהלת משאבי אנוש, WIX</div>
+                  </div>
+                </div>
               </div>
             </div>
+            <!-- end carousel-track -->
           </div>
-
-          <!-- 2. ד"ר עודד ארבל -->
-          <div class="tc rev d1">
-            <div class="tc-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <div class="tc-q">"</div>
-            <p class="tc-text">העבודה עם תוכנית 16 המעלות מחזירה את מימד הערכים והרוח לשיח היומיומי באופן נגיש, פשוט וישים לכל אדם. בעיניי, זהו מרכיב קריטי בתהליכי שיקום, הן ברמה האישית והן ברמה החברתית.</p>
-            <div class="tc-author">
-              <img src="assets/img/עודד ארבל.png" alt="ד״ר עודד ארבל" class="tc-av" />
-              <div>
-                <div class="tc-name">ד"ר עודד ארבל</div>
-                <div class="tc-role">פסיכיאטר, מנהל מחלקת טיפול יום במרכז הממשלתי לבריאות הנפש "בארות" בבאר-שבע</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. חאלד שקרא -->
-          <div class="tc rev d2">
-            <div class="tc-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <div class="tc-q">"</div>
-            <p class="tc-text">סדנת 16 המעלות חיזקה את תחושת השייכות, הלכידות והתקשורת בצוות רב-תרבותי. אני רואה ב-16 המעלות תוכנית שמצליחה לגעת גם ברמה האנושית וגם ברמה המקצועית, ולתת לצוותי חינוך שפה משותפת שמחברת בין אנשים ולא מטשטשת את השונות ביניהם.</p>
-            <div class="tc-author">
-              <img src="assets/img/חאלד שקרא.png" alt="חאלד שקרא" class="tc-av" />
-              <div>
-                <div class="tc-name">חאלד שקרא</div>
-                <div class="tc-role">מנהל בי"ס אג'יאל ביפו</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. תומר גביש -->
-          <div class="tc rev">
-            <div class="tc-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <div class="tc-q">"</div>
-            <p class="tc-text">התרגול של המעלה "ענווה" לימד אותי שמנהל טוב שואל לפני שהוא עונה. כשהצוות מאמץ את השפה המשותפת של 16 המעלות, אנחנו מפסיקים להיות "מומחים שיודעים מה הילד צריך" והופכים ל"שותפים שלומדים יחד עם הילד".</p>
-            <div class="tc-author">
-              <img src="assets/img/תומר גביש.png" alt="תומר גביש" class="tc-av" />
-              <div>
-                <div class="tc-name">תומר גביש</div>
-                <div class="tc-role">מנהלת בי"ס עירוני י"א בתל-אביב</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. חן ווינשטיין -->
-          <div class="tc rev d1">
-            <div class="tc-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <div class="tc-q">"</div>
-            <p class="tc-text">תוכנית 16 המעלות שינתה לי את הדרך שבה אני מתייחס לעצמי ולסביבתי. לראשונה הרגשתי שיש לי כלים אמיתיים, לא טיפים, לא עצות. כלים שאני לוקח איתי לכל מקום.</p>
-            <div class="tc-author">
-              <img src="assets/img/חן ווינשטיין.jpeg" alt="חן ווינשטיין" class="tc-av" />
-              <div>
-                <div class="tc-name">חן ווינשטיין</div>
-                <div class="tc-role">מנחת סדנאות</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. יעל קמינסקי -->
-          <div class="tc rev d2">
-            <div class="tc-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-            <div class="tc-q">"</div>
-            <p class="tc-text">הטכנולוגיה משנה את הדרך שבה אנו עובדים, אך האתגר הגדול ביותר נותר אנושי. תוכנית כמו "16 המעלות" מסייעת לבנות ערכים משותפים, ביטחון פסיכולוגי ומערכות יחסים משמעותיות, ומאפשרת לארגונים גלובליים להתמודד בהצלחה עם אי-הוודאות של ימינו, תוך טיפוח צוותים מצוינים לאורך זמן.</p>
-            <div class="tc-author">
-              <img src="assets/img/יעל קמינסקי.jpeg" alt="יעל קמינסקי" class="tc-av" />
-              <div>
-                <div class="tc-name">יעל קמינסקי</div>
-                <div class="tc-role">מנהלת משאבי אנוש, WIX</div>
-              </div>
-            </div>
-          </div>
-
+          <!-- end carousel-viewport -->
+          <button class="car-arrow" id="carNext" aria-label="הבא">
+            &#8249;
+          </button>
+        </div>
+        <!-- end carousel-outer -->
+        <div class="car-dots">
+          <button class="car-dot active" data-p="0"></button>
+          <button class="car-dot" data-p="1"></button>
         </div>
       </div>
     </section>
@@ -1284,10 +2185,15 @@
           <div class="rev d1">
             <h2 class="h3d">המשימה שלנו</h2>
             <p class="mission-body">
-              לסייע לאנשים מכל שכבות החברה לטפח את מעלותיהם הפנימיות ולהגשים את הפוטנציאל האנושי העצום הטמון בהםן כדי לחיות חיים שלווים, משמעותיים ומאושרים יותר.
+              לסייע לאנשים מכל שכבות החברה לטפח את מעלותיהם הפנימיות ולהגשים את
+              הפוטנציאל האנושי העצום הטמון בהםן כדי לחיות חיים שלווים, משמעותיים
+              ומאושרים יותר.
             </p>
             <p class="mission-body">
-              העמותה פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות החברתית. באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות ומודלים מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
+              העמותה פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות החברתית.
+              באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות ומודלים
+              מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
+              לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
             </p>
             <div class="mission-slogan">
               <img src="assets/img/Slogan.png" alt="סלוגן בית חולמים" />
@@ -1302,8 +2208,14 @@
       <div class="footer-inner">
         <div class="footer-top">
           <div class="footer-brand">
-            <img src="assets/img/logo-beit-holmim.png" alt="בית חולמים - Dreamers Home" class="footer-logo-img" />
-            <p class="footer-desc">עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.</p>
+            <img
+              src="assets/img/logo-beit-holmim.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
             <div class="socials">
               <a href="#" class="fsoc" title="YouTube">▷</a>
               <a href="#" class="fsoc" title="Facebook">f</a>
@@ -1323,15 +2235,24 @@
           <div class="footer-contact">
             <div class="footer-col-title">צרו קשר</div>
             <p><a href="mailto:info@dreamers.com">info@dreamers.com</a></p>
-            <p><a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a></p>
-            <p style="margin-top:1rem">
-              <a href="#virtues" class="btn btn-gold" style="font-size:0.85rem;padding:0.6rem 1.4rem">לתרומה</a>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+            <p style="margin-top: 1rem">
+              <a
+                href="#virtues"
+                class="btn btn-gold"
+                style="font-size: 0.85rem; padding: 0.6rem 1.4rem"
+                >לתרומה</a
+              >
             </p>
           </div>
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>
-          <span style="color:var(--blue);font-weight:600;font-style:italic">כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span>
+          <span style="color: var(--blue); font-weight: 600; font-style: italic"
+            >כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span
+          >
         </div>
       </div>
     </footer>
@@ -1341,25 +2262,32 @@
       (function () {
         /* Nav */
         const nav = document.getElementById("nav");
-        window.addEventListener("scroll", () => nav.classList.toggle("on", scrollY > 60), { passive: true });
+        window.addEventListener(
+          "scroll",
+          () => nav.classList.toggle("on", scrollY > 60),
+          { passive: true },
+        );
 
         /* Parallax hero */
         const hph = document.getElementById("hph");
-        window.addEventListener("scroll", () => {
-          if (scrollY < innerHeight)
-            hph.style.transform = `scale(1.08) translateY(${scrollY * 0.2}px)`;
-        }, { passive: true });
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (scrollY < innerHeight)
+              hph.style.transform = `scale(1.08) translateY(${scrollY * 0.2}px)`;
+          },
+          { passive: true },
+        );
 
-        /* Gold particles — enhanced */
+        /* Gold particles */
         const pc = document.getElementById("pts");
         function mkP() {
           const p = document.createElement("div");
           p.className = "pt";
           const sz = Math.random() * 7 + 2,
-                dur = Math.random() * 11 + 7,
-                del = Math.random() * 3;
-          p.style.cssText = `width:${sz}px;height:${sz}px;right:${Math.random()*100}%;bottom:0;
-            animation-duration:${dur}s;animation-delay:${del}s;opacity:${Math.random()*0.6+0.3}`;
+            dur = Math.random() * 11 + 7,
+            del = Math.random() * 3;
+          p.style.cssText = `width:${sz}px;height:${sz}px;right:${Math.random() * 100}%;bottom:0;animation-duration:${dur}s;animation-delay:${del}s;opacity:${Math.random() * 0.6 + 0.3}`;
           pc.appendChild(p);
           setTimeout(() => p.remove(), (dur + del) * 1000);
         }
@@ -1368,25 +2296,37 @@
 
         /* Scroll reveal */
         const io = new IntersectionObserver(
-          (es) => es.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
-          { threshold: 0.1 }
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
         );
         document.querySelectorAll(".rev").forEach((el) => io.observe(el));
 
-        /* Counters */
+        /* Counters — respects data-no-plus attribute */
         const cio = new IntersectionObserver(
-          (es) => es.forEach((e) => {
-            if (!e.isIntersecting) return;
-            const el = e.target, tg = +el.dataset.t, dur = 2200, t0 = performance.now();
-            (function tick(now) {
-              const p = Math.min((now - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
-              el.textContent = Math.floor(ease * tg);
-              if (p < 1) requestAnimationFrame(tick);
-              else el.textContent = tg.toLocaleString() + "+";
-            })(t0);
-            cio.unobserve(el);
-          }),
-          { threshold: 0.6 }
+          (es) =>
+            es.forEach((e) => {
+              if (!e.isIntersecting) return;
+              const el = e.target,
+                tg = +el.dataset.t,
+                noPlus = el.dataset.noPlus === "true",
+                dur = 2200,
+                t0 = performance.now();
+              (function tick(now) {
+                const p = Math.min((now - t0) / dur, 1),
+                  ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.floor(ease * tg);
+                if (p < 1) requestAnimationFrame(tick);
+                else
+                  el.textContent = noPlus
+                    ? tg.toLocaleString()
+                    : tg.toLocaleString() + "+";
+              })(t0);
+              cio.unobserve(el);
+            }),
+          { threshold: 0.6 },
         );
         document.querySelectorAll("[data-t]").forEach((el) => cio.observe(el));
 
@@ -1396,9 +2336,12 @@
             const r = card.getBoundingClientRect();
             const x = (e.clientX - r.left) / r.width - 0.5;
             const y = (e.clientY - r.top) / r.height - 0.5;
-            card.style.transform = `perspective(850px) rotateY(${x*15}deg) rotateX(${-y*9}deg) translateY(-10px) scale(1.02)`;
+            card.style.transform = `perspective(850px) rotateY(${x * 15}deg) rotateX(${-y * 9}deg) translateY(-10px) scale(1.02)`;
           });
-          card.addEventListener("mouseleave", () => card.style.transform = "");
+          card.addEventListener(
+            "mouseleave",
+            () => (card.style.transform = ""),
+          );
         });
 
         /* 3D tilt — activity cards */
@@ -1407,10 +2350,39 @@
             const r = card.getBoundingClientRect();
             const x = (e.clientX - r.left) / r.width - 0.5;
             const y = (e.clientY - r.top) / r.height - 0.5;
-            card.style.transform = `perspective(700px) rotateY(${x*8}deg) rotateX(${-y*5}deg) translateY(-12px)`;
+            card.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 5}deg) translateY(-12px)`;
           });
-          card.addEventListener("mouseleave", () => card.style.transform = "");
+          card.addEventListener(
+            "mouseleave",
+            () => (card.style.transform = ""),
+          );
         });
+
+        /* Testimonials carousel */
+        const track = document.getElementById("carTrack");
+        const prevBtn = document.getElementById("carPrev");
+        const nextBtn = document.getElementById("carNext");
+        const dots = document.querySelectorAll(".car-dot");
+        let currentPage = 0;
+        const totalPages = 2;
+
+        function goToPage(p) {
+          currentPage = Math.max(0, Math.min(p, totalPages - 1));
+          const vw = track.parentElement.offsetWidth;
+          track.style.transform = `translateX(${-currentPage * (vw + 32)}px)`;
+          prevBtn.disabled = currentPage === 0;
+          nextBtn.disabled = currentPage === totalPages - 1;
+          dots.forEach((d, i) =>
+            d.classList.toggle("active", i === currentPage),
+          );
+        }
+
+        prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
+        nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
+        dots.forEach((d) =>
+          d.addEventListener("click", () => goToPage(+d.dataset.p)),
+        );
+        goToPage(0);
 
         /* 3D tilt — testimonial cards */
         document.querySelectorAll(".tc").forEach((card) => {
@@ -1418,9 +2390,12 @@
             const r = card.getBoundingClientRect();
             const x = (e.clientX - r.left) / r.width - 0.5;
             const y = (e.clientY - r.top) / r.height - 0.5;
-            card.style.transform = `perspective(900px) rotateY(${x*6}deg) rotateX(${-y*4}deg) translateY(-10px)`;
+            card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 4}deg) translateY(-10px)`;
           });
-          card.addEventListener("mouseleave", () => card.style.transform = "");
+          card.addEventListener(
+            "mouseleave",
+            () => (card.style.transform = ""),
+          );
         });
       })();
     </script>
