@@ -1382,7 +1382,7 @@
         transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .carousel-track .tc {
-        flex: 0 0 calc(33.333% - 1.35rem);
+        flex: 0 0 100%;
         min-width: 0;
         direction: rtl;
       }
@@ -2101,7 +2101,7 @@
                   />
                   <div>
                     <div class="tc-name">תומר גביש</div>
-                    <div class="tc-role">מנהלת בי"ס עירוני י"א בתל-אביב</div>
+                    <div class="tc-role">מנהל בי"ס עירוני י"א בתל-אביב</div>
                   </div>
                 </div>
               </div>
@@ -2171,6 +2171,10 @@
         <div class="car-dots">
           <button class="car-dot active" data-p="0"></button>
           <button class="car-dot" data-p="1"></button>
+          <button class="car-dot" data-p="2"></button>
+          <button class="car-dot" data-p="3"></button>
+          <button class="car-dot" data-p="4"></button>
+          <button class="car-dot" data-p="5"></button>
         </div>
       </div>
     </section>
@@ -2358,18 +2362,18 @@
           );
         });
 
-        /* Testimonials carousel */
+        /* Testimonials carousel — 1 card at a time */
         const track = document.getElementById("carTrack");
         const prevBtn = document.getElementById("carPrev");
         const nextBtn = document.getElementById("carNext");
         const dots = document.querySelectorAll(".car-dot");
         let currentPage = 0;
-        const totalPages = 2;
+        const totalPages = 6;
 
         function goToPage(p) {
           currentPage = Math.max(0, Math.min(p, totalPages - 1));
           const vw = track.parentElement.offsetWidth;
-          track.style.transform = `translateX(${-currentPage * (vw + 32)}px)`;
+          track.style.transform = `translateX(${-currentPage * vw}px)`;
           prevBtn.disabled = currentPage === 0;
           nextBtn.disabled = currentPage === totalPages - 1;
           dots.forEach((d, i) =>
