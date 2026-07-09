@@ -216,6 +216,36 @@
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5);
         color: var(--blue-dk) !important;
       }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
 
       /* ═══════════════════════════════
          HERO
@@ -1211,8 +1241,24 @@
       .mission-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 6rem;
+        gap: 0 6rem;
         align-items: center;
+      }
+      /* Desktop: image occupies one column (both rows), title + copy stack
+         in the other — keeps the side-by-side look with the title first in DOM */
+      .mission-grid .m-img-w {
+        grid-column: 1;
+        grid-row: 1 / 3;
+      }
+      .mission-title {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: end;
+      }
+      .mission-copy {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: start;
       }
       .m-img-w {
         border-radius: 24px;
@@ -1350,6 +1396,29 @@
         transform: translateY(-3px);
         border-color: var(--teal);
       }
+      .footer-motto {
+        max-width: 680px;
+        margin: 0 auto 2.6rem;
+        padding: 1.7rem 2.2rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(72, 217, 211, 0.55);
+        border-radius: 22px;
+        box-shadow: 0 14px 40px rgba(0, 67, 120, 0.12);
+        color: var(--blue);
+        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+        font-weight: 800;
+        line-height: 1.6;
+        position: relative;
+      }
+      .footer-motto::before {
+        content: "”";
+        display: block;
+        font-size: 2.6rem;
+        line-height: 0.6;
+        color: var(--teal);
+        margin-bottom: 0.5rem;
+      }
       .footer-bottom {
         border-top: 1px solid rgba(0, 67, 120, 0.12);
         padding-top: 2rem;
@@ -1457,12 +1526,55 @@
         }
       }
       @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
+        #nav.nav-open {
+          background: rgba(0, 25, 55, 0.96);
+        }
         .nav-links {
           display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
         }
-        .intro-grid,
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1.05rem;
+        }
+        .nav-links .nav-contact-link {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
+        }
+        .intro-grid {
+          grid-template-columns: 1fr;
+        }
+        /* Mission stacks: title → image → text */
         .mission-grid {
           grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .mission-grid .m-img-w,
+        .mission-title,
+        .mission-copy {
+          grid-column: auto;
+          grid-row: auto;
+          align-self: auto;
         }
         .iv-single,
         .m-img-w {
@@ -1487,6 +1599,25 @@
           left: 5%;
           max-width: 90%;
           top: 15%;
+        }
+      }
+      @media (max-width: 640px) {
+        /* Text readability first on phones: drop the doubled side padding
+           (section + .wrap) and slim the testimonial card padding */
+        .wrap {
+          padding: 0;
+        }
+        .tc {
+          padding: 1.8rem 1.4rem;
+        }
+        /* Arrows move below the testimonial card so text keeps full width */
+        .carousel-outer {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .carousel-viewport {
+          flex: 0 0 100%;
+          order: -1;
         }
       }
       @media (max-width: 480px) {
@@ -1521,6 +1652,11 @@
           <li><a href="#footer" class="nav-contact-link">צרו איתנו קשר</a></li>
         </ul>
       </div>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
 
     <!-- ════════════ HERO ════════════ -->
@@ -1559,11 +1695,11 @@
       <div
         class="h-ring"
         style="
-          width: 280px;
-          height: 280px;
+          width: 260px;
+          height: 260px;
           top: 6%;
-          right: 3%;
-          animation-duration: 30s;
+          right: 6%;
+          animation-duration: 28s;
         "
       ></div>
       <div
@@ -1571,76 +1707,39 @@
         style="
           width: 150px;
           height: 150px;
-          top: 58%;
-          left: 5%;
-          animation-duration: 22s;
-          animation-delay: 5s;
+          top: 12%;
+          left: 8%;
+          animation-duration: 20s;
         "
       ></div>
       <div
         class="h-ring"
         style="
-          width: 210px;
-          height: 210px;
-          top: 34%;
-          right: 42%;
-          animation-duration: 38s;
-          animation-delay: 10s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 120px;
-          height: 120px;
-          top: 14%;
-          left: 10%;
-          animation-duration: 19s;
-          animation-delay: 2s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 320px;
-          height: 320px;
-          bottom: -6%;
-          left: 22%;
-          animation-duration: 44s;
-          animation-delay: 7s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 95px;
-          height: 95px;
-          top: 78%;
-          right: 18%;
-          animation-duration: 16s;
-          animation-delay: 4s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 240px;
-          height: 240px;
-          bottom: 6%;
-          right: 32%;
+          width: 220px;
+          height: 220px;
+          bottom: 8%;
+          right: 12%;
           animation-duration: 34s;
-          animation-delay: 13s;
         "
       ></div>
       <div
         class="h-ring"
         style="
-          width: 170px;
-          height: 170px;
-          top: 42%;
-          left: 38%;
-          animation-duration: 26s;
-          animation-delay: 9s;
+          width: 180px;
+          height: 180px;
+          bottom: 10%;
+          left: 10%;
+          animation-duration: 24s;
+        "
+      ></div>
+      <div
+        class="h-ring"
+        style="
+          width: 110px;
+          height: 110px;
+          top: 44%;
+          left: 42%;
+          animation-duration: 18s;
         "
       ></div>
 
@@ -2237,14 +2336,14 @@
     <section id="mission">
       <div class="wrap">
         <div class="mission-grid">
+          <h2 class="h3d mission-title rev">המשימה שלנו</h2>
           <div class="m-img-w rev">
             <img
               src="assets/img/בית חולמים- המשימה שלנו.png"
               alt="המשימה שלנו"
             />
           </div>
-          <div class="rev d1">
-            <h2 class="h3d">המשימה שלנו</h2>
+          <div class="mission-copy rev d1">
             <p class="mission-body">
               לסייע לאנשים מכל שכבות החברה לטפח את מעלותיהם הפנימיות ולהגשים את
               הפוטנציאל האנושי העצום הטמון בהםן כדי לחיות חיים שלווים, משמעותיים
@@ -2309,11 +2408,11 @@
             </p>
           </div>
         </div>
+        <div class="footer-motto">
+          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
+        </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>
-          <span style="color: var(--blue); font-weight: 600; font-style: italic"
-            >כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span
-          >
         </div>
       </div>
     </footer>
@@ -2327,6 +2426,19 @@
           "scroll",
           () => nav.classList.toggle("on", scrollY > 60),
           { passive: true },
+        );
+
+        /* Mobile nav (hamburger) */
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) =>
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          }),
         );
 
         /* Parallax hero */

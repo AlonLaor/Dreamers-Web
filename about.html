@@ -216,6 +216,36 @@
         transform: translateY(-2px);
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
       }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
 
       /* ═══ PAGE HEADER ═══ */
       #page-header {
@@ -612,22 +642,85 @@
           grid-template-columns: 1fr;
           max-width: 480px;
         }
-        .carousel-page.cols-3,
-        .carousel-page.cols-2 {
+        .carousel-page.cols-3 {
           grid-template-columns: 1fr;
           max-width: 420px;
           margin: 0 auto;
         }
+        /* Staff carousel keeps 2 cards side-by-side at all widths */
+        .carousel-page.cols-2 {
+          grid-template-columns: repeat(2, 1fr);
+          max-width: 100%;
+        }
       }
       @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
         .nav-links {
           display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1rem;
+        }
+        .nav-links .nav-cta {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
         }
         #page-header {
           padding: 9rem 1.5rem 4rem;
         }
         .footer-top {
           flex-direction: column;
+        }
+      }
+      @media (max-width: 640px) {
+        /* Text readability first on phones: drop the doubled side padding
+           (section + .wrap) */
+        .wrap {
+          padding: 0;
+        }
+      }
+      @media (max-width: 520px) {
+        .ab-sec {
+          padding: 5rem 1.1rem;
+        }
+        .carousel-page.cols-2 {
+          gap: 0.9rem;
+        }
+        .carousel-page.cols-2 .team-card {
+          padding: 1.5rem 0.7rem 1.3rem;
+          border-radius: 18px;
+        }
+        .carousel-page.cols-2 .team-photo {
+          width: 84px;
+          height: 84px;
+          margin-bottom: 1rem;
+        }
+        .carousel-page.cols-2 .team-name {
+          font-size: 0.93rem;
+        }
+        .carousel-page.cols-2 .team-role {
+          font-size: 0.78rem;
         }
       }
     </style>
@@ -649,6 +742,11 @@
         <li><a href="index.html#activities">אזור למידה</a></li>
         <li><a href="index.html#footer" class="nav-cta">צרו איתנו קשר</a></li>
       </ul>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
 
     <!-- ════════════ PAGE HEADER ════════════ -->
@@ -1047,6 +1145,20 @@
     <!-- ════════════ JS ════════════ -->
     <script>
       (function () {
+        /* Mobile nav (hamburger) */
+        const nav = document.getElementById("nav");
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) =>
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          }),
+        );
+
         /* Scroll reveal */
         const io = new IntersectionObserver(
           (es) =>
