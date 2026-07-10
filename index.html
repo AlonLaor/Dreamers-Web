@@ -991,6 +991,7 @@
           8px 16px 30px rgba(0, 67, 120, 0.12);
       }
       .ac-img-w {
+        display: block;
         position: relative;
         height: 210px;
         overflow: hidden;
@@ -1161,6 +1162,24 @@
       }
       .tc:hover::after {
         opacity: 1;
+      }
+      .tc-featured {
+        background: var(--g-main);
+      }
+      .tc-featured .tc-text {
+        color: #fff;
+        font-weight: 700;
+        font-style: normal;
+      }
+      .tc-featured .tc-name {
+        color: #fff;
+      }
+      .tc-featured .tc-role {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .tc-featured .tc-q {
+        color: var(--gold-lt);
+        opacity: 0.6;
       }
       .tc-stars {
         display: flex;
@@ -1649,7 +1668,9 @@
           <li><a href="#virtues">תוכנית 16 המעלות</a></li>
           <li><a href="#activities">הפעילויות שלנו</a></li>
           <li><a href="#activities">אזור למידה</a></li>
-          <li><a href="#footer" class="nav-contact-link">צרו איתנו קשר</a></li>
+          <li>
+            <a href="contact.html" class="nav-contact-link">צרו איתנו קשר</a>
+          </li>
         </ul>
       </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
@@ -1745,12 +1766,12 @@
 
       <div class="h-content">
         <h1 class="h-title">
-          הדרך שלך לחיים שלווים,<br />
-          <span class="h-grad">משמעותיים ומאושרים יותר</span><br />
-          מתחילה כאן
+          להוביל בחוכמה ובאמפתיה<br />
+          <span class="h-grad">לבסס ארגונים יציבים</span><br />
+          בעולם משתנה
         </h1>
         <p class="h-sub">
-          <strong>16 המעלות</strong> — תוכנית הדגל של עמותת בית חולמים
+          תוכנית מעשית לפיתוח חוסן רגשי, ערכים משותפים ועבודה עם משמעות
         </p>
         <div class="h-ctas">
           <a href="#virtues" class="btn btn-gold">גלו את 16 המעלות</a>
@@ -2007,40 +2028,32 @@
         <!-- Row 1: 3 cards -->
         <div class="act-grid">
           <div class="ac rev">
-            <div class="ac-img-w">
+            <a class="ac-img-w" href="business.html">
               <img
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
                 alt="16 המעלות בעסקים"
                 class="ac-img"
               />
               <div class="ac-ov"></div>
-            </div>
+            </a>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בעסקים</div>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                class="ac-link"
-                >מידע נוסף →</a
-              >
+              <a href="business.html" class="ac-link">מידע נוסף →</a>
             </div>
           </div>
 
           <div class="ac rev d1">
-            <div class="ac-img-w">
+            <a class="ac-img-w" href="education.html">
               <img
                 src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80"
                 alt="16 המעלות בחינוך"
                 class="ac-img"
               />
               <div class="ac-ov"></div>
-            </div>
+            </a>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בחינוך</div>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                class="ac-link"
-                >מידע נוסף →</a
-              >
+              <a href="education.html" class="ac-link">מידע נוסף →</a>
             </div>
           </div>
 
@@ -2286,7 +2299,7 @@
               </div>
 
               <!-- 6. יעל קמינסקי -->
-              <div class="tc rev d2">
+              <div class="tc rev d2 tc-featured">
                 <div class="tc-stars">
                   <span class="star">★</span><span class="star">★</span
                   ><span class="star">★</span><span class="star">★</span
@@ -2294,11 +2307,12 @@
                 </div>
                 <div class="tc-q">"</div>
                 <p class="tc-text">
-                  הטכנולוגיה משנה את הדרך שבה אנו עובדים, אך האתגר הגדול ביותר
-                  נותר אנושי. תוכנית כמו "16 המעלות" מסייעת לבנות ערכים משותפים,
-                  ביטחון פסיכולוגי ומערכות יחסים משמעותיות, ומאפשרת לארגונים
-                  גלובליים להתמודד בהצלחה עם אי-הוודאות של ימינו, תוך טיפוח
-                  צוותים מצוינים לאורך זמן.
+                  מהפכת הבינה המלאכותית היא בעלת פוטנציאל בלתי נתפס, אך גם
+                  מייצרת מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבה
+                  העצומה של טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת
+                  לארגונים לגבש שפה ערכית, אשר תורמת לביסוס שיתוף ומערכות יחסים
+                  משמעותיות, חוסן אישי וקבוצתי, ומאפשרת לארגונים גלובליים
+                  להתמודד בהצלחה עם אי-הוודאות של ימינו.
                 </p>
                 <div class="tc-author">
                   <img

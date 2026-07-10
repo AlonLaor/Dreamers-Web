@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>צרו קשר | בית חולמים - Dreamers Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ─── ROOT — identical palette to the home page ─── */
+      :root {
+        --blue: #004378;
+        --blue-dk: #002952;
+        --teal: #48d9d3;
+        --teal-lt: #7de8e4;
+        --gold: #f5a623;
+        --gold-lt: #ffd166;
+        --white: #ffffff;
+        --off: #f6faff;
+        --off-warm: #fffbf3;
+        --text: #1a2d3e;
+        --text-mid: #4a637c;
+        --text-lt: #7a99b0;
+        --shadow: rgba(0, 67, 120, 0.15);
+        --g-main: linear-gradient(
+          140deg,
+          #002952 0%,
+          #004378 55%,
+          #0c6080 100%
+        );
+        --g-warm: linear-gradient(
+          140deg,
+          #2a1200 0%,
+          #4a2800 25%,
+          #002952 60%,
+          #004378 100%
+        );
+        --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
+        --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Heebo", system-ui, sans-serif;
+        direction: rtl;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .rev {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.9rem;
+      }
+      .h3d {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--blue);
+        text-shadow:
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
+        margin-bottom: 1.1rem;
+      }
+      .h3d-white {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
+      }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 640px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: "Heebo", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
+      .btn-gold {
+        background: var(--g-gold);
+        color: #4a2800;
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+      }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+
+      /* ═══ NAV (same as home) ═══ */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 1.3rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.4s ease;
+        background: rgba(0, 25, 55, 0.96);
+        backdrop-filter: blur(20px);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+      }
+      .logo-img {
+        height: 58px;
+        display: block;
+        border-radius: 50%;
+        transition: opacity 0.3s;
+      }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.8rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+      }
+      .nav-links a.active {
+        color: var(--teal);
+      }
+      .nav-cta {
+        background: var(--g-teal) !important;
+        color: var(--blue-dk) !important;
+        font-weight: 700 !important;
+        padding: 0.48rem 1.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s !important;
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* ═══ CONTACT HERO (dark, full width) ═══ */
+      #contact-hero {
+        padding: 12rem 2rem 6rem;
+        background: var(--g-warm);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      #contact-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(245, 166, 35, 0.16),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      #contact-hero .inner {
+        position: relative;
+        z-index: 2;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+      #contact-hero .sub {
+        margin: 0 auto 2.2rem;
+        color: rgba(255, 255, 255, 0.85);
+        text-align: center;
+      }
+
+      /* ═══ LEAD FORM ═══ */
+      #form-sec {
+        padding: 6.5rem 2rem;
+        background: var(--off);
+      }
+      #lead-form {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 24px;
+        padding: 3rem 2.6rem;
+        box-shadow:
+          0 14px 45px var(--shadow),
+          0 4px 8px rgba(0, 0, 0, 0.06);
+        display: none;
+      }
+      #lead-form.open {
+        display: block;
+      }
+      .fld {
+        margin-bottom: 1.5rem;
+      }
+      .fld label {
+        display: block;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--blue);
+        margin-bottom: 0.5rem;
+      }
+      .fld label .opt {
+        font-weight: 400;
+        color: var(--text-lt);
+        font-size: 0.8rem;
+      }
+      .fld input[type="text"],
+      .fld input[type="email"],
+      .fld input[type="tel"],
+      .fld textarea {
+        width: 100%;
+        padding: 0.85rem 1.1rem;
+        border: 1.5px solid rgba(0, 67, 120, 0.15);
+        border-radius: 12px;
+        font-family: "Heebo", sans-serif;
+        font-size: 0.96rem;
+        color: var(--text);
+        background: var(--off);
+        transition:
+          border-color 0.25s,
+          background 0.25s;
+      }
+      .fld input:focus,
+      .fld textarea:focus {
+        outline: none;
+        border-color: var(--teal);
+        background: #fff;
+      }
+      .fld textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+      .fld-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+      .chip-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.55rem 1.15rem;
+        border-radius: 50px;
+        border: 1.5px solid rgba(0, 67, 120, 0.18);
+        background: var(--off);
+        color: var(--text-mid);
+        font-size: 0.86rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s;
+        user-select: none;
+      }
+      .chip input {
+        display: none;
+      }
+      .chip.checked {
+        background: var(--g-teal);
+        border-color: var(--teal);
+        color: var(--blue-dk);
+      }
+      .other-text {
+        margin-top: 0.9rem;
+        display: none;
+      }
+      .other-text.open {
+        display: block;
+      }
+      .char-count {
+        font-size: 0.76rem;
+        color: var(--text-lt);
+        margin-top: 0.3rem;
+        text-align: left;
+      }
+      .submit-row {
+        text-align: center;
+        margin-top: 2.2rem;
+      }
+      #thank-you {
+        display: none;
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 24px;
+        padding: 3.5rem 2.6rem;
+        text-align: center;
+        box-shadow:
+          0 14px 45px var(--shadow),
+          0 4px 8px rgba(0, 0, 0, 0.06);
+      }
+      #thank-you.open {
+        display: block;
+      }
+      #thank-you .ico {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* ═══ FOOTER (same as home) ═══ */
+      footer {
+        background: linear-gradient(
+          135deg,
+          #e0f7f6 0%,
+          #d0f0ff 40%,
+          #e8f9ff 100%
+        );
+        color: var(--blue);
+        padding: 5rem 2rem 2.5rem;
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+      }
+      .footer-logo-img {
+        height: 80px;
+        display: block;
+      }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-mid);
+        max-width: 340px;
+        margin-top: 1rem;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: var(--text-mid);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--blue);
+      }
+      .footer-col-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--blue);
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .footer-contact p {
+        font-size: 1rem;
+        color: var(--text-mid);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+      }
+      .footer-contact a {
+        color: var(--blue);
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: rgba(0, 67, 120, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--blue);
+        font-size: 1rem;
+        font-weight: 700;
+        transition: all 0.3s;
+        border: 1px solid rgba(0, 67, 120, 0.15);
+      }
+      .fsoc:hover {
+        background: var(--teal);
+        color: var(--blue-dk);
+        transform: translateY(-3px);
+        border-color: var(--teal);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(0, 67, 120, 0.12);
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: var(--text-mid);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* ═══ RESPONSIVE ═══ */
+      @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1rem;
+        }
+        .nav-links .nav-cta {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
+        }
+        #contact-hero {
+          padding: 9rem 1.5rem 4rem;
+        }
+        .fld-row {
+          grid-template-columns: 1fr;
+        }
+        .footer-top {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 520px) {
+        #lead-form,
+        #thank-you {
+          padding: 2.2rem 1.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════════════ NAV ════════════ -->
+    <nav id="nav">
+      <a href="index.html#hero" class="logo">
+        <img
+          src="assets/img/logo-beit-holmim.png"
+          alt="בית חולמים - Dreamers Home"
+          class="logo-img"
+        />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#intro">דף הבית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+        <li><a href="index.html#activities">אזור למידה</a></li>
+        <li><a href="contact.html" class="nav-cta">צרו איתנו קשר</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- ════════════ CONTACT HERO ════════════ -->
+    <section id="contact-hero">
+      <div class="inner">
+        <h1 class="h3d h3d-white rev">בואו נתחיל שיחה</h1>
+        <p class="sub rev d1">
+          מוכנים להביא את 16 המעלות לארגון שלכם? קבעו שיחת היכרות. נלמד על
+          הצרכים של הארגון שלכם ונבחן יחד איזו תוכנית מתאימה עבורכם.
+        </p>
+        <button class="btn btn-gold rev d2" id="open-form-btn">
+          קביעת שיחת היכרות
+        </button>
+      </div>
+    </section>
+
+    <!-- ════════════ FORM ════════════ -->
+    <section id="form-sec">
+      <div class="wrap">
+        <form id="lead-form" novalidate>
+          <div class="fld">
+            <label for="f-name">שם מלא *</label>
+            <input type="text" id="f-name" name="name" required />
+          </div>
+          <div class="fld-row">
+            <div class="fld">
+              <label for="f-org">ארגון / חברה *</label>
+              <input type="text" id="f-org" name="org" required />
+            </div>
+            <div class="fld">
+              <label for="f-role">תפקיד *</label>
+              <input type="text" id="f-role" name="role" required />
+            </div>
+          </div>
+          <div class="fld-row">
+            <div class="fld">
+              <label for="f-email">דוא"ל *</label>
+              <input type="email" id="f-email" name="email" required />
+            </div>
+            <div class="fld">
+              <label for="f-phone">טלפון <span class="opt">(אופציונלי)</span></label>
+              <input type="tel" id="f-phone" name="phone" />
+            </div>
+          </div>
+          <div class="fld">
+            <label>מה הביא אותך אלינו? <span class="opt">(ניתן לבחור יותר מאפשרות אחת)</span></label>
+            <div class="chip-group" id="reason-group">
+              <label class="chip"
+                ><input type="checkbox" value="פיתוח מנהיגות" />פיתוח
+                מנהיגות</label
+              >
+              <label class="chip"
+                ><input type="checkbox" value="תרבות וערכים" />תרבות
+                וערכים</label
+              >
+              <label class="chip"
+                ><input type="checkbox" value="חוסן צוותי" />חוסן צוותי</label
+              >
+              <label class="chip"
+                ><input type="checkbox" value="תוכנית למשאבי אנוש" />תוכנית
+                למשאבי אנוש</label
+              >
+              <label class="chip"
+                ><input type="checkbox" id="reason-other" value="אחר" />אחר</label
+              >
+            </div>
+            <div class="other-text" id="other-text-wrap">
+              <textarea
+                id="f-other"
+                maxlength="500"
+                placeholder="ספרו לנו בקצרה..."
+              ></textarea>
+              <div class="char-count"><span id="char-count-n">0</span>/500</div>
+            </div>
+          </div>
+          <div class="fld">
+            <label for="f-message"
+              >הודעה <span class="opt">(טקסט חופשי, אופציונלי)</span></label
+            >
+            <textarea id="f-message" name="message"></textarea>
+          </div>
+          <div class="submit-row">
+            <button type="submit" class="btn btn-blue">שליחה</button>
+          </div>
+        </form>
+
+        <div id="thank-you">
+          <div class="ico">✓</div>
+          <h2 class="h3d">תודה שפניתם אלינו!</h2>
+          <p class="sub" style="margin: 0 auto">
+            קיבלנו את הפרטים שלכם וניצור איתכם קשר בהקדם.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="assets/img/logo-beit-holmim.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+            <div class="socials">
+              <a href="#" class="fsoc" title="YouTube">▷</a>
+              <a href="#" class="fsoc" title="Facebook">f</a>
+              <a href="#" class="fsoc" title="Instagram">▶</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">ניווט</div>
+            <ul class="footer-nav">
+              <li><a href="index.html#intro">דף הבית</a></li>
+              <li><a href="about.html">אודות</a></li>
+              <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+              <li><a href="index.html#activities">אזור למידה</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <div class="footer-col-title">צרו קשר</div>
+            <p><a href="mailto:info@dreamers.com">info@dreamers.com</a></p>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 by Dreamers Home</span>
+          <span style="color: var(--blue); font-weight: 600; font-style: italic"
+            >כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════ JS ════════════ -->
+    <script>
+      (function () {
+        /* Mobile nav (hamburger) */
+        const nav = document.getElementById("nav");
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) =>
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          }),
+        );
+
+        /* Scroll reveal */
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* Open the lead form */
+        const form = document.getElementById("lead-form");
+        document.getElementById("open-form-btn").addEventListener("click", () => {
+          form.classList.add("open");
+          form.scrollIntoView({ behavior: "smooth", block: "start" });
+          document.getElementById("f-name").focus();
+        });
+
+        /* Chip toggles */
+        document.querySelectorAll(".chip input").forEach((cb) => {
+          cb.addEventListener("change", () => {
+            cb.closest(".chip").classList.toggle("checked", cb.checked);
+          });
+        });
+
+        /* "Other" reveal + char count */
+        const otherCb = document.getElementById("reason-other");
+        const otherWrap = document.getElementById("other-text-wrap");
+        const otherText = document.getElementById("f-other");
+        const charCount = document.getElementById("char-count-n");
+        otherCb.addEventListener("change", () => {
+          otherWrap.classList.toggle("open", otherCb.checked);
+        });
+        otherText.addEventListener("input", () => {
+          charCount.textContent = otherText.value.length;
+        });
+
+        /* Submit — UI only, no backend wired up yet */
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          form.classList.remove("open");
+          document.getElementById("thank-you").classList.add("open");
+        });
+      })();
+    </script>
+    <script src="assets/js/accessibility-widget.js" defer></script>
+  </body>
+</html>
