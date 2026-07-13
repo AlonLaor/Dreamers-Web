@@ -19,3 +19,6 @@ Org docs/
 
 # Node (in case we ever add tooling)
 node_modules/
+
+# Working briefs — kept locally, not on GitHub
+WRK/

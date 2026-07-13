@@ -337,7 +337,10 @@
       .h-photo {
         position: absolute;
         inset: 0;
-        background: url("assets/img/mouette.png") center 35% / cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
         transform: scale(1.08);
         will-change: transform;
       }
@@ -420,24 +423,6 @@
         }
       }
 
-      /* Floating rings */
-      .h-ring {
-        position: absolute;
-        border-radius: 50%;
-        border: 5px solid rgba(255, 210, 80, 0.38);
-        animation: orb linear infinite;
-        pointer-events: none;
-      }
-      @keyframes orb {
-        from {
-          transform: perspective(600px) rotateX(0) rotateY(0) rotateZ(0);
-        }
-        to {
-          transform: perspective(600px) rotateX(360deg) rotateY(360deg)
-            rotateZ(180deg);
-        }
-      }
-
       /* Hero content — positioned right + lower */
       .h-content {
         position: absolute;
@@ -472,7 +457,8 @@
         filter: drop-shadow(0 3px 5px rgba(200, 90, 0, 0.45));
       }
       .h-sub {
-        font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+        font-size: clamp(1.69rem, 4.225vw, 3.25rem);
+        line-height: 1.15;
         font-weight: 300;
         opacity: 0.92;
         margin-bottom: 2.2rem;
@@ -1406,14 +1392,11 @@
          FOOTER
       ═══════════════════════════════ */
       footer {
-        background: linear-gradient(
-          135deg,
-          #e0f7f6 0%,
-          #d0f0ff 40%,
-          #e8f9ff 100%
-        );
-        color: var(--blue);
-        padding: 5rem 2rem 2.5rem;
+        background:
+          linear-gradient(rgba(0, 25, 45, 0.35), rgba(0, 25, 45, 0.35)),
+          url("assets/img/Footer Background.png") center / cover no-repeat;
+        color: #eaf6ff;
+        padding: 2.5rem 2rem 1.25rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
       }
       .footer-inner {
@@ -1425,13 +1408,13 @@
         justify-content: space-between;
         align-items: flex-start;
         flex-wrap: wrap;
-        gap: 3rem;
-        margin-bottom: 3.5rem;
+        gap: 1.5rem;
+        margin-bottom: 1.75rem;
       }
       .footer-desc {
         font-size: 1rem;
         line-height: 1.8;
-        color: var(--text-mid);
+        color: #d7ecf7;
         max-width: 340px;
         margin-top: 1rem;
       }
@@ -1444,18 +1427,18 @@
       }
       .footer-nav a {
         font-size: 1rem;
-        color: var(--text-mid);
+        color: #d7ecf7;
         transition: color 0.3s;
         font-weight: 500;
       }
       .footer-nav a:hover {
-        color: var(--blue);
+        color: var(--teal-lt);
       }
       .footer-col-title {
         font-size: 0.78rem;
         font-weight: 800;
         letter-spacing: 0.2em;
-        color: var(--blue);
+        color: #fff;
         text-transform: uppercase;
         margin-bottom: 1.1rem;
         border-bottom: 2px solid rgba(72, 217, 211, 0.5);
@@ -1464,17 +1447,17 @@
       }
       .footer-contact p {
         font-size: 1rem;
-        color: var(--text-mid);
+        color: #d7ecf7;
         margin-bottom: 0.6rem;
         font-weight: 500;
       }
       .footer-contact a {
-        color: var(--blue);
+        color: #fff;
         font-weight: 600;
         transition: color 0.3s;
       }
       .footer-contact a:hover {
-        color: var(--teal);
+        color: var(--teal-lt);
       }
       .socials {
         display: flex;
@@ -1485,15 +1468,15 @@
         width: 46px;
         height: 46px;
         border-radius: 14px;
-        background: rgba(0, 67, 120, 0.1);
+        background: rgba(255, 255, 255, 0.12);
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--blue);
+        color: #fff;
         font-size: 1rem;
         font-weight: 700;
         transition: all 0.3s;
-        border: 1px solid rgba(0, 67, 120, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
       }
       .fsoc:hover {
         background: var(--teal);
@@ -1501,37 +1484,14 @@
         transform: translateY(-3px);
         border-color: var(--teal);
       }
-      .footer-motto {
-        max-width: 680px;
-        margin: 0 auto 2.6rem;
-        padding: 1.7rem 2.2rem;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.6);
-        border: 2px solid rgba(72, 217, 211, 0.55);
-        border-radius: 22px;
-        box-shadow: 0 14px 40px rgba(0, 67, 120, 0.12);
-        color: var(--blue);
-        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
-        font-weight: 800;
-        line-height: 1.6;
-        position: relative;
-      }
-      .footer-motto::before {
-        content: "”";
-        display: block;
-        font-size: 2.6rem;
-        line-height: 0.6;
-        color: var(--teal);
-        margin-bottom: 0.5rem;
-      }
       .footer-bottom {
-        border-top: 1px solid rgba(0, 67, 120, 0.12);
-        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 0.88rem;
-        color: var(--text-mid);
+        color: #d7ecf7;
         flex-wrap: wrap;
         gap: 1rem;
       }
@@ -1786,7 +1746,7 @@
             >
             <ul class="dropdown-menu">
               <li><a href="education.html">16 המעלות בחינוך</a></li>
-              <li><a href="business.html">16 המעלות בעסקים</a></li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
               <li>
                 <a
                   href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
@@ -1820,7 +1780,16 @@
 
     <!-- ════════════ HERO ════════════ -->
     <section id="hero">
-      <div class="h-photo" id="hph"></div>
+      <video
+        class="h-photo"
+        id="hph"
+        src="assets/Videos/Dreamers - Sea 2-1.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
       <div class="h-wash"></div>
       <div class="h-glow"></div>
       <div id="pts"></div>
@@ -1851,62 +1820,11 @@
         </svg>
       </div>
 
-      <div
-        class="h-ring"
-        style="
-          width: 260px;
-          height: 260px;
-          top: 6%;
-          right: 6%;
-          animation-duration: 28s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 150px;
-          height: 150px;
-          top: 12%;
-          left: 8%;
-          animation-duration: 20s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 220px;
-          height: 220px;
-          bottom: 8%;
-          right: 12%;
-          animation-duration: 34s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 180px;
-          height: 180px;
-          bottom: 10%;
-          left: 10%;
-          animation-duration: 24s;
-        "
-      ></div>
-      <div
-        class="h-ring"
-        style="
-          width: 110px;
-          height: 110px;
-          top: 44%;
-          left: 42%;
-          animation-duration: 18s;
-        "
-      ></div>
-
       <div class="h-content">
         <h1 class="h-title">
           הדרך שלך לחיים שלווים,<br />
-          <span class="h-grad">משמעותיים ומאושרים יותר</span><br />
-          מתחילה כאן
+          משמעותיים ומאושרים יותר<br />
+          <span class="h-grad">מתחילה כאן</span>
         </h1>
         <p class="h-sub">
           <strong>16 המעלות</strong> — תוכנית הדגל של עמותת בית חולמים
@@ -1969,7 +1887,7 @@
           </div>
 
           <div class="iv-single rev d2">
-            <img src="assets/img/hands square.png" alt="ידיים מחוברות" />
+            <img src="assets/img/16 מעלות.png" alt="שביל אבנים אל הים בשקיעה" />
           </div>
         </div>
       </div>
@@ -2169,13 +2087,13 @@
             <div class="ac-img-w">
               <img
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
-                alt="16 המעלות בעסקים"
+                alt="16 המעלות בחברות"
                 class="ac-img"
               />
               <div class="ac-ov"></div>
             </div>
             <div class="ac-body">
-              <div class="ac-title">16 המעלות בעסקים</div>
+              <div class="ac-title">16 המעלות בחברות</div>
               <a href="business.html" class="ac-link">מידע נוסף →</a>
             </div>
           </div>
@@ -2521,7 +2439,7 @@
         <div class="footer-top">
           <div class="footer-brand">
             <img
-              src="assets/img/logo-beit-holmim.png"
+              src="assets/img/logo-beit-holmim-white.png"
               alt="בית חולמים - Dreamers Home"
               class="footer-logo-img"
             />
@@ -2559,9 +2477,6 @@
               >
             </p>
           </div>
-        </div>
-        <div class="footer-motto">
-          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>
@@ -2616,6 +2531,16 @@
           },
           { passive: true },
         );
+
+        /* Hero video — loop while any part is visible, pause otherwise */
+        new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) hph.play();
+              else hph.pause();
+            }),
+          { threshold: 0 },
+        ).observe(hph);
 
         /* Gold particles */
         const pc = document.getElementById("pts");

@@ -171,6 +171,12 @@
         background: rgba(0, 25, 55, 0.96);
         backdrop-filter: blur(20px);
       }
+      /* Right group: logo + links together (match homepage) */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
       .logo {
         display: flex;
         align-items: center;
@@ -250,7 +256,9 @@
       /* ═══ PAGE HEADER ═══ */
       #page-header {
         padding: 11rem 2rem 5.5rem;
-        background: var(--g-main);
+        background:
+          linear-gradient(rgba(0, 25, 55, 0.45), rgba(0, 25, 55, 0.45)),
+          url("assets/img/Background for Footer.jpg") center / cover no-repeat;
         position: relative;
         overflow: hidden;
         text-align: center;
@@ -334,6 +342,34 @@
         color: var(--text-mid);
         max-width: 800px;
         margin: 0 auto 1.3rem;
+      }
+
+      /* ═══ SPLIT — text on the right, photo on the left (RTL) ═══ */
+      .split-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: 3.5rem;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .split-grid .ab-body {
+        margin: 0 0 1.3rem;
+        max-width: none;
+        text-align: right;
+      }
+      .split-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 24px;
+        box-shadow: 0 24px 60px rgba(0, 67, 120, 0.22);
+      }
+      @media (max-width: 860px) {
+        .split-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
       }
 
       /* ═══ TEAM CARDS / CAROUSEL ═══ */
@@ -521,13 +557,10 @@
 
       /* ═══ FOOTER (same as home) ═══ */
       footer {
-        background: linear-gradient(
-          135deg,
-          #e0f7f6 0%,
-          #d0f0ff 40%,
-          #e8f9ff 100%
-        );
-        color: var(--blue);
+        background:
+          linear-gradient(rgba(0, 25, 45, 0.35), rgba(0, 25, 45, 0.35)),
+          url("assets/img/Footer Background.png") center / cover no-repeat;
+        color: #eaf6ff;
         padding: 5rem 2rem 2.5rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
       }
@@ -550,7 +583,7 @@
       .footer-desc {
         font-size: 1rem;
         line-height: 1.8;
-        color: var(--text-mid);
+        color: #d7ecf7;
         max-width: 340px;
         margin-top: 1rem;
       }
@@ -563,22 +596,22 @@
       }
       .footer-nav a {
         font-size: 1rem;
-        color: var(--text-mid);
+        color: #d7ecf7;
         transition: color 0.3s;
         font-weight: 500;
       }
       .footer-nav a:hover {
-        color: var(--blue);
+        color: var(--teal-lt);
       }
       .footer-nav a.active {
-        color: var(--blue);
+        color: #fff;
         font-weight: 700;
       }
       .footer-col-title {
         font-size: 0.78rem;
         font-weight: 800;
         letter-spacing: 0.2em;
-        color: var(--blue);
+        color: #fff;
         text-transform: uppercase;
         margin-bottom: 1.1rem;
         border-bottom: 2px solid rgba(72, 217, 211, 0.5);
@@ -587,12 +620,12 @@
       }
       .footer-contact p {
         font-size: 1rem;
-        color: var(--text-mid);
+        color: #d7ecf7;
         margin-bottom: 0.6rem;
         font-weight: 500;
       }
       .footer-contact a {
-        color: var(--blue);
+        color: #fff;
         font-weight: 600;
         transition: color 0.3s;
       }
@@ -608,15 +641,15 @@
         width: 46px;
         height: 46px;
         border-radius: 14px;
-        background: rgba(0, 67, 120, 0.1);
+        background: rgba(255, 255, 255, 0.12);
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--blue);
+        color: #fff;
         font-size: 1rem;
         font-weight: 700;
         transition: all 0.3s;
-        border: 1px solid rgba(0, 67, 120, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
       }
       .fsoc:hover {
         background: var(--teal);
@@ -625,13 +658,13 @@
         border-color: var(--teal);
       }
       .footer-bottom {
-        border-top: 1px solid rgba(0, 67, 120, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
         padding-top: 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 0.88rem;
-        color: var(--text-mid);
+        color: #d7ecf7;
         flex-wrap: wrap;
         gap: 1rem;
       }
@@ -728,6 +761,7 @@
   <body>
     <!-- ════════════ NAV ════════════ -->
     <nav id="nav">
+      <div class="nav-right">
       <a href="index.html#hero" class="logo">
         <img
           src="assets/img/logo-beit-holmim-white.png"
@@ -742,6 +776,7 @@
         <li><a href="index.html#activities">אזור למידה</a></li>
         <li><a href="index.html#footer" class="nav-cta">צרו איתנו קשר</a></li>
       </ul>
+      </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -764,23 +799,31 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">בית חולמים</h2>
         </div>
-        <p class="ab-body rev">
-          אנחנו חיים בזמנים יוצאי-דופן בהיסטוריה האנושית ומתמודדים עם אתגרים
-          שדורות קודמים לא ניצבו בפניהם. אלה ימים שקוראים לכולנו להשתנות בעצמנו
-          ולסייע זה לזו להשתנות בדרך להחלמת ותיקון חברה ועולם.
-        </p>
-        <p class="ab-body rev d1">
-          עמותת בית חולמים פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות
-          החברתית. באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות
-          ומודלים מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
-          לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
-        </p>
-        <p class="ab-body rev d2">
-          התוכניות שמפעילה העמותה משלבות לימוד של חוכמה עתיקה ומודרנית ושואבות
-          השראה מפילוסופיות מזרחיות ומערביות כאחד, על מנת לסייע לא.נשים מכל
-          המגזרים, בכל הגילים ומכל שכבות החברה, להתמודד עם האתגרים של המאה ה-21
-          ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.
-        </p>
+        <div class="split-grid">
+          <div>
+            <p class="ab-body rev">
+              אנחנו חיים בזמנים יוצאי-דופן בהיסטוריה האנושית ומתמודדים עם אתגרים
+              שדורות קודמים לא ניצבו בפניהם. אלה ימים שקוראים לכולנו להשתנות
+              בעצמנו ולסייע זה לזו להשתנות בדרך להחלמת ותיקון חברה ועולם.
+            </p>
+            <p class="ab-body rev d1">
+              עמותת בית חולמים פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות
+              החברתית. באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות
+              ומודלים מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
+              לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
+            </p>
+            <p class="ab-body rev d2">
+              התוכניות שמפעילה העמותה משלבות לימוד של חוכמה עתיקה ומודרנית
+              ושואבות השראה מפילוסופיות מזרחיות ומערביות כאחד, על מנת לסייע
+              לא.נשים מכל המגזרים, בכל הגילים ומכל שכבות החברה, להתמודד עם
+              האתגרים של המאה ה-21 ולהפוך את התורות לכלים יישומיים בכל תחומי
+              החיים.
+            </p>
+          </div>
+          <div class="split-photo rev d1">
+            <img src="assets/img/About us - Pic 1.png" alt="עמותת בית חולמים" />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -811,19 +854,27 @@
           <span class="eyebrow rev">• על ארגון FDCW •</span>
           <h2 class="h3d rev">על ארגון FDCW</h2>
         </div>
-        <p class="ab-body rev">
-          ארגון FDCW מסייע לאנשים לפתח את החמלה והחוכמה שלהם ולטפח חיים מאושרים
-          יותר.
-        </p>
-        <p class="ab-body rev d1">
-          ב-FDCW נלהבים מכך שלכל אדם תהיה ההזדמנות לחיות את חייו הטובים ביותר,
-          לפתח את התכונות הפנימיות שלו ולהגשים את הפוטנציאל האנושי שלו לחיים
-          משמעותיים ומספקים יותר. אנו מאמינים שהמפתח לכך הוא טיפוח לב חם ותודעה
-          חכמה (Wise). באמצעות הבנה מעמיקה של תודעתנו, התבוננות ברגשותינו והכרה
-          ביחסי הגומלין הרבים בינינו, מתפתחת חכמה ואכפתיות לזולת. זה נותן לנו
-          אומץ ומפתח חוסן ומאפשר לנו להיות מקור כוח, השראה ונחמה לאחרים. כך,
-          בהדרגה, נבנית תחושה של אחריות כלפי עצמנו וכלפי הזולת והסביבה.
-        </p>
+        <div class="split-grid">
+          <div>
+            <p class="ab-body rev">
+              ארגון FDCW מסייע לאנשים לפתח את החמלה והחוכמה שלהם ולטפח חיים
+              מאושרים יותר.
+            </p>
+            <p class="ab-body rev d1">
+              ב-FDCW נלהבים מכך שלכל אדם תהיה ההזדמנות לחיות את חייו הטובים
+              ביותר, לפתח את התכונות הפנימיות שלו ולהגשים את הפוטנציאל האנושי
+              שלו לחיים משמעותיים ומספקים יותר. אנו מאמינים שהמפתח לכך הוא טיפוח
+              לב חם ותודעה חכמה (Wise). באמצעות הבנה מעמיקה של תודעתנו, התבוננות
+              ברגשותינו והכרה ביחסי הגומלין הרבים בינינו, מתפתחת חכמה ואכפתיות
+              לזולת. זה נותן לנו אומץ ומפתח חוסן ומאפשר לנו להיות מקור כוח,
+              השראה ונחמה לאחרים. כך, בהדרגה, נבנית תחושה של אחריות כלפי עצמנו
+              וכלפי הזולת והסביבה.
+            </p>
+          </div>
+          <div class="split-photo rev d1">
+            <img src="assets/img/About us - Pic 2.png" alt="על ארגון FDCW" />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -963,7 +1014,7 @@
         <div class="carousel rev" id="car-staff">
           <div class="carousel-viewport">
             <div class="carousel-track">
-              <div class="carousel-page cols-2">
+              <div class="carousel-page cols-3">
                 <div class="team-card">
                   <img
                     class="team-photo"
@@ -973,17 +1024,6 @@
                   <div class="team-name">עדי ארצי שלו</div>
                   <div class="team-role">מנהלת שיווק, עמותת בית חולמים</div>
                 </div>
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/adi_ben_paz.jpg"
-                    alt="עדי בן פזי"
-                  />
-                  <div class="team-name">עדי בן פזי</div>
-                  <div class="team-role">מנהלת תפעול, עמותת בית חולמים</div>
-                </div>
-              </div>
-              <div class="carousel-page cols-2">
                 <div class="team-card">
                   <img
                     class="team-photo"
@@ -1004,14 +1044,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-nav">
-            <button class="car-btn car-prev" aria-label="הקודם">›</button>
-            <div class="car-dots">
-              <button class="car-dot active" aria-label="שקופית 1"></button>
-              <button class="car-dot" aria-label="שקופית 2"></button>
-            </div>
-            <button class="car-btn car-next" aria-label="הבא">‹</button>
           </div>
         </div>
       </div>
@@ -1094,7 +1126,7 @@
         <div class="footer-top">
           <div class="footer-brand">
             <img
-              src="assets/img/logo-beit-holmim.png"
+              src="assets/img/logo-beit-holmim-white.png"
               alt="בית חולמים - Dreamers Home"
               class="footer-logo-img"
             />
@@ -1134,7 +1166,7 @@
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>
-          <span style="color: var(--blue); font-weight: 600; font-style: italic"
+          <span style="color: #eaf6ff; font-weight: 600; font-style: italic"
             >כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span
           >
         </div>
@@ -1206,7 +1238,6 @@
         }
 
         initCarousel("car-mgmt", 3, 6000);
-        initCarousel("car-staff", 2, 6500);
       })();
     </script>
     <script src="assets/js/accessibility-widget.js" defer></script>

@@ -27,7 +27,12 @@
         --text-mid: #4a637c;
         --text-lt: #7a99b0;
         --shadow: rgba(0, 67, 120, 0.15);
-        --g-main: linear-gradient(140deg, #002952 0%, #004378 55%, #0c6080 100%);
+        --g-main: linear-gradient(
+          140deg,
+          #002952 0%,
+          #004378 55%,
+          #0c6080 100%
+        );
         --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
         --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
       }
@@ -165,6 +170,12 @@
         transition: all 0.4s ease;
         background: rgba(0, 25, 55, 0.96);
         backdrop-filter: blur(20px);
+      }
+      /* Right group: logo + links together (match homepage) */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
       }
       .logo {
         display: flex;
@@ -374,7 +385,12 @@
         font-weight: 700;
         font-size: clamp(2rem, 4.6vw, 3.4rem);
         line-height: 1.28;
-        background: linear-gradient(120deg, var(--blue) 0%, #0c6080 55%, var(--teal) 100%);
+        background: linear-gradient(
+          120deg,
+          var(--blue) 0%,
+          #0c6080 55%,
+          var(--teal) 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -438,16 +454,36 @@
         transform: translateY(-6px);
       }
       .theme-thinking {
-        background: linear-gradient(145deg, #001a1a 0%, #005555 40%, #007a7a 100%);
+        background: linear-gradient(
+          145deg,
+          #001a1a 0%,
+          #005555 40%,
+          #007a7a 100%
+        );
       }
       .theme-acting {
-        background: linear-gradient(145deg, #00241a 0%, #005c3d 40%, #007a55 100%);
+        background: linear-gradient(
+          145deg,
+          #00241a 0%,
+          #005c3d 40%,
+          #007a55 100%
+        );
       }
       .theme-relating {
-        background: linear-gradient(145deg, #001530 0%, #002d6b 40%, #004494 100%);
+        background: linear-gradient(
+          145deg,
+          #001530 0%,
+          #002d6b 40%,
+          #004494 100%
+        );
       }
       .theme-meaning {
-        background: linear-gradient(145deg, #1a0d00 0%, #5c2800 40%, #9a5000 100%);
+        background: linear-gradient(
+          145deg,
+          #1a0d00 0%,
+          #5c2800 40%,
+          #9a5000 100%
+        );
       }
       .theme-count {
         margin-top: 1.6rem;
@@ -533,7 +569,12 @@
         margin: 0 auto;
       }
       .persona-card {
-        background: linear-gradient(150deg, #f4f9ff 0%, #e7f1fb 55%, #dfeef8 100%);
+        background: linear-gradient(
+          150deg,
+          #f4f9ff 0%,
+          #e7f1fb 55%,
+          #dfeef8 100%
+        );
         border-radius: 22px;
         padding: 2.2rem 1.8rem;
         box-shadow:
@@ -600,7 +641,12 @@
         right: 12%;
         left: 12%;
         height: 3px;
-        background: linear-gradient(90deg, var(--teal), var(--blue), var(--gold));
+        background: linear-gradient(
+          90deg,
+          var(--teal),
+          var(--blue),
+          var(--gold)
+        );
         opacity: 0.35;
         z-index: 0;
       }
@@ -1031,7 +1077,12 @@
 
       /* ═══ FOOTER ═══ */
       footer {
-        background: linear-gradient(135deg, #e0f7f6 0%, #d0f0ff 40%, #e8f9ff 100%);
+        background: linear-gradient(
+          135deg,
+          #e0f7f6 0%,
+          #d0f0ff 40%,
+          #e8f9ff 100%
+        );
         color: var(--blue);
         padding: 5rem 2rem 2.5rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
@@ -1225,47 +1276,51 @@
   <body>
     <!-- ════════════ NAV ════════════ -->
     <nav id="nav">
-      <a href="index.html#hero" class="logo">
-        <img
-          src="assets/img/logo-beit-holmim-white.png"
-          alt="בית חולמים - Dreamers Home"
-          class="logo-img"
-        />
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html#intro">דף הבית</a></li>
-        <li><a href="about.html">אודות</a></li>
-        <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
-        <li class="has-dropdown">
-          <a href="index.html#activities" class="dd-trigger"
-            >הפעילויות שלנו <span class="dd-arrow">▾</span></a
-          >
-          <ul class="dropdown-menu">
-            <li><a href="education.html">16 המעלות בחינוך</a></li>
-            <li><a href="business.html" class="active">16 המעלות בעסקים</a></li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >16 המעלות בבריאות הנפש</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >16 המעלות בקהילה</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >קבוצות תרגול וסדנאות פרטיות</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li><a href="index.html#activities">אזור למידה</a></li>
-        <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
-      </ul>
+      <div class="nav-right">
+        <a href="index.html#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html#intro">דף הבית</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="index.html#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li>
+                <a href="business.html" class="active">16 המעלות בחברות</a>
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בבריאות הנפש</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בקהילה</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >קבוצות תרגול וסדנאות פרטיות</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="index.html#activities">אזור למידה</a></li>
+          <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
+        </ul>
+      </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1302,15 +1357,14 @@
       <div class="wrap">
         <div class="ab-hdr">
           <p class="ab-body rev">
-            16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח
-            ערכים אוניברסליים וחיים בעלי משמעות.
+            16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
+            אוניברסליים וחיים בעלי משמעות.
           </p>
           <p class="ab-body rev d1">
-            עבור ארגונים עסקיים, התוכנית מספקת ערכת כלים מודולרית המשתלבת
-            בשגרת הניהול היומיומית. מבוססת על ערכים אוניברסליים (כגון סבלנות,
-            נדיבות, יושרה, עקרונות ואומץ), התוכנית יוצרת שפה משותפת בארגון
-            ליצירת תשתית ליצירתיות, הזדהות עם הפעילות המקצועית וקשר אפקטיבי
-            זה עם זו.
+            עבור ארגונים עסקיים, התוכנית מספקת ערכת כלים מודולרית המשתלבת בשגרת
+            הניהול היומיומית. מבוססת על ערכים אוניברסליים (כגון סבלנות, נדיבות,
+            יושרה, עקרונות ואומץ), התוכנית יוצרת שפה משותפת בארגון ליצירת תשתית
+            ליצירתיות, הזדהות עם הפעילות המקצועית וקשר אפקטיבי זה עם זו.
           </p>
         </div>
 
@@ -1320,9 +1374,7 @@
           <div class="theme-chip theme-relating">
             הדרך שאנו מתייחסות.ים לזולת
           </div>
-          <div class="theme-chip theme-meaning">
-            הדרך שאנו מוצאות.ים משמעות
-          </div>
+          <div class="theme-chip theme-meaning">הדרך שאנו מוצאות.ים משמעות</div>
         </div>
         <p class="theme-count rev d3">
           בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות שפה
@@ -1335,14 +1387,16 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• למה עכשיו •</span>
+          <span class="eyebrow rev" style="color: var(--blue)"
+            >• למה עכשיו •</span
+          >
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
         <p class="ab-body rev">
-          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה
-          המלאכותית, חוסר יציבות גיאופוליטית, תשישות ושחיקה, ושינויים
-          מהירים בעולם העבודה המייצרים חוסר ביטחון תעסוקתי. השינויים מהירים
-          יותר מקצב ההסתגלות של הארגונים והעובדים.
+          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה המלאכותית,
+          חוסר יציבות גיאופוליטית, תשישות ושחיקה, ושינויים מהירים בעולם העבודה
+          המייצרים חוסר ביטחון תעסוקתי. השינויים מהירים יותר מקצב ההסתגלות של
+          הארגונים והעובדים.
         </p>
         <p class="ab-body rev d1" style="font-weight: 700; color: var(--blue)">
           התוצאה:
@@ -1355,17 +1409,17 @@
         </ul>
         <p class="ab-body rev d2" style="margin-top: 1.6rem">
           16 המעלות בעסקים מעניקה לארגונים שפה ערכית-רגשית משותפת, ומסייעת
-          לצוותים לעבור ממצב של הישרדות תגובתית לפעולה ערכית, משמעותית
-          ומכוונת מטרה משותפת.
+          לצוותים לעבור ממצב של הישרדות תגובתית לפעולה ערכית, משמעותית ומכוונת
+          מטרה משותפת.
         </p>
 
         <div class="stat-frame rev d3">
           <div class="stat-frame-ico">📊</div>
           <div>
             <p>
-              רמת המעורבות העולמית של עובדים ירדה ל-<strong>20%</strong>
-              בשנת 2025 — הנמוכה ביותר מאז 2020 — ועלות הירידה למשק העולמי
-              מוערכת ב-<strong>10 טריליון דולר</strong> באובדן פריון.
+              רמת המעורבות העולמית של עובדים ירדה ל-<strong>20%</strong> בשנת
+              2025 — הנמוכה ביותר מאז 2020 — ועלות הירידה למשק העולמי מוערכת
+              ב-<strong>10 טריליון דולר</strong> באובדן פריון.
               <cite>(Gallup, State of the Global Workplace 2026)</cite>
             </p>
           </div>
@@ -1381,16 +1435,16 @@
           <h2 class="h3d rev">למי זה מיועד</h2>
           <p class="sub rev">
             בין אם אתם בונים, מתרחבים, עוברים שינוי או מייצבים, הצורך בשפה
-            אנושית משותפת זהה. 16 המעלות מתאימה את עצמה לשלב שאתם נמצאים,
-            לתרבות הארגונית וליעדים שלכם.
+            אנושית משותפת זהה. 16 המעלות מתאימה את עצמה לשלב שאתם נמצאים, לתרבות
+            הארגונית וליעדים שלכם.
           </p>
         </div>
         <div class="persona-grid">
           <div class="persona-card rev">
             <h3>הנהלה בכירה</h3>
             <p>
-              להוביל בתוך אי-ודאות מבלי לאבד את רוח הארגון. לבנות תרבות
-              ששורדת משברים.
+              להוביל בתוך אי-ודאות מבלי לאבד את רוח הארגון. לבנות תרבות ששורדת
+              משברים.
             </p>
             <div class="persona-result">
               תוצאה: בהירות אסטרטגית + יציבות רגשית
@@ -1409,8 +1463,8 @@
           <div class="persona-card rev d2">
             <h3>ארגונים בתהליך שינוי</h3>
             <p>
-              להגן על התרבות הארגונית בזמן מיזוגים, ארגון מחדש או צמיחה
-              מהירה. לבנות חוסן ארוך טווח מבפנים.
+              להגן על התרבות הארגונית בזמן מיזוגים, ארגון מחדש או צמיחה מהירה.
+              לבנות חוסן ארוך טווח מבפנים.
             </p>
             <div class="persona-result">
               תוצאה: המשכיות תרבותית + שימור עובדים
@@ -1419,8 +1473,8 @@
           <div class="persona-card rev">
             <h3>מנהלים בדרג ביניים</h3>
             <p>
-              לשמר אמון בצוות, להפחית חיכוכים ולנהל קונפליקטים באמפתיה.
-              להיות המנהיג/ה שהצוות באמת הולך אחריו.
+              לשמר אמון בצוות, להפחית חיכוכים ולנהל קונפליקטים באמפתיה. להיות
+              המנהיג/ה שהצוות באמת הולך אחריו.
             </p>
             <div class="persona-result">
               תוצאה: צוותים חזקים יותר + פחות תחלופה
@@ -1429,18 +1483,16 @@
           <div class="persona-card rev d1">
             <h3>צוותים גלובליים ורב-תרבותיים</h3>
             <p>
-              ערכים אוניברסליים החוצים הבדלי תרבות. שפה משותפת המאחדת מבלי
-              לטשטש את הגיוון.
+              ערכים אוניברסליים החוצים הבדלי תרבות. שפה משותפת המאחדת מבלי לטשטש
+              את הגיוון.
             </p>
-            <div class="persona-result">
-              תוצאה: לכידות חוצה גבולות ורקעים
-            </div>
+            <div class="persona-result">תוצאה: לכידות חוצה גבולות ורקעים</div>
           </div>
           <div class="persona-card rev d2">
             <h3>ארגונים מונחי-מטרה</h3>
             <p>
-              עמותות, מיזמים חברתיים וחברות מונחות-שליחות, שבהן ה'למה' הוא
-              ליבת העבודה והאנשים זקוקים לשפה כדי לחיות אותו.
+              עמותות, מיזמים חברתיים וחברות מונחות-שליחות, שבהן ה'למה' הוא ליבת
+              העבודה והאנשים זקוקים לשפה כדי לחיות אותו.
             </p>
             <div class="persona-result">
               תוצאה: התאמה בין השליחות לבין ההתנהגות היומיומית
@@ -1454,12 +1506,14 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• איך זה עובד •</span>
+          <span class="eyebrow rev" style="color: var(--blue)"
+            >• איך זה עובד •</span
+          >
           <h2 class="h3d rev">איך זה עובד</h2>
           <p class="sub rev">
-            16 המעלות לעסקים היא תוכנית מודולרית המועברת בסדנאות בהנחיה
-            אישית או באוף-סייט של צוותים, ומותאמת לגודל הארגון, לתרבות
-            הארגונית וליעדים הספציפיים.
+            16 המעלות לעסקים היא תוכנית מודולרית המועברת בסדנאות בהנחיה אישית או
+            באוף-סייט של צוותים, ומותאמת לגודל הארגון, לתרבות הארגונית וליעדים
+            הספציפיים.
           </p>
         </div>
 
@@ -1498,8 +1552,8 @@
             <div class="step-num">4</div>
             <h3>ליווי המשך</h3>
             <p>
-              משאבים מתמשכים, ערכות כלים למנהלים, וליווי אישי אופציונלי
-              להטמעת השפה בתרבות הארגונית.
+              משאבים מתמשכים, ערכות כלים למנהלים, וליווי אישי אופציונלי להטמעת
+              השפה בתרבות הארגונית.
             </p>
             <div class="step-hours">אופציונלי</div>
           </div>
@@ -1513,8 +1567,8 @@
           <div class="impl-card rev d1">
             <h4>יישום ארגוני מלא</h4>
             <p>
-              יישום מותאם אישית ורב-שכבתי בכל הארגון. כולל אפשרות להכשרת
-              מנחים פנים-ארגוניים.
+              יישום מותאם אישית ורב-שכבתי בכל הארגון. כולל אפשרות להכשרת מנחים
+              פנים-ארגוניים.
             </p>
           </div>
           <div class="impl-card rev d2">
@@ -1538,11 +1592,11 @@
           <div class="qf-mark">"</div>
           <p class="qf-text">
             מהפכת הבינה המלאכותית היא בעלת פוטנציאל בלתי נתפס, אך גם מייצרת
-            מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות של
-            טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים
-            לגבש שפה ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים
-            משמעותיות, חוסן אישי וקבוצתי, ומאפשרת לארגונים גלובליים
-            להתמודד בהצלחה עם אי-הוודאות של ימינו.
+            מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות של טיפוח
+            המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים לגבש שפה
+            ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים משמעותיות, חוסן אישי
+            וקבוצתי, ומאפשרת לארגונים גלובליים להתמודד בהצלחה עם אי-הוודאות של
+            ימינו.
           </p>
           <div class="qf-author">
             <img
@@ -1568,21 +1622,20 @@
         </div>
         <div class="about-grid">
           <div class="about-photo rev">
-            <img src="assets/img/hands square.png" alt="קהילת בית חולמים" />
+            <img src="assets/img/16 מעלות.png" alt="שביל אבנים אל הים בשקיעה" />
           </div>
           <div class="rev d1">
             <p class="ab-body" style="margin: 0 0 1.2rem">
-              16 המעלות היא תוכנית בינלאומית לחוסן רגשי-חברתי, הפעילה
-              ביותר מ-22 מדינות ומועברת ליחידים, משפחות, בתי ספר וגם
-              לארגונים עסקיים ברחבי העולם.
+              16 המעלות היא תוכנית בינלאומית לחוסן רגשי-חברתי, הפעילה ביותר מ-22
+              מדינות ומועברת ליחידים, משפחות, בתי ספר וגם לארגונים עסקיים ברחבי
+              העולם.
             </p>
             <p class="ab-body" style="margin: 0 0 1.2rem">
-              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות
-              בישראל מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של
-              התוכנית לארגונים ישראליים, תוך התאמתה לתרבות המקומית ושימור
-              עומקה והקפדתה הבינלאומיים. המנחות והמנחים שלנו הם אנשי מקצוע
-              מוסמכים בעלי רקע בפסיכולוגיה ארגונית, אימון (קואצ'ינג)
-              ופיתוח מנהיגות.
+              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות בישראל
+              מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של התוכנית
+              לארגונים ישראליים, תוך התאמתה לתרבות המקומית ושימור עומקה והקפדתה
+              הבינלאומיים. המנחות והמנחים שלנו הם אנשי מקצוע מוסמכים בעלי רקע
+              בפסיכולוגיה ארגונית, אימון (קואצ'ינג) ופיתוח מנהיגות.
             </p>
             <ul class="about-stats">
               <li>נציגה רשמית בישראל של תוכנית בינלאומית</li>
@@ -1601,21 +1654,25 @@
     <section class="ab-sec bg-grey" id="faq">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• שאלות נפוצות •</span>
+          <span class="eyebrow rev" style="color: var(--blue)"
+            >• שאלות נפוצות •</span
+          >
           <h2 class="h3d rev">שאלות נפוצות</h2>
         </div>
         <div class="faq-list rev">
           <div class="faq-item">
             <button class="faq-q">
-              <span>במה זה שונה מתוכניות מנהיגות או אינטליגנציה רגשית אחרות?</span>
+              <span
+                >במה זה שונה מתוכניות מנהיגות או אינטליגנציה רגשית אחרות?</span
+              >
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
               <p>
-                רוב תוכניות המנהיגות מתמקדות במיומנויות וביכולות. 16
-                המעלות בונה את תשתית הערכים הבסיסית — השפה הערכית-רגשית
-                המשותפת — שהופכת את אותן מיומנויות לבנות-קיימא. התוכנית
-                פועלת ברמת התרבות הארגונית, לא רק ברמת היכולת האישית.
+                רוב תוכניות המנהיגות מתמקדות במיומנויות וביכולות. 16 המעלות בונה
+                את תשתית הערכים הבסיסית — השפה הערכית-רגשית המשותפת — שהופכת את
+                אותן מיומנויות לבנות-קיימא. התוכנית פועלת ברמת התרבות הארגונית,
+                לא רק ברמת היכולת האישית.
               </p>
             </div>
           </div>
@@ -1626,9 +1683,9 @@
             </button>
             <div class="faq-a">
               <p>
-                כן. התוכנית מודולרית וניתנת להתאמה. אנו עובדים יחד עם
-                צוותי משאבי האנוש ופיתוח ארגוני שלכם כדי לוודא שהתוכן
-                מתחבר להקשר הארגוני, לאתגרים ולשפה הייחודיים לכם.
+                כן. התוכנית מודולרית וניתנת להתאמה. אנו עובדים יחד עם צוותי
+                משאבי האנוש ופיתוח ארגוני שלכם כדי לוודא שהתוכן מתחבר להקשר
+                הארגוני, לאתגרים ולשפה הייחודיים לכם.
               </p>
             </div>
           </div>
@@ -1639,8 +1696,8 @@
             </button>
             <div class="faq-a">
               <p>
-                מסדנת היכרות ועד יישום ארגוני מלא. ההיקף המתאים תלוי
-                ביעדים שלכם. אנו ממליצים להתחיל בשיחת היכרות.
+                מסדנת היכרות ועד יישום ארגוני מלא. ההיקף המתאים תלוי ביעדים
+                שלכם. אנו ממליצים להתחיל בשיחת היכרות.
               </p>
             </div>
           </div>
@@ -1651,8 +1708,8 @@
             </button>
             <div class="faq-a">
               <p>
-                בישראל, הסדנאות מועברות בעברית ובאנגלית. ניתן לפנות
-                לבירור לגבי שפות נוספות או העברה בינלאומית.
+                בישראל, הסדנאות מועברות בעברית ובאנגלית. ניתן לפנות לבירור לגבי
+                שפות נוספות או העברה בינלאומית.
               </p>
             </div>
           </div>
@@ -1663,12 +1720,11 @@
             </button>
             <div class="faq-a">
               <p>
-                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב
-                נתונים ארוך טווח. הדבר כולל הערכות לפני ואחרי התוכנית,
-                כלי משוב למנהלים, וסקרי תחושה אופציונליים. בנוסף, אנו
-                מזמינים ארגונים שעברו את התוכנית להשתתף במחקר אקדמי רחב
-                יותר על ההשפעה ארוכת הטווח של התוכניות שלנו, הנערך בשיתוף
-                עם הפורום האקדמי שלנו.
+                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב נתונים
+                ארוך טווח. הדבר כולל הערכות לפני ואחרי התוכנית, כלי משוב
+                למנהלים, וסקרי תחושה אופציונליים. בנוסף, אנו מזמינים ארגונים
+                שעברו את התוכנית להשתתף במחקר אקדמי רחב יותר על ההשפעה ארוכת
+                הטווח של התוכניות שלנו, הנערך בשיתוף עם הפורום האקדמי שלנו.
               </p>
             </div>
           </div>
@@ -1682,8 +1738,8 @@
         <div class="contact-inner">
           <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
           <p class="sub rev">
-            מוכנים להביא את 16 המעלות לארגון שלכם? קבעו שיחת היכרות. נלמד
-            על הצרכים של הארגון שלכם ונבחן יחד איזו תוכנית מתאימה עבורכם.
+            מוכנים להביא את 16 המעלות לארגון שלכם? קבעו שיחת היכרות. נלמד על
+            הצרכים של הארגון שלכם ונבחן יחד איזו תוכנית מתאימה עבורכם.
           </p>
 
           <form
@@ -1692,29 +1748,52 @@
             action="https://formsubmit.co/info@dreamers.com"
             method="POST"
           >
-            <input type="hidden" name="_subject" value="פנייה חדשה מדף עסקים — 16 המעלות" />
+            <input
+              type="hidden"
+              name="_subject"
+              value="פנייה חדשה מדף עסקים — 16 המעלות"
+            />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
+            <input
+              type="text"
+              name="_honey"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
 
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">שם מלא <span class="req">*</span></label>
+                <label class="form-label"
+                  >שם מלא <span class="req">*</span></label
+                >
                 <input class="form-input" type="text" name="שם מלא" required />
               </div>
               <div class="form-field">
-                <label class="form-label">ארגון / חברה <span class="req">*</span></label>
-                <input class="form-input" type="text" name="ארגון / חברה" required />
+                <label class="form-label"
+                  >ארגון / חברה <span class="req">*</span></label
+                >
+                <input
+                  class="form-input"
+                  type="text"
+                  name="ארגון / חברה"
+                  required
+                />
               </div>
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">תפקיד <span class="req">*</span></label>
+                <label class="form-label"
+                  >תפקיד <span class="req">*</span></label
+                >
                 <input class="form-input" type="text" name="תפקיד" required />
               </div>
               <div class="form-field">
-                <label class="form-label">דוא"ל <span class="req">*</span></label>
-                <input class="form-input" type="email" name="דוא&quot;ל" required />
+                <label class="form-label"
+                  >דוא"ל <span class="req">*</span></label
+                >
+                <input class="form-input" type="email" name='דוא"ל' required />
               </div>
             </div>
             <div class="form-row">
@@ -1730,23 +1809,40 @@
                 </button>
                 <div class="ms-panel" id="msPanel">
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="פיתוח מנהיגות" />פיתוח
-                    מנהיגות</label
+                    ><input
+                      type="checkbox"
+                      name="מה הביא אתכם אלינו"
+                      value="פיתוח מנהיגות"
+                    />פיתוח מנהיגות</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="תרבות וערכים" />תרבות
-                    וערכים</label
+                    ><input
+                      type="checkbox"
+                      name="מה הביא אתכם אלינו"
+                      value="תרבות וערכים"
+                    />תרבות וערכים</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="חוסן צוותי" />חוסן
-                    צוותי</label
+                    ><input
+                      type="checkbox"
+                      name="מה הביא אתכם אלינו"
+                      value="חוסן צוותי"
+                    />חוסן צוותי</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="תוכנית למשאבי אנוש" />תוכנית
-                    למשאבי אנוש</label
+                    ><input
+                      type="checkbox"
+                      name="מה הביא אתכם אלינו"
+                      value="תוכנית למשאבי אנוש"
+                    />תוכנית למשאבי אנוש</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" id="msOtherCheck" name="מה הביא אתכם אלינו" value="אחר" />אחר</label
+                    ><input
+                      type="checkbox"
+                      id="msOtherCheck"
+                      name="מה הביא אתכם אלינו"
+                      value="אחר"
+                    />אחר</label
                   >
                 </div>
               </div>
@@ -1789,7 +1885,10 @@
             <p class="footer-desc">
               עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
-            <div class="socials" style="display: flex; gap: 0.75rem; margin-top: 1.4rem">
+            <div
+              class="socials"
+              style="display: flex; gap: 0.75rem; margin-top: 1.4rem"
+            >
               <a
                 href="#"
                 style="
@@ -1847,7 +1946,9 @@
               <li><a href="about.html">אודות</a></li>
               <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
               <li><a href="education.html">16 המעלות בחינוך</a></li>
-              <li><a href="business.html" class="active">16 המעלות בעסקים</a></li>
+              <li>
+                <a href="business.html" class="active">16 המעלות בחברות</a>
+              </li>
             </ul>
           </div>
           <div class="footer-contact">

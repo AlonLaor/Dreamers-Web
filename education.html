@@ -27,7 +27,12 @@
         --text-mid: #4a637c;
         --text-lt: #7a99b0;
         --shadow: rgba(0, 67, 120, 0.15);
-        --g-main: linear-gradient(140deg, #002952 0%, #004378 55%, #0c6080 100%);
+        --g-main: linear-gradient(
+          140deg,
+          #002952 0%,
+          #004378 55%,
+          #0c6080 100%
+        );
         --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
         --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
       }
@@ -165,6 +170,12 @@
         transition: all 0.4s ease;
         background: rgba(0, 25, 55, 0.96);
         backdrop-filter: blur(20px);
+      }
+      /* Right group: logo + links together (match homepage) */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
       }
       .logo {
         display: flex;
@@ -416,16 +427,36 @@
         transform: translateY(-6px);
       }
       .theme-thinking {
-        background: linear-gradient(145deg, #001a1a 0%, #005555 40%, #007a7a 100%);
+        background: linear-gradient(
+          145deg,
+          #001a1a 0%,
+          #005555 40%,
+          #007a7a 100%
+        );
       }
       .theme-acting {
-        background: linear-gradient(145deg, #00241a 0%, #005c3d 40%, #007a55 100%);
+        background: linear-gradient(
+          145deg,
+          #00241a 0%,
+          #005c3d 40%,
+          #007a55 100%
+        );
       }
       .theme-relating {
-        background: linear-gradient(145deg, #001530 0%, #002d6b 40%, #004494 100%);
+        background: linear-gradient(
+          145deg,
+          #001530 0%,
+          #002d6b 40%,
+          #004494 100%
+        );
       }
       .theme-meaning {
-        background: linear-gradient(145deg, #1a0d00 0%, #5c2800 40%, #9a5000 100%);
+        background: linear-gradient(
+          145deg,
+          #1a0d00 0%,
+          #5c2800 40%,
+          #9a5000 100%
+        );
       }
       .theme-count {
         margin-top: 1.6rem;
@@ -486,10 +517,10 @@
         box-shadow: 0 10px 24px rgba(245, 166, 35, 0.4);
       }
       .stat-frame p {
-        font-size: 1.02rem;
+        font-size: 1.18rem;
         line-height: 1.85;
         color: var(--text);
-        font-weight: 500;
+        font-weight: 700;
       }
       .stat-frame strong {
         color: var(--blue);
@@ -500,6 +531,43 @@
         font-style: normal;
         font-size: 0.82rem;
         color: var(--text-lt);
+        font-weight: 400;
+      }
+      .stat-src-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-top: 0.9rem;
+        padding: 0.5rem 1.1rem;
+        border-radius: 50px;
+        background: rgba(0, 67, 120, 0.07);
+        border: 1px solid rgba(0, 67, 120, 0.18);
+        color: var(--blue);
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .stat-src-link:hover {
+        background: var(--blue);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(0, 67, 120, 0.25);
+      }
+      .stat-logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.2rem;
+        flex-wrap: wrap;
+        margin-top: 1.6rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(245, 166, 35, 0.3);
+      }
+      .stat-logos img {
+        height: 54px;
+        width: auto;
+        object-fit: contain;
       }
 
       /* ═══ PERSONA CARDS ═══ */
@@ -511,7 +579,12 @@
         margin: 0 auto;
       }
       .persona-card {
-        background: linear-gradient(150deg, #f4f9ff 0%, #e7f1fb 55%, #dfeef8 100%);
+        background: linear-gradient(
+          150deg,
+          #f4f9ff 0%,
+          #e7f1fb 55%,
+          #dfeef8 100%
+        );
         border-radius: 22px;
         padding: 2.2rem 1.8rem;
         box-shadow:
@@ -578,24 +651,56 @@
         right: 12%;
         left: 12%;
         height: 3px;
-        background: linear-gradient(90deg, var(--teal), var(--blue), var(--gold));
-        opacity: 0.35;
+        background: linear-gradient(
+          90deg,
+          var(--teal),
+          var(--blue),
+          var(--gold),
+          var(--teal)
+        );
+        background-size: 300% 100%;
+        animation: lineFlow 7s linear infinite;
+        opacity: 0.5;
         z-index: 0;
+      }
+      @keyframes lineFlow {
+        to {
+          background-position: 300% 0;
+        }
       }
       .step-card {
         position: relative;
         z-index: 1;
-        background: #fff;
-        border-radius: 20px;
-        padding: 2.3rem 1.4rem 1.7rem;
+        background: linear-gradient(165deg, #ffffff 0%, #f3f9ff 100%);
+        border-radius: 22px;
+        border-top: 5px solid var(--step-c, var(--teal));
+        padding: 2.4rem 1.4rem 1.8rem;
         text-align: center;
         box-shadow:
           0 4px 10px rgba(0, 67, 120, 0.07),
-          0 20px 45px var(--shadow);
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          0 24px 55px var(--shadow),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition:
+          transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.45s;
+      }
+      .step-card:nth-child(1) {
+        --step-c: #0f7f86;
+      }
+      .step-card:nth-child(2) {
+        --step-c: #0a6a45;
+      }
+      .step-card:nth-child(3) {
+        --step-c: #123f8f;
+      }
+      .step-card:nth-child(4) {
+        --step-c: #9a5b12;
       }
       .step-card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-12px) scale(1.03);
+        box-shadow:
+          0 8px 16px rgba(0, 67, 120, 0.1),
+          0 36px 80px rgba(0, 67, 120, 0.25);
       }
       .step-num {
         width: 68px;
@@ -608,11 +713,19 @@
         font-size: 1.5rem;
         font-weight: 900;
         color: #fff;
-        background: var(--g-main);
+        background: linear-gradient(
+          145deg,
+          var(--step-c, var(--blue)) 0%,
+          #002952 130%
+        );
         box-shadow:
-          0 10px 26px rgba(0, 67, 120, 0.45),
-          inset 0 2px 4px rgba(255, 255, 255, 0.25),
-          inset 0 -4px 8px rgba(0, 0, 0, 0.25);
+          0 12px 30px rgba(0, 67, 120, 0.45),
+          inset 0 3px 5px rgba(255, 255, 255, 0.35),
+          inset 0 -5px 9px rgba(0, 0, 0, 0.3);
+        transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .step-card:hover .step-num {
+        transform: scale(1.12) rotate(6deg);
       }
       .step-card h3 {
         color: var(--blue);
@@ -746,31 +859,63 @@
       }
       .about-stats {
         list-style: none;
-        margin-top: 1.6rem;
+        margin-top: 1.8rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem;
       }
       .about-stats li {
         position: relative;
-        padding-inline-start: 2rem;
-        margin-bottom: 0.85rem;
+        padding: 1rem 1.1rem;
+        padding-inline-start: 3.4rem;
+        background: linear-gradient(150deg, #ffffff 0%, #eef7ff 100%);
+        border: 1px solid rgba(0, 67, 120, 0.1);
+        border-radius: 16px;
         color: var(--text-mid);
-        font-size: 0.98rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.5;
+        display: flex;
+        align-items: center;
+        box-shadow:
+          0 3px 6px rgba(0, 67, 120, 0.06),
+          0 14px 28px rgba(0, 67, 120, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition:
+          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s;
+      }
+      .about-stats li:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow:
+          0 6px 12px rgba(0, 67, 120, 0.08),
+          0 22px 44px rgba(0, 67, 120, 0.2);
       }
       .about-stats li::before {
         content: "✓";
         position: absolute;
-        inset-inline-start: 0;
-        top: 0;
-        width: 22px;
-        height: 22px;
+        inset-inline-start: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         background: var(--g-teal);
         color: var(--blue-dk);
-        font-size: 0.72rem;
+        font-size: 0.8rem;
         font-weight: 900;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow:
+          0 6px 14px rgba(72, 217, 211, 0.5),
+          inset 0 2px 3px rgba(255, 255, 255, 0.6),
+          inset 0 -3px 5px rgba(0, 60, 60, 0.25);
+      }
+      @media (max-width: 640px) {
+        .about-stats {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* ═══ FAQ ACCORDION ═══ */
@@ -925,7 +1070,12 @@
 
       /* ═══ FOOTER ═══ */
       footer {
-        background: linear-gradient(135deg, #e0f7f6 0%, #d0f0ff 40%, #e8f9ff 100%);
+        background: linear-gradient(
+          135deg,
+          #e0f7f6 0%,
+          #d0f0ff 40%,
+          #e8f9ff 100%
+        );
         color: var(--blue);
         padding: 5rem 2rem 2.5rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
@@ -1122,47 +1272,51 @@
   <body>
     <!-- ════════════ NAV ════════════ -->
     <nav id="nav">
-      <a href="index.html#hero" class="logo">
-        <img
-          src="assets/img/logo-beit-holmim-white.png"
-          alt="בית חולמים - Dreamers Home"
-          class="logo-img"
-        />
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html#intro">דף הבית</a></li>
-        <li><a href="about.html">אודות</a></li>
-        <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
-        <li class="has-dropdown">
-          <a href="index.html#activities" class="dd-trigger"
-            >הפעילויות שלנו <span class="dd-arrow">▾</span></a
-          >
-          <ul class="dropdown-menu">
-            <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
-            <li><a href="business.html">16 המעלות בעסקים</a></li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >16 המעלות בבריאות הנפש</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >16 המעלות בקהילה</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >קבוצות תרגול וסדנאות פרטיות</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li><a href="index.html#activities">אזור למידה</a></li>
-        <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
-      </ul>
+      <div class="nav-right">
+        <a href="index.html#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html#intro">דף הבית</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="index.html#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li>
+                <a href="education.html" class="active">16 המעלות בחינוך</a>
+              </li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בבריאות הנפש</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בקהילה</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >קבוצות תרגול וסדנאות פרטיות</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="index.html#activities">אזור למידה</a></li>
+          <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
+        </ul>
+      </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1172,15 +1326,15 @@
 
     <!-- ════════════ PAGE HEADER ════════════ -->
     <header id="page-header">
-      <div class="crumbs">
-        <a href="index.html">דף הבית</a> &nbsp;/&nbsp; 16 המעלות בחינוך
-      </div>
-      <h1 class="h3d h3d-white rev" style="text-align: center; margin: 0 auto 1.2rem">
+      <h1
+        class="h3d h3d-white rev"
+        style="text-align: center; margin: 0 auto 1.2rem"
+      >
         16 המעלות בחינוך
       </h1>
       <p class="sub rev d1">
-        תוכנית SEEL בינלאומית לחוסן רגשי-חברתי-ערכי — לתלמידות ותלמידים,
-        לצוותי הוראה ולהורים
+        תוכנית SEEL בינלאומית לחוסן רגשי-חברתי-ערכי — לתלמידות ותלמידים, לצוותי
+        הוראה ולהורים
       </p>
       <div class="rev d2">
         <a href="#contact-form" class="btn btn-gold">בואו נתחיל שיחה</a>
@@ -1192,18 +1346,16 @@
       <div class="wrap">
         <div class="ab-hdr">
           <p class="ab-body rev">
-            16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח
-            ערכים אוניברסליים וחיים בעלי משמעות. התוכנית מספקת מענה עמוק
-            ורוחבי ליעדי משרד החינוך, ומלמדת כישורים ומיומנויות SEEL
-            (חינוך רגשי-חברתי-ערכי) המותאמים לתלמידות ותלמידים, לצוותי
-            הוראה ולהורים.
+            16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
+            אוניברסליים וחיים בעלי משמעות. התוכנית מספקת מענה עמוק ורוחבי ליעדי
+            משרד החינוך, ומלמדת כישורים ומיומנויות SEEL (חינוך רגשי-חברתי-ערכי)
+            המותאמים לתלמידות ותלמידים, לצוותי הוראה ולהורים.
           </p>
           <p class="ab-body rev d1">
-            באמצעות הטמעת ערכים אוניברסליים (כמו ענווה, טוב לב, סליחה
-            ושאיפות), התוכנית פועלת לביסוס שפה ערכית משותפת ותרבות
-            חינוכית ערכית-קהילתית, ומסייעת לצוותי הוראה, לתלמידים
-            ולהורים לפתח קשיבות, להכיר את עצמם לעומק, לשפר את מערכות
-            היחסים שלהם ולמצוא שלוות-נפש.
+            באמצעות הטמעת ערכים אוניברסליים (כמו ענווה, טוב לב, סליחה ושאיפות),
+            התוכנית פועלת לביסוס שפה ערכית משותפת ותרבות חינוכית ערכית-קהילתית,
+            ומסייעת לצוותי הוראה, לתלמידים ולהורים לפתח קשיבות, להכיר את עצמם
+            לעומק, לשפר את מערכות היחסים שלהם ולמצוא שלוות-נפש.
           </p>
         </div>
 
@@ -1213,13 +1365,11 @@
           <div class="theme-chip theme-relating">
             הדרך שאנו מתייחסות.ים לזולת
           </div>
-          <div class="theme-chip theme-meaning">
-            הדרך שאנו מוצאות.ים משמעות
-          </div>
+          <div class="theme-chip theme-meaning">הדרך שאנו מוצאות.ים משמעות</div>
         </div>
         <p class="theme-count rev d3">
-          בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות
-          שפה חברתית-רגשית-ערכית הפועלת בכל שכבות הגיל ובכל מגזרי החינוך.
+          בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות שפה
+          חברתית-רגשית-ערכית הפועלת בכל שכבות הגיל ובכל מגזרי החינוך.
         </p>
       </div>
     </section>
@@ -1228,14 +1378,13 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• למה עכשיו •</span>
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
         <p class="ab-body rev">
-          העולם זקוק למערכת חינוך חדשה, כזו שתעניק לאנשים דרך חדשה ורחבה
-          להתבונן בעצמם ובעולם, שתטפח לא רק את המוח, אלא גם את הלב. מערכת
-          החינוך ניצבת מול אתגרים הולכים וגדלים: כיתות גדולות, מוסחות
-          בגלל מסכים, פערים חברתיים, ותקופה ממושכת של חירום ומלחמה.
+          העולם זקוק למערכת חינוך חדשה, כזו שתעניק לאנשים דרך חדשה ורחבה להתבונן
+          בעצמם ובעולם, שתטפח לא רק את המוח, אלא גם את הלב. מערכת החינוך ניצבת
+          מול אתגרים הולכים וגדלים: כיתות גדולות, מוסחות בגלל מסכים, פערים
+          חברתיים, ותקופה ממושכת של חירום ומלחמה.
         </p>
         <p class="ab-body rev d1" style="font-weight: 700; color: var(--blue)">
           התוצאה:
@@ -1244,30 +1393,46 @@
           <li>עלייה במצוקה הרגשית ובתחושת הבדידות</li>
           <li>ירידה בתחושת השייכות והמוגנות בבית הספר</li>
           <li>
-            שחיקה של צוותי החינוך, שמתקשים להכיל את הצרכים הרגשיים של
-            התלמידים
+            שחיקה של צוותי החינוך, שמתקשים להכיל את הצרכים הרגשיים של התלמידים
           </li>
           <li>קושי גובר ביצירת שיח משותף בין תלמידים, הורים ומורים</li>
         </ul>
         <p class="ab-body rev d2" style="margin-top: 1.6rem">
-          תוכנית 16 המעלות בחינוך מציעה כלים מעשיים שכאשר מיישמים אותם,
-          הם מביאים ליותר קשיבות, בהירות ושלווה פנימית.
+          תוכנית 16 המעלות בחינוך מציעה כלים מעשיים שכאשר מיישמים אותם, הם
+          מביאים ליותר קשיבות, בהירות ושלווה פנימית.
         </p>
 
         <div class="stat-frame rev d3">
           <div class="stat-frame-ico">📊</div>
           <div>
             <p>
-              כ-<strong>31%</strong> מבני הנוער בישראל מדווחים על רווחה
-              נפשית ירודה, ושיעור הדיווח על מצוקה נפשית עולה ככל שעולה
-              הגיל.
+              כ-<strong>31%</strong> מבני הנוער בישראל מדווחים על רווחה נפשית
+              ירודה, ושיעור הדיווח על מצוקה נפשית עולה ככל שעולה הגיל.
               <cite
-                >(הראל-פיש ואחרים, "נוער בישראל: בריאות, רווחה נפשית
-                וחברתית ודפוסי התנהגויות סיכון", משרד הבריאות, משרד
-                החינוך ואוניברסיטת בר-אילן, 2023 — לנתונים נוספים ראו דוח
-                "נוער בישראל 2023")</cite
+                >(הראל-פיש ואחרים, "נוער בישראל: בריאות, רווחה נפשית וחברתית
+                ודפוסי התנהגויות סיכון", משרד הבריאות, משרד החינוך ואוניברסיטת
+                בר-אילן, 2023 — לנתונים נוספים ראו דוח "נוער בישראל 2023")</cite
               >
             </p>
+            <a
+              class="stat-src-link"
+              href="https://www.gov.il/he/pages/youth-in-israel-2023"
+              target="_blank"
+              rel="noopener"
+              >לצפייה במחקר המלא — דוח "נוער בישראל 2023" ↗</a
+            >
+            <div class="stat-logos">
+              <img
+                src="assets/img/World Health Organization - Logo.png"
+                alt="World Health Organization"
+              />
+              <img src="assets/img/משרך החינוך.png" alt="משרד החינוך" />
+              <img
+                src="assets/img/משרד הבריאות - LOGO.png"
+                alt="משרד הבריאות"
+              />
+              <img src="assets/img/HSBC - LOGO.png" alt="HBSC Israel" />
+            </div>
           </div>
         </div>
       </div>
@@ -1281,17 +1446,16 @@
           <h2 class="h3d rev">למי זה מיועד</h2>
           <p class="sub rev">
             בין אם אתם בית ספר יסודי, חטיבת ביניים, תיכון או מסגרת
-            חינוכית-טיפולית, הצורך בשפה אנושית משותפת זהה. 16 המעלות
-            מתאימה את עצמה לשכבת הגיל, לאופי בית הספר וליעדים החינוכיים
-            שלכם.
+            חינוכית-טיפולית, הצורך בשפה אנושית משותפת זהה. 16 המעלות מתאימה את
+            עצמה לשכבת הגיל, לאופי בית הספר וליעדים החינוכיים שלכם.
           </p>
         </div>
         <div class="persona-grid">
           <div class="persona-card rev">
             <h3>הנהלת בית הספר</h3>
             <p>
-              להוביל את בית הספר מתוך חזון ערכי ברור, גם בתקופות של
-              אי-ודאות. לבנות אקלים בית-ספרי ששורד משברים.
+              להוביל את בית הספר מתוך חזון ערכי ברור, גם בתקופות של אי-ודאות.
+              לבנות אקלים בית-ספרי ששורד משברים.
             </p>
             <div class="persona-result">
               תוצאה: חזון חינוכי ברור + אקלים בית-ספרי יציב
@@ -1300,8 +1464,8 @@
           <div class="persona-card rev d1">
             <h3>צוותי הוראה וחינוך</h3>
             <p>
-              לשלב את 16 המעלות בשיעורי חינוך, שעות חברתיות ובשגרת
-              הכיתה. ערכת כלים מודולרית, מוכרת בגפ"ן.
+              לשלב את 16 המעלות בשיעורי חינוך, שעות חברתיות ובשגרת הכיתה. ערכת
+              כלים מודולרית, מוכרת בגפ"ן.
             </p>
             <div class="persona-result">
               תוצאה: כלים מעשיים ושפה משותפת בכיתה
@@ -1310,8 +1474,8 @@
           <div class="persona-card rev d2">
             <h3>תלמידות ותלמידים</h3>
             <p>
-              להכיר את עצמם לעומק, לזהות רגשות ולווסת אותם, ולבנות
-              מערכות יחסים בריאות עם חברים ומבוגרים.
+              להכיר את עצמם לעומק, לזהות רגשות ולווסת אותם, ולבנות מערכות יחסים
+              בריאות עם חברים ומבוגרים.
             </p>
             <div class="persona-result">
               תוצאה: ביטחון עצמי, שייכות וחוסן אישי
@@ -1320,8 +1484,8 @@
           <div class="persona-card rev">
             <h3>הורים ומשפחות</h3>
             <p>
-              שפה משותפת בין הבית לבית הספר, המאפשרת המשכיות בטיפוח
-              הערכים גם מחוץ לכיתה.
+              שפה משותפת בין הבית לבית הספר, המאפשרת המשכיות בטיפוח הערכים גם
+              מחוץ לכיתה.
             </p>
             <div class="persona-result">
               תוצאה: שיח משפחתי עמוק יותר ותחושת שותפות
@@ -1330,18 +1494,16 @@
           <div class="persona-card rev d1">
             <h3>קציני ביקור סדיר ומרכזי הורות</h3>
             <p>
-              כלים לעבודה עם נוער בסיכון נשירה ועם הורים, מתוך שפה
-              רגשית-ערכית נגישה.
+              כלים לעבודה עם נוער בסיכון נשירה ועם הורים, מתוך שפה רגשית-ערכית
+              נגישה.
             </p>
-            <div class="persona-result">
-              תוצאה: חיבור מחודש למסגרת ולמשמעות
-            </div>
+            <div class="persona-result">תוצאה: חיבור מחודש למסגרת ולמשמעות</div>
           </div>
           <div class="persona-card rev d2">
             <h3>רשויות ומנהלי חינוך</h3>
             <p>
-              תוכנית דגל מוכרת, הניתנת ליישום רוחבי ברשות. מענה עמוק
-              ליעדי משרד החינוך.
+              תוכנית דגל מוכרת, הניתנת ליישום רוחבי ברשות. מענה עמוק ליעדי משרד
+              החינוך.
             </p>
             <div class="persona-result">תוצאה: שפה ערכית אחידה ברשות</div>
           </div>
@@ -1353,12 +1515,14 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• איך זה עובד •</span>
+          <span class="eyebrow rev" style="color: var(--blue)"
+            >• איך זה עובד •</span
+          >
           <h2 class="h3d rev">איך זה עובד</h2>
           <p class="sub rev">
-            16 המעלות בחינוך היא תוכנית מוכרת בגפ"ן (תוכנית 10438),
-            המועברת בסדנאות, שיעורים ותהליכי הכשרה לצוותי הוראה, תלמידים
-            והורים, ומותאמת לשכבת הגיל, לאופי בית הספר ולצרכי הרשות.
+            16 המעלות בחינוך היא תוכנית מוכרת בגפ"ן (תוכנית 10438), המועברת
+            בסדנאות, שיעורים ותהליכי הכשרה לצוותי הוראה, תלמידים והורים, ומותאמת
+            לשכבת הגיל, לאופי בית הספר ולצרכי הרשות.
           </p>
         </div>
 
@@ -1367,24 +1531,23 @@
             <div class="step-num">1</div>
             <h3>יסודות</h3>
             <p>
-              לימוד המסגרת התיאורטית והערכית של 16 המעלות, מותאם לשכבת
-              הגיל.
+              לימוד המסגרת התיאורטית והערכית של 16 המעלות, מותאם לשכבת הגיל.
             </p>
             <p class="step-result">
-              <strong>תוצאה:</strong> היכרות ברורה ומגולמת עם 16 המעלות,
-              וערכת כלים ראשונית ליישום בכיתה
+              <strong>תוצאה:</strong> היכרות ברורה ומגולמת עם 16 המעלות, וערכת
+              כלים ראשונית ליישום בכיתה
             </p>
           </div>
           <div class="step-card rev d1">
             <div class="step-num">2</div>
             <h3>הטמעה</h3>
             <p>
-              מעבר מהבנה לתרגול: שילוב המעלות בשיעורי חינוך, בשעות
-              חברתיות ובשגרת בית הספר.
+              מעבר מהבנה לתרגול: שילוב המעלות בשיעורי חינוך, בשעות חברתיות
+              ובשגרת בית הספר.
             </p>
             <p class="step-result">
-              <strong>תוצאה:</strong> הטמעה אמיתית של המעלות בחשיבה,
-              ביחסים ובחיי בית הספר היומיומיים — לא רק ידע תיאורטי
+              <strong>תוצאה:</strong> הטמעה אמיתית של המעלות בחשיבה, ביחסים
+              ובחיי בית הספר היומיומיים — לא רק ידע תיאורטי
             </p>
           </div>
           <div class="step-card rev d2">
@@ -1392,17 +1555,16 @@
             <h3>העמקה</h3>
             <p>הכשרת צוותי הוראה להנחיה ולהוראה עצמאית של התוכנית.</p>
             <p class="step-result">
-              <strong>תוצאה:</strong> מוכנות של הצוות הבית-ספרי להכיל את
-              מלוא העומק של התוכנית, ועבור מי שבוחר בכך — להנחות אותה
-              בעצמו
+              <strong>תוצאה:</strong> מוכנות של הצוות הבית-ספרי להכיל את מלוא
+              העומק של התוכנית, ועבור מי שבוחר בכך — להנחות אותה בעצמו
             </p>
           </div>
           <div class="step-card rev d3">
             <div class="step-num">4</div>
             <h3>ליווי המשך</h3>
             <p>
-              משאבים מתמשכים, ערכות כלים למורים, וליווי אישי אופציונלי
-              להטמעת השפה בתרבות בית הספר.
+              משאבים מתמשכים, ערכות כלים למורים, וליווי אישי אופציונלי להטמעת
+              השפה בתרבות בית הספר.
             </p>
           </div>
         </div>
@@ -1415,8 +1577,7 @@
           <div class="impl-card rev d1">
             <h4>יישום בית-ספרי מלא</h4>
             <p>
-              תוכנית רב-שנתית המשולבת בשעות חינוך, ביום חברתי ובהכשרת
-              הצוות.
+              תוכנית רב-שנתית המשולבת בשעות חינוך, ביום חברתי ובהכשרת הצוות.
             </p>
           </div>
           <div class="impl-card rev d2">
@@ -1424,7 +1585,10 @@
             <p>הטמעה רוחבית במספר בתי ספר ברשות, בליווי מנהל החינוך.</p>
           </div>
         </div>
-        <p style="text-align: center; margin-top: 1.6rem; color: var(--text-mid)" class="rev">
+        <p
+          style="text-align: center; margin-top: 1.6rem; color: var(--text-mid)"
+          class="rev"
+        >
           שפות: מועבר בעברית. שפות נוספות זמינות לפי בקשה.
         </p>
 
@@ -1439,21 +1603,26 @@
     <!-- ════════════ TESTIMONIALS ════════════ -->
     <section id="quote-duo">
       <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d h3d-white rev" style="text-align: center">
+            מה אומרים עלינו
+          </h2>
+        </div>
         <div class="quote-duo-grid">
           <div class="qf-card rev">
             <div class="qf-mark">"</div>
             <p class="qf-text">
-              איך מיישמים? איך מעבירים לילדים? ואז כתבתי בדף: לאהוב את
-              עצמי יותר, ולהעביר את זה הלאה.
+              איך מיישמים? איך מעבירים לילדים? ואז כתבתי בדף: לאהוב את עצמי
+              יותר, ולהעביר את זה הלאה.
             </p>
             <div class="qf-role">גיא, תיכון י"א תל אביב</div>
           </div>
           <div class="qf-card rev d1">
             <div class="qf-mark">"</div>
             <p class="qf-text">
-              ההשתלמות מזכירה את שירו של אלתרמן 'עוד חוזר הניגון שזנחת
-              לשווא...' מי שמתחבר למעלות, חוזר לתזקיק של הניגון שלו. יש
-              משהו במעלות, שזה כמו פרקטיקה של לחזור לניגון.
+              ההשתלמות מזכירה את שירו של אלתרמן 'עוד חוזר הניגון שזנחת לשווא...'
+              מי שמתחבר למעלות, חוזר לתזקיק של הניגון שלו. יש משהו במעלות, שזה
+              כמו פרקטיקה של לחזור לניגון.
             </p>
             <div class="qf-role">סופיה טבנקין (י"א ת"א)</div>
           </div>
@@ -1470,39 +1639,35 @@
         </div>
         <div class="about-grid">
           <div class="about-photo rev">
-            <img src="assets/img/hands square.png" alt="קהילת בית חולמים" />
+            <img src="assets/img/בית חולמים- המשימה שלנו.png" alt="בית חולמים — המשימה שלנו" />
           </div>
           <div class="rev d1">
             <p class="ab-body" style="margin: 0 0 1.2rem">
-              16 המעלות היא תוכנית בינלאומית לחוסן רגשי-חברתי, הפעילה
-              ביותר מ-22 מדינות, ומועברת ליחידים, משפחות, בתי ספר וגם
-              לארגונים עסקיים ברחבי העולם.
+              16 המעלות היא תוכנית בינלאומית לחוסן רגשי-חברתי, הפעילה ביותר מ-22
+              מדינות, ומועברת ליחידים, משפחות, בתי ספר וגם לארגונים עסקיים ברחבי
+              העולם.
             </p>
             <p class="ab-body" style="margin: 0 0 1.2rem">
-              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות
-              בישראל מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של
-              התוכנית למערכת החינוך הישראלית, תוך התאמתה לתרבות המקומית
-              ושימור עומקה והקפדתה הבינלאומיים. המנחות והמנחים שלנו הם
-              אנשי מקצוע מוסמכים, בעלי רקע בחינוך, בפסיכולוגיה ובפיתוח
-              רגשי-חברתי.
+              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות בישראל
+              מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של התוכנית למערכת
+              החינוך הישראלית, תוך התאמתה לתרבות המקומית ושימור עומקה והקפדתה
+              הבינלאומיים. המנחות והמנחים שלנו הם אנשי מקצוע מוסמכים, בעלי רקע
+              בחינוך, בפסיכולוגיה ובפיתוח רגשי-חברתי.
             </p>
             <ul class="about-stats">
               <li>נציגה רשמית בישראל של תוכנית בינלאומית</li>
               <li>תוכנית מוכרת בגפ"ן (תוכנית 10438)</li>
               <li>
-                תוכנית הדגל במנהל חינוך תל אביב-יפו, ופעילה ברשויות
-                נוספות
+                תוכנית הדגל במנהל חינוך תל אביב-יפו, ופעילה ברשויות נוספות
               </li>
               <li>נלמדת ברשויות נוספות, ביניהן נתניה, מאז תשפ"ג</li>
               <li>
-                הועברה בסדנאות למטה מנהל החינוך בתל אביב, לקציני ביקור
-                סדיר ולמרכזי הורות
+                הועברה בסדנאות למטה מנהל החינוך בתל אביב, לקציני ביקור סדיר
+                ולמרכזי הורות
               </li>
               <li>
-                מאות תלמידות ותלמידים, ועשרות מורים וצוותי הוראה,
-                השתתפו בתוכנית
+                מאות תלמידות ותלמידים, ועשרות מורים וצוותי הוראה, השתתפו בתוכנית
               </li>
-              <li>זמינה בעברית</li>
             </ul>
           </div>
         </div>
@@ -1513,7 +1678,9 @@
     <section class="ab-sec bg-grey" id="faq">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• שאלות נפוצות •</span>
+          <span class="eyebrow rev" style="color: var(--blue)"
+            >• שאלות נפוצות •</span
+          >
           <h2 class="h3d rev">שאלות נפוצות</h2>
         </div>
         <div class="faq-list rev">
@@ -1524,11 +1691,10 @@
             </button>
             <div class="faq-a">
               <p>
-                רוב התוכניות לחינוך רגשי-חברתי מתמקדות במיומנויות
-                בודדות. 16 המעלות בונה את תשתית הערכים הבסיסית, השפה
-                הערכית-רגשית המשותפת, שהופכת את אותן מיומנויות
-                לבנות-קיימא. התוכנית פועלת ברמת התרבות הבית-ספרית, לא רק
-                ברמת התלמיד הבודד.
+                רוב התוכניות לחינוך רגשי-חברתי מתמקדות במיומנויות בודדות. 16
+                המעלות בונה את תשתית הערכים הבסיסית, השפה הערכית-רגשית המשותפת,
+                שהופכת את אותן מיומנויות לבנות-קיימא. התוכנית פועלת ברמת התרבות
+                הבית-ספרית, לא רק ברמת התלמיד הבודד.
               </p>
             </div>
           </div>
@@ -1539,9 +1705,8 @@
             </button>
             <div class="faq-a">
               <p>
-                כן. התוכנית מוכרת במערכת גפ"ן (תוכנית 10438), ומשמשת
-                כתוכנית דגל במנהל החינוך בתל אביב-יפו, לצד פעילות
-                ברשויות נוספות.
+                כן. התוכנית מוכרת במערכת גפ"ן (תוכנית 10438), ומשמשת כתוכנית דגל
+                במנהל החינוך בתל אביב-יפו, לצד פעילות ברשויות נוספות.
               </p>
             </div>
           </div>
@@ -1552,9 +1717,9 @@
             </button>
             <div class="faq-a">
               <p>
-                התוכנית מותאמת לעבודה עם תלמידים, צוותי הוראה והורים בכל
-                שכבות הגיל, מבית הספר היסודי ועד התיכון, וכן למרכזי
-                הורות ולקציני ביקור סדיר.
+                התוכנית מותאמת לעבודה עם תלמידים, צוותי הוראה והורים בכל שכבות
+                הגיל, מבית הספר היסודי ועד התיכון, וכן למרכזי הורות ולקציני
+                ביקור סדיר.
               </p>
             </div>
           </div>
@@ -1565,10 +1730,9 @@
             </button>
             <div class="faq-a">
               <p>
-                התוכנית מודולרית וניתנת להתאמה. ניתן לשלב אותה בשעות
-                חינוך, ביום חברתי, בהשתלמויות מורים או כתהליך רב-שנתי.
-                אנו עובדים יחד עם הנהלת בית הספר כדי למצוא את המתכונת
-                המתאימה.
+                התוכנית מודולרית וניתנת להתאמה. ניתן לשלב אותה בשעות חינוך, ביום
+                חברתי, בהשתלמויות מורים או כתהליך רב-שנתי. אנו עובדים יחד עם
+                הנהלת בית הספר כדי למצוא את המתכונת המתאימה.
               </p>
             </div>
           </div>
@@ -1579,9 +1743,9 @@
             </button>
             <div class="faq-a">
               <p>
-                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב
-                נתונים לאורך זמן, ובהם הערכות לפני ואחרי התוכנית, כלי
-                משוב למורים, וסקרי תחושה אופציונליים לתלמידים.
+                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב נתונים
+                לאורך זמן, ובהם הערכות לפני ואחרי התוכנית, כלי משוב למורים,
+                וסקרי תחושה אופציונליים לתלמידים.
               </p>
             </div>
           </div>
@@ -1595,9 +1759,9 @@
         <div class="contact-inner">
           <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
           <p class="sub rev">
-            מוכנים להביא את 16 המעלות לבית הספר או לרשות שלכם? קבעו
-            שיחת היכרות. נלמד על הצרכים של בית הספר או הרשות שלכם ונבחן
-            יחד איזו תוכנית מתאימה עבורכם.
+            מוכנים להביא את 16 המעלות לבית הספר או לרשות שלכם? קבעו שיחת היכרות.
+            נלמד על הצרכים של בית הספר או הרשות שלכם ונבחן יחד איזו תוכנית
+            מתאימה עבורכם.
           </p>
 
           <form
@@ -1606,10 +1770,20 @@
             action="https://formsubmit.co/info@dreamers.com"
             method="POST"
           >
-            <input type="hidden" name="_subject" value="פנייה חדשה מדף חינוך — 16 המעלות" />
+            <input
+              type="hidden"
+              name="_subject"
+              value="פנייה חדשה מדף חינוך — 16 המעלות"
+            />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
+            <input
+              type="text"
+              name="_honey"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
 
             <div class="form-row">
               <div class="form-field">
@@ -1617,18 +1791,29 @@
                 <input class="form-input" type="text" name="שם" required />
               </div>
               <div class="form-field">
-                <label class="form-label">בית ספר / רשות <span class="req">*</span></label>
-                <input class="form-input" type="text" name="בית ספר / רשות" required />
+                <label class="form-label"
+                  >בית ספר / רשות <span class="req">*</span></label
+                >
+                <input
+                  class="form-input"
+                  type="text"
+                  name="בית ספר / רשות"
+                  required
+                />
               </div>
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">תפקיד <span class="req">*</span></label>
+                <label class="form-label"
+                  >תפקיד <span class="req">*</span></label
+                >
                 <input class="form-input" type="text" name="תפקיד" required />
               </div>
               <div class="form-field">
-                <label class="form-label">דוא"ל <span class="req">*</span></label>
-                <input class="form-input" type="email" name="דוא&quot;ל" required />
+                <label class="form-label"
+                  >דוא"ל <span class="req">*</span></label
+                >
+                <input class="form-input" type="email" name='דוא"ל' required />
               </div>
             </div>
             <div class="form-row">
@@ -1658,8 +1843,7 @@
               שליחה
             </button>
             <p class="form-note">
-              בלחיצה על "שליחה" הפנייה תישלח אלינו במייל ונחזור אליכם
-              בהקדם.
+              בלחיצה על "שליחה" הפנייה תישלח אלינו במייל ונחזור אליכם בהקדם.
             </p>
           </form>
         </div>
@@ -1679,7 +1863,10 @@
             <p class="footer-desc">
               עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
-            <div class="socials" style="display: flex; gap: 0.75rem; margin-top: 1.4rem">
+            <div
+              class="socials"
+              style="display: flex; gap: 0.75rem; margin-top: 1.4rem"
+            >
               <a
                 href="#"
                 style="
@@ -1736,8 +1923,10 @@
               <li><a href="index.html#intro">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
               <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
-              <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
-              <li><a href="business.html">16 המעלות בעסקים</a></li>
+              <li>
+                <a href="education.html" class="active">16 המעלות בחינוך</a>
+              </li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
             </ul>
           </div>
           <div class="footer-contact">
