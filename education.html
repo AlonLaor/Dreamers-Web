@@ -1,0 +1,1859 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16 המעלות בחינוך | בית חולמים - Dreamers Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ─── ROOT — identical palette to the home page ─── */
+      :root {
+        --blue: #004378;
+        --blue-dk: #002952;
+        --teal: #48d9d3;
+        --teal-lt: #7de8e4;
+        --gold: #f5a623;
+        --gold-lt: #ffd166;
+        --white: #ffffff;
+        --off: #f6faff;
+        --off-warm: #fffbf3;
+        --text: #1a2d3e;
+        --text-mid: #4a637c;
+        --text-lt: #7a99b0;
+        --shadow: rgba(0, 67, 120, 0.15);
+        --g-main: linear-gradient(140deg, #002952 0%, #004378 55%, #0c6080 100%);
+        --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
+        --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Heebo", system-ui, sans-serif;
+        direction: rtl;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .rev {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.9rem;
+      }
+      .h3d {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--blue);
+        text-shadow:
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
+        margin-bottom: 1.1rem;
+      }
+      .h3d-white {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
+      }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 640px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: "Heebo", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
+      .btn-gold {
+        background: var(--g-gold);
+        color: #4a2800;
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+      }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+
+      /* ═══ NAV ═══ */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 1.3rem 2.5rem;
+        display: flex;
+        justify-content: flex-start;
+        gap: 3rem;
+        align-items: center;
+        transition: all 0.4s ease;
+        background: rgba(0, 25, 55, 0.96);
+        backdrop-filter: blur(20px);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+      }
+      .logo-img {
+        height: 58px;
+        display: block;
+        border-radius: 50%;
+        transition: opacity 0.3s;
+      }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.6rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+      }
+      .nav-links a.active {
+        color: var(--teal);
+      }
+      .nav-cta {
+        background: var(--g-teal) !important;
+        color: var(--blue-dk) !important;
+        font-weight: 700 !important;
+        padding: 0.48rem 1.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s !important;
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        margin-left: auto;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* ─── Activities dropdown ─── */
+      .has-dropdown {
+        position: relative;
+      }
+      .dd-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .dd-arrow {
+        display: inline-block;
+        font-size: 0.62em;
+        transition: transform 0.3s ease;
+      }
+      .has-dropdown:hover .dd-arrow,
+      .has-dropdown:focus-within .dd-arrow {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        list-style: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        right: -0.5rem;
+        min-width: 260px;
+        padding: 0.55rem;
+        border-radius: 18px;
+        background: linear-gradient(
+          160deg,
+          rgba(0, 41, 82, 0.98) 0%,
+          rgba(0, 67, 120, 0.98) 100%
+        );
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(72, 217, 211, 0.18);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 1.9rem;
+        width: 12px;
+        height: 12px;
+        background: rgba(0, 41, 82, 0.98);
+        transform: rotate(45deg);
+        border-radius: 3px 0 0 0;
+      }
+      .has-dropdown:hover .dropdown-menu,
+      .has-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu li + li {
+        margin-top: 2px;
+      }
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.25s ease;
+      }
+      .dropdown-menu a:hover {
+        background: rgba(72, 217, 211, 0.15);
+        color: var(--teal);
+        padding-right: 1.4rem;
+      }
+
+      /* ═══ PAGE HEADER ═══ */
+      #page-header {
+        padding: 11rem 2rem 5.5rem;
+        background: var(--g-main);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      #page-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(72, 217, 211, 0.18),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .crumbs {
+        position: relative;
+        z-index: 2;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+      }
+      .crumbs a {
+        color: #ffe8a0;
+        font-weight: 600;
+      }
+      .crumbs a:hover {
+        text-decoration: underline;
+      }
+      #page-header .h3d {
+        position: relative;
+        z-index: 2;
+      }
+      #page-header .sub {
+        position: relative;
+        z-index: 2;
+        margin: 0 auto 2.2rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.82);
+      }
+      #page-header .rev {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ═══ GENERIC TEXT SECTION ═══ */
+      .ab-sec {
+        padding: 6.5rem 2rem;
+      }
+      .ab-sec.bg-white {
+        background: var(--white);
+      }
+      .ab-sec.bg-grey {
+        background: linear-gradient(160deg, #f4f6f8 0%, #eef1f4 100%);
+      }
+      .ab-hdr {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .ab-hdr .sub {
+        margin: 0 auto;
+        text-align: center;
+      }
+      .ab-body {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 800px;
+        margin: 0 auto 1.3rem;
+      }
+
+      /* ═══ 4 CORE THEMES ROW ═══ */
+      .theme-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+        max-width: 980px;
+        margin: 2.4rem auto 0;
+      }
+      .theme-chip {
+        border-radius: 18px;
+        padding: 1.6rem 1rem;
+        text-align: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.94rem;
+        line-height: 1.5;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .theme-chip:hover {
+        transform: translateY(-6px);
+      }
+      .theme-thinking {
+        background: linear-gradient(145deg, #001a1a 0%, #005555 40%, #007a7a 100%);
+      }
+      .theme-acting {
+        background: linear-gradient(145deg, #00241a 0%, #005c3d 40%, #007a55 100%);
+      }
+      .theme-relating {
+        background: linear-gradient(145deg, #001530 0%, #002d6b 40%, #004494 100%);
+      }
+      .theme-meaning {
+        background: linear-gradient(145deg, #1a0d00 0%, #5c2800 40%, #9a5000 100%);
+      }
+      .theme-count {
+        margin-top: 1.6rem;
+        text-align: center;
+        font-size: 0.96rem;
+        color: var(--text-mid);
+        max-width: 720px;
+        margin-inline: auto;
+        line-height: 1.8;
+      }
+
+      /* ═══ WHY NOW ═══ */
+      .why-result {
+        max-width: 760px;
+        margin: 1.6rem auto 0;
+        list-style: none;
+      }
+      .why-result li {
+        position: relative;
+        padding-inline-start: 1.6rem;
+        margin-bottom: 0.7rem;
+        color: var(--text-mid);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+      .why-result li::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0.55rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .stat-frame {
+        max-width: 820px;
+        margin: 2.6rem auto 0;
+        padding: 2.2rem 2.4rem;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
+        border: 1px solid rgba(245, 166, 35, 0.3);
+        box-shadow: 0 20px 50px rgba(245, 166, 35, 0.12);
+        display: flex;
+        gap: 1.4rem;
+        align-items: flex-start;
+      }
+      .stat-frame-ico {
+        flex-shrink: 0;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--g-gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        box-shadow: 0 10px 24px rgba(245, 166, 35, 0.4);
+      }
+      .stat-frame p {
+        font-size: 1.02rem;
+        line-height: 1.85;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .stat-frame strong {
+        color: var(--blue);
+      }
+      .stat-frame cite {
+        display: block;
+        margin-top: 0.6rem;
+        font-style: normal;
+        font-size: 0.82rem;
+        color: var(--text-lt);
+      }
+
+      /* ═══ PERSONA CARDS ═══ */
+      .persona-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem;
+        max-width: 1140px;
+        margin: 0 auto;
+      }
+      .persona-card {
+        background: linear-gradient(150deg, #f4f9ff 0%, #e7f1fb 55%, #dfeef8 100%);
+        border-radius: 22px;
+        padding: 2.2rem 1.8rem;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.08),
+          0 18px 40px var(--shadow),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 67, 120, 0.07);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+      .persona-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        background: var(--g-teal);
+      }
+      .persona-card:hover {
+        transform: translateY(-8px) perspective(800px) rotateX(2deg);
+        box-shadow:
+          0 6px 14px rgba(0, 67, 120, 0.1),
+          0 26px 55px rgba(0, 67, 120, 0.2);
+      }
+      .persona-card h3 {
+        color: var(--blue);
+        font-size: 1.12rem;
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+      }
+      .persona-card p {
+        color: var(--text-mid);
+        font-size: 0.94rem;
+        line-height: 1.75;
+        margin-bottom: 1rem;
+      }
+      .persona-result {
+        font-size: 0.86rem;
+        font-weight: 700;
+        color: var(--blue-dk);
+        background: rgba(72, 217, 211, 0.18);
+        border-radius: 10px;
+        padding: 0.6rem 0.9rem;
+        display: inline-block;
+      }
+
+      /* ═══ STEPS TIMELINE ═══ */
+      .steps-timeline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.4rem;
+        max-width: 1180px;
+        margin: 3rem auto 0;
+        position: relative;
+      }
+      .steps-timeline::before {
+        content: "";
+        position: absolute;
+        top: 34px;
+        right: 12%;
+        left: 12%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--teal), var(--blue), var(--gold));
+        opacity: 0.35;
+        z-index: 0;
+      }
+      .step-card {
+        position: relative;
+        z-index: 1;
+        background: #fff;
+        border-radius: 20px;
+        padding: 2.3rem 1.4rem 1.7rem;
+        text-align: center;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.07),
+          0 20px 45px var(--shadow);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .step-card:hover {
+        transform: translateY(-8px);
+      }
+      .step-num {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        margin: 0 auto 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #fff;
+        background: var(--g-main);
+        box-shadow:
+          0 10px 26px rgba(0, 67, 120, 0.45),
+          inset 0 2px 4px rgba(255, 255, 255, 0.25),
+          inset 0 -4px 8px rgba(0, 0, 0, 0.25);
+      }
+      .step-card h3 {
+        color: var(--blue);
+        font-size: 1.05rem;
+        font-weight: 800;
+        margin-bottom: 0.6rem;
+      }
+      .step-card p {
+        color: var(--text-mid);
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin-bottom: 0.6rem;
+      }
+      .step-result {
+        font-size: 0.82rem;
+        color: var(--text-lt);
+        line-height: 1.6;
+      }
+      .step-result strong {
+        color: var(--blue);
+      }
+
+      .impl-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.4rem;
+        max-width: 1000px;
+        margin: 3rem auto 0;
+      }
+      .impl-card {
+        background: #fff;
+        border-radius: 18px;
+        padding: 1.8rem;
+        box-shadow: 0 14px 34px var(--shadow);
+        border: 1px solid rgba(0, 67, 120, 0.08);
+      }
+      .impl-card h4 {
+        color: var(--blue);
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 0.6rem;
+      }
+      .impl-card p {
+        color: var(--text-mid);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      /* ═══ TESTIMONIAL DUO ═══ */
+      #quote-duo {
+        padding: 6.5rem 2rem;
+        background: var(--g-main);
+        position: relative;
+        overflow: hidden;
+      }
+      #quote-duo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 60% at 50% 50%,
+          rgba(72, 217, 211, 0.14),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .quote-duo-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      .qf-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 26px;
+        padding: 2.4rem 2rem;
+        text-align: center;
+        backdrop-filter: blur(12px);
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.32),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .qf-card:hover {
+        transform: perspective(900px) rotateX(2deg) translateY(-6px);
+      }
+      .qf-mark {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 3.2rem;
+        color: var(--teal);
+        opacity: 0.5;
+        line-height: 0.6;
+        margin-bottom: 0.5rem;
+      }
+      .qf-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 1.6rem;
+      }
+      .qf-role {
+        font-size: 0.86rem;
+        color: var(--teal-lt);
+        font-weight: 700;
+      }
+
+      /* ═══ ABOUT / STATS ═══ */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        align-items: center;
+        max-width: 1140px;
+        margin: 0 auto;
+      }
+      .about-photo {
+        border-radius: 24px;
+        overflow: hidden;
+        height: 420px;
+        box-shadow: 0 35px 80px var(--shadow);
+      }
+      .about-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .about-stats {
+        list-style: none;
+        margin-top: 1.6rem;
+      }
+      .about-stats li {
+        position: relative;
+        padding-inline-start: 2rem;
+        margin-bottom: 0.85rem;
+        color: var(--text-mid);
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+      .about-stats li::before {
+        content: "✓";
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--g-teal);
+        color: var(--blue-dk);
+        font-size: 0.72rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ═══ FAQ ACCORDION ═══ */
+      .faq-list {
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .faq-item {
+        background: #fff;
+        border-radius: 16px;
+        margin-bottom: 0.9rem;
+        box-shadow: 0 8px 26px var(--shadow);
+        overflow: hidden;
+        border: 1px solid rgba(0, 67, 120, 0.07);
+      }
+      .faq-q {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.3rem 1.6rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-family: "Heebo", sans-serif;
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: var(--blue);
+        text-align: right;
+      }
+      .faq-plus {
+        flex-shrink: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(72, 217, 211, 0.18);
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 400;
+        transition: transform 0.3s;
+      }
+      .faq-item.open .faq-plus {
+        transform: rotate(45deg);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      .faq-a p {
+        padding: 0 1.6rem 1.5rem;
+        color: var(--text-mid);
+        font-size: 0.92rem;
+        line-height: 1.8;
+      }
+
+      /* ═══ CONTACT ═══ */
+      #contact-form {
+        padding: 6.5rem 2rem;
+        background: var(--g-main);
+        position: relative;
+        overflow: hidden;
+      }
+      #contact-form::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(245, 166, 35, 0.12),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .contact-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .contact-inner .sub {
+        margin: 0 auto 2.6rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .contact-form {
+        text-align: right;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 26px;
+        padding: 2.6rem;
+        backdrop-filter: blur(12px);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+        margin-bottom: 1.1rem;
+      }
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .form-field.full {
+        grid-column: 1 / -1;
+      }
+      .form-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .form-label .req {
+        color: var(--gold-lt);
+      }
+      .form-input,
+      .form-textarea,
+      .form-select {
+        width: 100%;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: 2px solid var(--teal);
+      }
+      .form-note {
+        font-size: 0.76rem;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 0.4rem;
+      }
+      .form-submit {
+        margin-top: 0.6rem;
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ═══ FOOTER ═══ */
+      footer {
+        background: linear-gradient(135deg, #e0f7f6 0%, #d0f0ff 40%, #e8f9ff 100%);
+        color: var(--blue);
+        padding: 5rem 2rem 2.5rem;
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+      }
+      .footer-logo-img {
+        height: 80px;
+        display: block;
+      }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-mid);
+        max-width: 340px;
+        margin-top: 1rem;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: var(--text-mid);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--blue);
+      }
+      .footer-col-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--blue);
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .footer-contact p {
+        font-size: 1rem;
+        color: var(--text-mid);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+      }
+      .footer-contact a {
+        color: var(--blue);
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(0, 67, 120, 0.12);
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: var(--text-mid);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* ═══ RESPONSIVE ═══ */
+      @media (max-width: 1024px) {
+        .persona-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .steps-timeline {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .steps-timeline::before {
+          display: none;
+        }
+        .impl-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1rem;
+        }
+        .nav-links .nav-cta {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
+        }
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          backdrop-filter: none;
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 12px;
+          margin: 0.2rem 1.2rem 0.5rem;
+          padding: 0.3rem;
+          display: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .has-dropdown.dd-open .dropdown-menu {
+          display: block;
+        }
+        .has-dropdown.dd-open .dd-arrow {
+          transform: rotate(180deg);
+        }
+        #page-header {
+          padding: 9rem 1.5rem 4rem;
+        }
+        .theme-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .persona-grid {
+          grid-template-columns: 1fr;
+        }
+        .steps-timeline {
+          grid-template-columns: 1fr;
+        }
+        .quote-duo-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-photo {
+          height: 280px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .stat-frame {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+        }
+        .footer-top {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 520px) {
+        .ab-sec {
+          padding: 4.5rem 1.1rem;
+        }
+        .contact-form {
+          padding: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════════════ NAV ════════════ -->
+    <nav id="nav">
+      <a href="index.html#hero" class="logo">
+        <img
+          src="assets/img/logo-beit-holmim-white.png"
+          alt="בית חולמים - Dreamers Home"
+          class="logo-img"
+        />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#intro">דף הבית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+        <li class="has-dropdown">
+          <a href="index.html#activities" class="dd-trigger"
+            >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+          >
+          <ul class="dropdown-menu">
+            <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
+            <li><a href="business.html">16 המעלות בעסקים</a></li>
+            <li>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                >16 המעלות בבריאות הנפש</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                >16 המעלות בקהילה</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                >קבוצות תרגול וסדנאות פרטיות</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li><a href="index.html#activities">אזור למידה</a></li>
+        <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- ════════════ PAGE HEADER ════════════ -->
+    <header id="page-header">
+      <div class="crumbs">
+        <a href="index.html">דף הבית</a> &nbsp;/&nbsp; 16 המעלות בחינוך
+      </div>
+      <h1 class="h3d h3d-white rev" style="text-align: center; margin: 0 auto 1.2rem">
+        16 המעלות בחינוך
+      </h1>
+      <p class="sub rev d1">
+        תוכנית SEEL בינלאומית לחוסן רגשי-חברתי-ערכי — לתלמידות ותלמידים,
+        לצוותי הוראה ולהורים
+      </p>
+      <div class="rev d2">
+        <a href="#contact-form" class="btn btn-gold">בואו נתחיל שיחה</a>
+      </div>
+    </header>
+
+    <!-- ════════════ INTRO ════════════ -->
+    <section class="ab-sec bg-white">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <p class="ab-body rev">
+            16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח
+            ערכים אוניברסליים וחיים בעלי משמעות. התוכנית מספקת מענה עמוק
+            ורוחבי ליעדי משרד החינוך, ומלמדת כישורים ומיומנויות SEEL
+            (חינוך רגשי-חברתי-ערכי) המותאמים לתלמידות ותלמידים, לצוותי
+            הוראה ולהורים.
+          </p>
+          <p class="ab-body rev d1">
+            באמצעות הטמעת ערכים אוניברסליים (כמו ענווה, טוב לב, סליחה
+            ושאיפות), התוכנית פועלת לביסוס שפה ערכית משותפת ותרבות
+            חינוכית ערכית-קהילתית, ומסייעת לצוותי הוראה, לתלמידים
+            ולהורים לפתח קשיבות, להכיר את עצמם לעומק, לשפר את מערכות
+            היחסים שלהם ולמצוא שלוות-נפש.
+          </p>
+        </div>
+
+        <div class="theme-row rev d2">
+          <div class="theme-chip theme-thinking">הדרך שאנו חושבות.ים</div>
+          <div class="theme-chip theme-acting">הדרך שאנו פועלות.ים</div>
+          <div class="theme-chip theme-relating">
+            הדרך שאנו מתייחסות.ים לזולת
+          </div>
+          <div class="theme-chip theme-meaning">
+            הדרך שאנו מוצאות.ים משמעות
+          </div>
+        </div>
+        <p class="theme-count rev d3">
+          בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות
+          שפה חברתית-רגשית-ערכית הפועלת בכל שכבות הגיל ובכל מגזרי החינוך.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ WHY NOW ════════════ -->
+    <section class="ab-sec bg-grey">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev" style="color: var(--blue)">• למה עכשיו •</span>
+          <h2 class="h3d rev">למה עכשיו</h2>
+        </div>
+        <p class="ab-body rev">
+          העולם זקוק למערכת חינוך חדשה, כזו שתעניק לאנשים דרך חדשה ורחבה
+          להתבונן בעצמם ובעולם, שתטפח לא רק את המוח, אלא גם את הלב. מערכת
+          החינוך ניצבת מול אתגרים הולכים וגדלים: כיתות גדולות, מוסחות
+          בגלל מסכים, פערים חברתיים, ותקופה ממושכת של חירום ומלחמה.
+        </p>
+        <p class="ab-body rev d1" style="font-weight: 700; color: var(--blue)">
+          התוצאה:
+        </p>
+        <ul class="why-result rev d1">
+          <li>עלייה במצוקה הרגשית ובתחושת הבדידות</li>
+          <li>ירידה בתחושת השייכות והמוגנות בבית הספר</li>
+          <li>
+            שחיקה של צוותי החינוך, שמתקשים להכיל את הצרכים הרגשיים של
+            התלמידים
+          </li>
+          <li>קושי גובר ביצירת שיח משותף בין תלמידים, הורים ומורים</li>
+        </ul>
+        <p class="ab-body rev d2" style="margin-top: 1.6rem">
+          תוכנית 16 המעלות בחינוך מציעה כלים מעשיים שכאשר מיישמים אותם,
+          הם מביאים ליותר קשיבות, בהירות ושלווה פנימית.
+        </p>
+
+        <div class="stat-frame rev d3">
+          <div class="stat-frame-ico">📊</div>
+          <div>
+            <p>
+              כ-<strong>31%</strong> מבני הנוער בישראל מדווחים על רווחה
+              נפשית ירודה, ושיעור הדיווח על מצוקה נפשית עולה ככל שעולה
+              הגיל.
+              <cite
+                >(הראל-פיש ואחרים, "נוער בישראל: בריאות, רווחה נפשית
+                וחברתית ודפוסי התנהגויות סיכון", משרד הבריאות, משרד
+                החינוך ואוניברסיטת בר-אילן, 2023 — לנתונים נוספים ראו דוח
+                "נוער בישראל 2023")</cite
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ WHO IT'S FOR ════════════ -->
+    <section class="ab-sec bg-white">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev">• למי זה מיועד •</span>
+          <h2 class="h3d rev">למי זה מיועד</h2>
+          <p class="sub rev">
+            בין אם אתם בית ספר יסודי, חטיבת ביניים, תיכון או מסגרת
+            חינוכית-טיפולית, הצורך בשפה אנושית משותפת זהה. 16 המעלות
+            מתאימה את עצמה לשכבת הגיל, לאופי בית הספר וליעדים החינוכיים
+            שלכם.
+          </p>
+        </div>
+        <div class="persona-grid">
+          <div class="persona-card rev">
+            <h3>הנהלת בית הספר</h3>
+            <p>
+              להוביל את בית הספר מתוך חזון ערכי ברור, גם בתקופות של
+              אי-ודאות. לבנות אקלים בית-ספרי ששורד משברים.
+            </p>
+            <div class="persona-result">
+              תוצאה: חזון חינוכי ברור + אקלים בית-ספרי יציב
+            </div>
+          </div>
+          <div class="persona-card rev d1">
+            <h3>צוותי הוראה וחינוך</h3>
+            <p>
+              לשלב את 16 המעלות בשיעורי חינוך, שעות חברתיות ובשגרת
+              הכיתה. ערכת כלים מודולרית, מוכרת בגפ"ן.
+            </p>
+            <div class="persona-result">
+              תוצאה: כלים מעשיים ושפה משותפת בכיתה
+            </div>
+          </div>
+          <div class="persona-card rev d2">
+            <h3>תלמידות ותלמידים</h3>
+            <p>
+              להכיר את עצמם לעומק, לזהות רגשות ולווסת אותם, ולבנות
+              מערכות יחסים בריאות עם חברים ומבוגרים.
+            </p>
+            <div class="persona-result">
+              תוצאה: ביטחון עצמי, שייכות וחוסן אישי
+            </div>
+          </div>
+          <div class="persona-card rev">
+            <h3>הורים ומשפחות</h3>
+            <p>
+              שפה משותפת בין הבית לבית הספר, המאפשרת המשכיות בטיפוח
+              הערכים גם מחוץ לכיתה.
+            </p>
+            <div class="persona-result">
+              תוצאה: שיח משפחתי עמוק יותר ותחושת שותפות
+            </div>
+          </div>
+          <div class="persona-card rev d1">
+            <h3>קציני ביקור סדיר ומרכזי הורות</h3>
+            <p>
+              כלים לעבודה עם נוער בסיכון נשירה ועם הורים, מתוך שפה
+              רגשית-ערכית נגישה.
+            </p>
+            <div class="persona-result">
+              תוצאה: חיבור מחודש למסגרת ולמשמעות
+            </div>
+          </div>
+          <div class="persona-card rev d2">
+            <h3>רשויות ומנהלי חינוך</h3>
+            <p>
+              תוכנית דגל מוכרת, הניתנת ליישום רוחבי ברשות. מענה עמוק
+              ליעדי משרד החינוך.
+            </p>
+            <div class="persona-result">תוצאה: שפה ערכית אחידה ברשות</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ HOW IT WORKS ════════════ -->
+    <section class="ab-sec bg-grey">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev" style="color: var(--blue)">• איך זה עובד •</span>
+          <h2 class="h3d rev">איך זה עובד</h2>
+          <p class="sub rev">
+            16 המעלות בחינוך היא תוכנית מוכרת בגפ"ן (תוכנית 10438),
+            המועברת בסדנאות, שיעורים ותהליכי הכשרה לצוותי הוראה, תלמידים
+            והורים, ומותאמת לשכבת הגיל, לאופי בית הספר ולצרכי הרשות.
+          </p>
+        </div>
+
+        <div class="steps-timeline">
+          <div class="step-card rev">
+            <div class="step-num">1</div>
+            <h3>יסודות</h3>
+            <p>
+              לימוד המסגרת התיאורטית והערכית של 16 המעלות, מותאם לשכבת
+              הגיל.
+            </p>
+            <p class="step-result">
+              <strong>תוצאה:</strong> היכרות ברורה ומגולמת עם 16 המעלות,
+              וערכת כלים ראשונית ליישום בכיתה
+            </p>
+          </div>
+          <div class="step-card rev d1">
+            <div class="step-num">2</div>
+            <h3>הטמעה</h3>
+            <p>
+              מעבר מהבנה לתרגול: שילוב המעלות בשיעורי חינוך, בשעות
+              חברתיות ובשגרת בית הספר.
+            </p>
+            <p class="step-result">
+              <strong>תוצאה:</strong> הטמעה אמיתית של המעלות בחשיבה,
+              ביחסים ובחיי בית הספר היומיומיים — לא רק ידע תיאורטי
+            </p>
+          </div>
+          <div class="step-card rev d2">
+            <div class="step-num">3</div>
+            <h3>העמקה</h3>
+            <p>הכשרת צוותי הוראה להנחיה ולהוראה עצמאית של התוכנית.</p>
+            <p class="step-result">
+              <strong>תוצאה:</strong> מוכנות של הצוות הבית-ספרי להכיל את
+              מלוא העומק של התוכנית, ועבור מי שבוחר בכך — להנחות אותה
+              בעצמו
+            </p>
+          </div>
+          <div class="step-card rev d3">
+            <div class="step-num">4</div>
+            <h3>ליווי המשך</h3>
+            <p>
+              משאבים מתמשכים, ערכות כלים למורים, וליווי אישי אופציונלי
+              להטמעת השפה בתרבות בית הספר.
+            </p>
+          </div>
+        </div>
+
+        <div class="impl-grid">
+          <div class="impl-card rev">
+            <h4>סדנת היכרות</h4>
+            <p>מתאימה לצוות חינוכי או לשכבת גיל בודדת.</p>
+          </div>
+          <div class="impl-card rev d1">
+            <h4>יישום בית-ספרי מלא</h4>
+            <p>
+              תוכנית רב-שנתית המשולבת בשעות חינוך, ביום חברתי ובהכשרת
+              הצוות.
+            </p>
+          </div>
+          <div class="impl-card rev d2">
+            <h4>יישום ברשות</h4>
+            <p>הטמעה רוחבית במספר בתי ספר ברשות, בליווי מנהל החינוך.</p>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 1.6rem; color: var(--text-mid)" class="rev">
+          שפות: מועבר בעברית. שפות נוספות זמינות לפי בקשה.
+        </p>
+
+        <div style="text-align: center; margin-top: 2.4rem" class="rev">
+          <a href="#contact-form" class="btn btn-blue"
+            >צרו קשר לקבלת הצעה מותאמת אישית</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ TESTIMONIALS ════════════ -->
+    <section id="quote-duo">
+      <div class="wrap">
+        <div class="quote-duo-grid">
+          <div class="qf-card rev">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              איך מיישמים? איך מעבירים לילדים? ואז כתבתי בדף: לאהוב את
+              עצמי יותר, ולהעביר את זה הלאה.
+            </p>
+            <div class="qf-role">גיא, תיכון י"א תל אביב</div>
+          </div>
+          <div class="qf-card rev d1">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              ההשתלמות מזכירה את שירו של אלתרמן 'עוד חוזר הניגון שזנחת
+              לשווא...' מי שמתחבר למעלות, חוזר לתזקיק של הניגון שלו. יש
+              משהו במעלות, שזה כמו פרקטיקה של לחזור לניגון.
+            </p>
+            <div class="qf-role">סופיה טבנקין (י"א ת"א)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ ABOUT ════════════ -->
+    <section class="ab-sec bg-white" id="about">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev">• אודות בית חולמים •</span>
+          <h2 class="h3d rev">אודות בית חולמים</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-photo rev">
+            <img src="assets/img/hands square.png" alt="קהילת בית חולמים" />
+          </div>
+          <div class="rev d1">
+            <p class="ab-body" style="margin: 0 0 1.2rem">
+              16 המעלות היא תוכנית בינלאומית לחוסן רגשי-חברתי, הפעילה
+              ביותר מ-22 מדינות, ומועברת ליחידים, משפחות, בתי ספר וגם
+              לארגונים עסקיים ברחבי העולם.
+            </p>
+            <p class="ab-body" style="margin: 0 0 1.2rem">
+              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות
+              בישראל מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של
+              התוכנית למערכת החינוך הישראלית, תוך התאמתה לתרבות המקומית
+              ושימור עומקה והקפדתה הבינלאומיים. המנחות והמנחים שלנו הם
+              אנשי מקצוע מוסמכים, בעלי רקע בחינוך, בפסיכולוגיה ובפיתוח
+              רגשי-חברתי.
+            </p>
+            <ul class="about-stats">
+              <li>נציגה רשמית בישראל של תוכנית בינלאומית</li>
+              <li>תוכנית מוכרת בגפ"ן (תוכנית 10438)</li>
+              <li>
+                תוכנית הדגל במנהל חינוך תל אביב-יפו, ופעילה ברשויות
+                נוספות
+              </li>
+              <li>נלמדת ברשויות נוספות, ביניהן נתניה, מאז תשפ"ג</li>
+              <li>
+                הועברה בסדנאות למטה מנהל החינוך בתל אביב, לקציני ביקור
+                סדיר ולמרכזי הורות
+              </li>
+              <li>
+                מאות תלמידות ותלמידים, ועשרות מורים וצוותי הוראה,
+                השתתפו בתוכנית
+              </li>
+              <li>זמינה בעברית</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ FAQ ════════════ -->
+    <section class="ab-sec bg-grey" id="faq">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <span class="eyebrow rev" style="color: var(--blue)">• שאלות נפוצות •</span>
+          <h2 class="h3d rev">שאלות נפוצות</h2>
+        </div>
+        <div class="faq-list rev">
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>מה זה SEL ובמה זה שונה מתוכניות חינוך רגשי אחרות?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                רוב התוכניות לחינוך רגשי-חברתי מתמקדות במיומנויות
+                בודדות. 16 המעלות בונה את תשתית הערכים הבסיסית, השפה
+                הערכית-רגשית המשותפת, שהופכת את אותן מיומנויות
+                לבנות-קיימא. התוכנית פועלת ברמת התרבות הבית-ספרית, לא רק
+                ברמת התלמיד הבודד.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>האם התוכנית מוכרת על-ידי משרד החינוך?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                כן. התוכנית מוכרת במערכת גפ"ן (תוכנית 10438), ומשמשת
+                כתוכנית דגל במנהל החינוך בתל אביב-יפו, לצד פעילות
+                ברשויות נוספות.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>לאילו שכבות גיל מתאימה התוכנית?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                התוכנית מותאמת לעבודה עם תלמידים, צוותי הוראה והורים בכל
+                שכבות הגיל, מבית הספר היסודי ועד התיכון, וכן למרכזי
+                הורות ולקציני ביקור סדיר.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>איך משלבים את התוכנית בלוח השעות הקיים?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                התוכנית מודולרית וניתנת להתאמה. ניתן לשלב אותה בשעות
+                חינוך, ביום חברתי, בהשתלמויות מורים או כתהליך רב-שנתי.
+                אנו עובדים יחד עם הנהלת בית הספר כדי למצוא את המתכונת
+                המתאימה.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>איך מודדים תוצאות?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב
+                נתונים לאורך זמן, ובהם הערכות לפני ואחרי התוכנית, כלי
+                משוב למורים, וסקרי תחושה אופציונליים לתלמידים.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ CONTACT FORM ════════════ -->
+    <section id="contact-form">
+      <div class="wrap">
+        <div class="contact-inner">
+          <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
+          <p class="sub rev">
+            מוכנים להביא את 16 המעלות לבית הספר או לרשות שלכם? קבעו
+            שיחת היכרות. נלמד על הצרכים של בית הספר או הרשות שלכם ונבחן
+            יחד איזו תוכנית מתאימה עבורכם.
+          </p>
+
+          <form
+            class="contact-form rev"
+            id="eduForm"
+            action="https://formsubmit.co/info@dreamers.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="פנייה חדשה מדף חינוך — 16 המעלות" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">שם <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label">בית ספר / רשות <span class="req">*</span></label>
+                <input class="form-input" type="text" name="בית ספר / רשות" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">תפקיד <span class="req">*</span></label>
+                <input class="form-input" type="text" name="תפקיד" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label">דוא"ל <span class="req">*</span></label>
+                <input class="form-input" type="email" name="דוא&quot;ל" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">טלפון</label>
+                <input class="form-input" type="tel" name="טלפון" />
+              </div>
+              <div class="form-field">
+                <label class="form-label">מה הביא אתכם אלינו?</label>
+                <select class="form-select" name="מה הביא אתכם אלינו">
+                  <option value="שילוב בתוכנית הלימודים">
+                    שילוב בתוכנית הלימודים
+                  </option>
+                  <option value="הכשרת צוות הוראה">הכשרת צוות הוראה</option>
+                  <option value="עבודה עם הורים">עבודה עם הורים</option>
+                  <option value="יישום ברשות">יישום ברשות</option>
+                  <option value="אחר">אחר</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field full">
+              <label class="form-label">הודעה</label>
+              <textarea class="form-textarea" name="הודעה"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold form-submit">
+              שליחה
+            </button>
+            <p class="form-note">
+              בלחיצה על "שליחה" הפנייה תישלח אלינו במייל ונחזור אליכם
+              בהקדם.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="assets/img/logo-beit-holmim.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+            <div class="socials" style="display: flex; gap: 0.75rem; margin-top: 1.4rem">
+              <a
+                href="#"
+                style="
+                  width: 46px;
+                  height: 46px;
+                  border-radius: 14px;
+                  background: rgba(0, 67, 120, 0.1);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--blue);
+                  border: 1px solid rgba(0, 67, 120, 0.15);
+                "
+                title="YouTube"
+                >▷</a
+              >
+              <a
+                href="#"
+                style="
+                  width: 46px;
+                  height: 46px;
+                  border-radius: 14px;
+                  background: rgba(0, 67, 120, 0.1);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--blue);
+                  border: 1px solid rgba(0, 67, 120, 0.15);
+                "
+                title="Facebook"
+                >f</a
+              >
+              <a
+                href="#"
+                style="
+                  width: 46px;
+                  height: 46px;
+                  border-radius: 14px;
+                  background: rgba(0, 67, 120, 0.1);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--blue);
+                  border: 1px solid rgba(0, 67, 120, 0.15);
+                "
+                title="Instagram"
+                >▶</a
+              >
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">ניווט</div>
+            <ul class="footer-nav">
+              <li><a href="index.html#intro">דף הבית</a></li>
+              <li><a href="about.html">אודות</a></li>
+              <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+              <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
+              <li><a href="business.html">16 המעלות בעסקים</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <div class="footer-col-title">צרו קשר</div>
+            <p><a href="mailto:info@dreamers.com">info@dreamers.com</a></p>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+            <p style="margin-top: 1rem">
+              <a
+                href="index.html#virtues"
+                class="btn btn-gold"
+                style="font-size: 0.85rem; padding: 0.6rem 1.4rem"
+                >לתרומה</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 by Dreamers Home</span>
+          <span style="color: var(--blue); font-weight: 600; font-style: italic"
+            >כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════ JS ════════════ -->
+    <script>
+      (function () {
+        const nav = document.getElementById("nav");
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) => {
+          if (a.classList.contains("dd-trigger")) return;
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          });
+        });
+        const ddParent = nav.querySelector(".has-dropdown");
+        const ddTrigger = ddParent.querySelector(".dd-trigger");
+        ddTrigger.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            ddParent.classList.toggle("dd-open");
+          } else {
+            nav.classList.remove("nav-open");
+          }
+        });
+
+        /* Scroll reveal */
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* FAQ accordion */
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          const q = item.querySelector(".faq-q");
+          const a = item.querySelector(".faq-a");
+          q.addEventListener("click", () => {
+            const isOpen = item.classList.contains("open");
+            document.querySelectorAll(".faq-item.open").forEach((o) => {
+              if (o !== item) {
+                o.classList.remove("open");
+                o.querySelector(".faq-a").style.maxHeight = null;
+              }
+            });
+            item.classList.toggle("open", !isOpen);
+            a.style.maxHeight = !isOpen ? a.scrollHeight + "px" : null;
+          });
+        });
+
+        /* Contact form — async submit via FormSubmit AJAX endpoint */
+        const eduForm = document.getElementById("eduForm");
+        if (eduForm) {
+          eduForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = eduForm.querySelector(".form-submit");
+            const originalText = btn.textContent;
+            btn.textContent = "שולח...";
+            btn.disabled = true;
+            try {
+              const res = await fetch(eduForm.action, {
+                method: "POST",
+                body: new FormData(eduForm),
+                headers: { Accept: "application/json" },
+              });
+              if (res.ok) {
+                btn.textContent = "נשלח בהצלחה ✓";
+                eduForm.reset();
+              } else {
+                throw new Error("Submit failed");
+              }
+            } catch (err) {
+              btn.textContent = "שגיאה — נסו שוב או כתבו ל-info@dreamers.com";
+            } finally {
+              btn.disabled = false;
+              setTimeout(() => {
+                btn.textContent = originalText;
+              }, 4000);
+            }
+          });
+        }
+      })();
+    </script>
+    <script src="assets/js/accessibility-widget.js" defer></script>
+  </body>
+</html>

@@ -216,6 +216,83 @@
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5);
         color: var(--blue-dk) !important;
       }
+
+      /* ─── Activities dropdown ─── */
+      .has-dropdown {
+        position: relative;
+      }
+      .dd-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .dd-arrow {
+        display: inline-block;
+        font-size: 0.62em;
+        transition: transform 0.3s ease;
+      }
+      .has-dropdown:hover .dd-arrow,
+      .has-dropdown:focus-within .dd-arrow {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        list-style: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        right: -0.5rem;
+        min-width: 260px;
+        padding: 0.55rem;
+        border-radius: 18px;
+        background: linear-gradient(
+          160deg,
+          rgba(0, 41, 82, 0.98) 0%,
+          rgba(0, 67, 120, 0.98) 100%
+        );
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(72, 217, 211, 0.18);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 1.9rem;
+        width: 12px;
+        height: 12px;
+        background: rgba(0, 41, 82, 0.98);
+        transform: rotate(45deg);
+        border-radius: 3px 0 0 0;
+      }
+      .has-dropdown:hover .dropdown-menu,
+      .has-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu li + li {
+        margin-top: 2px;
+      }
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.1rem;
+        border-radius: 12px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.25s ease;
+      }
+      .dropdown-menu a:hover {
+        background: rgba(72, 217, 211, 0.15);
+        color: var(--teal);
+        padding-right: 1.4rem;
+        transform: none;
+      }
       .nav-burger {
         display: none;
         flex-direction: column;
@@ -1231,6 +1308,34 @@
         line-height: 1.4;
       }
 
+      /* Featured testimonial — dark blue card, bold prominent text */
+      .tc-featured {
+        background: var(--g-main);
+        box-shadow:
+          0 10px 38px rgba(0, 41, 82, 0.45),
+          0 4px 8px rgba(0, 0, 0, 0.15),
+          0 20px 40px rgba(0, 41, 82, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+      .tc-featured .tc-q {
+        color: var(--teal);
+        opacity: 0.55;
+      }
+      .tc-featured .tc-text {
+        color: #fff;
+        font-weight: 700;
+        font-style: normal;
+      }
+      .tc-featured .tc-name {
+        color: #fff;
+      }
+      .tc-featured .tc-role {
+        color: var(--teal-lt);
+      }
+      .tc-featured .tc-av {
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
       /* ═══════════════════════════════
          MISSION
       ═══════════════════════════════ */
@@ -1561,6 +1666,34 @@
           text-align: center;
           padding: 0.7rem 1.5rem;
         }
+        /* Dropdown becomes an inline accordion on mobile */
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 12px;
+          margin: 0.2rem 1.2rem 0.5rem;
+          padding: 0.3rem;
+          display: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .has-dropdown.dd-open .dropdown-menu {
+          display: block;
+        }
+        .has-dropdown.dd-open .dd-arrow {
+          transform: rotate(180deg);
+        }
+        .dropdown-menu a {
+          padding: 0.7rem 1rem;
+          font-size: 0.95rem;
+        }
         .intro-grid {
           grid-template-columns: 1fr;
         }
@@ -1637,7 +1770,7 @@
         <!-- Logo — far right -->
         <a href="#hero" class="logo">
           <img
-            src="assets/img/logo-beit-holmim.png"
+            src="assets/img/logo-beit-holmim-white.png"
             alt="בית חולמים - Dreamers Home"
             class="logo-img"
           />
@@ -1647,7 +1780,33 @@
           <li><a href="#intro">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
           <li><a href="#virtues">תוכנית 16 המעלות</a></li>
-          <li><a href="#activities">הפעילויות שלנו</a></li>
+          <li class="has-dropdown">
+            <a href="#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li><a href="business.html">16 המעלות בעסקים</a></li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בבריאות הנפש</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בקהילה</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >קבוצות תרגול וסדנאות פרטיות</a
+                >
+              </li>
+            </ul>
+          </li>
           <li><a href="#activities">אזור למידה</a></li>
           <li><a href="#footer" class="nav-contact-link">צרו איתנו קשר</a></li>
         </ul>
@@ -1856,7 +2015,7 @@
           </div>
 
           <div class="iv-single rev d2">
-            <img src="assets/img/שחף 1.png" alt="ידיים מחוברות" />
+            <img src="assets/img/16 מעלות.png" alt="16 המעלות" />
           </div>
         </div>
       </div>
@@ -1889,28 +2048,28 @@
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_635c08e4bba44afc96a41cee555948f6~mv2.png"
+                  src="assets/img/Org images from old Website/value-aspirations-shaifot.png"
                   alt="שאיפות"
                 /><span class="vi-name">שאיפות</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_142f5898764d4f408dec401a623c2346~mv2.png"
+                  src="assets/img/Org images from old Website/value-principles-ikaronot.png"
                   alt="עקרונות"
                 /><span class="vi-name">עקרונות</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_af2e7a47893c4ab3aaa82ca59238b131~mv2.png"
+                  src="assets/img/Org images from old Website/value-service-sherut.png"
                   alt="שירות"
                 /><span class="vi-name">שירות</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_adf01b5e832149498d06ce4514fd714e~mv2.png"
+                  src="assets/img/Org images from old Website/value-courage-omets.png"
                   alt="אומץ"
                 /><span class="vi-name">אומץ</span>
               </li>
@@ -1925,28 +2084,28 @@
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_fe7d87b5ee5e43e6a6fe99ae5a55b392~mv2.png"
+                  src="assets/img/Org images from old Website/value-respect-kavod.png"
                   alt="כבוד"
                 /><span class="vi-name">כבוד</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_8e987cc35e72451197f0b65f6ebd80de~mv2.png"
+                  src="assets/img/Org images from old Website/value-forgiveness-slicha.png"
                   alt="סליחה"
                 /><span class="vi-name">סליחה</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_e519b826561041e4b0edb7454c6482a9~mv2.png"
+                  src="assets/img/Org images from old Website/value-gratitude-hakarat-toda.png"
                   alt="הכרת תודה"
                 /><span class="vi-name">הכרת תודה</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_b358bb4a48ca46c4b14084ffff38fd7a~mv2.png"
+                  src="assets/img/Org images from old Website/value-loyalty-neemanut.png"
                   alt="נאמנות"
                 /><span class="vi-name">נאמנות</span>
               </li>
@@ -1961,28 +2120,28 @@
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_4737efce88bb4579bf7697c135f7d060~mv2.png"
+                  src="assets/img/Org images from old Website/value-kindness-tuv-lev.png"
                   alt="טוב לב"
                 /><span class="vi-name">טוב לב</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_b7cf9304ce7e4d11b88f01471a3b4cca~mv2.png"
+                  src="assets/img/Org images from old Website/value-honesty-kenut.png"
                   alt="כנות"
                 /><span class="vi-name">כנות</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_6c275eb6de894c6eade911a8be3eb824~mv2.png"
+                  src="assets/img/Org images from old Website/value-generosity-nedivut.png"
                   alt="נדיבות"
                 /><span class="vi-name">נדיבות</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_dd9fe060266445fc945d2de8f8cb0a36~mv2.png"
+                  src="assets/img/Org images from old Website/value-kind-speech-dibur-metiv.png"
                   alt="דיבור מטיב"
                 /><span class="vi-name">דיבור מטיב</span>
               </li>
@@ -1997,28 +2156,28 @@
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_417a29db7be748eeb8a5ba483daea3bb~mv2.png"
+                  src="assets/img/Org images from old Website/value-humility-anava.png"
                   alt="ענווה"
                 /><span class="vi-name">ענווה</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_26500d19293f4a84a2a69f714651e8b1~mv2.png"
+                  src="assets/img/Org images from old Website/value-patience-savlanut.png"
                   alt="סבלנות"
                 /><span class="vi-name">סבלנות</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_66150fa8d6b640c4b16bb51168912b49~mv2.png"
+                  src="assets/img/Org images from old Website/value-contentment-sviyat-ratzon.png"
                   alt="שביעות רצון"
                 /><span class="vi-name">שביעות רצון</span>
               </li>
               <li class="vi">
                 <img
                   class="vi-icon"
-                  src="https://static.wixstatic.com/media/895252_b2f3e456217f494cad084aa6d51ba00e~mv2.png"
+                  src="assets/img/Org images from old Website/value-joy-chedva.png"
                   alt="חדווה"
                 /><span class="vi-name">חדווה</span>
               </li>
@@ -2063,18 +2222,14 @@
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בעסקים</div>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                class="ac-link"
-                >מידע נוסף →</a
-              >
+              <a href="business.html" class="ac-link">מידע נוסף →</a>
             </div>
           </div>
 
           <div class="ac rev d1">
             <div class="ac-img-w">
               <img
-                src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80"
+                src="assets/img/education 1.jpg"
                 alt="16 המעלות בחינוך"
                 class="ac-img"
               />
@@ -2082,11 +2237,7 @@
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בחינוך</div>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                class="ac-link"
-                >מידע נוסף →</a
-              >
+              <a href="education.html" class="ac-link">מידע נוסף →</a>
             </div>
           </div>
 
@@ -2115,7 +2266,7 @@
           <div class="ac rev">
             <div class="ac-img-w">
               <img
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
+                src="assets/img/קבוצות תרגול 1.png"
                 alt="קבוצות תרגול וסדנאות פרטיות"
                 class="ac-img"
               />
@@ -2332,7 +2483,7 @@
               </div>
 
               <!-- 6. יעל קמינסקי -->
-              <div class="tc rev d2">
+              <div class="tc tc-featured rev d2">
                 <div class="tc-stars">
                   <span class="star">★</span><span class="star">★</span
                   ><span class="star">★</span><span class="star">★</span
@@ -2340,11 +2491,12 @@
                 </div>
                 <div class="tc-q">"</div>
                 <p class="tc-text">
-                  הטכנולוגיה משנה את הדרך שבה אנו עובדים, אך האתגר הגדול ביותר
-                  נותר אנושי. תוכנית כמו "16 המעלות" מסייעת לבנות ערכים משותפים,
-                  ביטחון פסיכולוגי ומערכות יחסים משמעותיות, ומאפשרת לארגונים
-                  גלובליים להתמודד בהצלחה עם אי-הוודאות של ימינו, תוך טיפוח
-                  צוותים מצוינים לאורך זמן.
+                  מהפכת הבינה המלאכותית היא בעלת פוטנציאל בלתי נתפס, אך גם
+                  מייצרת מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות
+                  של טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים
+                  לגבש שפה ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים
+                  משמעותיות, חוסן אישי וקבוצתי, ומאפשרת לארגונים גלובליים
+                  להתמודד בהצלחה עם אי-הוודאות של ימינו.
                 </p>
                 <div class="tc-author">
                   <img
@@ -2480,12 +2632,25 @@
           const open = nav.classList.toggle("nav-open");
           burger.setAttribute("aria-expanded", open);
         });
-        nav.querySelectorAll(".nav-links a").forEach((a) =>
+        nav.querySelectorAll(".nav-links a").forEach((a) => {
+          if (a.classList.contains("dd-trigger")) return;
           a.addEventListener("click", () => {
             nav.classList.remove("nav-open");
             burger.setAttribute("aria-expanded", "false");
-          }),
-        );
+          });
+        });
+
+        /* Activities dropdown — tap to expand on mobile, hover on desktop */
+        const ddParent = nav.querySelector(".has-dropdown");
+        const ddTrigger = ddParent.querySelector(".dd-trigger");
+        ddTrigger.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            ddParent.classList.toggle("dd-open");
+          } else {
+            nav.classList.remove("nav-open");
+          }
+        });
 
         /* Parallax hero */
         const hph = document.getElementById("hph");
