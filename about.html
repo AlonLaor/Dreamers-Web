@@ -388,6 +388,10 @@
         max-width: 720px;
         margin: 0 auto;
       }
+      /* 2 x 2 block: keep both rows the same height */
+      .carousel-page.rows-2 {
+        grid-auto-rows: 1fr;
+      }
 
       .team-card {
         background: linear-gradient(
@@ -1012,7 +1016,7 @@
         <div class="carousel rev" id="car-staff">
           <div class="carousel-viewport">
             <div class="carousel-track">
-              <div class="carousel-page cols-2">
+              <div class="carousel-page cols-2 rows-2">
                 <div class="team-card">
                   <img
                     class="team-photo"
@@ -1031,8 +1035,6 @@
                   <div class="team-name">עדי בן פזי</div>
                   <div class="team-role">מנהלת תפעול, עמותת בית חולמים</div>
                 </div>
-              </div>
-              <div class="carousel-page cols-2">
                 <div class="team-card">
                   <img
                     class="team-photo"
@@ -1053,14 +1055,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-nav">
-            <button class="car-btn car-prev" aria-label="הקודם">›</button>
-            <div class="car-dots">
-              <button class="car-dot active" aria-label="שקופית 1"></button>
-              <button class="car-dot" aria-label="שקופית 2"></button>
-            </div>
-            <button class="car-btn car-next" aria-label="הבא">‹</button>
           </div>
         </div>
       </div>
@@ -1255,7 +1249,6 @@
         }
 
         initCarousel("car-mgmt", 3, 6000);
-        initCarousel("car-staff", 2, 6500);
       })();
     </script>
     <script src="assets/js/accessibility-widget.js" defer></script>
