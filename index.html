@@ -372,34 +372,6 @@
           transparent 65%
         );
       }
-      /* Animated wave overlay */
-      .h-wave {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 120px;
-        pointer-events: none;
-        z-index: 5;
-      }
-      .h-wave svg {
-        width: 200%;
-        height: 100%;
-        animation: waveSlide 8s linear infinite;
-      }
-      @keyframes waveSlide {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-      .h-wave-2 svg {
-        animation: waveSlide 12s linear infinite reverse;
-        opacity: 0.6;
-      }
-
       /* Gold particles */
       #pts {
         position: absolute;
@@ -429,10 +401,11 @@
         }
       }
 
-      /* Hero content — positioned right + lower */
+      /* Hero content: positioned right, with the last title line ("מתחילה כאן")
+         sitting just above the sea horizon (the horizon lands at ~50% of the hero) */
       .h-content {
         position: absolute;
-        top: calc(20% + 5cm);
+        top: calc(50% + 3.6vw - 184px);
         right: 15%;
         z-index: 10;
         text-align: right;
@@ -450,17 +423,9 @@
           0 5px 12px rgba(0, 0, 0, 0.38),
           0 18px 38px rgba(0, 0, 0, 0.22);
       }
-      .h-grad {
-        background: linear-gradient(
-          135deg,
-          #ffd166 0%,
-          #f5a623 45%,
-          #ff8c42 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        filter: drop-shadow(0 3px 5px rgba(200, 90, 0, 0.45));
+      /* Same yellow as the "16 המעלות" words in the sub-line below */
+      .h-gold {
+        color: #ffe8a0;
       }
       .h-sub {
         font-size: clamp(0.95rem, 1.8vw, 1.25rem);
@@ -1841,36 +1806,10 @@
       <div class="h-glow"></div>
       <div id="pts"></div>
 
-      <!-- Animated wave layers -->
-      <div class="h-wave">
-        <svg
-          viewBox="0 0 1440 80"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1440,0 1440,40 L1440,80 L0,80 Z M1440,40 C1620,80 1800,0 1980,40 C2160,80 2340,0 2520,40 C2700,80 2880,0 2880,40 L2880,80 L1440,80 Z"
-            fill="rgba(0,30,70,0.35)"
-          />
-        </svg>
-      </div>
-      <div class="h-wave h-wave-2" style="bottom: 20px; opacity: 0.5">
-        <svg
-          viewBox="0 0 1440 60"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 C1680,60 1920,0 2160,30 C2400,60 2640,0 2880,30 L2880,60 L0,60 Z"
-            fill="rgba(72,217,211,0.15)"
-          />
-        </svg>
-      </div>
-
       <div class="h-content">
         <h1 class="h-title">
-          הדרך שלך לחיים שלווים,<br />
-          <span class="h-grad">משמעותיים ומאושרים יותר</span><br />
+          <span class="h-gold">הדרך שלך לחיים שלווים,</span><br />
+          <span class="h-gold">משמעותיים ומאושרים יותר</span><br />
           מתחילה כאן
         </h1>
         <p class="h-sub">
@@ -1940,52 +1879,6 @@
       </div>
     </section>
 
-    <!-- ════════════ PROGRAM INTRO (duplicate for testing) ════════════ -->
-    <section id="intro2">
-      <div class="wrap">
-        <div class="intro-grid">
-          <div>
-            <h2 class="h3d rev">תוכנית 16 המעלות</h2>
-            <p class="intro-body rev">
-              התוכנית נותנת כלים מעשיים לשיפור חיי היומיום שלנו ומבוססת על ארבעה
-              נושאי ליבה:
-            </p>
-            <ul class="pillars-list rev">
-              <li class="pl-item">
-                <span class="pl-dot"></span>הדרך שאנו חושבים
-              </li>
-              <li class="pl-item">
-                <span class="pl-dot"></span>הדרך שאנו פועלים
-              </li>
-              <li class="pl-item">
-                <span class="pl-dot"></span>הדרך שאנו מתייחסים לזולת
-              </li>
-              <li class="pl-item">
-                <span class="pl-dot"></span>הדרך שאנו מוצאים משמעות
-              </li>
-            </ul>
-            <p class="intro-body rev">
-              בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר מייצרות שפה
-              לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות, קהילות, ובחברה
-              כולה.
-            </p>
-            <div class="intro-join-box rev d1">
-              <p class="ijb-text">
-                עמותת בית חולמים היא הנציגה הרשמית של התוכנית בישראל
-              </p>
-            </div>
-            <div style="margin-top: 1.8rem" class="rev d2">
-              <a href="#virtues" class="btn btn-blue">למידע נוסף</a>
-            </div>
-          </div>
-
-          <div class="iv-single rev d2">
-            <img src="assets/img/שחף 1.png" alt="ידיים מחוברות" />
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ════════════ 16 VIRTUES ════════════ -->
     <section id="virtues">
       <div class="wrap">
@@ -2007,23 +1900,14 @@
         <div class="pgrid">
           <div class="pc pc-img rev" id="pc0">
             <img
-              src="assets/img/4.png"
+              src="assets/img/1.png"
               loading="lazy"
               decoding="async"
-              alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ"
+              alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה"
             />
           </div>
 
           <div class="pc pc-img rev d1" id="pc1">
-            <img
-              src="assets/img/3.png"
-              loading="lazy"
-              decoding="async"
-              alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות"
-            />
-          </div>
-
-          <div class="pc pc-img rev d2" id="pc2">
             <img
               src="assets/img/2.png"
               loading="lazy"
@@ -2032,12 +1916,21 @@
             />
           </div>
 
-          <div class="pc pc-img rev d3" id="pc3">
+          <div class="pc pc-img rev d2" id="pc2">
             <img
-              src="assets/img/1.png"
+              src="assets/img/3.png"
               loading="lazy"
               decoding="async"
-              alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה"
+              alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות"
+            />
+          </div>
+
+          <div class="pc pc-img rev d3" id="pc3">
+            <img
+              src="assets/img/4.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ"
             />
           </div>
         </div>
@@ -2411,7 +2304,7 @@
               לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
             </p>
             <div class="mission-slogan">
-              <img src="assets/img/Slogan Image.png" alt="סלוגן בית חולמים" />
+              <img src="assets/img/The Slogan.png" alt="סלוגן בית חולמים" />
             </div>
           </div>
         </div>

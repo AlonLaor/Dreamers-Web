@@ -171,6 +171,12 @@
         background: rgba(0, 25, 55, 0.96);
         backdrop-filter: blur(20px);
       }
+      /* Right group: logo + links together (RTL: aligned to the right edge) */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
       .logo {
         display: flex;
         align-items: center;
@@ -763,20 +769,24 @@
   <body>
     <!-- ════════════ NAV ════════════ -->
     <nav id="nav">
-      <a href="index.html#hero" class="logo">
-        <img
-          src="assets/img/logo-beit-holmim-white.png"
-          alt="בית חולמים - Dreamers Home"
-          class="logo-img"
-        />
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html#intro">דף הבית</a></li>
-        <li><a href="about.html" class="active">אודות</a></li>
-        <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
-        <li><a href="index.html#activities">אזור למידה</a></li>
-        <li><a href="index.html#footer" class="nav-cta">צרו איתנו קשר</a></li>
-      </ul>
+      <div class="nav-right">
+        <!-- Logo: far right -->
+        <a href="index.html#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <!-- Links: left of logo, RTL order -->
+        <ul class="nav-links">
+          <li><a href="index.html#intro">דף הבית</a></li>
+          <li><a href="about.html" class="active">אודות</a></li>
+          <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+          <li><a href="index.html#activities">אזור למידה</a></li>
+          <li><a href="index.html#footer" class="nav-cta">צרו איתנו קשר</a></li>
+        </ul>
+      </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1017,15 +1027,6 @@
           <div class="carousel-viewport">
             <div class="carousel-track">
               <div class="carousel-page cols-2 rows-2">
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/adi_artzi_shelo.jpg"
-                    alt="עדי ארצי שלו"
-                  />
-                  <div class="team-name">עדי ארצי שלו</div>
-                  <div class="team-role">מנהלת שיווק, עמותת בית חולמים</div>
-                </div>
                 <div class="team-card">
                   <img
                     class="team-photo"
