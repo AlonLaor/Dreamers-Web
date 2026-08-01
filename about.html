@@ -389,15 +389,6 @@
       .carousel-page.cols-3 {
         grid-template-columns: repeat(3, 1fr);
       }
-      .carousel-page.cols-2 {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 720px;
-        margin: 0 auto;
-      }
-      /* 2 x 2 block: keep both rows the same height */
-      .carousel-page.rows-2 {
-        grid-auto-rows: 1fr;
-      }
 
       .team-card {
         background: linear-gradient(
@@ -688,11 +679,6 @@
           max-width: 420px;
           margin: 0 auto;
         }
-        /* Staff carousel keeps 2 cards side-by-side at all widths */
-        .carousel-page.cols-2 {
-          grid-template-columns: repeat(2, 1fr);
-          max-width: 100%;
-        }
       }
       @media (max-width: 768px) {
         .nav-burger {
@@ -744,24 +730,6 @@
       @media (max-width: 520px) {
         .ab-sec {
           padding: 5rem 1.1rem;
-        }
-        .carousel-page.cols-2 {
-          gap: 0.9rem;
-        }
-        .carousel-page.cols-2 .team-card {
-          padding: 1.5rem 0.7rem 1.3rem;
-          border-radius: 18px;
-        }
-        .carousel-page.cols-2 .team-photo {
-          width: 84px;
-          height: 84px;
-          margin-bottom: 1rem;
-        }
-        .carousel-page.cols-2 .team-name {
-          font-size: 0.93rem;
-        }
-        .carousel-page.cols-2 .team-role {
-          font-size: 0.78rem;
         }
       }
     </style>
@@ -1026,7 +994,7 @@
         <div class="carousel rev" id="car-staff">
           <div class="carousel-viewport">
             <div class="carousel-track">
-              <div class="carousel-page cols-2 rows-2">
+              <div class="carousel-page cols-3">
                 <div class="team-card">
                   <img
                     class="team-photo"
