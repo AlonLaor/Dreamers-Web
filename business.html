@@ -323,34 +323,48 @@
         padding-right: 1.4rem;
       }
 
-      /* ═══ HERO — light bg with faded business photo ═══ */
+      /* ═══ HERO — photo at full strength, white copy over it ═══ */
       #biz-hero {
         position: relative;
         padding: 12rem 0 6rem;
         overflow: hidden;
-        background: var(--white);
+        background: var(--blue-dk);
         /* Hebrew reading order: everything hugs the right edge */
         text-align: right;
       }
+      /* the photo carries no opacity of its own — it shows as it is */
       .bh-bg {
         position: absolute;
         inset: 0;
         background-image: url("assets/img/Business Envorinment 1.png");
         background-size: cover;
-        background-position: center 30%;
-        /* low enough that the dark-blue hero copy stays easy to read,
-           high enough that the photo is still clearly there */
-        opacity: 0.34;
+        background-position: center 35%;
       }
+      /* the copy sits on the right, so the tint is weighted to that side and
+         to the very bottom, where it blends into the white section below.
+         The left half of the frame, the window and the skyline, stays clear. */
       .bh-fade {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.5) 0%,
-          rgba(255, 255, 255, 0.88) 65%,
-          #fff 100%
-        );
+        background:
+          linear-gradient(
+            to left,
+            rgba(0, 20, 45, 0.62) 0%,
+            rgba(0, 20, 45, 0.42) 38%,
+            rgba(0, 20, 45, 0.12) 68%,
+            rgba(0, 20, 45, 0) 100%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(0, 20, 45, 0.32) 0%,
+            rgba(0, 20, 45, 0.06) 26%,
+            rgba(0, 20, 45, 0.06) 84%,
+            /* pass through transparent white so the blend into the section
+               below does not go through a grey haze */
+            rgba(255, 255, 255, 0) 89%,
+            rgba(255, 255, 255, 0.65) 97%,
+            #fff 100%
+          );
       }
       /* same width and padding as .wrap, so the hero copy lines up on
          exactly the same right edge as every section below it */
@@ -379,25 +393,38 @@
         color: var(--text-mid);
         margin-bottom: 1.6rem;
       }
+      /* white copy with a shadow, the same treatment the home page hero
+         uses over its full-strength footage */
+      #biz-hero .h3d {
+        color: #fff;
+        text-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 5px 14px rgba(0, 0, 0, 0.45),
+          0 18px 38px rgba(0, 0, 0, 0.3);
+      }
       .bh-headline {
         font-family: "Playfair Display", Georgia, serif;
         font-style: italic;
         font-weight: 700;
         font-size: clamp(2rem, 4.6vw, 3.4rem);
         line-height: 1.28;
-        background: linear-gradient(120deg, var(--blue) 0%, #0c6080 55%, var(--teal) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--teal-lt);
         margin-bottom: 1.6rem;
+        text-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 5px 14px rgba(0, 0, 0, 0.5),
+          0 18px 38px rgba(0, 0, 0, 0.3);
       }
       .bh-sub {
         font-size: clamp(1rem, 1.7vw, 1.2rem);
         line-height: 1.8;
-        color: var(--text-mid);
+        color: rgba(255, 255, 255, 0.95);
         max-width: 660px;
         margin: 0 0 2.4rem;
         font-weight: 500;
+        text-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.5),
+          0 3px 12px rgba(0, 0, 0, 0.45);
       }
 
       /* ═══ GENERIC TEXT SECTION ═══ */
