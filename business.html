@@ -321,15 +321,16 @@
       /* ═══ HERO — light bg with faded business photo ═══ */
       #biz-hero {
         position: relative;
-        padding: 12rem 2rem 6rem;
+        padding: 12rem 0 6rem;
         overflow: hidden;
         background: var(--white);
-        text-align: center;
+        /* Hebrew reading order: everything hugs the right edge */
+        text-align: right;
       }
       .bh-bg {
         position: absolute;
         inset: 0;
-        background-image: url("assets/img/Business Envorinment 1 Opacity 60%.png");
+        background-image: url("assets/img/Business Envorinment 1 Opacity 75%.png");
         background-size: cover;
         background-position: center 30%;
         opacity: 0.5;
@@ -344,11 +345,14 @@
           #fff 100%
         );
       }
+      /* same width and padding as .wrap, so the hero copy lines up on
+         exactly the same right edge as every section below it */
       .bh-content {
         position: relative;
         z-index: 2;
-        max-width: 880px;
+        max-width: 1240px;
         margin: 0 auto;
+        padding: 0 2rem;
       }
       .crumbs {
         color: var(--text-lt);
@@ -384,8 +388,8 @@
         font-size: clamp(1rem, 1.7vw, 1.2rem);
         line-height: 1.8;
         color: var(--text-mid);
-        max-width: 620px;
-        margin: 0 auto 2.4rem;
+        max-width: 660px;
+        margin: 0 0 2.4rem;
         font-weight: 500;
       }
 
@@ -400,25 +404,28 @@
         background: linear-gradient(160deg, #f4f6f8 0%, #eef1f4 100%);
       }
       .ab-hdr {
-        text-align: center;
+        text-align: right;
         margin-bottom: 3rem;
       }
       .ab-hdr .sub {
-        margin: 0 auto;
-        text-align: center;
+        margin: 0;
+        text-align: right;
+        max-width: 860px;
       }
       .ab-body {
         font-size: 1.06rem;
         line-height: 1.9;
         color: var(--text-mid);
-        max-width: 800px;
-        margin: 0 auto 1.3rem;
+        max-width: 860px;
+        margin: 0 0 1.3rem;
+        text-align: right;
       }
 
       /* ═══ 16 VIRTUES MAP IMAGE ═══ */
+      /* hugs the same right edge as the copy above and below it */
       .virtues-map {
         max-width: 940px;
-        margin: 2.6rem auto 2.6rem;
+        margin: 2.6rem 0;
       }
       .virtues-map img {
         width: 100%;
@@ -431,8 +438,8 @@
 
       /* ═══ WHY NOW ═══ */
       .why-result {
-        max-width: 760px;
-        margin: 1.6rem auto 0;
+        max-width: 860px;
+        margin: 1.6rem 0 0;
         list-style: none;
       }
       .why-result li {
@@ -455,13 +462,13 @@
       }
       .stat-frame {
         position: relative;
-        max-width: 820px;
-        margin: 2.6rem auto 0;
-        /* the inline-start (right, in RTL) padding reserves room for the
+        max-width: 860px;
+        margin: 2.6rem 0 0;
+        /* the inline-end (left, in RTL) padding reserves room for the
            Gallup logo so it never sits on top of the text */
         padding-block: 2.2rem;
-        padding-inline-start: 19rem;
-        padding-inline-end: 2.4rem;
+        padding-inline-start: 2.4rem;
+        padding-inline-end: 19rem;
         border-radius: 22px;
         background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
         border: 1px solid rgba(245, 166, 35, 0.3);
@@ -475,7 +482,7 @@
          Absolute positioning keeps it clear of the text. */
       .stat-frame-logo {
         position: absolute;
-        inset-inline-start: 2.4rem;
+        inset-inline-end: 2.4rem;
         top: 50%;
         transform: translateY(-50%);
         height: 18%;
@@ -600,16 +607,23 @@
         margin-bottom: 1rem;
         position: relative;
       }
+      /* every "תוצאה" panel is the same width and the same height across
+         all six cards, so the grid stays symmetrical */
       .persona-result {
         font-size: 0.86rem;
         font-weight: 700;
+        line-height: 1.6;
         color: var(--blue-dk);
         border-radius: 12px;
         padding: 0.7rem 1rem;
         margin-top: auto;
-        align-self: flex-start;
+        align-self: stretch;
+        min-height: 5.4rem;
+        display: flex;
+        align-items: center;
+        gap: 0;
         position: relative;
-        transform-origin: right center;
+        transform-origin: center;
         transition:
           transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
           box-shadow 0.35s;
@@ -626,7 +640,7 @@
       /* mouse-over on the "תוצאה" block: the text grows a little,
          and returns to its original size when the mouse leaves */
       .persona-result:hover {
-        transform: scale(1.09);
+        transform: scale(1.05);
       }
       .row-orgs .persona-result:hover {
         box-shadow: 0 8px 20px rgba(0, 67, 120, 0.2);
@@ -645,8 +659,8 @@
 
       /* ═══ PROGRAM-DETAILS CTA ═══ */
       .steps-cta {
-        text-align: center;
-        margin: 1rem auto 0;
+        text-align: right;
+        margin: 1rem 0 0;
       }
       .btn-steps {
         background: var(--g-gold);
@@ -666,7 +680,7 @@
 
       /* ═══ WAYS TO WORK WITH THE PROGRAM — 3D cubes ═══ */
       .impl-title {
-        text-align: center;
+        text-align: right;
         color: var(--blue);
         font-size: clamp(1.3rem, 2.4vw, 1.7rem);
         font-weight: 800;
@@ -768,7 +782,7 @@
         border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 28px;
         padding: 3rem 2.6rem;
-        text-align: center;
+        text-align: right;
         backdrop-filter: blur(12px);
         box-shadow:
           0 30px 70px rgba(0, 0, 0, 0.35),
@@ -796,7 +810,7 @@
       .qf-author {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 1rem;
       }
       .qf-av {
@@ -946,9 +960,9 @@
       .contact-inner {
         position: relative;
         z-index: 2;
-        max-width: 760px;
+        max-width: 820px;
         margin: 0 auto;
-        text-align: center;
+        text-align: right;
       }
       .contact-inner .sub {
         margin: 0 auto 2.6rem;
@@ -1277,7 +1291,10 @@
           transform: rotate(180deg);
         }
         #biz-hero {
-          padding: 9rem 1.4rem 4rem;
+          padding: 9rem 0 4rem;
+        }
+        .bh-content {
+          padding: 0 1.4rem;
         }
         .persona-grid {
           grid-template-columns: 1fr;
@@ -1322,6 +1339,23 @@
           padding: 1.6rem;
         }
       }
+      /* No text block may end on a line holding a single word.
+         `pretty` lets the browser re-balance the closing lines;
+         assets/js/no-orphans.js glues the final two words for the
+         browsers that do not support it yet. */
+      body {
+        text-wrap: pretty;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .h3d,
+      .bh-headline,
+      .impl-title {
+        text-wrap: balance;
+      }
+
     </style>
   </head>
   <body>
@@ -1380,7 +1414,7 @@
       <div class="bh-bg"></div>
       <div class="bh-fade"></div>
       <div class="bh-content">
-        <h1 class="h3d rev" style="text-align: center; margin: 0 auto 1.6rem">
+        <h1 class="h3d rev" style="margin: 0 0 1.6rem">
           16 המעלות בחברות
         </h1>
         <div class="bh-headline rev d1">
@@ -1499,8 +1533,8 @@
               מהירה לצד בניית חוסן ארגוני מבפנים.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong> הסתגלות אפקטיבית לשינויים ושימור עובדים
-              לאורך זמן.
+              <span><strong>תוצאה:</strong> הסתגלות אפקטיבית לשינויים ושימור עובדים
+              לאורך זמן.</span>
             </div>
           </div>
           <div class="persona-card row-orgs rev d1">
@@ -1510,8 +1544,8 @@
               שפה מעשית שהופכת ערכים גבוהים לשגרת עבודה מעשית, חיה ונושמת.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong> הלימה מלאה בין ה'למה' שלכם לבין הפרקטיקה
-              בשטח.
+              <span><strong>תוצאה:</strong> הלימה מלאה בין ה'למה' שלכם לבין הפרקטיקה
+              בשטח.</span>
             </div>
           </div>
           <div class="persona-card row-orgs rev d2">
@@ -1521,7 +1555,7 @@
               ומאחדת, השומרת על הייחוד והגיוון של כל חבר צוות.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong> לכידות ארגונית חוצת גבולות ורקעים.
+              <span><strong>תוצאה:</strong> לכידות ארגונית חוצת גבולות ורקעים.</span>
             </div>
           </div>
 
@@ -1533,7 +1567,7 @@
               ניהולית צומחת, הצולחת משברים ומחזקת את החוסן הארגוני.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong> בהירות אסטרטגית ויציבות רגשית ברגעי אמת.
+              <span><strong>תוצאה:</strong> בהירות אסטרטגית ויציבות רגשית ברגעי אמת.</span>
             </div>
           </div>
           <div class="persona-card row-people rev d1">
@@ -1543,8 +1577,8 @@
               וחוסן. העצמת המנהל/ת להובלת הצוות מתוך מנהיגות מעוררת השראה.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong> צוותים מלוכדים וחזקים יותר לצד ירידה
-              בתחלופת עובדים.
+              <span><strong>תוצאה:</strong> צוותים מלוכדים וחזקים יותר לצד ירידה
+              בתחלופת עובדים.</span>
             </div>
           </div>
           <div class="persona-card row-people rev d2">
@@ -1553,7 +1587,7 @@
               ארגז כלים מודולרי להטמעה פשוטה בתוכניות הפיתוח הקיימות בארגון.
             </p>
             <div class="persona-result">
-              <strong>התוצאה:</strong> חיזוק התרבות ומעורבות העובדים.
+              <span><strong>התוצאה:</strong> חיזוק התרבות ומעורבות העובדים.</span>
             </div>
           </div>
         </div>
@@ -1600,7 +1634,7 @@
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 3rem" class="rev">
+        <div style="text-align: right; margin-top: 3rem" class="rev">
           <a href="#contact-form" class="btn btn-blue"
             >צרו קשר לקבלת הצעה מותאמת אישית</a
           >
@@ -2010,6 +2044,7 @@
         }
       })();
     </script>
+    <script src="assets/js/no-orphans.js" defer></script>
     <script src="assets/js/accessibility-widget.js" defer></script>
   </body>
 </html>

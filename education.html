@@ -1171,6 +1171,23 @@
           padding: 1.6rem;
         }
       }
+      /* No text block may end on a line holding a single word.
+         `pretty` lets the browser re-balance the closing lines;
+         assets/js/no-orphans.js glues the final two words for the
+         browsers that do not support it yet. */
+      body {
+        text-wrap: pretty;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .h3d,
+      .bh-headline,
+      .impl-title {
+        text-wrap: balance;
+      }
+
     </style>
   </head>
   <body>
@@ -1861,6 +1878,7 @@
         }
       })();
     </script>
+    <script src="assets/js/no-orphans.js" defer></script>
     <script src="assets/js/accessibility-widget.js" defer></script>
   </body>
 </html>
