@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>16 המעלות בעסקים | בית חולמים - Dreamers Home</title>
+    <title>16 המעלות בחברות | בית חולמים - Dreamers Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -329,7 +329,7 @@
       .bh-bg {
         position: absolute;
         inset: 0;
-        background-image: url("assets/img/Business Envorinment 1.png");
+        background-image: url("assets/img/Business Envorinment 1 Opacity 60%.png");
         background-size: cover;
         background-position: center 30%;
         opacity: 0.5;
@@ -415,48 +415,18 @@
         margin: 0 auto 1.3rem;
       }
 
-      /* ═══ 4 CORE THEMES ROW ═══ */
-      .theme-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.2rem;
-        max-width: 980px;
-        margin: 2.4rem auto 0;
+      /* ═══ 16 VIRTUES MAP IMAGE ═══ */
+      .virtues-map {
+        max-width: 940px;
+        margin: 2.6rem auto 2.6rem;
       }
-      .theme-chip {
-        border-radius: 18px;
-        padding: 1.6rem 1rem;
-        text-align: center;
-        color: #fff;
-        font-weight: 700;
-        font-size: 0.94rem;
-        line-height: 1.5;
-        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
-        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      .theme-chip:hover {
-        transform: translateY(-6px);
-      }
-      .theme-thinking {
-        background: linear-gradient(145deg, #001a1a 0%, #005555 40%, #007a7a 100%);
-      }
-      .theme-acting {
-        background: linear-gradient(145deg, #00241a 0%, #005c3d 40%, #007a55 100%);
-      }
-      .theme-relating {
-        background: linear-gradient(145deg, #001530 0%, #002d6b 40%, #004494 100%);
-      }
-      .theme-meaning {
-        background: linear-gradient(145deg, #1a0d00 0%, #5c2800 40%, #9a5000 100%);
-      }
-      .theme-count {
-        margin-top: 1.6rem;
-        text-align: center;
-        font-size: 0.96rem;
-        color: var(--text-mid);
-        max-width: 700px;
-        margin-inline: auto;
-        line-height: 1.8;
+      .virtues-map img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.1),
+          0 22px 55px rgba(0, 67, 120, 0.22);
       }
 
       /* ═══ WHY NOW ═══ */
@@ -484,28 +454,33 @@
         background: var(--gold);
       }
       .stat-frame {
+        position: relative;
         max-width: 820px;
         margin: 2.6rem auto 0;
-        padding: 2.2rem 2.4rem;
+        /* the inline-start (right, in RTL) padding reserves room for the
+           Gallup logo so it never sits on top of the text */
+        padding-block: 2.2rem;
+        padding-inline-start: 19rem;
+        padding-inline-end: 2.4rem;
         border-radius: 22px;
         background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
         border: 1px solid rgba(245, 166, 35, 0.3);
         box-shadow: 0 20px 50px rgba(245, 166, 35, 0.12);
+        min-height: 220px;
         display: flex;
         gap: 1.4rem;
-        align-items: flex-start;
-      }
-      .stat-frame-ico {
-        flex-shrink: 0;
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: var(--g-gold);
-        display: flex;
         align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        box-shadow: 0 10px 24px rgba(245, 166, 35, 0.4);
+      }
+      /* Height is 18% of the box height, proportions preserved.
+         Absolute positioning keeps it clear of the text. */
+      .stat-frame-logo {
+        position: absolute;
+        inset-inline-start: 2.4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 18%;
+        width: auto;
+        object-fit: contain;
       }
       .stat-frame p {
         font-size: 1.02rem;
@@ -533,19 +508,43 @@
         margin: 0 auto;
       }
       .persona-card {
-        background: linear-gradient(150deg, #f4f9ff 0%, #e7f1fb 55%, #dfeef8 100%);
         border-radius: 22px;
         padding: 2.2rem 1.8rem;
-        box-shadow:
-          0 4px 10px rgba(0, 67, 120, 0.08),
-          0 18px 40px var(--shadow),
-          inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(0, 67, 120, 0.07);
         transition:
           transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
           box-shadow 0.4s;
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Row 1 — ארגונים (organisations): one shared colour */
+      .persona-card.row-orgs {
+        background: linear-gradient(150deg, #f4f9ff 0%, #e3eefb 55%, #d6e8f7 100%);
+        border: 1px solid rgba(0, 67, 120, 0.1);
+        box-shadow:
+          0 2px 4px rgba(0, 67, 120, 0.08),
+          0 6px 12px rgba(0, 67, 120, 0.1),
+          0 20px 44px rgba(0, 67, 120, 0.2),
+          inset 0 2px 0 rgba(255, 255, 255, 0.95),
+          inset 0 -3px 8px rgba(0, 67, 120, 0.09);
+      }
+      .persona-card.row-orgs::before {
+        background: var(--g-teal);
+      }
+      /* Row 2 — אנשים (people): one shared colour */
+      .persona-card.row-people {
+        background: linear-gradient(150deg, #fffdf6 0%, #fdf3df 55%, #fbeace 100%);
+        border: 1px solid rgba(245, 166, 35, 0.22);
+        box-shadow:
+          0 2px 4px rgba(146, 96, 8, 0.08),
+          0 6px 12px rgba(146, 96, 8, 0.1),
+          0 20px 44px rgba(146, 96, 8, 0.18),
+          inset 0 2px 0 rgba(255, 255, 255, 0.95),
+          inset 0 -3px 8px rgba(146, 96, 8, 0.08);
+      }
+      .persona-card.row-people::before {
+        background: var(--g-gold);
       }
       .persona-card::before {
         content: "";
@@ -553,141 +552,190 @@
         top: 0;
         right: 0;
         left: 0;
-        height: 4px;
-        background: var(--g-teal);
+        height: 5px;
+      }
+      /* soft top-light sheen — part of the 3D read */
+      .persona-card::after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        right: 0;
+        left: 0;
+        height: 46%;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.6) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
       }
       .persona-card:hover {
-        transform: translateY(-8px) perspective(800px) rotateX(2deg);
+        transform: translateY(-10px) perspective(900px) rotateX(3deg);
+      }
+      .persona-card.row-orgs:hover {
         box-shadow:
-          0 6px 14px rgba(0, 67, 120, 0.1),
-          0 26px 55px rgba(0, 67, 120, 0.2);
+          0 3px 6px rgba(0, 67, 120, 0.1),
+          0 10px 20px rgba(0, 67, 120, 0.12),
+          0 32px 64px rgba(0, 67, 120, 0.26),
+          inset 0 2px 0 rgba(255, 255, 255, 0.95);
+      }
+      .persona-card.row-people:hover {
+        box-shadow:
+          0 3px 6px rgba(146, 96, 8, 0.1),
+          0 10px 20px rgba(146, 96, 8, 0.12),
+          0 32px 64px rgba(146, 96, 8, 0.24),
+          inset 0 2px 0 rgba(255, 255, 255, 0.95);
       }
       .persona-card h3 {
         color: var(--blue);
         font-size: 1.12rem;
         font-weight: 800;
         margin-bottom: 0.8rem;
+        position: relative;
       }
       .persona-card p {
         color: var(--text-mid);
         font-size: 0.94rem;
         line-height: 1.75;
         margin-bottom: 1rem;
+        position: relative;
       }
       .persona-result {
         font-size: 0.86rem;
         font-weight: 700;
         color: var(--blue-dk);
-        background: rgba(72, 217, 211, 0.18);
-        border-radius: 10px;
-        padding: 0.6rem 0.9rem;
-        display: inline-block;
+        border-radius: 12px;
+        padding: 0.7rem 1rem;
+        margin-top: auto;
+        align-self: flex-start;
+        position: relative;
+        transform-origin: right center;
+        transition:
+          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s;
+        cursor: default;
+      }
+      .row-orgs .persona-result {
+        background: rgba(72, 217, 211, 0.22);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      }
+      .row-people .persona-result {
+        background: rgba(245, 166, 35, 0.2);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      }
+      /* mouse-over on the "תוצאה" block: the text grows a little,
+         and returns to its original size when the mouse leaves */
+      .persona-result:hover {
+        transform: scale(1.09);
+      }
+      .row-orgs .persona-result:hover {
+        box-shadow: 0 8px 20px rgba(0, 67, 120, 0.2);
+      }
+      .row-people .persona-result:hover {
+        box-shadow: 0 8px 20px rgba(146, 96, 8, 0.2);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .persona-result {
+          transition: none;
+        }
+        .persona-result:hover {
+          transform: none;
+        }
       }
 
-      /* ═══ STEPS TIMELINE ═══ */
-      .steps-timeline {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.4rem;
-        max-width: 1180px;
-        margin: 3rem auto 0;
-        position: relative;
-      }
-      .steps-timeline::before {
-        content: "";
-        position: absolute;
-        top: 34px;
-        right: 12%;
-        left: 12%;
-        height: 3px;
-        background: linear-gradient(90deg, var(--teal), var(--blue), var(--gold));
-        opacity: 0.35;
-        z-index: 0;
-      }
-      .step-card {
-        position: relative;
-        z-index: 1;
-        background: #fff;
-        border-radius: 20px;
-        padding: 2.3rem 1.4rem 1.7rem;
+      /* ═══ PROGRAM-DETAILS CTA ═══ */
+      .steps-cta {
         text-align: center;
-        box-shadow:
-          0 4px 10px rgba(0, 67, 120, 0.07),
-          0 20px 45px var(--shadow);
-        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        margin: 1rem auto 0;
       }
-      .step-card:hover {
-        transform: translateY(-8px);
-      }
-      .step-num {
-        width: 68px;
-        height: 68px;
-        border-radius: 50%;
-        margin: 0 auto 1.1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 900;
-        color: #fff;
-        background: var(--g-main);
-        box-shadow:
-          0 10px 26px rgba(0, 67, 120, 0.45),
-          inset 0 2px 4px rgba(255, 255, 255, 0.25),
-          inset 0 -4px 8px rgba(0, 0, 0, 0.25);
-      }
-      .step-card h3 {
-        color: var(--blue);
-        font-size: 1.05rem;
-        font-weight: 800;
-        margin-bottom: 0.6rem;
-      }
-      .step-card p {
-        color: var(--text-mid);
-        font-size: 0.88rem;
-        line-height: 1.65;
-        margin-bottom: 0.6rem;
-      }
-      .step-hours {
-        display: inline-block;
-        font-size: 0.76rem;
-        font-weight: 700;
+      .btn-steps {
+        background: var(--g-gold);
         color: var(--blue-dk);
-        background: rgba(72, 217, 211, 0.2);
-        border-radius: 20px;
-        padding: 0.28rem 0.8rem;
-        margin-bottom: 0.7rem;
+        font-size: 1.05rem;
+        padding: 1.05rem 2.8rem;
+        box-shadow:
+          0 3px 0 rgba(146, 96, 8, 0.35),
+          0 16px 34px rgba(245, 166, 35, 0.4);
       }
-      .step-result {
-        font-size: 0.82rem;
-        color: var(--text-lt);
-        line-height: 1.6;
-      }
-      .step-result strong {
-        color: var(--blue);
+      .btn-steps:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 3px 0 rgba(146, 96, 8, 0.35),
+          0 22px 44px rgba(245, 166, 35, 0.5);
       }
 
+      /* ═══ WAYS TO WORK WITH THE PROGRAM — 3D cubes ═══ */
+      .impl-title {
+        text-align: center;
+        color: var(--blue);
+        font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+        font-weight: 800;
+        margin-top: 4.5rem;
+      }
       .impl-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.4rem;
+        gap: 1.6rem;
         max-width: 1000px;
-        margin: 3rem auto 0;
+        margin: 2.4rem auto 0;
       }
       .impl-card {
-        background: #fff;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(150deg, #ffffff 0%, #f2f8fe 55%, #e6f0fa 100%);
         border-radius: 18px;
-        padding: 1.8rem;
-        box-shadow: 0 14px 34px var(--shadow);
-        border: 1px solid rgba(0, 67, 120, 0.08);
+        padding: 2rem 1.8rem;
+        border: 1px solid rgba(0, 67, 120, 0.1);
+        box-shadow:
+          0 2px 4px rgba(0, 67, 120, 0.08),
+          0 6px 12px rgba(0, 67, 120, 0.1),
+          0 20px 44px rgba(0, 67, 120, 0.2),
+          inset 0 2px 0 rgba(255, 255, 255, 1),
+          inset 0 -3px 8px rgba(0, 67, 120, 0.09);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
+      }
+      .impl-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 5px;
+        background: var(--g-teal);
+      }
+      .impl-card::after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        right: 0;
+        left: 0;
+        height: 46%;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.65) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
+      }
+      .impl-card:hover {
+        transform: translateY(-10px) perspective(900px) rotateX(3deg);
+        box-shadow:
+          0 3px 6px rgba(0, 67, 120, 0.1),
+          0 10px 20px rgba(0, 67, 120, 0.12),
+          0 32px 64px rgba(0, 67, 120, 0.26),
+          inset 0 2px 0 rgba(255, 255, 255, 1);
       }
       .impl-card h4 {
+        position: relative;
         color: var(--blue);
-        font-size: 1rem;
+        font-size: 1.06rem;
         font-weight: 800;
         margin-bottom: 0.6rem;
       }
       .impl-card p {
+        position: relative;
         color: var(--text-mid);
         font-size: 0.9rem;
         line-height: 1.7;
@@ -1029,10 +1077,11 @@
         display: none;
       }
 
-      /* ═══ FOOTER ═══ */
+      /* ═══ FOOTER — identical to the home page ═══ */
       footer {
-        background: linear-gradient(135deg, #e0f7f6 0%, #d0f0ff 40%, #e8f9ff 100%);
-        color: var(--blue);
+        background: url("assets/img/Gradient blue.png") center / cover no-repeat
+          var(--blue-dk);
+        color: #fff;
         padding: 5rem 2rem 2.5rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
       }
@@ -1055,7 +1104,7 @@
       .footer-desc {
         font-size: 1rem;
         line-height: 1.8;
-        color: var(--text-mid);
+        color: rgba(255, 255, 255, 0.85);
         max-width: 340px;
         margin-top: 1rem;
       }
@@ -1068,18 +1117,21 @@
       }
       .footer-nav a {
         font-size: 1rem;
-        color: var(--text-mid);
+        color: rgba(255, 255, 255, 0.85);
         transition: color 0.3s;
         font-weight: 500;
       }
       .footer-nav a:hover {
-        color: var(--blue);
+        color: var(--teal);
+      }
+      .footer-nav a.active {
+        color: var(--teal);
       }
       .footer-col-title {
         font-size: 0.78rem;
         font-weight: 800;
         letter-spacing: 0.2em;
-        color: var(--blue);
+        color: var(--teal);
         text-transform: uppercase;
         margin-bottom: 1.1rem;
         border-bottom: 2px solid rgba(72, 217, 211, 0.5);
@@ -1088,26 +1140,74 @@
       }
       .footer-contact p {
         font-size: 1rem;
-        color: var(--text-mid);
+        color: rgba(255, 255, 255, 0.85);
         margin-bottom: 0.6rem;
         font-weight: 500;
       }
       .footer-contact a {
-        color: var(--blue);
+        color: #fff;
         font-weight: 600;
         transition: color 0.3s;
       }
       .footer-contact a:hover {
         color: var(--teal);
       }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      .fsoc:hover {
+        background: var(--teal);
+        color: var(--blue-dk);
+        transform: translateY(-3px);
+        border-color: var(--teal);
+      }
+      .footer-motto {
+        max-width: 680px;
+        margin: 0 auto 2.6rem;
+        padding: 1.7rem 2.2rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(72, 217, 211, 0.55);
+        border-radius: 22px;
+        box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
+        color: #fff;
+        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+        font-weight: 800;
+        line-height: 1.6;
+        position: relative;
+      }
+      .footer-motto::before {
+        content: "”";
+        display: block;
+        font-size: 2.6rem;
+        line-height: 0.6;
+        color: var(--teal);
+        margin-bottom: 0.5rem;
+      }
       .footer-bottom {
-        border-top: 1px solid rgba(0, 67, 120, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
         padding-top: 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 0.88rem;
-        color: var(--text-mid);
+        color: rgba(255, 255, 255, 0.7);
         flex-wrap: wrap;
         gap: 1rem;
       }
@@ -1116,12 +1216,6 @@
       @media (max-width: 1024px) {
         .persona-grid {
           grid-template-columns: repeat(2, 1fr);
-        }
-        .steps-timeline {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .steps-timeline::before {
-          display: none;
         }
         .impl-grid {
           grid-template-columns: 1fr;
@@ -1185,13 +1279,7 @@
         #biz-hero {
           padding: 9rem 1.4rem 4rem;
         }
-        .theme-row {
-          grid-template-columns: repeat(2, 1fr);
-        }
         .persona-grid {
-          grid-template-columns: 1fr;
-        }
-        .steps-timeline {
           grid-template-columns: 1fr;
         }
         .about-grid {
@@ -1207,6 +1295,20 @@
           flex-direction: column;
           text-align: center;
           align-items: center;
+          min-height: 0;
+          padding-inline-start: 1.6rem;
+          padding-inline-end: 1.6rem;
+          padding-top: 1.6rem;
+          gap: 1rem;
+        }
+        /* on narrow screens the logo stacks above the text instead of
+           sitting beside it, so it still never covers any copy */
+        .stat-frame-logo {
+          position: static;
+          transform: none;
+          height: auto;
+          width: 150px;
+          order: -1;
         }
         .footer-top {
           flex-direction: column;
@@ -1242,7 +1344,7 @@
           >
           <ul class="dropdown-menu">
             <li><a href="education.html">16 המעלות בחינוך</a></li>
-            <li><a href="business.html" class="active">16 המעלות בעסקים</a></li>
+            <li><a href="business.html" class="active">16 המעלות בחברות</a></li>
             <li>
               <a
                 href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
@@ -1278,55 +1380,53 @@
       <div class="bh-bg"></div>
       <div class="bh-fade"></div>
       <div class="bh-content">
-        <div class="crumbs">
-          <a href="index.html">דף הבית</a> &nbsp;/&nbsp; 16 המעלות בעסקים
-        </div>
         <h1 class="h3d rev" style="text-align: center; margin: 0 auto 1.6rem">
-          16 המעלות לעולם העסקי
+          16 המעלות בחברות
         </h1>
         <div class="bh-headline rev d1">
-          להוביל בחוכמה ובאמפתיה<br />
+          להנהיג בחוכמה ובאמפתיה<br />
           לבסס ארגונים יציבים בעולם משתנה
         </div>
         <p class="bh-sub rev d2">
-          תוכנית מעשית לפיתוח חוסן רגשי, ערכים משותפים ועבודה עם משמעות
+          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח
+          ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
         <div class="rev d3">
-          <a href="#contact-form" class="btn btn-blue">בואו נתחיל שיחה</a>
+          <a href="#contact-form" class="btn btn-blue">בואו ונבנה תוכנית עבודה</a>
         </div>
       </div>
     </header>
 
-    <!-- ════════════ INTRO ════════════ -->
-    <section class="ab-sec bg-white">
+    <!-- ════════════ 16 המעלות בחברות ════════════ -->
+    <section class="ab-sec bg-white" id="virtues-companies">
       <div class="wrap">
         <div class="ab-hdr">
-          <p class="ab-body rev">
-            16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח
-            ערכים אוניברסליים וחיים בעלי משמעות.
-          </p>
-          <p class="ab-body rev d1">
-            עבור ארגונים עסקיים, התוכנית מספקת ערכת כלים מודולרית המשתלבת
-            בשגרת הניהול היומיומית. מבוססת על ערכים אוניברסליים (כגון סבלנות,
-            נדיבות, יושרה, עקרונות ואומץ), התוכנית יוצרת שפה משותפת בארגון
-            ליצירת תשתית ליצירתיות, הזדהות עם הפעילות המקצועית וקשר אפקטיבי
-            זה עם זו.
-          </p>
+          <h2 class="h3d rev">16 המעלות בחברות</h2>
         </div>
+        <p class="ab-body rev">
+          התכנית מבוססת על ארבעה נושאי ליבה אשר כוללים 16 ערכים אוניברסליים
+          (מעלות) ומספקת כלים מעשיים להטמעתם בחיי היומיום ובסביבת העבודה.
+        </p>
+        <p class="ab-body rev d1">
+          הכלים המעשיים מעודדים התבוננות פנימית, מחזקים את ההבנה כי הפוטנציאל
+          למנהיגות ערכית כבר קיים בתוך הארגון ומסייעים להביא למימושו.
+        </p>
 
-        <div class="theme-row rev d2">
-          <div class="theme-chip theme-thinking">הדרך שאנו חושבות.ים</div>
-          <div class="theme-chip theme-acting">הדרך שאנו פועלות.ים</div>
-          <div class="theme-chip theme-relating">
-            הדרך שאנו מתייחסות.ים לזולת
-          </div>
-          <div class="theme-chip theme-meaning">
-            הדרך שאנו מוצאות.ים משמעות
-          </div>
-        </div>
-        <p class="theme-count rev d3">
-          בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות שפה
-          ערכית-רגשית ותרבות ארגונית מיטיבה.
+        <figure class="virtues-map rev d2">
+          <img
+            src="assets/img/16 המעלות - 110826.png"
+            alt="16 המעלות: ארבעה נושאי ליבה — הדרך בה אנו חושבים, פועלים, מתייחסים לזולת ומוצאים משמעות — וארבע מעלות בכל נושא"
+          />
+        </figure>
+
+        <p class="ab-body rev d3">
+          החזון העומד בבסיס תכנית 16 המעלות לחברות הוא יחד הן יוצרות עולם עבודה
+          חדש הכולל שפה ערכית משותפת ותרבות ארגונית אנושית ומיטיבה.
+        </p>
+        <p class="ab-body rev d3">
+          בעולם העבודה החדש הזה, אנשים פועלים מתוך מיקוד, רוגע וחוסן, ואף חווים
+          אושר ומשמעות בעבודתם. זהו עולם המאפשר חיבור אנושי וחמלה הדדית, גם
+          בסביבה דינמית ובעומס שגרת היומיום.
         </p>
       </div>
     </section>
@@ -1335,38 +1435,44 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• למה עכשיו •</span>
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
         <p class="ab-body rev">
-          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה
-          המלאכותית, חוסר יציבות גיאופוליטית, תשישות ושחיקה, ושינויים
-          מהירים בעולם העבודה המייצרים חוסר ביטחון תעסוקתי. השינויים מהירים
-          יותר מקצב ההסתגלות של הארגונים והעובדים.
+          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה המלאכותית,
+          חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה המייצרים אי ודאות
+          מתמשכת וחוסר ביטחון תעסוקתי.
+        </p>
+        <p class="ab-body rev d1">
+          השינויים מהירים יותר מקצב ההסתגלות של העובדות והעובדים ומובילים
+          לתופעות של חרדה, ניתוק רגשי, תשישות ושחיקה.
         </p>
         <p class="ab-body rev d1" style="font-weight: 700; color: var(--blue)">
           התוצאה:
         </p>
         <ul class="why-result rev d1">
-          <li>שחיקה בנאמנות ועלייה בניכור</li>
-          <li>אובדן תחושת מטרה משותפת וחיבור</li>
-          <li>מנהלים עמוסים שמתקשים לשדר רוגע ואיזון</li>
-          <li>צוותים הפועלים במצב הישרדות במקום שאיפה</li>
+          <li>עומס ניהולי שמקשה על מנהיגות מאוזנת ורגועה</li>
+          <li>צוותים הפועלים מתוך הישרדות ותגובתיות, במקום חזון ותכנון</li>
+          <li>אובדן חיבור ותחושת מטרה משותפת</li>
+          <li>שחיקה בחוסן המנטלי וחיבור העבודה</li>
         </ul>
         <p class="ab-body rev d2" style="margin-top: 1.6rem">
-          16 המעלות בעסקים מעניקה לארגונים שפה ערכית-רגשית משותפת, ומסייעת
-          לצוותים לעבור ממצב של הישרדות תגובתית לפעולה ערכית, משמעותית
-          ומכוונת מטרה משותפת.
+          תוכנית 16 המעלות לחברות מעניקה לארגונים שפה ערכית-רגשית משותפת, המשנה
+          את האופן שבו צוותים חושבים, פועלים ושואפים ליעדים ומבססת תשתית אתית
+          ואנושית שמגבירה את הפריון, האיזון והחוסן הארגוני גם כשהמציאות סוערת.
         </p>
 
         <div class="stat-frame rev d3">
-          <div class="stat-frame-ico">📊</div>
+          <img
+            src="assets/img/GALLUP logo.png"
+            alt="Gallup"
+            class="stat-frame-logo"
+          />
           <div>
             <p>
-              רמת המעורבות העולמית של עובדים ירדה ל-<strong>20%</strong>
-              בשנת 2025 — הנמוכה ביותר מאז 2020 — ועלות הירידה למשק העולמי
-              מוערכת ב-<strong>10 טריליון דולר</strong> באובדן פריון.
-              <cite>(Gallup, State of the Global Workplace 2026)</cite>
+              רמת החיבור של עובדים למקום העבודה שלהם ירדה ל-<strong>20%</strong>
+              בשנת 2025, הנמוכה ביותר מאז 2020 ועלות הירידה למשק העולמי מוערכת
+              ב-<strong>10 טריליון דולר</strong> באובדן פריון.
+              <cite>(Gallup - State of the Global Workplace 2026)</cite>
             </p>
           </div>
         </div>
@@ -1377,73 +1483,77 @@
     <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev">• למי זה מיועד •</span>
-          <h2 class="h3d rev">למי זה מיועד</h2>
+          <h2 class="h3d rev">למי מיועדת התוכנית</h2>
           <p class="sub rev">
-            בין אם אתם בונים, מתרחבים, עוברים שינוי או מייצבים, הצורך בשפה
-            אנושית משותפת זהה. 16 המעלות מתאימה את עצמה לשלב שאתם נמצאים,
-            לתרבות הארגונית וליעדים שלכם.
+            בכל שלב של צמיחה, שינוי או ייצוב, ארגון זקוק לשפה ערכית אנושית
+            משותפת. תכנית 16 המעלות ניתנת להתאמה במדויק לתרבות הארגונית וליעדים
+            שלכם.
           </p>
         </div>
         <div class="persona-grid">
-          <div class="persona-card rev">
-            <h3>הנהלה בכירה</h3>
-            <p>
-              להוביל בתוך אי-ודאות מבלי לאבד את רוח הארגון. לבנות תרבות
-              ששורדת משברים.
-            </p>
-            <div class="persona-result">
-              תוצאה: בהירות אסטרטגית + יציבות רגשית
-            </div>
-          </div>
-          <div class="persona-card rev d1">
-            <h3>אנשי משאבי אנוש</h3>
-            <p>
-              לשלב את 16 המעלות בתוכניות פיתוח קיימות. ערכת כלים מודולרית
-              ומבוססת-ראיות המשלימה את מה שכבר קיים.
-            </p>
-            <div class="persona-result">
-              תוצאה: תוצאות מדידות בתרבות ובמעורבות
-            </div>
-          </div>
-          <div class="persona-card rev d2">
+          <!-- Row 1 — ארגונים -->
+          <div class="persona-card row-orgs rev">
             <h3>ארגונים בתהליך שינוי</h3>
             <p>
-              להגן על התרבות הארגונית בזמן מיזוגים, ארגון מחדש או צמיחה
-              מהירה. לבנות חוסן ארוך טווח מבפנים.
+              שימור והתאמה של התרבות הארגונית בזמן מיזוגים, משברים או צמיחה
+              מהירה לצד בניית חוסן ארגוני מבפנים.
             </p>
             <div class="persona-result">
-              תוצאה: המשכיות תרבותית + שימור עובדים
+              <strong>תוצאה:</strong> הסתגלות אפקטיבית לשינויים ושימור עובדים
+              לאורך זמן.
             </div>
           </div>
-          <div class="persona-card rev">
-            <h3>מנהלים בדרג ביניים</h3>
-            <p>
-              לשמר אמון בצוות, להפחית חיכוכים ולנהל קונפליקטים באמפתיה.
-              להיות המנהיג/ה שהצוות באמת הולך אחריו.
-            </p>
-            <div class="persona-result">
-              תוצאה: צוותים חזקים יותר + פחות תחלופה
-            </div>
-          </div>
-          <div class="persona-card rev d1">
-            <h3>צוותים גלובליים ורב-תרבותיים</h3>
-            <p>
-              ערכים אוניברסליים החוצים הבדלי תרבות. שפה משותפת המאחדת מבלי
-              לטשטש את הגיוון.
-            </p>
-            <div class="persona-result">
-              תוצאה: לכידות חוצה גבולות ורקעים
-            </div>
-          </div>
-          <div class="persona-card rev d2">
+          <div class="persona-card row-orgs rev d1">
             <h3>ארגונים מונחי-מטרה</h3>
             <p>
-              עמותות, מיזמים חברתיים וחברות מונחות-שליחות, שבהן ה'למה' הוא
-              ליבת העבודה והאנשים זקוקים לשפה כדי לחיות אותו.
+              עבור עמותות ומיזמים שבהם המטרה היא ה-DNA הארגוני, המעניקים לצוותים
+              שפה מעשית שהופכת ערכים גבוהים לשגרת עבודה מעשית, חיה ונושמת.
             </p>
             <div class="persona-result">
-              תוצאה: התאמה בין השליחות לבין ההתנהגות היומיומית
+              <strong>תוצאה:</strong> הלימה מלאה בין ה'למה' שלכם לבין הפרקטיקה
+              בשטח.
+            </div>
+          </div>
+          <div class="persona-card row-orgs rev d2">
+            <h3>צוותים גלובליים ורב-תרבותיים</h3>
+            <p>
+              ערכים אוניברסליים החוצים הבדלי תרבות וגיאוגרפיה. יצירת שפה משותפת
+              ומאחדת, השומרת על הייחוד והגיוון של כל חבר צוות.
+            </p>
+            <div class="persona-result">
+              <strong>תוצאה:</strong> לכידות ארגונית חוצת גבולות ורקעים.
+            </div>
+          </div>
+
+          <!-- Row 2 — אנשים -->
+          <div class="persona-card row-people rev">
+            <h3>הנהלה בכירה</h3>
+            <p>
+              הובלה אפקטיבית בתנאי אי-ודאות תוך שמירה על רוח הארגון. בניית תרבות
+              ניהולית צומחת, הצולחת משברים ומחזקת את החוסן הארגוני.
+            </p>
+            <div class="persona-result">
+              <strong>תוצאה:</strong> בהירות אסטרטגית ויציבות רגשית ברגעי אמת.
+            </div>
+          </div>
+          <div class="persona-card row-people rev d1">
+            <h3>מנהלים בדרג ביניים</h3>
+            <p>
+              ביסוס אמון ותקשורת, הפחתת חיכוכים וניהול קונפליקטים מתוך אמפתיה
+              וחוסן. העצמת המנהל/ת להובלת הצוות מתוך מנהיגות מעוררת השראה.
+            </p>
+            <div class="persona-result">
+              <strong>תוצאה:</strong> צוותים מלוכדים וחזקים יותר לצד ירידה
+              בתחלופת עובדים.
+            </div>
+          </div>
+          <div class="persona-card row-people rev d2">
+            <h3>אנשי משאבי אנוש (HR)</h3>
+            <p>
+              ארגז כלים מודולרי להטמעה פשוטה בתוכניות הפיתוח הקיימות בארגון.
+            </p>
+            <div class="persona-result">
+              <strong>התוצאה:</strong> חיזוק התרבות ומעורבות העובדים.
             </div>
           </div>
         </div>
@@ -1454,72 +1564,39 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• איך זה עובד •</span>
           <h2 class="h3d rev">איך זה עובד</h2>
           <p class="sub rev">
-            16 המעלות לעסקים היא תוכנית מודולרית המועברת בסדנאות בהנחיה
-            אישית או באוף-סייט של צוותים, ומותאמת לגודל הארגון, לתרבות
-            הארגונית וליעדים הספציפיים.
+            16 המעלות לחברות היא תוכנית מודולרית המועברת בסדנאות בהנחיה אישית או
+            באוף-סייט של צוותים, ומותאמת לגודל הארגון, לתרבות הארגונית וליעדים
+            הספציפים.
           </p>
         </div>
 
-        <div class="steps-timeline">
-          <div class="step-card rev">
-            <div class="step-num">1</div>
-            <h3>יסודות</h3>
-            <p>לימוד המסגרת התיאורטית והערכית.</p>
-            <div class="step-hours">8 שעות</div>
-            <p class="step-result">
-              <strong>תוצאה:</strong> הבנה ברורה ומגולמת של 16 המעלות, וערכת
-              כלים אישית לחיי היומיום
-            </p>
-          </div>
-          <div class="step-card rev d1">
-            <div class="step-num">2</div>
-            <h3>הטמעה</h3>
-            <p>מעבר מהבנה לתרגול. הטמעת המעלות בחיי היומיום.</p>
-            <div class="step-hours">15 שעות</div>
-            <p class="step-result">
-              <strong>תוצאה:</strong> הטמעה אמיתית של המעלות בחשיבה, ביחסים
-              ובעבודה היומיומית — לא רק ידע תיאורטי
-            </p>
-          </div>
-          <div class="step-card rev d2">
-            <div class="step-num">3</div>
-            <h3>העמקה</h3>
-            <p>הכנה להנחיה ולהוראה.</p>
-            <div class="step-hours">12 שעות</div>
-            <p class="step-result">
-              <strong>תוצאה:</strong> מוכנות להכיל את מלוא העומק של התוכנית,
-              ועבור מי שבוחר בכך — להנחות אותה עבור אחרים
-            </p>
-          </div>
-          <div class="step-card rev d3">
-            <div class="step-num">4</div>
-            <h3>ליווי המשך</h3>
-            <p>
-              משאבים מתמשכים, ערכות כלים למנהלים, וליווי אישי אופציונלי
-              להטמעת השפה בתרבות הארגונית.
-            </p>
-            <div class="step-hours">אופציונלי</div>
-          </div>
+        <div class="steps-cta rev">
+          <a href="index.html#virtues" class="btn btn-steps"
+            >מידע מפורט על שלבי התוכנית ניתן לקרוא כאן</a
+          >
         </div>
 
+        <h3 class="impl-title rev">אפשרויות לעבוד עם התוכנית</h3>
         <div class="impl-grid">
           <div class="impl-card rev">
-            <h4>סדנת היכרות</h4>
-            <p>מתאימה לצוותי הנהלה או לפתיחת עבודה במחלקה.</p>
+            <h4>סדנת הכירות</h4>
+            <p>
+              מתאימה לצוותי הנהלה כאשר נשקל מהלך נרחב עם התוכנית בחברה. הסדנה
+              הינה בת שעתיים.
+            </p>
           </div>
           <div class="impl-card rev d1">
             <h4>יישום ארגוני מלא</h4>
             <p>
-              יישום מותאם אישית ורב-שכבתי בכל הארגון. כולל אפשרות להכשרת
-              מנחים פנים-ארגוניים.
+              יישום מותאם אישית ורב-שכבתי בכל הארגון. כולל אפשרות להכשרת מנחים
+              פנים-ארגוניים.
             </p>
           </div>
           <div class="impl-card rev d2">
             <h4>שפות</h4>
-            <p>עברית ואנגלית. שפות נוספות זמינות לפי דרישה.</p>
+            <p>מועבר בעברית ובאנגלית.</p>
           </div>
         </div>
 
@@ -1538,11 +1615,11 @@
           <div class="qf-mark">"</div>
           <p class="qf-text">
             מהפכת הבינה המלאכותית היא בעלת פוטנציאל בלתי נתפס, אך גם מייצרת
-            מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות של
-            טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים
-            לגבש שפה ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים
-            משמעותיות, חוסן אישי וקבוצתי, ומאפשרת לארגונים גלובליים
-            להתמודד בהצלחה עם אי-הוודאות של ימינו.
+            מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות העצומה של
+            טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים לגבש שפה
+            ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים משמעותיות, חוסן אישי
+            וקבוצתי, ומאפשרת לארגונים גלובליים להתמודד בהצלחה עם אי-הוודאות של
+            ימינו.
           </p>
           <div class="qf-author">
             <img
@@ -1552,7 +1629,7 @@
             />
             <div>
               <div class="qf-name">יעל קמינסקי</div>
-              <div class="qf-role">מנהלת משאבי אנוש, WIX</div>
+              <div class="qf-role">HRBP, WIX</div>
             </div>
           </div>
         </div>
@@ -1563,29 +1640,24 @@
     <section class="ab-sec bg-white" id="about">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev">• אודות בית חולמים •</span>
           <h2 class="h3d rev">אודות בית חולמים</h2>
         </div>
         <div class="about-grid">
           <div class="about-photo rev">
-            <img src="assets/img/hands square.png" alt="קהילת בית חולמים" />
+            <img src="assets/img/The Road 1.png" alt="קהילת בית חולמים" />
           </div>
           <div class="rev d1">
             <p class="ab-body" style="margin: 0 0 1.2rem">
-              16 המעלות היא תוכנית בינלאומית לחוסן רגשי-חברתי, הפעילה
-              ביותר מ-22 מדינות ומועברת ליחידים, משפחות, בתי ספר וגם
-              לארגונים עסקיים ברחבי העולם.
+              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות בישראל מאז
+              2020. אנו מנגישים את התוכנית לחברות ישראליות, תוך התאמתה לתרבות
+              המקומית ושימור עומקה ומקצועיותה הבינלאומיים.
             </p>
             <p class="ab-body" style="margin: 0 0 1.2rem">
-              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות
-              בישראל מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של
-              התוכנית לארגונים ישראליים, תוך התאמתה לתרבות המקומית ושימור
-              עומקה והקפדתה הבינלאומיים. המנחות והמנחים שלנו הם אנשי מקצוע
-              מוסמכים בעלי רקע בפסיכולוגיה ארגונית, אימון (קואצ'ינג)
-              ופיתוח מנהיגות.
+              המנחות והמנחים של התוכנית הן נשות ואנשי מקצוע מוסמכים.ות עם רקע
+              בייעוץ ארגוני, פסיכולוגיה ארגונית, אימון (קואצ'ינג) ופיתוח
+              מנהיגות.
             </p>
             <ul class="about-stats">
-              <li>נציגה רשמית בישראל של תוכנית בינלאומית</li>
               <li>6 שנות פעילות בישראל</li>
               <li>מעל 130 סדנאות שהועברו</li>
               <li>מעל 2,300 משתתפים עד כה</li>
@@ -1601,7 +1673,6 @@
     <section class="ab-sec bg-grey" id="faq">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• שאלות נפוצות •</span>
           <h2 class="h3d rev">שאלות נפוצות</h2>
         </div>
         <div class="faq-list rev">
@@ -1612,10 +1683,10 @@
             </button>
             <div class="faq-a">
               <p>
-                רוב תוכניות המנהיגות מתמקדות במיומנויות וביכולות. 16
-                המעלות בונה את תשתית הערכים הבסיסית — השפה הערכית-רגשית
-                המשותפת — שהופכת את אותן מיומנויות לבנות-קיימא. התוכנית
-                פועלת ברמת התרבות הארגונית, לא רק ברמת היכולת האישית.
+                רוב תוכניות המנהיגות מתמקדות במיומנויות וביכולות. 16 המעלות בונה
+                את תשתית הערכים הבסיסית, השפה הערכית-רגשית המשותפת שהופכת את אותן
+                מיומנויות ליישומיות וברות-קיימא. התוכנית פועלת גם ברמה האישית וגם
+                ברמת התרבות הארגונית.
               </p>
             </div>
           </div>
@@ -1626,9 +1697,9 @@
             </button>
             <div class="faq-a">
               <p>
-                כן. התוכנית מודולרית וניתנת להתאמה. אנו עובדים יחד עם
-                צוותי משאבי האנוש ופיתוח ארגוני שלכם כדי לוודא שהתוכן
-                מתחבר להקשר הארגוני, לאתגרים ולשפה הייחודיים לכם.
+                כן. התוכנית מודולרית וניתנת להתאמה. אנו עובדים יחד עם ההנהלה,
+                צוותי משאבי האנוש והפיתוח הארגוני שלכם כדי לוודא שהתוכן מתחבר
+                להקשר הארגוני, לאתגרים ולשפה הייחודית שלכם.
               </p>
             </div>
           </div>
@@ -1639,20 +1710,8 @@
             </button>
             <div class="faq-a">
               <p>
-                מסדנת היכרות ועד יישום ארגוני מלא. ההיקף המתאים תלוי
-                ביעדים שלכם. אנו ממליצים להתחיל בשיחת היכרות.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>באילו שפות התוכנית זמינה?</span>
-              <span class="faq-plus">+</span>
-            </button>
-            <div class="faq-a">
-              <p>
-                בישראל, הסדנאות מועברות בעברית ובאנגלית. ניתן לפנות
-                לבירור לגבי שפות נוספות או העברה בינלאומית.
+                מסדנת היכרות ועד יישום ארגוני מלא. ההיקף המתאים תלוי בשאיפות,
+                בצרכים וביעדים שלכם. אנו ממליצים להתחיל בשיחת היכרות.
               </p>
             </div>
           </div>
@@ -1663,12 +1722,11 @@
             </button>
             <div class="faq-a">
               <p>
-                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב
-                נתונים ארוך טווח. הדבר כולל הערכות לפני ואחרי התוכנית,
-                כלי משוב למנהלים, וסקרי תחושה אופציונליים. בנוסף, אנו
-                מזמינים ארגונים שעברו את התוכנית להשתתף במחקר אקדמי רחב
-                יותר על ההשפעה ארוכת הטווח של התוכניות שלנו, הנערך בשיתוף
-                עם הפורום האקדמי שלנו.
+                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב נתונים
+                ארוך טווח. הדבר כולל הערכות לפני ואחרי התוכנית, כלי משוב
+                למנהלים, וסקרי תחושה אופציונליים. בנוסף, אנו מזמינים ארגונים
+                שעברו את התוכנית להשתתף במחקר אקדמי רחב יותר על ההשפעה ארוכת
+                הטווח של התוכניות שלנו, הנערך בשיתוף עם הפורום האקדמי שלנו.
               </p>
             </div>
           </div>
@@ -1682,8 +1740,9 @@
         <div class="contact-inner">
           <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
           <p class="sub rev">
-            מוכנים להביא את 16 המעלות לארגון שלכם? קבעו שיחת היכרות. נלמד
-            על הצרכים של הארגון שלכם ונבחן יחד איזו תוכנית מתאימה עבורכם.
+            מוכנים להביא את 16 המעלות לארגון שלכם?<br />
+            קבעו שיחת היכרות. נלמד על הצרכים של הארגון שלכם ונבחן יחד איזו
+            תוכנית מתאימה עבורכם.
           </p>
 
           <form
@@ -1699,8 +1758,8 @@
 
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">שם מלא <span class="req">*</span></label>
-                <input class="form-input" type="text" name="שם מלא" required />
+                <label class="form-label">שם <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם" required />
               </div>
               <div class="form-field">
                 <label class="form-label">ארגון / חברה <span class="req">*</span></label>
@@ -1719,7 +1778,7 @@
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">טלפון</label>
+                <label class="form-label">טלפון (אופציונלי)</label>
                 <input class="form-input" type="tel" name="טלפון" />
               </div>
               <div class="form-field ms-field">
@@ -1761,7 +1820,7 @@
               ></textarea>
             </div>
             <div class="form-field full" style="margin-top: 1.1rem">
-              <label class="form-label">הודעה</label>
+              <label class="form-label">הודעה (אופציונלי)</label>
               <textarea class="form-textarea" name="הודעה"></textarea>
             </div>
 
@@ -1782,62 +1841,17 @@
         <div class="footer-top">
           <div class="footer-brand">
             <img
-              src="assets/img/logo-beit-holmim.png"
+              src="assets/img/logo-beit-holmim-white.png"
               alt="בית חולמים - Dreamers Home"
               class="footer-logo-img"
             />
             <p class="footer-desc">
               עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
-            <div class="socials" style="display: flex; gap: 0.75rem; margin-top: 1.4rem">
-              <a
-                href="#"
-                style="
-                  width: 46px;
-                  height: 46px;
-                  border-radius: 14px;
-                  background: rgba(0, 67, 120, 0.1);
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: var(--blue);
-                  border: 1px solid rgba(0, 67, 120, 0.15);
-                "
-                title="YouTube"
-                >▷</a
-              >
-              <a
-                href="#"
-                style="
-                  width: 46px;
-                  height: 46px;
-                  border-radius: 14px;
-                  background: rgba(0, 67, 120, 0.1);
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: var(--blue);
-                  border: 1px solid rgba(0, 67, 120, 0.15);
-                "
-                title="Facebook"
-                >f</a
-              >
-              <a
-                href="#"
-                style="
-                  width: 46px;
-                  height: 46px;
-                  border-radius: 14px;
-                  background: rgba(0, 67, 120, 0.1);
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: var(--blue);
-                  border: 1px solid rgba(0, 67, 120, 0.15);
-                "
-                title="Instagram"
-                >▶</a
-              >
+            <div class="socials">
+              <a href="#" class="fsoc" title="YouTube">▷</a>
+              <a href="#" class="fsoc" title="Facebook">f</a>
+              <a href="#" class="fsoc" title="Instagram">▶</a>
             </div>
           </div>
           <div>
@@ -1847,7 +1861,7 @@
               <li><a href="about.html">אודות</a></li>
               <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
               <li><a href="education.html">16 המעלות בחינוך</a></li>
-              <li><a href="business.html" class="active">16 המעלות בעסקים</a></li>
+              <li><a href="business.html" class="active">16 המעלות בחברות</a></li>
             </ul>
           </div>
           <div class="footer-contact">
@@ -1866,11 +1880,11 @@
             </p>
           </div>
         </div>
+        <div class="footer-motto">
+          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
+        </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>
-          <span style="color: var(--blue); font-weight: 600; font-style: italic"
-            >כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.</span
-          >
         </div>
       </div>
     </footer>
