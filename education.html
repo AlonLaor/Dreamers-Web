@@ -160,8 +160,7 @@
         z-index: 900;
         padding: 1.3rem 2.5rem;
         display: flex;
-        justify-content: flex-start;
-        gap: 3rem;
+        justify-content: space-between;
         align-items: center;
         transition: all 0.4s ease;
         background: rgba(0, 25, 55, 0.96);
@@ -180,6 +179,11 @@
       }
       .logo-img:hover {
         opacity: 0.85;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
       }
       .nav-links {
         display: flex;
@@ -1193,47 +1197,49 @@
   <body>
     <!-- ════════════ NAV ════════════ -->
     <nav id="nav">
-      <a href="index.html#hero" class="logo">
-        <img
-          src="assets/img/logo-beit-holmim-white.png"
-          alt="בית חולמים - Dreamers Home"
-          class="logo-img"
-        />
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html#intro">דף הבית</a></li>
-        <li><a href="about.html">אודות</a></li>
-        <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
-        <li class="has-dropdown">
-          <a href="index.html#activities" class="dd-trigger"
-            >הפעילויות שלנו <span class="dd-arrow">▾</span></a
-          >
-          <ul class="dropdown-menu">
-            <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
-            <li><a href="business.html">16 המעלות בחברות</a></li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >16 המעלות בבריאות הנפש</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >16 המעלות בקהילה</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                >קבוצות תרגול וסדנאות פרטיות</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li><a href="index.html#activities">אזור למידה</a></li>
-        <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
-      </ul>
+      <div class="nav-right">
+        <a href="index.html#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html#hero">דף הבית</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="index.html#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בבריאות הנפש</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בקהילה</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >קבוצות תרגול וסדנאות פרטיות</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="index.html#activities">אזור למידה</a></li>
+          <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
+        </ul>
+      </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1759,7 +1765,7 @@
           <div>
             <div class="footer-col-title">ניווט</div>
             <ul class="footer-nav">
-              <li><a href="index.html#intro">דף הבית</a></li>
+              <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
               <li><a href="index.html#virtues">תוכנית 16 המעלות</a></li>
               <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
