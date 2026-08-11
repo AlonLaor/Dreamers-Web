@@ -566,6 +566,25 @@
         border-radius: 10px;
         padding: 0.6rem 0.9rem;
         display: inline-block;
+        transform-origin: right center;
+        transition:
+          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s;
+        cursor: default;
+      }
+      /* mouse-over on the "תוצאה" block: the text grows a little and
+         returns to its original size when the pointer leaves */
+      .persona-result:hover {
+        transform: scale(1.07);
+        box-shadow: 0 8px 20px rgba(0, 67, 120, 0.2);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .persona-result {
+          transition: none;
+        }
+        .persona-result:hover {
+          transform: none;
+        }
       }
 
       /* ═══ STEPS TIMELINE ═══ */
@@ -899,6 +918,69 @@
       }
       .form-input,
       .form-textarea,
+      /* multi-choice dropdown for "מה הביא אתכם אלינו?" */
+      .ms-field {
+        position: relative;
+      }
+      .ms-trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+        text-align: right;
+        cursor: pointer;
+      }
+      #msTriggerText {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .ms-panel {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        padding: 0.6rem;
+        z-index: 20;
+      }
+      .ms-panel.open {
+        display: block;
+      }
+      .ms-opt {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.65rem 0.7rem;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        color: var(--text);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .ms-opt:hover {
+        background: rgba(72, 217, 211, 0.15);
+      }
+      .ms-opt input {
+        accent-color: var(--blue);
+        width: 16px;
+        height: 16px;
+      }
+      .other-text {
+        margin-top: 0.7rem;
+        display: none;
+      }
       .form-select {
         width: 100%;
         padding: 0.85rem 1.1rem;
@@ -1249,9 +1331,6 @@
 
     <!-- ════════════ PAGE HEADER ════════════ -->
     <header id="page-header">
-      <div class="crumbs">
-        <a href="index.html">דף הבית</a> &nbsp;/&nbsp; 16 המעלות בחינוך
-      </div>
       <h1 class="h3d h3d-white rev" style="text-align: center; margin: 0 auto 1.2rem">
         16 המעלות בחינוך
       </h1>
@@ -1305,7 +1384,6 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• למה עכשיו •</span>
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
         <p class="ab-body rev">
@@ -1354,7 +1432,6 @@
     <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev">• למי זה מיועד •</span>
           <h2 class="h3d rev">למי זה מיועד</h2>
           <p class="sub rev">
             בין אם אתם בית ספר יסודי, חטיבת ביניים, תיכון או מסגרת
@@ -1408,7 +1485,7 @@
             <h3>קציני ביקור סדיר ומרכזי הורות</h3>
             <p>
               כלים לעבודה עם נוער בסיכון נשירה ועם הורים, מתוך שפה
-              רגשית-ערכית נגישה.
+              <span style="white-space: nowrap">רגשית-ערכית</span> נגישה.
             </p>
             <div class="persona-result">
               תוצאה: חיבור מחודש למסגרת ולמשמעות
@@ -1430,7 +1507,6 @@
     <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• איך זה עובד •</span>
           <h2 class="h3d rev">איך זה עובד</h2>
           <p class="sub rev">
             16 המעלות בחינוך היא תוכנית מוכרת בגפ"ן (תוכנית 10438),
@@ -1542,7 +1618,6 @@
     <section class="ab-sec bg-white" id="about">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev">• אודות בית חולמים •</span>
           <h2 class="h3d rev">אודות בית חולמים</h2>
         </div>
         <div class="about-grid">
@@ -1590,7 +1665,6 @@
     <section class="ab-sec bg-grey" id="faq">
       <div class="wrap">
         <div class="ab-hdr">
-          <span class="eyebrow rev" style="color: var(--blue)">• שאלות נפוצות •</span>
           <h2 class="h3d rev">שאלות נפוצות</h2>
         </div>
         <div class="faq-list rev">
@@ -1713,18 +1787,43 @@
                 <label class="form-label">טלפון</label>
                 <input class="form-input" type="tel" name="טלפון" />
               </div>
-              <div class="form-field">
+              <div class="form-field ms-field">
                 <label class="form-label">מה הביא אתכם אלינו?</label>
-                <select class="form-select" name="מה הביא אתכם אלינו">
-                  <option value="שילוב בתוכנית הלימודים">
-                    שילוב בתוכנית הלימודים
-                  </option>
-                  <option value="הכשרת צוות הוראה">הכשרת צוות הוראה</option>
-                  <option value="עבודה עם הורים">עבודה עם הורים</option>
-                  <option value="יישום ברשות">יישום ברשות</option>
-                  <option value="אחר">אחר</option>
-                </select>
+                <button type="button" class="ms-trigger" id="msTrigger">
+                  <span id="msTriggerText">בחרו אפשרות אחת או יותר</span>
+                  <span class="dd-arrow">▾</span>
+                </button>
+                <div class="ms-panel" id="msPanel">
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="שילוב בתוכנית הלימודים" />שילוב
+                    בתוכנית הלימודים</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="הכשרת צוות הוראה" />הכשרת
+                    צוות הוראה</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="עבודה עם הורים" />עבודה
+                    עם הורים</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="יישום ברשות" />יישום
+                    ברשות</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" id="msOtherCheck" name="מה הביא אתכם אלינו" value="אחר" />אחר</label
+                  >
+                </div>
               </div>
+            </div>
+            <div class="form-field full">
+              <textarea
+                class="form-textarea other-text"
+                id="msOtherText"
+                name="פירוט נוסף (אחר)"
+                maxlength="500"
+                placeholder="ספרו לנו בקצרה (עד 500 תווים)"
+              ></textarea>
             </div>
             <div class="form-field full">
               <label class="form-label">הודעה</label>
@@ -1851,6 +1950,37 @@
           });
         });
 
+        /* Multi-choice dropdown — "מה הביא אתכם אלינו?" */
+        const msTrigger = document.getElementById("msTrigger");
+        const msPanel = document.getElementById("msPanel");
+        const msTriggerText = document.getElementById("msTriggerText");
+        const msOtherCheck = document.getElementById("msOtherCheck");
+        const msOtherText = document.getElementById("msOtherText");
+        function msSync() {
+          const checked = msPanel.querySelectorAll(
+            'input[type="checkbox"]:checked',
+          );
+          msTriggerText.textContent = checked.length
+            ? Array.from(checked)
+                .map((c) => c.value)
+                .join(", ")
+            : "בחרו אפשרות אחת או יותר";
+          msOtherText.style.display = msOtherCheck.checked ? "block" : "none";
+        }
+        if (msTrigger) {
+          msTrigger.addEventListener("click", () => {
+            msPanel.classList.toggle("open");
+          });
+          document.addEventListener("click", (e) => {
+            if (!msPanel.contains(e.target) && !msTrigger.contains(e.target)) {
+              msPanel.classList.remove("open");
+            }
+          });
+          msPanel.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+            cb.addEventListener("change", msSync);
+          });
+        }
+
         /* Contact form — async submit via FormSubmit AJAX endpoint */
         const eduForm = document.getElementById("eduForm");
         if (eduForm) {
@@ -1869,6 +1999,7 @@
               if (res.ok) {
                 btn.textContent = "נשלח בהצלחה ✓";
                 eduForm.reset();
+                if (msTrigger) msSync();
               } else {
                 throw new Error("Submit failed");
               }

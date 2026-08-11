@@ -38,32 +38,52 @@ KEEP_PNG = {             # logos / marks where transparency matters
 log = []
 
 
+def has_real_alpha(im):
+    """True when the file actually relies on transparency."""
+    if im.mode not in ("RGBA", "LA", "P"):
+        return False
+    a = im.convert("RGBA").getchannel("A")
+    return a.getextrema()[0] < 255
+
+
 def optimise_image(path):
     """Return (bytes, mime) for an image, shrinking the heavy ones."""
     raw = open(path, "rb").read()
     if len(raw) <= BIG or path in KEEP_PNG:
         return raw, mimetypes.guess_type(path)[0] or "image/png"
-    key = re.sub(r"[^A-Za-z0-9]+", "_", path) + ".jpg"
+
+    src = Image.open(path)
+    # An image that leans on transparency has to keep it: the page composites
+    # it over a coloured backdrop, and flattening onto white here would show
+    # the reviewer a different picture from the live site. WebP carries alpha
+    # at a fraction of PNG's weight.
+    keep_alpha = has_real_alpha(src)
+    ext, fmt, mime = (".webp", "WEBP", "image/webp") if keep_alpha else (".jpg", "JPEG", "image/jpeg")
+
+    key = re.sub(r"[^A-Za-z0-9]+", "_", path) + ext
     cached = os.path.join(CACHE, key)
     if not os.path.exists(cached):
-        im = Image.open(path)
-        # flatten onto white: every layer this affects sits on a white backdrop,
-        # so the composited result is identical to the transparent original
-        if im.mode in ("RGBA", "LA", "P"):
-            im = im.convert("RGBA")
-            bg = Image.new("RGB", im.size, (255, 255, 255))
-            bg.paste(im, mask=im.split()[-1])
-            im = bg
-        else:
-            im = im.convert("RGB")
+        im = src.convert("RGBA") if keep_alpha else None
+        if im is None:
+            im = src.convert("RGBA") if src.mode in ("RGBA", "LA", "P") else src
+            if im.mode in ("RGBA", "LA"):
+                bg = Image.new("RGB", im.size, (255, 255, 255))
+                bg.paste(im, mask=im.split()[-1])
+                im = bg
+            else:
+                im = im.convert("RGB")
         w, h = im.size
         if max(w, h) > MAX_EDGE:
             scale = MAX_EDGE / float(max(w, h))
             im = im.resize((int(w * scale), int(h * scale)), Image.LANCZOS)
-        im.save(cached, "JPEG", quality=JPEG_Q, optimize=True, progressive=True)
+        if fmt == "WEBP":
+            im.save(cached, "WEBP", quality=JPEG_Q, method=5)
+        else:
+            im.save(cached, "JPEG", quality=JPEG_Q, optimize=True, progressive=True)
     out = open(cached, "rb").read()
-    log.append("  image %-58s %7.2f MB -> %6.2f MB" % (path[-58:], len(raw) / 1e6, len(out) / 1e6))
-    return out, "image/jpeg"
+    log.append("  image %-52s %7.2f MB -> %6.2f MB  %s"
+               % (path[-52:], len(raw) / 1e6, len(out) / 1e6, "webp+alpha" if keep_alpha else "jpeg"))
+    return out, mime
 
 
 def optimise_video(path):
