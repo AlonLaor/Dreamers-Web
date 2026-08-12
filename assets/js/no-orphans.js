@@ -34,7 +34,19 @@
     ".footer-desc",
     ".footer-motto",
     ".form-note",
+    "dd",
+    ".fact-label",
+    ".fac-name",
+    ".aud-tag",
+    ".core-note",
+    ".ph-sub",
   ].join(",");
+
+  /* A hyphenated pair such as "רוסו-נצר" or "רגשי-חברתי" may legally break
+     after the hyphen, which drops a fragment of a single word onto its own
+     line. Short pairs are held together; long ones are left alone so a
+     narrow column can still break them rather than overflow. */
+  var HYPHEN_PAIR = /[^\s-]{1,9}-[^\s-]{1,9}/g;
 
   var NBSP = " ";
 
@@ -60,9 +72,49 @@
     }
   }
 
+  /* Wraps each short hyphenated pair in a nowrap span, so the hyphen stops
+     being a break opportunity. Runs after glue(), so the non-breaking space
+     it inserted is already in place and still counts as a word boundary. */
+  function holdHyphens(el) {
+    if (el.dataset.hyphenHold === "done") return;
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var nodes = [],
+      node;
+    while ((node = walker.nextNode())) nodes.push(node);
+
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      var v = n.nodeValue;
+      HYPHEN_PAIR.lastIndex = 0;
+      if (!HYPHEN_PAIR.test(v)) continue;
+
+      var frag = document.createDocumentFragment();
+      var cursor = 0,
+        m;
+      HYPHEN_PAIR.lastIndex = 0;
+      while ((m = HYPHEN_PAIR.exec(v))) {
+        if (m.index > cursor) {
+          frag.appendChild(document.createTextNode(v.slice(cursor, m.index)));
+        }
+        var span = document.createElement("span");
+        span.style.whiteSpace = "nowrap";
+        span.textContent = m[0];
+        frag.appendChild(span);
+        cursor = m.index + m[0].length;
+      }
+      if (cursor < v.length) {
+        frag.appendChild(document.createTextNode(v.slice(cursor)));
+      }
+      if (n.parentNode) n.parentNode.replaceChild(frag, n);
+    }
+    el.dataset.hyphenHold = "done";
+  }
+
   function run() {
     var els = document.querySelectorAll(SELECTOR);
-    for (var i = 0; i < els.length; i++) glue(els[i]);
+    var i;
+    for (i = 0; i < els.length; i++) glue(els[i]);
+    for (i = 0; i < els.length; i++) holdHyphens(els[i]);
   }
 
   if (document.readyState === "loading") {

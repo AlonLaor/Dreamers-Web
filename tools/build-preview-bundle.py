@@ -9,12 +9,12 @@ into an iframe via srcdoc, which keeps the four stylesheets from colliding.
 Cross-page links are intercepted and routed through the location hash, so the
 browser Back button behaves normally.
 """
-import base64, io, mimetypes, os, re, subprocess, sys
+import base64, hashlib, io, mimetypes, os, re, subprocess, sys
 
 # resolve against the repo root so the script runs from anywhere
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".preview-cache")
-PAGES = ["index", "business", "education", "about"]
+PAGES = ["index", "program", "business", "education", "about"]
 OUT_NAME = "Dreamers-Site-Preview.html"
 
 os.chdir(ROOT)
@@ -36,6 +36,19 @@ KEEP_PNG = {             # logos / marks where transparency matters
 }
 
 log = []
+
+
+def cache_key(path, ext):
+    """A filename-safe, collision-free key.
+
+    Slugifying alone is not enough: every Hebrew character is non-ASCII, so
+    "שחף 1.png" and "קבוצות תרגול 1.png" both slugify to the same string and
+    the second image would silently reuse the first one's cached file. The
+    digest of the full path keeps them apart.
+    """
+    slug = re.sub(r"[^A-Za-z0-9]+", "_", path).strip("_")[:48]
+    digest = hashlib.md5(path.encode("utf-8")).hexdigest()[:10]
+    return "%s_%s%s" % (slug, digest, ext)
 
 
 def has_real_alpha(im):
@@ -60,8 +73,7 @@ def optimise_image(path):
     keep_alpha = has_real_alpha(src)
     ext, fmt, mime = (".webp", "WEBP", "image/webp") if keep_alpha else (".jpg", "JPEG", "image/jpeg")
 
-    key = re.sub(r"[^A-Za-z0-9]+", "_", path) + ext
-    cached = os.path.join(CACHE, key)
+    cached = os.path.join(CACHE, cache_key(path, ext))
     if not os.path.exists(cached):
         im = src.convert("RGBA") if keep_alpha else None
         if im is None:
@@ -87,8 +99,7 @@ def optimise_image(path):
 
 
 def optimise_video(path):
-    key = re.sub(r"[^A-Za-z0-9]+", "_", path) + ".mp4"
-    cached = os.path.join(CACHE, key)
+    cached = os.path.join(CACHE, cache_key(path, ".mp4"))
     if not os.path.exists(cached):
         subprocess.run(
             ["ffmpeg", "-y", "-v", "error", "-i", path, "-an",
@@ -148,8 +159,11 @@ def build_page(name):
 
     # inline the two local scripts as real script blocks
     for js in ["assets/js/no-orphans.js", "assets/js/accessibility-widget.js"]:
-        tag = '<script src="%s" defer></script>' % js
-        if tag in s and os.path.exists(js):
+        # the page may carry a cache-busting suffix on the src
+        tag = next((t for t in ('<script src="%s" defer></script>' % js,
+                                '<script src="%s?v=2" defer></script>' % js)
+                    if t in s), None)
+        if tag and os.path.exists(js):
             code = io.open(js, encoding="utf-8").read().replace("</script", "<\\/script")
             s = s.replace(tag, "<script>\n" + code + "\n</script>")
 
@@ -165,6 +179,22 @@ def build_page(name):
     s = re.sub(r'src="(?!https?:|data:|#)([^"]+)"', repl_src, s)
     s = re.sub(r'url\("(?!https?:|data:|#)([^"]+)"\)', repl_url, s)
     s = re.sub(r"url\('(?!https?:|data:|#)([^']+)'\)", lambda m: repl_url(m), s)
+
+    # Some images are attached by page scripts rather than written into the
+    # markup — the virtue tiles and the facilitator carousel both build their
+    # <img> from a path held in a JS array. Catch any remaining complete,
+    # quoted asset path so those reach the offline file too.
+    def repl_literal(m):
+        uri = data_uri(m.group(2))
+        return m.group(1) + uri + m.group(1) if uri else m.group(0)
+
+    # paths may contain spaces (several photo files are named in Hebrew), so
+    # the only thing a path may not contain is its own quote character
+    s = re.sub(
+        r'(["\'])(assets/[^"\'<>]+\.(?:png|jpg|jpeg|webp|avif|gif|svg|mp4))\1',
+        repl_literal,
+        s,
+    )
 
     s = s.replace("</body>", NAV_HOOK + "</body>")
     return s

@@ -1,0 +1,2343 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>תוכנית 16 המעלות | בית חולמים - Dreamers Home</title>
+    <meta
+      name="description"
+      content="16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+
+      /* ─── ROOT — identical palette to the home page ─── */
+      :root {
+        --blue: #004378;
+        --blue-dk: #002952;
+        --teal: #48d9d3;
+        --teal-lt: #7de8e4;
+        --gold: #f5a623;
+        --gold-lt: #ffd166;
+        --white: #ffffff;
+        --off: #f6faff;
+        --off-warm: #fffbf3;
+        --text: #1a2d3e;
+        --text-mid: #4a637c;
+        --text-lt: #7a99b0;
+        --shadow: rgba(0, 67, 120, 0.15);
+        --g-main: linear-gradient(140deg, #002952 0%, #004378 55%, #0c6080 100%);
+        --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
+        --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Heebo", system-ui, sans-serif;
+        direction: rtl;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .rev {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.9rem;
+      }
+      .h3d {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--blue);
+        text-shadow:
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
+        margin-bottom: 1.1rem;
+      }
+      .h3d-white {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
+      }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 640px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: "Heebo", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
+      .btn-gold {
+        background: var(--g-gold);
+        color: #4a2800;
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+      }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+
+      /* ═══ NAV ═══ */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 1.3rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.4s ease;
+        background: rgba(0, 25, 55, 0.96);
+        backdrop-filter: blur(20px);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+      }
+      .logo-img {
+        height: 58px;
+        display: block;
+        border-radius: 50%;
+        transition: opacity 0.3s;
+      }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.6rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+      }
+      .nav-links a.active {
+        color: var(--teal);
+      }
+      .nav-cta {
+        background: var(--g-teal) !important;
+        color: var(--blue-dk) !important;
+        font-weight: 700 !important;
+        padding: 0.48rem 1.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s !important;
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* ─── Activities dropdown ─── */
+      .has-dropdown {
+        position: relative;
+      }
+      .dd-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .dd-arrow {
+        display: inline-block;
+        font-size: 0.62em;
+        transition: transform 0.3s ease;
+      }
+      .has-dropdown:hover .dd-arrow,
+      .has-dropdown:focus-within .dd-arrow {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        list-style: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        right: -0.5rem;
+        min-width: 260px;
+        padding: 0.55rem;
+        border-radius: 18px;
+        background: linear-gradient(
+          160deg,
+          rgba(0, 41, 82, 0.98) 0%,
+          rgba(0, 67, 120, 0.98) 100%
+        );
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(72, 217, 211, 0.18);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 1.9rem;
+        width: 12px;
+        height: 12px;
+        background: rgba(0, 41, 82, 0.98);
+        transform: rotate(45deg);
+        border-radius: 3px 0 0 0;
+      }
+      .has-dropdown:hover .dropdown-menu,
+      .has-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu li + li {
+        margin-top: 2px;
+      }
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.25s ease;
+      }
+      .dropdown-menu a:hover {
+        background: rgba(72, 217, 211, 0.15);
+        color: var(--teal);
+        padding-right: 1.4rem;
+      }
+
+      /* ═══ GENERIC TEXT SECTION ═══ */
+      .ab-sec {
+        padding: 6.5rem 2rem;
+      }
+      .ab-sec.bg-white {
+        background: var(--white);
+      }
+      .ab-sec.bg-grey {
+        background: linear-gradient(160deg, #f4f6f8 0%, #eef1f4 100%);
+      }
+      /* headings sit centred, the copy under them stays right-aligned —
+         the same split the home page uses */
+      .ab-hdr {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .ab-hdr .sub {
+        margin: 0;
+        text-align: right;
+        max-width: 860px;
+      }
+      .ab-body {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 860px;
+        margin: 0 0 1.3rem;
+        text-align: right;
+      }
+
+      /* ═══ WHY NOW ═══ */
+      .why-result {
+        max-width: 860px;
+        margin: 1.6rem 0 0;
+        list-style: none;
+      }
+      .why-result li {
+        position: relative;
+        padding-inline-start: 1.6rem;
+        margin-bottom: 0.7rem;
+        color: var(--text-mid);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+      .why-result li::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0.55rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .stat-frame {
+        position: relative;
+        max-width: 860px;
+        margin: 2.6rem 0 0;
+        /* the inline-end (left, in RTL) padding reserves room for the
+           Gallup logo so it never sits on top of the text */
+        padding-block: 2.2rem;
+        padding-inline-start: 2.4rem;
+        padding-inline-end: 19rem;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
+        border: 1px solid rgba(245, 166, 35, 0.3);
+        box-shadow: 0 20px 50px rgba(245, 166, 35, 0.12);
+        min-height: 220px;
+        display: flex;
+        gap: 1.4rem;
+        align-items: center;
+      }
+      /* Height is 18% of the box height, proportions preserved.
+         Absolute positioning keeps it clear of the text. */
+      .stat-frame-logo {
+        position: absolute;
+        inset-inline-end: 2.4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 18%;
+        width: auto;
+        object-fit: contain;
+      }
+      .stat-frame p {
+        font-size: 1.02rem;
+        line-height: 1.85;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .stat-frame strong {
+        color: var(--blue);
+      }
+      .stat-frame cite {
+        display: block;
+        margin-top: 0.6rem;
+        font-style: normal;
+        font-size: 0.82rem;
+        color: var(--text-lt);
+      }
+
+      /* ═══ CONTACT ═══ */
+      #contact-form {
+        padding: 6.5rem 2rem;
+        background: var(--g-main);
+        position: relative;
+        overflow: hidden;
+      }
+      #contact-form::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(245, 166, 35, 0.12),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .contact-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: right;
+      }
+      .contact-inner > .h3d {
+        text-align: center;
+      }
+      .contact-inner .sub {
+        margin: 0 auto 2.6rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .contact-form {
+        text-align: right;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 26px;
+        padding: 2.6rem;
+        backdrop-filter: blur(12px);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+        margin-bottom: 1.1rem;
+      }
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .form-field.full {
+        grid-column: 1 / -1;
+      }
+      .form-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .form-label .req {
+        color: var(--gold-lt);
+      }
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: 2px solid var(--teal);
+      }
+
+      .ms-field {
+        position: relative;
+      }
+      .ms-trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+        cursor: pointer;
+      }
+      .ms-panel {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        padding: 0.6rem;
+        z-index: 20;
+      }
+      .ms-panel.open {
+        display: block;
+      }
+      .ms-opt {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.65rem 0.7rem;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        color: var(--text);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .ms-opt:hover {
+        background: rgba(72, 217, 211, 0.15);
+      }
+      .ms-opt input {
+        accent-color: var(--blue);
+        width: 16px;
+        height: 16px;
+      }
+      .other-text {
+        margin-top: 0.7rem;
+        display: none;
+      }
+      .form-note {
+        font-size: 0.76rem;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 0.4rem;
+      }
+      .form-submit {
+        margin-top: 0.6rem;
+        width: 100%;
+        justify-content: center;
+      }
+      .form-status {
+        margin-top: 1rem;
+        font-size: 0.88rem;
+        color: var(--teal-lt);
+        display: none;
+      }
+
+      /* ═══ FOOTER — identical to the home page ═══ */
+      footer {
+        background: url("assets/img/Gradient blue.png") center / cover no-repeat
+          var(--blue-dk);
+        color: #fff;
+        padding: 5rem 2rem 2.5rem;
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+      }
+      .footer-logo-img {
+        height: 80px;
+        display: block;
+      }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 340px;
+        margin-top: 1rem;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--teal);
+      }
+      .footer-nav a.active {
+        color: var(--teal);
+      }
+      .footer-col-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--teal);
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .footer-contact p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+      }
+      .footer-contact a {
+        color: #fff;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      .fsoc:hover {
+        background: var(--teal);
+        color: var(--blue-dk);
+        transform: translateY(-3px);
+        border-color: var(--teal);
+      }
+      .footer-motto {
+        max-width: 680px;
+        margin: 0 auto 2.6rem;
+        padding: 1.7rem 2.2rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(72, 217, 211, 0.55);
+        border-radius: 22px;
+        box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
+        color: #fff;
+        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+        font-weight: 800;
+        line-height: 1.6;
+        position: relative;
+      }
+      .footer-motto::before {
+        content: "”";
+        display: block;
+        font-size: 2.6rem;
+        line-height: 0.6;
+        color: var(--teal);
+        margin-bottom: 0.5rem;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.7);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      /* ═══════════════════════════════════════════════════════════
+         תוכנית 16 המעלות — page styles
+
+         Every section carries a living backdrop rather than flat white,
+         built from the brand book palette only: deep blue #004378, teal
+         #48D9D3 and the blue→teal gradient, in the soft, wide, unhurried
+         shapes the book's "Abstracts" and "Nature" pages use. Nothing is
+         loud; the page should read as calm, not decorated.
+         ═══════════════════════════════════════════════════════════ */
+
+      /* ─── the four virtue-family colours, sampled from the programme
+             chart so the cards match it exactly ─── */
+      :root {
+        --v-think: #2dc0d2;
+        --v-act: #79b850;
+        --v-relate: #7791cc;
+        --v-meaning: #faa33a;
+        --v-card: #ebeeee;
+      }
+
+      /* ═══ HERO ═══ */
+      #prog-hero {
+        position: relative;
+        padding: 13rem 0 7rem;
+        overflow: hidden;
+        background: var(--blue-dk);
+        text-align: right;
+      }
+      .ph-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("assets/img/שחף 1.png");
+        background-size: cover;
+        background-position: center 42%;
+      }
+      /* the copy sits on the right, so the tint deepens on that side and
+         leaves the open sky and the bird on the left clear */
+      .ph-tint {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            to left,
+            rgba(0, 30, 62, 0.66) 0%,
+            rgba(0, 35, 70, 0.44) 36%,
+            rgba(0, 40, 80, 0.14) 66%,
+            rgba(0, 45, 90, 0) 100%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(0, 25, 55, 0.42) 0%,
+            rgba(0, 25, 55, 0.06) 28%,
+            rgba(0, 25, 55, 0.06) 84%,
+            rgba(255, 255, 255, 0) 90%,
+            rgba(255, 255, 255, 0.6) 97%,
+            #fff 100%
+          );
+      }
+      .ph-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .ph-title {
+        font-size: clamp(2rem, 4.4vw, 3.5rem);
+        font-weight: 900;
+        line-height: 1.22;
+        color: #fff;
+        margin-bottom: 1.5rem;
+        text-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 5px 14px rgba(0, 0, 0, 0.45),
+          0 18px 38px rgba(0, 0, 0, 0.3);
+      }
+      .ph-sub {
+        font-size: clamp(1rem, 1.7vw, 1.22rem);
+        line-height: 1.85;
+        color: rgba(255, 255, 255, 0.96);
+        max-width: 680px;
+        margin: 0 0 2.6rem;
+        font-weight: 500;
+        text-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.5),
+          0 3px 12px rgba(0, 0, 0, 0.45);
+      }
+
+      /* ═══ SECTION BACKDROPS ═══ */
+      .ab-sec {
+        position: relative;
+        overflow: hidden;
+      }
+      .ab-sec > .wrap {
+        position: relative;
+        z-index: 2;
+      }
+      /* soft light, like sun through water — the calm end of the palette */
+      .bg-calm {
+        background: linear-gradient(170deg, #ffffff 0%, #f4fbfd 55%, #eef7fb 100%);
+      }
+      .bg-calm::before,
+      .bg-mist::before {
+        content: "";
+        position: absolute;
+        width: 44rem;
+        height: 44rem;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.5;
+        pointer-events: none;
+        background: radial-gradient(
+          circle,
+          rgba(72, 217, 211, 0.32) 0%,
+          rgba(72, 217, 211, 0) 68%
+        );
+        inset-inline-end: -14rem;
+        top: -16rem;
+      }
+      .bg-calm::after,
+      .bg-mist::after {
+        content: "";
+        position: absolute;
+        width: 40rem;
+        height: 40rem;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.42;
+        pointer-events: none;
+        background: radial-gradient(
+          circle,
+          rgba(0, 67, 120, 0.2) 0%,
+          rgba(0, 67, 120, 0) 70%
+        );
+        inset-inline-start: -16rem;
+        bottom: -18rem;
+      }
+      .bg-mist {
+        background: linear-gradient(190deg, #f7fbfd 0%, #eef5fa 60%, #f6fafc 100%);
+      }
+      /* the deep brand band, used where the page should slow down */
+      .bg-deep {
+        background:
+          radial-gradient(
+            ellipse 70% 60% at 78% 30%,
+            rgba(72, 217, 211, 0.22) 0%,
+            rgba(72, 217, 211, 0) 62%
+          ),
+          var(--g-main);
+        color: #fff;
+      }
+      .bg-deep .h3d {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.3),
+          0 4px 14px rgba(0, 0, 0, 0.35);
+      }
+      .bg-deep .ab-body,
+      .bg-deep .sub {
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .bg-deep .why-result li {
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .bg-deep .why-result li::before {
+        background: var(--teal);
+      }
+      /* a slow wave along the foot of the deep bands — the brand's water
+         motif, drawn rather than photographed so it stays weightless */
+      .wave-foot {
+        position: absolute;
+        inset-inline: 0;
+        bottom: -1px;
+        height: 90px;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+      .wave-foot svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ═══ FOUR CORE THEMES ═══ */
+      .core-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        max-width: 980px;
+        margin: 2.4rem 0 0;
+      }
+      .core-chip {
+        border-radius: 16px;
+        padding: 1.15rem 0.9rem;
+        text-align: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
+        line-height: 1.45;
+        box-shadow:
+          0 2px 4px rgba(0, 30, 60, 0.12),
+          0 12px 26px rgba(0, 30, 60, 0.16);
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .core-chip:hover {
+        transform: translateY(-5px);
+      }
+      .core-think {
+        background: linear-gradient(150deg, #1a97a8 0%, var(--v-think) 100%);
+      }
+      .core-act {
+        background: linear-gradient(150deg, #4f8f33 0%, var(--v-act) 100%);
+      }
+      .core-relate {
+        background: linear-gradient(150deg, #4a63a3 0%, var(--v-relate) 100%);
+      }
+      .core-meaning {
+        background: linear-gradient(150deg, #d0791a 0%, var(--v-meaning) 100%);
+      }
+      .core-note {
+        margin: 1.6rem 0 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--blue);
+      }
+
+      /* ═══ THE 16 VIRTUES — flip cards ═══ */
+      .virtues-board {
+        max-width: 1080px;
+        margin: 2.6rem 0 0;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.1),
+          0 22px 55px rgba(0, 67, 120, 0.22);
+      }
+      .vb-head {
+        background: var(--blue);
+        color: #fff;
+        text-align: center;
+        padding: 1.1rem 1rem;
+        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+        font-weight: 900;
+        letter-spacing: 0.01em;
+      }
+      .vb-body {
+        background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
+        padding: 1.6rem 1.2rem 1.9rem;
+      }
+      .vb-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.9rem;
+      }
+      .vb-col-title {
+        border-radius: 12px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.92rem;
+        line-height: 1.35;
+        text-align: center;
+        padding: 0.9rem 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4.4rem;
+        box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
+      }
+      .vb-hint {
+        margin: 0 0 1.1rem;
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--blue);
+        opacity: 0.75;
+        text-align: center;
+      }
+
+      /* each tile flips on hover to show its meaning on the back */
+      .vcard {
+        perspective: 900px;
+        /* matches the proportions of the meaning artwork on the back face */
+        aspect-ratio: 2.4 / 1;
+        min-height: 4.6rem;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        padding: 0;
+        font: inherit;
+        display: block;
+        width: 100%;
+      }
+      .vcard-inner {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.62s cubic-bezier(0.4, 0.1, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+      .vcard:hover .vcard-inner,
+      .vcard:focus-visible .vcard-inner,
+      .vcard.flipped .vcard-inner {
+        transform: rotateY(180deg);
+      }
+      .vcard-face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .vcard-front {
+        background: var(--v-card);
+        border: 3px solid var(--vc, var(--v-think));
+        color: var(--blue-dk);
+        font-weight: 700;
+        font-size: 1.02rem;
+        box-shadow: 0 5px 12px rgba(0, 40, 70, 0.16);
+      }
+      /* the meaning artwork carries its own frame, so the back face adds
+         none of its own — otherwise the border reads doubled */
+      .vcard-back {
+        transform: rotateY(180deg);
+        background: transparent;
+        filter: drop-shadow(0 5px 10px rgba(0, 40, 70, 0.18));
+      }
+      .vcard-back img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .vcard:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 13px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .vcard-inner {
+          transition: none;
+        }
+      }
+
+      /* ═══ ORIGINS / IMPACT figures ═══ */
+      .fact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 1.2rem;
+        margin: 2.4rem 0 0;
+      }
+      .fact {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 18px;
+        padding: 1.6rem 1.2rem;
+        text-align: center;
+        backdrop-filter: blur(8px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .fact:hover {
+        transform: translateY(-6px);
+      }
+      .fact-num {
+        font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+        font-weight: 900;
+        color: var(--teal-lt);
+        line-height: 1.1;
+        /* keeps "2,300+" from being reordered to "+2,300" in the RTL flow */
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+      .fact-label {
+        margin-top: 0.5rem;
+        font-size: 0.94rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+      }
+
+      /* ═══ JOURNEY — "מה קורה בדרך" ═══ */
+      .journey-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.6rem;
+        margin-top: 2.4rem;
+      }
+      .journey-card {
+        position: relative;
+        background: linear-gradient(150deg, #ffffff 0%, #f2f9fc 55%, #e8f4f9 100%);
+        border: 1px solid rgba(0, 67, 120, 0.1);
+        border-radius: 22px;
+        padding: 2rem 1.9rem;
+        box-shadow:
+          0 2px 4px rgba(0, 67, 120, 0.07),
+          0 16px 40px rgba(0, 67, 120, 0.14);
+      }
+      .journey-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 5px;
+        border-radius: 22px 22px 0 0;
+        background: var(--g-teal);
+      }
+      .journey-card h3 {
+        color: var(--blue);
+        font-size: 1.08rem;
+        font-weight: 800;
+        margin-bottom: 0.9rem;
+      }
+
+      /* ═══ AUDIENCE ═══ */
+      .aud-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 2rem;
+      }
+      .aud-tag {
+        background: rgba(72, 217, 211, 0.16);
+        border: 1px solid rgba(0, 67, 120, 0.12);
+        color: var(--blue-dk);
+        border-radius: 50px;
+        padding: 0.6rem 1.25rem;
+        font-size: 0.94rem;
+        font-weight: 600;
+      }
+
+      /* ═══ STAGES ═══ */
+      .stage {
+        position: relative;
+        background: #fff;
+        border: 1px solid rgba(0, 67, 120, 0.1);
+        border-radius: 22px;
+        padding: 2rem 2rem 1.8rem;
+        margin-top: 1.6rem;
+        box-shadow:
+          0 2px 4px rgba(0, 67, 120, 0.07),
+          0 16px 40px rgba(0, 67, 120, 0.13);
+      }
+      .stage::before {
+        content: "";
+        position: absolute;
+        top: 1.6rem;
+        bottom: 1.6rem;
+        inset-inline-start: 0;
+        width: 5px;
+        border-radius: 5px;
+        background: var(--g-teal);
+      }
+      .stage-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0, 67, 120, 0.08);
+        color: var(--blue);
+        border-radius: 50px;
+        padding: 0.35rem 1rem;
+        font-size: 0.82rem;
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+      }
+      .stage h3 {
+        color: var(--blue);
+        font-size: 1.16rem;
+        font-weight: 800;
+        margin-bottom: 0.9rem;
+      }
+      .stage dl {
+        margin: 0;
+      }
+      .stage dt {
+        font-weight: 800;
+        color: var(--blue-dk);
+        font-size: 0.95rem;
+        margin-top: 0.9rem;
+      }
+      .stage dd {
+        margin: 0.25rem 0 0;
+        color: var(--text-mid);
+        font-size: 0.98rem;
+        line-height: 1.85;
+      }
+      .stage-track {
+        background: linear-gradient(150deg, #fffdf6 0%, #fdf3df 60%, #fbeace 100%);
+        border-color: rgba(245, 166, 35, 0.28);
+      }
+      .stage-track::before {
+        background: var(--g-gold);
+      }
+      .stage-track .stage-badge {
+        background: rgba(245, 166, 35, 0.2);
+        color: #8a5a06;
+      }
+      .cta-pair {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: stretch;
+        margin-top: 2.6rem;
+      }
+      .cta-pair .btn {
+        flex: 1 1 260px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* ═══ FACILITATORS CAROUSEL ═══ */
+      .fac-outer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2.6rem;
+        --fac-gap: 1.2rem;
+        --fac-per-view: 5;
+      }
+      .fac-viewport {
+        overflow: hidden;
+        flex: 1;
+      }
+      .fac-track {
+        display: flex;
+        direction: rtl;
+        gap: var(--fac-gap);
+        transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform;
+      }
+      .fac {
+        flex: 0 0
+          calc(
+            (100% - (var(--fac-per-view) - 1) * var(--fac-gap)) /
+              var(--fac-per-view)
+          );
+        min-width: 0;
+        text-align: center;
+      }
+      .fac-photo {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.12),
+          0 16px 34px rgba(0, 67, 120, 0.2);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .fac:hover .fac-photo {
+        transform: translateY(-6px) scale(1.03);
+      }
+      .fac-name {
+        margin-top: 0.9rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--blue);
+        line-height: 1.45;
+      }
+      .fac-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+        margin-top: 2rem;
+      }
+      .fac-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 67, 120, 0.2);
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 0;
+      }
+      .fac-dot.active {
+        background: var(--blue);
+        transform: scale(1.3);
+      }
+
+      /* ═══ RESPONSIVE — page specific ═══ */
+      @media (max-width: 1024px) {
+        .journey-grid {
+          grid-template-columns: 1fr;
+        }
+        .fac-outer {
+          --fac-per-view: 4;
+        }
+      }
+      @media (max-width: 768px) {
+        #prog-hero {
+          padding: 9.5rem 0 5rem;
+        }
+        .ph-content {
+          padding: 0 1.4rem;
+        }
+        .core-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .vb-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .fac-outer {
+          flex-wrap: wrap;
+          justify-content: center;
+          --fac-per-view: 3;
+        }
+        .fac-viewport {
+          flex: 0 0 100%;
+          order: -1;
+        }
+        .cta-pair .btn {
+          flex: 1 1 100%;
+        }
+        .stage {
+          padding: 1.6rem 1.4rem;
+        }
+      }
+      @media (max-width: 520px) {
+        .vb-grid {
+          grid-template-columns: 1fr;
+        }
+        .fac-outer {
+          --fac-per-view: 2;
+        }
+      }
+
+
+      /* carousel arrows — same control the home page uses */
+      .car-arrow {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 67, 120, 0.2);
+        background: #fff;
+        color: var(--blue);
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        box-shadow: 0 4px 14px var(--shadow);
+      }
+      .car-arrow:hover:not(:disabled) {
+        background: var(--blue);
+        color: #fff;
+        border-color: var(--blue);
+        transform: scale(1.1);
+      }
+      .car-arrow:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+
+
+      /* ═══ RESPONSIVE ═══ */
+      @media (max-width: 1024px) {
+      }
+      @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1rem;
+        }
+        .nav-links .nav-cta {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
+        }
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          backdrop-filter: none;
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 12px;
+          margin: 0.2rem 1.2rem 0.5rem;
+          padding: 0.3rem;
+          display: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .has-dropdown.dd-open .dropdown-menu {
+          display: block;
+        }
+        .has-dropdown.dd-open .dd-arrow {
+          transform: rotate(180deg);
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        /* on narrow screens the logo stacks above the text instead of
+           sitting beside it, so it still never covers any copy */
+        .footer-top {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 520px) {
+        .ab-sec {
+          padding: 4.5rem 1.1rem;
+        }
+        .contact-form {
+          padding: 1.6rem;
+        }
+      }
+      /* No text block may end on a line holding a single word.
+         `pretty` lets the browser re-balance the closing lines;
+         assets/js/no-orphans.js glues the final two words for the
+         browsers that do not support it yet. */
+      body {
+        text-wrap: pretty;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .h3d,
+      .bh-headline,
+      .impl-title {
+        text-wrap: balance;
+      }
+
+    
+    </style>
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="nav-right">
+        <a href="index.html#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html#hero">דף הבית</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="program.html" class="active">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="index.html#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בבריאות הנפש</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בקהילה</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >קבוצות תרגול וסדנאות פרטיות</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="index.html#activities">אזור למידה</a></li>
+          <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
+        </ul>
+      </div>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- ════════════ HERO ════════════ -->
+    <header id="prog-hero">
+      <div class="ph-bg"></div>
+      <div class="ph-tint"></div>
+      <div class="ph-content">
+        <h1 class="ph-title rev">
+          חכמה לחיים של משמעות<br />
+          בעולם משתנה
+        </h1>
+        <p class="ph-sub rev d1">
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
+          אוניברסליים וחיים בעלי משמעות
+        </p>
+        <div class="rev d2">
+          <a href="#program" class="btn btn-gold">לפרטים נוספים</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ════════════ תוכנית 16 המעלות ════════════ -->
+    <section class="ab-sec bg-calm" id="program">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">תוכנית 16 המעלות</h2>
+        </div>
+
+        <p class="ab-body rev">
+          תוכנית 16 המעלות נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו
+          ומבוססת על ארבעה נושאי ליבה:
+        </p>
+
+        <div class="core-row rev d1">
+          <div class="core-chip core-think">הדרך שאנו חושבות.ים</div>
+          <div class="core-chip core-act">הדרך שאנו פועלות.ים</div>
+          <div class="core-chip core-relate">הדרך שאנו מתייחסות.ים לזולת</div>
+          <div class="core-chip core-meaning">הדרך שאנו מוצאות.ים משמעות</div>
+        </div>
+
+        <p class="core-note rev d2">
+          כל אחד מארבעת נושאי הליבה כולל 4 ערכים אוניברסליים (מעלות)
+        </p>
+
+        <div class="virtues-board rev d2">
+          <div class="vb-head">16 המעלות</div>
+          <div class="vb-body">
+            <p class="vb-hint">
+              העבירו את העכבר על כל מעלה כדי לגלות את משמעותה
+            </p>
+            <div class="vb-grid">
+              <!-- ─── column titles ─── -->
+              <div
+                class="vb-col-title"
+                style="background: linear-gradient(150deg, #1a97a8, var(--v-think))"
+              >
+                הדרך בה אנו חושבות.ים
+              </div>
+              <div
+                class="vb-col-title"
+                style="background: linear-gradient(150deg, #4f8f33, var(--v-act))"
+              >
+                הדרך בה אנו פועלות.ים
+              </div>
+              <div
+                class="vb-col-title"
+                style="background: linear-gradient(150deg, #4a63a3, var(--v-relate))"
+              >
+                הדרך בה אנו מתייחסות.ים לזולת
+              </div>
+              <div
+                class="vb-col-title"
+                style="background: linear-gradient(150deg, #d0791a, var(--v-meaning))"
+              >
+                הדרך בה אנו מוצאות.ים משמעות
+              </div>
+              <!-- the 16 tiles are written in by assets/js — see program script -->
+            </div>
+          </div>
+        </div>
+
+        <p class="ab-body rev d3" style="margin-top: 2.6rem">
+          באמצעות שילוב בין פילוסופיות מזרחיות ומדע מערבי, בין חכמה עתיקה
+          להתפתחויות מודרניות, התוכנית מייצרת שפה משותפת וסוללת דרך לחיים
+          שלווים, משמעותיים ומאושרים יותר ליחידים, משפחות, קהילות ולחברה כולה.
+        </p>
+
+        <div class="rev d3" style="margin-top: 2rem">
+          <a href="#contact-form" class="btn btn-blue"
+            >לתיאום סדנה לארגונים וקהילות</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ מקורות התוכנית ════════════ -->
+    <section class="ab-sec bg-deep" id="origins">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">מקורות התוכנית</h2>
+        </div>
+        <p class="ab-body rev">
+          התוכנית מבוססת על טקסט שכתב מלך מהמאה ה-7, שרצה להשכין שלום בממלכה
+          ולייצר קוד אתי שהאזרחים והאזרחיות יוכלו לחיות על-פיו.
+        </p>
+        <p class="ab-body rev d1">
+          בשנת 2005 הוקם הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW - Foundation
+          for Developing Compassion and Wisdom) אשר תרגם והתאים את הטקסט העתיק
+          לעולם של ימינו ופיתח את תוכנית 16 המעלות כפי שהיא פועלת כיום.
+        </p>
+        <p class="ab-body rev d2">
+          התוכנית נגישה בכל העולם עם מנחים.ות מוסמכים.ות ב-22 מדינות.
+        </p>
+      </div>
+      <div class="wave-foot" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+          <path
+            d="M0,54 C180,14 340,84 540,58 C740,32 900,86 1120,54 C1280,30 1380,44 1440,52 L1440,90 L0,90 Z"
+            fill="rgba(72,217,211,0.22)"
+          />
+          <path
+            d="M0,68 C200,40 380,92 600,68 C820,44 1000,90 1220,66 C1330,54 1400,60 1440,64 L1440,90 L0,90 Z"
+            fill="rgba(255,255,255,0.14)"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ════════════ מה קורה בדרך ════════════ -->
+    <section class="ab-sec bg-mist" id="journey">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">מה קורה בדרך</h2>
+        </div>
+        <p class="ab-body rev">
+          באמצעות חקירת 16 המעלות מתאפשרת הכרות מעמיקה יותר עם עצמנו ועם
+          אחרים.ות.
+        </p>
+
+        <div class="journey-grid">
+          <div class="journey-card rev d1">
+            <h3>מתוך ההיכרות הזאת מתאפשרת</h3>
+            <ul class="why-result" style="margin: 0">
+              <li>פריצת תפיסות עצמיות מגבילות</li>
+              <li>שיפור מערכות יחסים</li>
+              <li>מציאת שלוות-נפש וחוסן מנטלי</li>
+              <li>קבלת החלטות טובה יותר</li>
+            </ul>
+          </div>
+          <div class="journey-card rev d2">
+            <h3>שיח על המעלות ותרגול מעשי</h3>
+            <ul class="why-result" style="margin: 0">
+              <li>מייצר תחושת שייכות</li>
+              <li>מקדם תחושת מסוגלות ורווחה נפשית</li>
+              <li>מעצים יכולת לדיאלוג מקרב</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="ab-body rev d3" style="margin-top: 2.2rem">
+          הטמעת המעלות מקדמת חיים חברתיים וקהילתיים משותפים גם בזמנים מורכבים.
+          השיח והתרגול מתקיימים בקבוצות, בזוגות ובאופן אישי.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ למי זה מיועד ════════════ -->
+    <section class="ab-sec bg-calm" id="audience">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">למי זה מיועד</h2>
+        </div>
+        <p class="ab-body rev">
+          לכולם! ליחידים, לקבוצות ולארגונים המעוניינים לחיות חיים שלווים,
+          קשובים, משמעותיים ומאושרים יותר ולקדם חברה סבלנית, חומלת וסולידרית
+          יותר.
+        </p>
+        <div class="aud-tags rev d1">
+          <span class="aud-tag">אנשי ונשות חינוך</span>
+          <span class="aud-tag">אנשי ונשות טיפול</span>
+          <span class="aud-tag">אנשי ונשות עסקים</span>
+          <span class="aud-tag">מובילי קהילות</span>
+          <span class="aud-tag">מובילי ארגונים</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ האימפקט ════════════ -->
+    <section class="ab-sec bg-deep" id="impact">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">האימפקט</h2>
+        </div>
+        <p class="ab-body rev">
+          עמותת בית חולמים הביאה את התוכנית לישראל בשנת 2020, והיא הנציגה של
+          הארגון הבינלאומי FDCW בישראל.
+        </p>
+
+        <div class="fact-grid rev d1">
+          <div class="fact">
+            <div class="fact-num">2,300+</div>
+            <div class="fact-label">משתתפות ומשתתפים בסדנאות</div>
+          </div>
+          <div class="fact">
+            <div class="fact-num">80+</div>
+            <div class="fact-label">מנחות ומנחים שהוסמכו</div>
+          </div>
+          <div class="fact">
+            <div class="fact-num">140+</div>
+            <div class="fact-label">סדנאות שהתקיימו</div>
+          </div>
+          <div class="fact">
+            <div class="fact-num">22</div>
+            <div class="fact-label">מדינות שבהן פועלת התוכנית</div>
+          </div>
+        </div>
+
+        <p class="ab-body rev d2" style="margin-top: 2.4rem">
+          התוכנית מוכרת על ידי משרד החינוך ונכנסה למערכת החינוך בשנת תשפ"ג
+          (בתוכנית גפ"ן), ומאז השתתפו בה מאות תלמידים, מורים והורים.
+        </p>
+        <p class="ab-body rev d3">
+          16 המעלות היא תוכנית הדגל במנהל חינוך של עיריית ת"א-יפו, ופועלת גם
+          במרכז הממשלתי לבריאות הנפש בבאר-שבע, במרכז הממשלתי לבריאות הנפש לב
+          השרון, בחברות במגזר העסקי ועוד.
+        </p>
+      </div>
+      <div class="wave-foot" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+          <path
+            d="M0,54 C180,14 340,84 540,58 C740,32 900,86 1120,54 C1280,30 1380,44 1440,52 L1440,90 L0,90 Z"
+            fill="rgba(72,217,211,0.22)"
+          />
+          <path
+            d="M0,68 C200,40 380,92 600,68 C820,44 1000,90 1220,66 C1330,54 1400,60 1440,64 L1440,90 L0,90 Z"
+            fill="rgba(255,255,255,0.14)"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ════════════ שלבי התוכנית והסמכה ════════════ -->
+    <section class="ab-sec bg-mist" id="stages">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">שלבי התוכנית והסמכה</h2>
+        </div>
+        <p class="ab-body rev">
+          הלמידה מובנית במודל מודולרי הדרגתי. השלמת כל שלב מקנה תעודה בינלאומית
+          מטעם בית חולמים וארגון FDCW הבינלאומי. התוכנית בנויה מ-3 שלבים
+          ולאחריה יכולים/ות המתאימים/ות להמשיך להכשרת מנחים/ות.
+        </p>
+
+        <div class="stage rev d1">
+          <span class="stage-badge">🔹 שלב 1</span>
+          <h3>יסודות 16 המעלות</h3>
+          <dl>
+            <dt>מה לומדים</dt>
+            <dd>
+              היכרות חווייתית עם ארבעת נושאי הליבה ו-16 המעלות והבסיס המדעי
+              והפילוסופי שלהן, תרגול מיינדפולנס וכלים מעשיים להתמודדות עם אתגרי
+              היומיום.
+            </dd>
+            <dt>מבנה</dt>
+            <dd>
+              שני פורמטים אפשריים: (א) 12 שעות לימוד הנלמדות ב-2 ימים מלאים או
+              ב-4 מפגשים של 3 שעות. (ב) במקרים בהם מתקיים שיתוף פעולה עם ארגון
+              כלשהו (בדרך כלל מהמגזר הציבורי או העסקי), ישנו גם פורמט של "שלב 1
+              לארגונים" — פורמט בן 8 שעות, הנלמדות ב-2 מפגשים בני 4 שעות כל
+              אחד. כל אחד מהפורמטים מזכה בתעודה המוכרת גם על-ידי הארגון
+              הבינלאומי, המאפשרת להמשיך לשלב 2.
+            </dd>
+            <dt>כולל</dt>
+            <dd>ערכת קלפי המעלות ותעודה בינלאומית.</dd>
+          </dl>
+        </div>
+
+        <div class="stage rev d2">
+          <span class="stage-badge">🔹 שלב 2</span>
+          <h3>העמקה והטמעה ביומיום</h3>
+          <dl>
+            <dt>מה לומדים</dt>
+            <dd>
+              העמקה בתכנים והטמעת הכלים שנלמדו בשלב 1, ביסוס התרגול האישי
+              בשגרה, היכרות ראשונית עם צד ה"צל" של נושאי הליבה ו-16 המעלות.
+              היכרות עם סוגיות של טראומה, בדידות ואתגרים חברתיים ולמידת דרכים
+              אישיות וקבוצתיות להתמודדות עם אתגרים אלה.
+            </dd>
+            <dt>מבנה</dt>
+            <dd>
+              5 מפגשים מונחים של שעתיים וחצי (כ-15 שעות), אחת לשבועיים. בין
+              המפגשים מתבצע גם לימוד ואימון אישי (כחצי שעה בשבוע) באמצעות דפי
+              הנחיה וחומרים מוקלטים ותוך ליווי של צמד המנחים/ות.
+            </dd>
+            <dt>כולל</dt>
+            <dd>
+              גרסה דיגיטלית של ספר התוכנית, חומרים כתובים ומוקלטים לטובת התנסות
+              בתרגול עצמי, ותעודה בינלאומית עבור השלמת שלב 2.
+            </dd>
+          </dl>
+        </div>
+
+        <div class="stage rev d3">
+          <span class="stage-badge">🔹 שלב 3</span>
+          <h3>הרחבה פילוסופית ומדעית</h3>
+          <dl>
+            <dt>מה לומדים</dt>
+            <dd>
+              העמקה בצד ה"צל" של 16 המעלות והרחבה תאורטית בבסיס הפילוסופי והמדעי
+              שהוצג בשלבים קודמים, ובהם טבע התודעה, פסיכולוגיית העצמי, התהוות
+              גומלין, נוירוני מראה ועוד.
+            </dd>
+            <dt>מבנה</dt>
+            <dd>2 ימים מלאים או 4 מפגשים של 3 שעות (12 שעות).</dd>
+          </dl>
+        </div>
+
+        <div class="stage stage-track rev d3">
+          <span class="stage-badge">🎓 מסלול הכשרה</span>
+          <h3>הכשרת מנחים/ות</h3>
+          <dl>
+            <dt>למי מיועד</dt>
+            <dd>
+              למי שהשלימו את 3 השלבים ונמצאו מתאימים להנחות סדנאות וקבוצות מטעם
+              העמותה.
+            </dd>
+            <dt>מה לומדים</dt>
+            <dd>
+              פיתוח ביטחון בהנחיה, ארגון סדנאות, הטמעת תרגול המיינדפולנס ויתר
+              הכלים של התוכנית והיכרות עם סגנון ההנחיה ברוח תוכנית 16 המעלות.
+            </dd>
+          </dl>
+        </div>
+
+        <div class="cta-pair rev">
+          <a href="#contact-form" class="btn btn-blue"
+            >להרשמה לסדנת שלב 1 הקרובה</a
+          >
+          <a href="#contact-form" class="btn btn-gold"
+            >לתיאום סדנה מותאמת לארגון / קהילה</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ על המנחות והמנחים ════════════ -->
+    <section class="ab-sec bg-calm" id="facilitators">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">על המנחות והמנחים שלנו</h2>
+        </div>
+        <p class="ab-body rev">
+          מנחי ומנחות תוכנית 16 המעלות בישראל עברו הכשרה והוסמכו על ידי עמותת
+          בית חולמים. המנחים והמנחות ממשיכים ללמוד יחד במסגרת הקהילה המקומית
+          והבינלאומית.
+        </p>
+
+        <div class="fac-outer rev d1">
+          <button class="car-arrow" id="facPrev" aria-label="הקודם">
+            &#8250;
+          </button>
+          <div class="fac-viewport">
+            <div class="fac-track" id="facTrack">
+              <!-- cards are written in by the page script -->
+            </div>
+          </div>
+          <button class="car-arrow" id="facNext" aria-label="הבא">
+            &#8249;
+          </button>
+        </div>
+        <div class="fac-dots" id="facDots"></div>
+      </div>
+    </section>
+
+    <!-- ════════════ CONTACT FORM ════════════ -->
+    <section id="contact-form">
+      <div class="wrap">
+        <div class="contact-inner">
+          <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
+          <p class="sub rev">
+            רוצים לשמוע עוד על תוכנית 16 המעלות?<br />
+            השאירו פרטים ונחזור אליכם עם כל המידע על הסדנה הקרובה ועל התאמת
+            התוכנית לארגון או לקהילה שלכם.
+          </p>
+
+          <form
+            class="contact-form rev"
+            id="progForm"
+            action="https://formsubmit.co/info@dreamers.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="פנייה חדשה מדף תוכנית 16 המעלות" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">שם <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label">ארגון / קהילה (אופציונלי)</label>
+                <input class="form-input" type="text" name="ארגון / קהילה" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">תפקיד (אופציונלי)</label>
+                <input class="form-input" type="text" name="תפקיד" />
+              </div>
+              <div class="form-field">
+                <label class="form-label">דוא"ל <span class="req">*</span></label>
+                <input class="form-input" type="email" name="דוא&quot;ל" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">טלפון (אופציונלי)</label>
+                <input class="form-input" type="tel" name="טלפון" />
+              </div>
+              <div class="form-field ms-field">
+                <label class="form-label">מה הביא אתכם אלינו?</label>
+                <button type="button" class="ms-trigger" id="msTrigger">
+                  <span id="msTriggerText">בחרו אפשרות אחת או יותר</span>
+                  <span class="dd-arrow">▾</span>
+                </button>
+                <div class="ms-panel" id="msPanel">
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="הרשמה לסדנת שלב 1" />הרשמה
+                    לסדנת שלב 1</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="סדנה לארגון" />סדנה
+                    לארגון</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="סדנה לקהילה" />סדנה
+                    לקהילה</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="מסלול הכשרת מנחים" />מסלול
+                    הכשרת מנחים/ות</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" id="msOtherCheck" name="מה הביא אתכם אלינו" value="אחר" />אחר</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="form-field full">
+              <textarea
+                class="form-textarea other-text"
+                id="msOtherText"
+                name="פירוט נוסף (אחר)"
+                maxlength="500"
+                placeholder="ספרו לנו בקצרה (עד 500 תווים)"
+              ></textarea>
+            </div>
+            <div class="form-field full" style="margin-top: 1.1rem">
+              <label class="form-label">הודעה (אופציונלי)</label>
+              <textarea class="form-textarea" name="הודעה"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold form-submit">
+              שליחה
+            </button>
+            <p class="form-note">
+              בלחיצה על "שליחה" הפנייה תישלח אלינו במייל ונחזור אליכם בהקדם.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="assets/img/logo-beit-holmim-white.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+            <div class="socials">
+              <a href="#" class="fsoc" title="YouTube">▷</a>
+              <a href="#" class="fsoc" title="Facebook">f</a>
+              <a href="#" class="fsoc" title="Instagram">▶</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">ניווט</div>
+            <ul class="footer-nav">
+              <li><a href="index.html#hero">דף הבית</a></li>
+              <li><a href="about.html">אודות</a></li>
+              <li><a href="program.html" class="active">תוכנית 16 המעלות</a></li>
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <div class="footer-col-title">צרו קשר</div>
+            <p><a href="mailto:info@dreamers.com">info@dreamers.com</a></p>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+            <p style="margin-top: 1rem">
+              <a
+                href="index.html#virtues"
+                class="btn btn-gold"
+                style="font-size: 0.85rem; padding: 0.6rem 1.4rem"
+                >לתרומה</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-motto">
+          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 by Dreamers Home</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════ JS ════════════ -->
+    <script>
+      (function () {
+        const nav = document.getElementById("nav");
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) => {
+          if (a.classList.contains("dd-trigger")) return;
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          });
+        });
+        const ddParent = nav.querySelector(".has-dropdown");
+        const ddTrigger = ddParent.querySelector(".dd-trigger");
+        ddTrigger.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            ddParent.classList.toggle("dd-open");
+          } else {
+            nav.classList.remove("nav-open");
+          }
+        });
+
+        /* Scroll reveal */
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* Multi-select dropdown */
+        const msTrigger = document.getElementById("msTrigger");
+        const msPanel = document.getElementById("msPanel");
+        const msTriggerText = document.getElementById("msTriggerText");
+        const msOtherCheck = document.getElementById("msOtherCheck");
+        const msOtherText = document.getElementById("msOtherText");
+        if (msTrigger) {
+          msTrigger.addEventListener("click", () => {
+            msPanel.classList.toggle("open");
+          });
+          document.addEventListener("click", (e) => {
+            if (!msPanel.contains(e.target) && e.target !== msTrigger) {
+              msPanel.classList.remove("open");
+            }
+          });
+          msPanel.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+            cb.addEventListener("change", () => {
+              const checked = msPanel.querySelectorAll(
+                'input[type="checkbox"]:checked',
+              );
+              msTriggerText.textContent = checked.length
+                ? Array.from(checked)
+                    .map((c) => c.value)
+                    .join(", ")
+                : "בחרו אפשרות אחת או יותר";
+              msOtherText.style.display = msOtherCheck.checked
+                ? "block"
+                : "none";
+            });
+          });
+        }
+
+        /* Contact form — async submit via FormSubmit AJAX endpoint */
+        const progForm = document.getElementById("progForm");
+        if (progForm) {
+          progForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = progForm.querySelector(".form-submit");
+            const originalText = btn.textContent;
+            btn.textContent = "שולח...";
+            btn.disabled = true;
+            try {
+              const res = await fetch(progForm.action, {
+                method: "POST",
+                body: new FormData(progForm),
+                headers: { Accept: "application/json" },
+              });
+              if (res.ok) {
+                btn.textContent = "נשלח בהצלחה ✓";
+                progForm.reset();
+                msTriggerText.textContent = "בחרו אפשרות אחת או יותר";
+                msOtherText.style.display = "none";
+              } else {
+                throw new Error("Submit failed");
+              }
+            } catch (err) {
+              btn.textContent = "שגיאה — נסו שוב או כתבו ל-info@dreamers.com";
+            } finally {
+              btn.disabled = false;
+              setTimeout(() => {
+                btn.textContent = originalText;
+              }, 4000);
+            }
+          });
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        /* ═══════════════════════════════════════════════════════════
+           The 16 virtues board
+
+           Each tile is a button so it works by keyboard and on touch as
+           well as on hover. Column order follows the programme chart,
+           right to left: thinking, acting, relating, meaning.
+           ═══════════════════════════════════════════════════════════ */
+        const VIRTUES = [
+          // { name, image, family }  — four rows of four, read right to left
+          ["ענווה", "assets/img/virtues/humility.png", "think"],
+          ["טוב לב", "assets/img/virtues/kindness.png", "act"],
+          ["כבוד", "assets/img/virtues/respect.png", "relate"],
+          ["שאיפות", "assets/img/virtues/aspirations.png", "meaning"],
+
+          ["סבלנות", "assets/img/virtues/patience.png", "think"],
+          ["יושרה", "assets/img/virtues/integrity.png", "act"],
+          ["סליחה", "assets/img/virtues/forgiveness.png", "relate"],
+          ["עקרונות", "assets/img/virtues/principles.png", "meaning"],
+
+          ["שביעות רצון", "assets/img/virtues/contentment.png", "think"],
+          ["נדיבות", "assets/img/virtues/generosity.png", "act"],
+          ["הכרת תודה", "assets/img/virtues/gratitude.png", "relate"],
+          ["שירות", "assets/img/virtues/service.png", "meaning"],
+
+          ["חדווה", "assets/img/virtues/joy.png", "think"],
+          ["דיבור מיטיב", "assets/img/virtues/kind-speech.png", "act"],
+          ["נאמנות", "assets/img/virtues/loyalty.png", "relate"],
+          ["אומץ", "assets/img/virtues/courage.png", "meaning"],
+        ];
+        const FAMILY_COLOR = {
+          think: "var(--v-think)",
+          act: "var(--v-act)",
+          relate: "var(--v-relate)",
+          meaning: "var(--v-meaning)",
+        };
+
+        const grid = document.querySelector(".vb-grid");
+        if (grid) {
+          VIRTUES.forEach(([name, file, family]) => {
+            const card = document.createElement("button");
+            card.type = "button";
+            card.className = "vcard";
+            card.style.setProperty("--vc", FAMILY_COLOR[family]);
+            card.setAttribute("aria-label", name + " — הצגת המשמעות");
+            card.innerHTML =
+              '<span class="vcard-inner">' +
+              '<span class="vcard-face vcard-front">' +
+              name +
+              "</span>" +
+              '<span class="vcard-face vcard-back">' +
+              '<img src="' +
+              file +
+              '" alt="' +
+              name +
+              ' — המשמעות" loading="lazy" />' +
+              "</span>" +
+              "</span>";
+            // tap on a touch screen flips it, since there is no hover there
+            card.addEventListener("click", () => {
+              card.classList.toggle("flipped");
+            });
+            grid.appendChild(card);
+          });
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           Facilitators carousel
+           ═══════════════════════════════════════════════════════════ */
+        const FACILITATORS = [
+          ["ניב אגם", "assets/img/Faces/team/niv_agam.jpg"],
+          ["מירן ברודבר", "assets/img/Faces/team/miran_brodbar.jpg"],
+          ["טניה עמר", "assets/img/Faces/team/tania_amer.png"],
+          ["יעל קמינסקי", "assets/img/Faces/team/yael_kaminski.jpg"],
+          ["ניצן אביב", "assets/img/Faces/team/nitzan_aviv.jpg"],
+          ["ד״ר נויה שילה", "assets/img/Faces/team/noya_shila.jpg"],
+          ["עביר פדעוס", "assets/img/Faces/team/avir_fedaus.avif"],
+          ["רן הופר", "assets/img/Faces/team/ran_hofer.avif"],
+          ["נדב פארי", "assets/img/Faces/team/nadav_pari.jpg"],
+          ["עדי בן פזי", "assets/img/Faces/team/adi_ben_paz.jpg"],
+          ["עדי ארצי שלו", "assets/img/Faces/team/adi_artzi_shelo.jpg"],
+          ["רו״ח גלעד קדמי", "assets/img/Faces/team/gilad_kadmi.jpg"],
+          ["יאנה פוסוכוב", "assets/img/Faces/team/yana_posukhov.jpg"],
+          ["פרופ׳ ריקרדו טרש", "assets/img/Faces/team/ricardo_tarrasch.avif"],
+          ["פרופ׳ מיכל אל-יגון", "assets/img/Faces/team/michal_al_yagon.jpg"],
+          ["פרופ׳ פנינית רוסו-נצר", "assets/img/Faces/team/pninit_russo_netzer.jpg"],
+          ["דליה לין", "assets/img/Faces/דליה לין.jpeg"],
+          ["חאלד שקרא", "assets/img/Faces/חאלד שקרא.png"],
+          ["חן ווינשטיין", "assets/img/Faces/חן ווינשטיין.jpeg"],
+          ["עודד ארבל", "assets/img/Faces/עודד ארבל.png"],
+          ["תומר גביש", "assets/img/Faces/תומר גביש.png"],
+        ];
+
+        const facOuter = document.querySelector(".fac-outer");
+        const facTrack = document.getElementById("facTrack");
+        const facPrev = document.getElementById("facPrev");
+        const facNext = document.getElementById("facNext");
+        const facDots = document.getElementById("facDots");
+
+        if (facTrack) {
+          FACILITATORS.forEach(([name, src]) => {
+            const el = document.createElement("div");
+            el.className = "fac";
+            el.innerHTML =
+              '<img class="fac-photo" src="' +
+              src +
+              '" alt="' +
+              name +
+              '" loading="lazy" />' +
+              '<div class="fac-name">' +
+              name +
+              "</div>";
+            facTrack.appendChild(el);
+          });
+
+          const cards = Array.from(facTrack.children);
+          let page = 0;
+          let perView = 5;
+          let pages = 1;
+
+          function readPerView() {
+            const v = parseInt(
+              getComputedStyle(facOuter).getPropertyValue("--fac-per-view"),
+              10,
+            );
+            return Number.isFinite(v) && v > 0 ? v : 1;
+          }
+
+          function buildDots() {
+            facDots.innerHTML = "";
+            for (let i = 0; i < pages; i++) {
+              const b = document.createElement("button");
+              b.className = "fac-dot" + (i === page ? " active" : "");
+              b.setAttribute("aria-label", "עמוד " + (i + 1));
+              b.addEventListener("click", () => go(i));
+              facDots.appendChild(b);
+            }
+          }
+
+          function go(p) {
+            page = Math.max(0, Math.min(p, pages - 1));
+            const first = cards[page * perView];
+            // RTL track: offsetLeft shrinks as the index grows, so shifting
+            // right by the difference brings the page into view
+            const delta = first ? cards[0].offsetLeft - first.offsetLeft : 0;
+            facTrack.style.transform = "translateX(" + delta + "px)";
+            facPrev.disabled = page === 0;
+            facNext.disabled = page === pages - 1;
+            facDots.querySelectorAll(".fac-dot").forEach((d, i) => {
+              d.classList.toggle("active", i === page);
+            });
+          }
+
+          function layout() {
+            const next = readPerView();
+            const changed = next !== perView;
+            perView = next;
+            pages = Math.ceil(cards.length / perView);
+            if (page > pages - 1) page = pages - 1;
+            if (changed || facDots.children.length !== pages) buildDots();
+            const keep = facTrack.style.transition;
+            facTrack.style.transition = "none";
+            go(page);
+            void facTrack.offsetWidth;
+            facTrack.style.transition = keep;
+          }
+
+          facPrev.addEventListener("click", () => go(page - 1));
+          facNext.addEventListener("click", () => go(page + 1));
+          layout();
+          let t;
+          window.addEventListener("resize", () => {
+            clearTimeout(t);
+            t = setTimeout(layout, 150);
+          });
+        }
+      })();
+    </script>
+    <script src="assets/js/no-orphans.js?v=2" defer></script>
+    <script src="assets/js/accessibility-widget.js" defer></script>
+  </body>
+</html>
