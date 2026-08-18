@@ -14,7 +14,7 @@ import base64, hashlib, io, mimetypes, os, re, subprocess, sys
 # resolve against the repo root so the script runs from anywhere
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".preview-cache")
-PAGES = ["index", "program", "business", "education", "about"]
+PAGES = ["index", "program", "business", "education", "about", "contact"]
 OUT_NAME = "Dreamers-Site-Preview.html"
 
 os.chdir(ROOT)
@@ -30,6 +30,7 @@ KEEP_PNG = {             # logos / marks where transparency matters
     "assets/img/logo-beit-holmim.png",
     "assets/img/GALLUP logo.png",
     "assets/img/The Slogan.png",
+    "assets/img/The Slogan - Light.png",
     "assets/img/Bird.png",
     "assets/img/16 המעלות - 110826.png",
     "assets/img/Gradient blue.png",
@@ -143,8 +144,13 @@ NAV_HOOK = """
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if(!a) return;
     var href = a.getAttribute('href') || '';
-    var m = href.match(/^([A-Za-z0-9_-]+)\\.html(#.*)?$/);
-    if(m && parent && parent.__nav){ e.preventDefault(); parent.__nav(m[1], m[2] || ''); }
+    /* a query string has to survive the hop: contact.html?from=... is how the
+       contact page knows which set of choices to offer */
+    var m = href.match(/^([A-Za-z0-9_-]+)\\.html(\\?[^#]*)?(#.*)?$/);
+    if(m && parent && parent.__nav){
+      e.preventDefault();
+      parent.__nav(m[1], (m[2] || '') + (m[3] || ''));
+    }
   }, true);
 })();
 </script>
@@ -223,17 +229,25 @@ SHELL = u"""<!doctype html>
   var boot  = document.getElementById('boot');
   var PAGES = %(pages)s;
 
-  function render(name, hash){
+  function render(name, hash, query){
     if (PAGES.indexOf(name) < 0) name = PAGES[0];
     // the stored markup has its closing script tags escaped so the holder
     // block survives HTML parsing; put them back before handing it to srcdoc
     var html = document.getElementById('p-' + name).textContent
                  .split('<\\\\/script').join('<\\/script');
-    if (hash) {
-      html = html.replace('</head>',
-        '<script>window.addEventListener("load",function(){var t=document.querySelector(' +
-        JSON.stringify(hash) + ');if(t)t.scrollIntoView();});<\\/script></head>');
+    var inject = '';
+    // srcdoc frames have no address of their own, so a ?from= travels in the
+    // shell hash and is handed to the page as a global instead
+    var from = query && /(?:^|&)from=([^&]*)/.exec(query);
+    if (from) {
+      inject += '<script>window.__contactFrom=' +
+        JSON.stringify(decodeURIComponent(from[1])) + ';<\\/script>';
     }
+    if (hash) {
+      inject += '<script>window.addEventListener("load",function(){var t=document.querySelector(' +
+        JSON.stringify(hash) + ');if(t)t.scrollIntoView();});<\\/script>';
+    }
+    if (inject) { html = html.replace('</head>', inject + '</head>'); }
     frame.srcdoc = html;
     if (boot) { boot.style.display = 'none'; }
   }
@@ -244,10 +258,12 @@ SHELL = u"""<!doctype html>
 
   function fromHash(){
     var h = (location.hash || '').replace(/^#/, '');
+    var anchor = '', query = '';
     var i = h.indexOf('#');
-    var name = i < 0 ? h : h.slice(0, i);
-    var rest = i < 0 ? '' : h.slice(i);
-    render(name || PAGES[0], rest);
+    if (i >= 0) { anchor = h.slice(i); h = h.slice(0, i); }
+    var q = h.indexOf('?');
+    if (q >= 0) { query = h.slice(q + 1); h = h.slice(0, q); }
+    render(h || PAGES[0], anchor, query);
   }
 
   window.addEventListener('hashchange', fromHash);

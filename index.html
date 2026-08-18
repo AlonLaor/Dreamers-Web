@@ -1468,28 +1468,25 @@
         transform: translateY(-3px);
         border-color: var(--teal);
       }
+      /* The slogan is set in the multi-gender typeface, which exists only as
+         artwork, so it is carried as an image: white for the sentence and
+         gold for מתעוררות, both of which read on the deep footer.
+         The box behind it stays faint so it blends into the footer. */
       .footer-motto {
-        max-width: 680px;
+        max-width: 780px;
         margin: 0 auto 2.6rem;
-        padding: 1.7rem 2.2rem;
+        padding: 1.9rem 2.2rem;
         text-align: center;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid rgba(72, 217, 211, 0.55);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(72, 217, 211, 0.35);
         border-radius: 22px;
         box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
-        color: #fff;
-        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
-        font-weight: 800;
-        line-height: 1.6;
-        position: relative;
       }
-      .footer-motto::before {
-        content: "”";
-        display: block;
-        font-size: 2.6rem;
-        line-height: 0.6;
-        color: var(--teal);
-        margin-bottom: 0.5rem;
+      .motto-img {
+        width: 100%;
+        max-width: 620px;
+        height: auto;
+        margin: 0 auto;
       }
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.18);
@@ -1806,7 +1803,11 @@
             </ul>
           </li>
           <li><a href="#activities">אזור למידה</a></li>
-          <li><a href="#footer" class="nav-contact-link">צרו איתנו קשר</a></li>
+          <li>
+            <a href="contact.html?from=home" class="nav-contact-link"
+              >צרו איתנו קשר</a
+            >
+          </li>
         </ul>
       </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
@@ -2352,9 +2353,30 @@
               עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
             <div class="socials">
-              <a href="#" class="fsoc" title="YouTube">▷</a>
-              <a href="#" class="fsoc" title="Facebook">f</a>
-              <a href="#" class="fsoc" title="Instagram">▶</a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+              >▷</a
+              >
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+              >f</a
+              >
+              <a
+                href="https://www.instagram.com/dreamers_home_il/"
+                class="fsoc"
+                title="Instagram"
+                target="_blank"
+                rel="noopener"
+              >▶</a
+              >
             </div>
           </div>
           <div>
@@ -2384,7 +2406,11 @@
           </div>
         </div>
         <div class="footer-motto">
-          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
+          <img
+            src="assets/img/The Slogan - Light.png"
+            alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות."
+            class="motto-img"
+          />
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>

@@ -722,16 +722,23 @@
         font-weight: 800;
         margin-top: 4.5rem;
       }
+      /* the three cards always share one row: equal widths, a narrow gutter
+         between them, and bottom room so the drop shadow is not clipped */
       .impl-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.6rem;
-        max-width: 1000px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+        gap: 1rem;
+        max-width: 1060px;
         margin: 2.4rem auto 0;
+        padding: 0.5rem 0.4rem 2.2rem;
       }
       .impl-card {
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
         background: linear-gradient(150deg, #ffffff 0%, #f2f8fe 55%, #e6f0fa 100%);
         border-radius: 18px;
         padding: 2rem 1.8rem;
@@ -1230,28 +1237,25 @@
         transform: translateY(-3px);
         border-color: var(--teal);
       }
+      /* The slogan is set in the multi-gender typeface, which exists only as
+         artwork, so it is carried as an image: white for the sentence and
+         gold for מתעוררות, both of which read on the deep footer.
+         The box behind it stays faint so it blends into the footer. */
       .footer-motto {
-        max-width: 680px;
+        max-width: 780px;
         margin: 0 auto 2.6rem;
-        padding: 1.7rem 2.2rem;
+        padding: 1.9rem 2.2rem;
         text-align: center;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid rgba(72, 217, 211, 0.55);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(72, 217, 211, 0.35);
         border-radius: 22px;
         box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
-        color: #fff;
-        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
-        font-weight: 800;
-        line-height: 1.6;
-        position: relative;
       }
-      .footer-motto::before {
-        content: "”";
-        display: block;
-        font-size: 2.6rem;
-        line-height: 0.6;
-        color: var(--teal);
-        margin-bottom: 0.5rem;
+      .motto-img {
+        width: 100%;
+        max-width: 620px;
+        height: auto;
+        margin: 0 auto;
       }
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.18);
@@ -1271,7 +1275,10 @@
           grid-template-columns: repeat(2, 1fr);
         }
         .impl-grid {
-          grid-template-columns: 1fr;
+          gap: 0.8rem;
+        }
+        .impl-card {
+          padding: 1.6rem 1.2rem;
         }
       }
       @media (max-width: 768px) {
@@ -1370,6 +1377,13 @@
           flex-direction: column;
         }
       }
+      /* only on a phone is there no room left for three across */
+      @media (max-width: 620px) {
+        .impl-grid {
+          grid-template-columns: 1fr;
+          gap: 1.1rem;
+        }
+      }
       @media (max-width: 520px) {
         .ab-sec {
           padding: 4.5rem 1.1rem;
@@ -1440,7 +1454,11 @@
             </ul>
           </li>
           <li><a href="index.html#activities">אזור למידה</a></li>
-          <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
+          <li>
+            <a href="contact.html?from=business" class="nav-cta"
+              >צרו איתנו קשר</a
+            >
+          </li>
         </ul>
       </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
@@ -1924,9 +1942,30 @@
               עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
             <div class="socials">
-              <a href="#" class="fsoc" title="YouTube">▷</a>
-              <a href="#" class="fsoc" title="Facebook">f</a>
-              <a href="#" class="fsoc" title="Instagram">▶</a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+              >▷</a
+              >
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+              >f</a
+              >
+              <a
+                href="https://www.instagram.com/dreamers_home_il/"
+                class="fsoc"
+                title="Instagram"
+                target="_blank"
+                rel="noopener"
+              >▶</a
+              >
             </div>
           </div>
           <div>
@@ -1956,7 +1995,11 @@
           </div>
         </div>
         <div class="footer-motto">
-          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
+          <img
+            src="assets/img/The Slogan - Light.png"
+            alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות."
+            class="motto-img"
+          />
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>

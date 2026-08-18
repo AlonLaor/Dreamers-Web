@@ -254,9 +254,19 @@
       }
 
       /* ═══ PAGE HEADER ═══ */
+      /* the night sky carries the header, under a deep blue scrim that keeps
+         the white title readable over the bright aurora */
       #page-header {
         padding: 11rem 2rem 5.5rem;
-        background: var(--g-main);
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 22, 50, 0.74) 0%,
+            rgba(0, 28, 60, 0.58) 45%,
+            rgba(0, 22, 50, 0.8) 100%
+          ),
+          url("assets/img/Sky with Starts.jpg") center / cover no-repeat,
+          var(--blue-dk);
         position: relative;
         overflow: hidden;
         text-align: center;
@@ -364,6 +374,36 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+      /* a heading that lives inside a text column rather than across the
+         section, so it stays in scale with the copy beside it */
+      .ab-split .ab-sub-h {
+        font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+        margin: 2.4rem 0 1rem;
+      }
+      /* the association's goals */
+      .goal-list {
+        max-width: 800px;
+        margin: 0 auto;
+        list-style: none;
+      }
+      .goal-list li {
+        position: relative;
+        padding-inline-start: 1.8rem;
+        margin-bottom: 0.9rem;
+        font-size: 1.06rem;
+        line-height: 1.85;
+        color: var(--text-mid);
+      }
+      .goal-list li::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0.72rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--gold);
       }
 
       /* ═══ TEAM CARDS / CAROUSEL ═══ */
@@ -505,12 +545,19 @@
       }
 
       /* ═══ ACADEMIC FORUM (static grid) ═══ */
+      /* three to a row, and a last row that holds fewer stays centred
+         rather than hugging the start of the line */
       .acad-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1.7rem;
         max-width: 1100px;
         margin: 0 auto;
+      }
+      .acad-grid > * {
+        flex: 0 1 calc((100% - 3.4rem) / 3);
+        min-width: 250px;
       }
 
       /* ═══ CLOSING QUOTE ═══ */
@@ -644,28 +691,25 @@
         transform: translateY(-3px);
         border-color: var(--teal);
       }
+      /* The slogan is set in the multi-gender typeface, which exists only as
+         artwork, so it is carried as an image: white for the sentence and
+         gold for מתעוררות, both of which read on the deep footer.
+         The box behind it stays faint so it blends into the footer. */
       .footer-motto {
-        max-width: 680px;
+        max-width: 780px;
         margin: 0 auto 2.6rem;
-        padding: 1.7rem 2.2rem;
+        padding: 1.9rem 2.2rem;
         text-align: center;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid rgba(72, 217, 211, 0.55);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(72, 217, 211, 0.35);
         border-radius: 22px;
         box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
-        color: #fff;
-        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
-        font-weight: 800;
-        line-height: 1.6;
-        position: relative;
       }
-      .footer-motto::before {
-        content: "”";
-        display: block;
-        font-size: 2.6rem;
-        line-height: 0.6;
-        color: var(--teal);
-        margin-bottom: 0.5rem;
+      .motto-img {
+        width: 100%;
+        max-width: 620px;
+        height: auto;
+        margin: 0 auto;
       }
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.18);
@@ -689,8 +733,10 @@
           height: 280px;
         }
         .acad-grid {
-          grid-template-columns: 1fr;
           max-width: 480px;
+        }
+        .acad-grid > * {
+          flex: 0 1 100%;
         }
         .carousel-page.cols-3 {
           grid-template-columns: 1fr;
@@ -787,7 +833,9 @@
           <li><a href="about.html" class="active">אודות</a></li>
           <li><a href="program.html">תוכנית 16 המעלות</a></li>
           <li><a href="index.html#activities">אזור למידה</a></li>
-          <li><a href="index.html#footer" class="nav-cta">צרו איתנו קשר</a></li>
+          <li>
+            <a href="contact.html?from=home" class="nav-cta">צרו איתנו קשר</a>
+          </li>
         </ul>
       </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
@@ -799,37 +847,33 @@
 
     <!-- ════════════ PAGE HEADER ════════════ -->
     <header id="page-header">
-      <h1 class="h3d h3d-white">אודות בית חולמים</h1>
+      <h1 class="h3d h3d-white">עמותת בית חולמים</h1>
       <p class="sub">מי אנחנו, במה אנחנו מאמינים, ומי עומד מאחורי הדרך</p>
     </header>
 
-    <!-- ════════════ INTRO ════════════ -->
+    <!-- ════════════ INTRO + מי אנחנו ════════════ -->
     <section class="ab-sec bg-white">
       <div class="wrap">
-        <div class="ab-hdr">
-          <h2 class="h3d rev">בית חולמים</h2>
-        </div>
         <div class="ab-split">
           <div>
             <p class="ab-body rev">
-              אנחנו חיים בזמנים יוצאי-דופן בהיסטוריה האנושית ומתמודדים עם
+              אנחנו חיים בזמנים יוצאי-דופן בהיסטוריה האנושית, ומתמודדים עם
               אתגרים שדורות קודמים לא ניצבו בפניהם. אלה ימים שקוראים לכולנו
-              להשתנות בעצמנו ולסייע זה לזו להשתנות בדרך להחלמת ותיקון חברה
+              להשתנות בעצמנו, ולסייע זה לזו להשתנות, בדרך להחלמת ותיקון חברה
               ועולם.
             </p>
+            <h2 class="h3d ab-sub-h rev d1">מי אנחנו</h2>
             <p class="ab-body rev d1">
-              עמותת בית חולמים פועלת בתחומי הרוח והחברה לבניה מחדש של
+              עמותת בית חולמים פועלת בתחומי הרוח והחברה לבנייה מחדש של
               הסולידריות החברתית. באמצעות שילוב של פילוסופיות ופרקטיקות
-              מערביות ומזרחיות ומודלים מקצועיים חדשניים ואקטיביסטיים שפיתחה,
-              פועלת העמותה לסיוע לאוכלוסיות פגיעות בתחומי החינוך, הרווחה
-              והבריאות.
+              מזרחיות ומערביות, לצד מודלים מקצועיים חדשניים ואקטיביסטיים
+              שפיתחה, פועלת העמותה לסיוע לאוכלוסיות פגיעות בתחומי החינוך,
+              הרווחה והבריאות.
             </p>
             <p class="ab-body rev d2">
-              התוכניות שמפעילה העמותה משלבות לימוד של חוכמה עתיקה ומודרנית
-              ושואבות השראה מפילוסופיות מזרחיות ומערביות כאחד, על מנת לסייע
-              לא.נשים מכל המגזרים, בכל הגילים ומכל שכבות החברה, להתמודד עם
-              האתגרים של המאה ה-21 ולהפוך את התורות לכלים יישומיים בכל תחומי
-              החיים.
+              התוכניות שמפעילה העמותה משלבות חוכמה עתיקה ומודרנית כדי לסייע
+              לאנשים מכל המגזרים, הגילים ושכבות החברה, להתמודד עם אתגרי המאה
+              ה-21, ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.
             </p>
           </div>
           <div class="ab-split-img rev d2">
@@ -845,21 +889,40 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">מטרות העמותה</h2>
         </div>
+        <ul class="goal-list rev">
+          <li>
+            להקים רשת של "בתי חולמים": מרכזים רוחניים לריפוי והחלמת גוף-נפש
+          </li>
+          <li>לפעול לטיפוח תרבות של חמלה ואי-אלימות</li>
+          <li>לפעול ליצירת שיח מקרב ומגשר בין הדתות</li>
+          <li>
+            לפעול למען צדק חברתי ולשמירה על ערכי דמוקרטיה וזכויות אדם
+          </li>
+          <li>לחנך לאורח חיים בריא ולשמירה על איכות הסביבה</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ════════════ תוכנית 16 המעלות ════════════ -->
+    <section class="ab-sec bg-white" id="program-16">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">תוכנית 16 המעלות</h2>
+        </div>
         <p class="ab-body rev">
-          עמותת בית חולמים הביאה את התוכנית הבינלאומית, 16 המעלות, לישראל בשנת
-          2020 והפכה להיות הנציגה הרשמית של התוכנית בישראל.
+          עמותת בית חולמים הביאה את התוכנית הבינלאומית "16 המעלות" לישראל בשנת
+          2020, והפכה להיות הנציגה הרשמית של התוכנית בארץ.
         </p>
         <p class="ab-body rev d1">
-          תוכנית 16 המעלות פותחה על ידי הארגון הבינלאומי לפיתוח חמלה וחוכמה
-          (FDCW – Foundation for Developing Compassion and Wisdom). הארגון הוקם
-          בשנת 2005, והיום התוכנית נגישה בכל העולם עם מנחים ומנחות מוסמכים ב-22
-          מדינות.
+          התוכנית פותחה על ידי הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW -
+          Foundation for Developing Compassion and Wisdom), שהוקם בשנת 2005.
+          כיום נגישה התוכנית בכל העולם, עם מנחים ומנחות מוסמכים ב-22 מדינות.
         </p>
       </div>
     </section>
 
     <!-- ════════════ ABOUT FDCW ════════════ -->
-    <section class="ab-sec bg-white" id="fdcw">
+    <section class="ab-sec bg-sky" id="fdcw">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">על ארגון FDCW</h2>
@@ -867,18 +930,12 @@
         <div class="ab-split">
           <div>
             <p class="ab-body rev">
-              ארגון FDCW מסייע לאנשים לפתח את החמלה והחוכמה שלהם ולטפח חיים
-              מאושרים יותר.
-            </p>
-            <p class="ab-body rev d1">
-              ב-FDCW נלהבים מכך שלכל אדם תהיה ההזדמנות לחיות את חייו הטובים
-              ביותר, לפתח את התכונות הפנימיות שלו ולהגשים את הפוטנציאל האנושי
-              שלו לחיים משמעותיים ומספקים יותר. אנו מאמינים שהמפתח לכך הוא
-              טיפוח לב חם ותודעה חכמה (Wise). באמצעות הבנה מעמיקה של תודעתנו,
-              התבוננות ברגשותינו והכרה ביחסי הגומלין הרבים בינינו, מתפתחת
-              חכמה ואכפתיות לזולת. זה נותן לנו אומץ ומפתח חוסן ומאפשר לנו
-              להיות מקור כוח, השראה ונחמה לאחרים. כך, בהדרגה, נבנית תחושה של
-              אחריות כלפי עצמנו וכלפי הזולת והסביבה.
+              ארגון FDCW מסייע לאנשים לפתח את החמלה והחוכמה שלהם, ולטפח חיים
+              מאושרים יותר. באמצעות הבנה מעמיקה של תודעתנו, התבוננות ברגשותינו
+              והכרה ביחסי הגומלין הרבים בינינו, מתפתחת חכמה ואכפתיות לזולת. זה
+              נותן לנו אומץ, מפתח חוסן, ומאפשר לנו להיות מקור כוח, השראה ונחמה
+              לאחרים - וכך, בהדרגה, נבנית תחושה של אחריות כלפי עצמנו, כלפי
+              הזולת וכלפי הסביבה.
             </p>
           </div>
           <div class="ab-split-img rev d2">
@@ -1107,6 +1164,29 @@
               לפסיכולוגיה, המכללה האקדמית אחוה
             </div>
           </div>
+          <div class="team-card rev d1">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/נאוה לויט בן-נון.png"
+              alt="פרופ׳ נאוה לויט בן-נון"
+            />
+            <div class="team-name">פרופ׳ נאוה לויט בן-נון</div>
+            <div class="team-role">
+              פרופסור חבר וחוקרת מוח במחלקה לפסיכולוגיה באוניברסיטת רייכמן
+            </div>
+          </div>
+          <div class="team-card rev d2">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/מיכל ארליך.png"
+              alt="ד״ר מיכל ארליך"
+            />
+            <div class="team-name">ד״ר מיכל ארליך</div>
+            <div class="team-role">
+              פרופסור חבר בבית הספר ג׳ינדל לעניינים בינלאומיים (JSIA) ומנהלת
+              המכון ג׳ינדל להודו
+            </div>
+          </div>
         </div>
 
         <div style="text-align: center; margin-top: 3.2rem" class="rev">
@@ -1115,7 +1195,7 @@
             חולמים ו-FDCW, וממשיכים ללמוד ביחד במסגרת הקהילה המקומית
             והבינלאומית.
           </p>
-          <a href="index.html#footer" class="btn btn-blue">צרו איתנו קשר</a>
+          <a href="contact.html?from=home" class="btn btn-blue">צרו איתנו קשר</a>
         </div>
       </div>
     </section>
@@ -1141,9 +1221,30 @@
               עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
             <div class="socials">
-              <a href="#" class="fsoc" title="YouTube">▷</a>
-              <a href="#" class="fsoc" title="Facebook">f</a>
-              <a href="#" class="fsoc" title="Instagram">▶</a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+              >▷</a
+              >
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+              >f</a
+              >
+              <a
+                href="https://www.instagram.com/dreamers_home_il/"
+                class="fsoc"
+                title="Instagram"
+                target="_blank"
+                rel="noopener"
+              >▶</a
+              >
             </div>
           </div>
           <div>
@@ -1172,7 +1273,11 @@
           </div>
         </div>
         <div class="footer-motto">
-          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
+          <img
+            src="assets/img/The Slogan - Light.png"
+            alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות."
+            class="motto-img"
+          />
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>

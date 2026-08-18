@@ -683,28 +683,25 @@
         transform: translateY(-3px);
         border-color: var(--teal);
       }
+      /* The slogan is set in the multi-gender typeface, which exists only as
+         artwork, so it is carried as an image: white for the sentence and
+         gold for מתעוררות, both of which read on the deep footer.
+         The box behind it stays faint so it blends into the footer. */
       .footer-motto {
-        max-width: 680px;
+        max-width: 780px;
         margin: 0 auto 2.6rem;
-        padding: 1.7rem 2.2rem;
+        padding: 1.9rem 2.2rem;
         text-align: center;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid rgba(72, 217, 211, 0.55);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(72, 217, 211, 0.35);
         border-radius: 22px;
         box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
-        color: #fff;
-        font-size: clamp(1.15rem, 2.6vw, 1.5rem);
-        font-weight: 800;
-        line-height: 1.6;
-        position: relative;
       }
-      .footer-motto::before {
-        content: "”";
-        display: block;
-        font-size: 2.6rem;
-        line-height: 0.6;
-        color: var(--teal);
-        margin-bottom: 0.5rem;
+      .motto-img {
+        width: 100%;
+        max-width: 620px;
+        height: auto;
+        margin: 0 auto;
       }
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.18);
@@ -745,12 +742,48 @@
         background: var(--blue-dk);
         text-align: right;
       }
+      /* The sky behind the bird is mixed from the photo's own colours —
+         warm sun towards the top, cool grey-blue at the foot — so the photo
+         can sit on top of it without a visible seam. */
       .ph-bg {
         position: absolute;
         inset: 0;
-        background-image: url("assets/img/שחף 1.png");
-        background-size: cover;
-        background-position: center 42%;
+        background:
+          radial-gradient(
+            120% 150% at 84% 10%,
+            #fdf0cd 0%,
+            #f6e0b8 24%,
+            rgba(246, 224, 184, 0) 64%
+          ),
+          linear-gradient(
+            180deg,
+            #a8c0e0 0%,
+            #d0d9e6 38%,
+            #dfe2e4 64%,
+            #c3cbd4 100%
+          );
+      }
+      /* The gull itself. The layer keeps the photograph's own proportions at
+         the full height of the hero, so the whole bird is in frame — no wing
+         tip is cut — and it reads far smaller than the old full-bleed crop.
+         Its right edge dissolves into the gradient above. */
+      .ph-photo {
+        position: absolute;
+        /* the strip left above the photo hides behind the fixed navigation
+           bar, which is what lets the whole bird clear it */
+        top: 5.6rem;
+        left: 0;
+        height: 80%;
+        aspect-ratio: 2432 / 1760;
+        background: url("assets/img/שחף 2.png") center / cover no-repeat;
+        -webkit-mask-image:
+          linear-gradient(to right, #000 0 56%, rgba(0, 0, 0, 0) 95%),
+          linear-gradient(to bottom, #000 0 72%, rgba(0, 0, 0, 0) 99%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+          linear-gradient(to right, #000 0 56%, rgba(0, 0, 0, 0) 95%),
+          linear-gradient(to bottom, #000 0 72%, rgba(0, 0, 0, 0) 99%);
+        mask-composite: intersect;
       }
       /* the copy sits on the right, so the tint deepens on that side and
          leaves the open sky and the bird on the left clear */
@@ -760,8 +793,8 @@
         background:
           linear-gradient(
             to left,
-            rgba(0, 30, 62, 0.66) 0%,
-            rgba(0, 35, 70, 0.44) 36%,
+            rgba(0, 30, 62, 0.72) 0%,
+            rgba(0, 35, 70, 0.5) 36%,
             rgba(0, 40, 80, 0.14) 66%,
             rgba(0, 45, 90, 0) 100%
           ),
@@ -884,6 +917,18 @@
       .bg-deep .why-result li::before {
         background: var(--teal);
       }
+      /* "מקורות התוכנית" swaps the flat brand band for the night sky, held
+         under a deep blue scrim so the white copy keeps its contrast */
+      .bg-stars {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 22, 50, 0.78) 0%,
+            rgba(0, 28, 60, 0.62) 50%,
+            rgba(0, 22, 50, 0.78) 100%
+          ),
+          url("assets/img/Sky with Starts.jpg") center / cover no-repeat;
+      }
       /* a slow wave along the foot of the deep bands — the brand's water
          motif, drawn rather than photographed so it stays weightless */
       .wave-foot {
@@ -902,40 +947,31 @@
       }
 
       /* ═══ FOUR CORE THEMES ═══ */
-      .core-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        max-width: 980px;
-        margin: 2.4rem 0 0;
+      /* a plain bulleted list; each dot keeps the colour its theme carries
+         in the board below, so the two still read as one family */
+      .core-list {
+        max-width: 860px;
+        margin: 2rem 0 0;
+        list-style: none;
       }
-      .core-chip {
-        border-radius: 16px;
-        padding: 1.15rem 0.9rem;
-        text-align: center;
-        color: #fff;
-        font-weight: 700;
-        font-size: 0.95rem;
-        line-height: 1.45;
-        box-shadow:
-          0 2px 4px rgba(0, 30, 60, 0.12),
-          0 12px 26px rgba(0, 30, 60, 0.16);
-        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      .core-list li {
+        position: relative;
+        padding-inline-start: 1.7rem;
+        margin-bottom: 0.85rem;
+        color: var(--blue-dk);
+        font-size: 1.08rem;
+        font-weight: 600;
+        line-height: 1.7;
       }
-      .core-chip:hover {
-        transform: translateY(-5px);
-      }
-      .core-think {
-        background: linear-gradient(150deg, #1a97a8 0%, var(--v-think) 100%);
-      }
-      .core-act {
-        background: linear-gradient(150deg, #4f8f33 0%, var(--v-act) 100%);
-      }
-      .core-relate {
-        background: linear-gradient(150deg, #4a63a3 0%, var(--v-relate) 100%);
-      }
-      .core-meaning {
-        background: linear-gradient(150deg, #d0791a 0%, var(--v-meaning) 100%);
+      .core-list li::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0.6rem;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--bullet, var(--blue));
       }
       .core-note {
         margin: 1.6rem 0 0;
@@ -972,18 +1008,20 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 0.9rem;
       }
+      /* the type here matches the printed 16-virtues chart used on the
+         companies page — the earlier sizes read far too small beside it */
       .vb-col-title {
         border-radius: 12px;
         color: #fff;
         font-weight: 700;
-        font-size: 0.92rem;
+        font-size: clamp(0.95rem, 1.45vw, 1.16rem);
         line-height: 1.35;
         text-align: center;
-        padding: 0.9rem 0.5rem;
+        padding: 0.9rem 0.6rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 4.4rem;
+        min-height: 4.9rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
       .vb-hint {
@@ -1038,7 +1076,7 @@
         border: 3px solid var(--vc, var(--v-think));
         color: var(--blue-dk);
         font-weight: 700;
-        font-size: 1.02rem;
+        font-size: clamp(1.1rem, 1.8vw, 1.42rem);
         box-shadow: 0 5px 12px rgba(0, 40, 70, 0.16);
       }
       /* the meaning artwork carries its own frame, so the back face adds
@@ -1065,11 +1103,13 @@
       }
 
       /* ═══ ORIGINS / IMPACT figures ═══ */
+      /* four figures, two to a row */
       .fact-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-        gap: 1.2rem;
-        margin: 2.4rem 0 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.4rem;
+        max-width: 760px;
+        margin: 2.4rem auto 0;
       }
       .fact {
         background: rgba(255, 255, 255, 0.1);
@@ -1101,37 +1141,64 @@
       }
 
       /* ═══ JOURNEY — "מה קורה בדרך" ═══ */
+      /* The pair breaks out of the text column and runs the full width of
+         the screen, so the two photographs read as one band across the page. */
+      .journey-bleed {
+        width: 100vw;
+        margin-inline: calc(50% - 50vw);
+        margin-top: 2.6rem;
+        padding: 0 1.2rem;
+      }
       .journey-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.6rem;
-        margin-top: 2.4rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.4rem;
       }
+      /* each card is split down the middle: the copy sits on the right, the
+         photograph on the left — in RTL the first cell lands on the right */
       .journey-card {
         position: relative;
-        background: linear-gradient(150deg, #ffffff 0%, #f2f9fc 55%, #e8f4f9 100%);
-        border: 1px solid rgba(0, 67, 120, 0.1);
-        border-radius: 22px;
-        padding: 2rem 1.9rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+        border-radius: 26px;
+        background: linear-gradient(150deg, #7fdbe2 0%, #63cfdd 55%, #4bc0d5 100%);
         box-shadow:
-          0 2px 4px rgba(0, 67, 120, 0.07),
-          0 16px 40px rgba(0, 67, 120, 0.14);
+          0 3px 6px rgba(0, 67, 120, 0.1),
+          0 22px 55px rgba(0, 67, 120, 0.22);
       }
-      .journey-card::before {
+      /* the fine light frame drawn inside the card, across both halves */
+      .journey-card::after {
         content: "";
         position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        height: 5px;
-        border-radius: 22px 22px 0 0;
-        background: var(--g-teal);
+        inset: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 18px;
+        pointer-events: none;
+      }
+      .journey-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2.8rem 2.4rem;
+      }
+      .journey-media {
+        min-height: 320px;
+        background-size: cover;
+        background-position: center;
       }
       .journey-card h3 {
-        color: var(--blue);
-        font-size: 1.08rem;
+        color: var(--blue-dk);
+        font-size: clamp(1.05rem, 1.5vw, 1.24rem);
         font-weight: 800;
-        margin-bottom: 0.9rem;
+        margin-bottom: 1.1rem;
+      }
+      .journey-card .why-result {
+        max-width: none;
+      }
+      .journey-card .why-result li {
+        color: var(--blue-dk);
+        font-weight: 600;
       }
 
       /* ═══ AUDIENCE ═══ */
@@ -1152,9 +1219,12 @@
       }
 
       /* ═══ STAGES ═══ */
+      /* each stage carries its own tint drawn from the page palette and
+         deepens from teal towards brand blue as the programme advances;
+         the training track keeps the gold it already had */
       .stage {
         position: relative;
-        background: #fff;
+        background: linear-gradient(150deg, #edfafb 0%, #dcf1f6 100%);
         border: 1px solid rgba(0, 67, 120, 0.1);
         border-radius: 22px;
         padding: 2rem 2rem 1.8rem;
@@ -1162,6 +1232,12 @@
         box-shadow:
           0 2px 4px rgba(0, 67, 120, 0.07),
           0 16px 40px rgba(0, 67, 120, 0.13);
+      }
+      .stage-2 {
+        background: linear-gradient(150deg, #ebf5fc 0%, #d8eaf7 100%);
+      }
+      .stage-3 {
+        background: linear-gradient(150deg, #e7f0fa 0%, #d3e3f3 100%);
       }
       .stage::before {
         content: "";
@@ -1307,6 +1383,9 @@
         .journey-grid {
           grid-template-columns: 1fr;
         }
+        .journey-media {
+          min-height: 260px;
+        }
         .fac-outer {
           --fac-per-view: 4;
         }
@@ -1317,9 +1396,6 @@
         }
         .ph-content {
           padding: 0 1.4rem;
-        }
-        .core-row {
-          grid-template-columns: repeat(2, 1fr);
         }
         .vb-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -1343,6 +1419,10 @@
       @media (max-width: 520px) {
         .vb-grid {
           grid-template-columns: 1fr;
+        }
+        .fact-grid {
+          grid-template-columns: 1fr;
+          max-width: 380px;
         }
         .fac-outer {
           --fac-per-view: 2;
@@ -1516,7 +1596,9 @@
             </ul>
           </li>
           <li><a href="index.html#activities">אזור למידה</a></li>
-          <li><a href="#contact-form" class="nav-cta">צרו איתנו קשר</a></li>
+          <li>
+            <a href="contact.html?from=home" class="nav-cta">צרו איתנו קשר</a>
+          </li>
         </ul>
       </div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
@@ -1529,6 +1611,7 @@
     <!-- ════════════ HERO ════════════ -->
     <header id="prog-hero">
       <div class="ph-bg"></div>
+      <div class="ph-photo"></div>
       <div class="ph-tint"></div>
       <div class="ph-content">
         <h1 class="ph-title rev">
@@ -1557,12 +1640,12 @@
           ומבוססת על ארבעה נושאי ליבה:
         </p>
 
-        <div class="core-row rev d1">
-          <div class="core-chip core-think">הדרך שאנו חושבות.ים</div>
-          <div class="core-chip core-act">הדרך שאנו פועלות.ים</div>
-          <div class="core-chip core-relate">הדרך שאנו מתייחסות.ים לזולת</div>
-          <div class="core-chip core-meaning">הדרך שאנו מוצאות.ים משמעות</div>
-        </div>
+        <ul class="core-list rev d1">
+          <li style="--bullet: var(--v-think)">הדרך שאנו חושבות.ים</li>
+          <li style="--bullet: var(--v-act)">הדרך שאנו פועלות.ים</li>
+          <li style="--bullet: var(--v-relate)">הדרך שאנו מתייחסות.ים לזולת</li>
+          <li style="--bullet: var(--v-meaning)">הדרך שאנו מוצאות.ים משמעות</li>
+        </ul>
 
         <p class="core-note rev d2">
           כל אחד מארבעת נושאי הליבה כולל 4 ערכים אוניברסליים (מעלות)
@@ -1620,7 +1703,7 @@
     </section>
 
     <!-- ════════════ מקורות התוכנית ════════════ -->
-    <section class="ab-sec bg-deep" id="origins">
+    <section class="ab-sec bg-deep bg-stars" id="origins">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">מקורות התוכנית</h2>
@@ -1663,23 +1746,41 @@
           אחרים.ות.
         </p>
 
-        <div class="journey-grid">
-          <div class="journey-card rev d1">
-            <h3>מתוך ההיכרות הזאת מתאפשרת</h3>
-            <ul class="why-result" style="margin: 0">
-              <li>פריצת תפיסות עצמיות מגבילות</li>
-              <li>שיפור מערכות יחסים</li>
-              <li>מציאת שלוות-נפש וחוסן מנטלי</li>
-              <li>קבלת החלטות טובה יותר</li>
-            </ul>
-          </div>
-          <div class="journey-card rev d2">
-            <h3>שיח על המעלות ותרגול מעשי</h3>
-            <ul class="why-result" style="margin: 0">
-              <li>מייצר תחושת שייכות</li>
-              <li>מקדם תחושת מסוגלות ורווחה נפשית</li>
-              <li>מעצים יכולת לדיאלוג מקרב</li>
-            </ul>
+        <div class="journey-bleed">
+          <div class="journey-grid">
+            <div class="journey-card rev d1">
+              <div class="journey-body">
+                <h3>מתוך ההיכרות הזאת מתאפשרת</h3>
+                <ul class="why-result" style="margin: 0">
+                  <li>פריצת תפיסות עצמיות מגבילות</li>
+                  <li>שיפור מערכות יחסים</li>
+                  <li>מציאת שלוות-נפש וחוסן מנטלי</li>
+                  <li>קבלת החלטות טובה יותר</li>
+                </ul>
+              </div>
+              <div
+                class="journey-media"
+                style="background-image: url('assets/img/16 מעלות.png')"
+                role="img"
+                aria-label="שובר גלים של אבנים המוליך אל עבר השקיעה"
+              ></div>
+            </div>
+            <div class="journey-card rev d2">
+              <div class="journey-body">
+                <h3>שיח על המעלות ותרגול מעשי</h3>
+                <ul class="why-result" style="margin: 0">
+                  <li>מייצר תחושת שייכות</li>
+                  <li>מקדם תחושת מסוגלות ורווחה נפשית</li>
+                  <li>מעצים יכולת לדיאלוג מקרב</li>
+                </ul>
+              </div>
+              <div
+                class="journey-media"
+                style="background-image: url('assets/img/hands square.png')"
+                role="img"
+                aria-label="כפות ידיים מונחות זו על גבי זו"
+              ></div>
+            </div>
           </div>
         </div>
 
@@ -1724,19 +1825,21 @@
 
         <div class="fact-grid rev d1">
           <div class="fact">
-            <div class="fact-num">2,300+</div>
+            <div class="fact-num"><span data-t="2300">0</span></div>
             <div class="fact-label">משתתפות ומשתתפים בסדנאות</div>
           </div>
           <div class="fact">
-            <div class="fact-num">80+</div>
+            <div class="fact-num"><span data-t="80">0</span></div>
             <div class="fact-label">מנחות ומנחים שהוסמכו</div>
           </div>
           <div class="fact">
-            <div class="fact-num">140+</div>
+            <div class="fact-num"><span data-t="140">0</span></div>
             <div class="fact-label">סדנאות שהתקיימו</div>
           </div>
           <div class="fact">
-            <div class="fact-num">22</div>
+            <div class="fact-num">
+              <span data-t="22" data-no-plus="true">0</span>
+            </div>
             <div class="fact-label">מדינות שבהן פועלת התוכנית</div>
           </div>
         </div>
@@ -1801,7 +1904,7 @@
           </dl>
         </div>
 
-        <div class="stage rev d2">
+        <div class="stage stage-2 rev d2">
           <span class="stage-badge">🔹 שלב 2</span>
           <h3>העמקה והטמעה ביומיום</h3>
           <dl>
@@ -1826,7 +1929,7 @@
           </dl>
         </div>
 
-        <div class="stage rev d3">
+        <div class="stage stage-3 rev d3">
           <span class="stage-badge">🔹 שלב 3</span>
           <h3>הרחבה פילוסופית ומדעית</h3>
           <dl>
@@ -2014,9 +2117,30 @@
               עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
             <div class="socials">
-              <a href="#" class="fsoc" title="YouTube">▷</a>
-              <a href="#" class="fsoc" title="Facebook">f</a>
-              <a href="#" class="fsoc" title="Instagram">▶</a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+              >▷</a
+              >
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+              >f</a
+              >
+              <a
+                href="https://www.instagram.com/dreamers_home_il/"
+                class="fsoc"
+                title="Instagram"
+                target="_blank"
+                rel="noopener"
+              >▶</a
+              >
             </div>
           </div>
           <div>
@@ -2046,7 +2170,11 @@
           </div>
         </div>
         <div class="footer-motto">
-          כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים.
+          <img
+            src="assets/img/The Slogan - Light.png"
+            alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות."
+            class="motto-img"
+          />
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>
@@ -2090,6 +2218,32 @@
           { threshold: 0.1 },
         );
         document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* Counting figures — the same behaviour the home page numbers use */
+        const cio = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (!e.isIntersecting) return;
+              const el = e.target,
+                tg = +el.dataset.t,
+                noPlus = el.dataset.noPlus === "true",
+                dur = 2200,
+                t0 = performance.now();
+              (function tick(now) {
+                const p = Math.min((now - t0) / dur, 1),
+                  ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.floor(ease * tg);
+                if (p < 1) requestAnimationFrame(tick);
+                else
+                  el.textContent = noPlus
+                    ? tg.toLocaleString()
+                    : tg.toLocaleString() + "+";
+              })(t0);
+              cio.unobserve(el);
+            }),
+          { threshold: 0.6 },
+        );
+        document.querySelectorAll("[data-t]").forEach((el) => cio.observe(el));
 
         /* Multi-select dropdown */
         const msTrigger = document.getElementById("msTrigger");
