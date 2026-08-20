@@ -491,9 +491,19 @@
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
         padding: 1.6rem 1.2rem 1.9rem;
       }
+      /* The board is one grid filled column by column, not row by row: the
+         four tiles of a family are written in directly under their own
+         column title. Keeping it a single grid is what holds the four
+         titles, and then each row of tiles, to a common height. It is also
+         what makes the phone layout fall out for free: drop back to
+         row flow in one column and every family arrives whole, title first,
+         its own four tiles beneath it, in its own colour. */
       .vb-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-auto-flow: column;
+        /* one title + four tiles per column */
+        grid-template-rows: repeat(5, auto);
+        grid-auto-columns: 1fr;
         gap: 0.9rem;
       }
       .vb-col-title {
@@ -1340,7 +1350,8 @@
           padding: 0 1.4rem;
         }
         .vb-grid {
-          grid-template-columns: repeat(2, 1fr);
+          /* two families to a column, each still whole */
+          grid-template-rows: repeat(10, auto);
         }
         .persona-card {
           flex: 0 1 100%;
@@ -1369,6 +1380,13 @@
       @media (max-width: 520px) {
         .ab-sec {
           padding: 4.5rem 1.1rem;
+        }
+        .vb-grid {
+          /* one family at a time: its title, then its own four tiles,
+             in its own colour */
+          grid-auto-flow: row;
+          grid-template-rows: none;
+          grid-template-columns: 1fr;
         }
         .contact-form {
           padding: 1.6rem;
@@ -1520,24 +1538,28 @@
               <!-- ─── column titles ─── -->
               <div
                 class="vb-col-title"
+                data-family="think"
                 style="background: linear-gradient(150deg, #1a97a8, var(--v-think))"
               >
                 הדרך בה אנו חושבות.ים
               </div>
               <div
                 class="vb-col-title"
+                data-family="act"
                 style="background: linear-gradient(150deg, #4f8f33, var(--v-act))"
               >
                 הדרך בה אנו פועלות.ים
               </div>
               <div
                 class="vb-col-title"
+                data-family="relate"
                 style="background: linear-gradient(150deg, #4a63a3, var(--v-relate))"
               >
                 הדרך בה אנו מתייחסות.ים לזולת
               </div>
               <div
                 class="vb-col-title"
+                data-family="meaning"
                 style="background: linear-gradient(150deg, #d0791a, var(--v-meaning))"
               >
                 הדרך בה אנו מוצאות.ים משמעות
@@ -2110,30 +2132,42 @@
         };
         const vbGrid = document.querySelector(".vb-grid");
         if (vbGrid) {
-          VIRTUES.forEach(([name, file, family]) => {
-            const card = document.createElement("button");
-            card.type = "button";
-            card.className = "vcard";
-            card.style.setProperty("--vc", FAMILY_COLOR[family]);
-            card.setAttribute("aria-label", name + " — הצגת המשמעות");
-            card.innerHTML =
-              '<span class="vcard-inner">' +
-              '<span class="vcard-face vcard-front">' +
-              name +
-              "</span>" +
-              '<span class="vcard-face vcard-back">' +
-              '<img src="' +
-              file +
-              '" alt="' +
-              name +
-              ' — המשמעות" loading="lazy" />' +
-              "</span>" +
-              "</span>";
-            // tap on a touch screen flips it, since there is no hover there
-            card.addEventListener("click", () => {
-              card.classList.toggle("flipped");
+          /* Filled column by column: each family's four tiles are written in
+             right under their own column title, which is the order the
+             column-major grid (and the single-column phone layout) both
+             read. */
+          ["think", "act", "relate", "meaning"].forEach((family) => {
+            const title = vbGrid.querySelector(
+              '.vb-col-title[data-family="' + family + '"]'
+            );
+            if (!title) return;
+            let after = title;
+            VIRTUES.filter((v) => v[2] === family).forEach(([name, file]) => {
+              const card = document.createElement("button");
+              card.type = "button";
+              card.className = "vcard";
+              card.style.setProperty("--vc", FAMILY_COLOR[family]);
+              card.setAttribute("aria-label", name + " — הצגת המשמעות");
+              card.innerHTML =
+                '<span class="vcard-inner">' +
+                '<span class="vcard-face vcard-front">' +
+                name +
+                "</span>" +
+                '<span class="vcard-face vcard-back">' +
+                '<img src="' +
+                file +
+                '" alt="' +
+                name +
+                ' — המשמעות" loading="lazy" />' +
+                "</span>" +
+                "</span>";
+              // tap on a touch screen flips it, since there is no hover there
+              card.addEventListener("click", () => {
+                card.classList.toggle("flipped");
+              });
+              after.insertAdjacentElement("afterend", card);
+              after = card;
             });
-            vbGrid.appendChild(card);
           });
         }
 
