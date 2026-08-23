@@ -1241,10 +1241,13 @@
          artwork, so it is carried as an image: white for the sentence and
          gold for מתעוררות, both of which read on the deep footer.
          The box behind it stays faint so it blends into the footer. */
+      /* the slogan and the panel around it are both carried at 75% of the
+         size they were first set at, so the whole block sits quieter in the
+         footer while keeping its proportions */
       .footer-motto {
-        max-width: 780px;
+        max-width: 585px;
         margin: 0 auto 2.6rem;
-        padding: 1.9rem 2.2rem;
+        padding: 1.43rem 1.65rem;
         text-align: center;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(72, 217, 211, 0.35);
@@ -1253,7 +1256,7 @@
       }
       .motto-img {
         width: 100%;
-        max-width: 620px;
+        max-width: 465px;
         height: auto;
         margin: 0 auto;
       }
@@ -1399,6 +1402,75 @@
       body {
         text-wrap: pretty;
       }
+      /* ═══ FINISHED ARTWORK PANELS ═══
+         "למה עכשיו", "למי מיועדת התוכנית" and "אפשרויות לעבוד עם התוכנית"
+         arrive from the designer as finished pictures, with their type baked
+         in at the size they were drawn. So each picture is never stretched
+         past that size, and below --art-swap the live markup it stands in
+         for takes over, where the same words reflow and stay selectable. */
+      .art-figure {
+        margin: 0;
+        text-align: center;
+      }
+      .art-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      /* ─── למה עכשיו ───
+         the copy runs down the right column and the two source pictures down
+         the left, the way the panel was drawn. Both columns are held at the
+         width their pictures came at, so none of them is ever upsampled. */
+      .why-layout {
+        display: grid;
+        grid-template-columns: 553px 338px;
+        gap: 2.4rem;
+        max-width: 927px;
+        margin: 0 auto;
+        align-items: start;
+      }
+      .why-text .art-figure {
+        margin: 1.8rem 0 2rem;
+      }
+      /* drawn 359px across and set flush with the start edge of the column,
+         exactly as it sits in the layout */
+      .art-result {
+        max-width: 359px;
+        margin-inline-start: 0;
+        margin-inline-end: auto;
+      }
+      .art-gallup {
+        max-width: 553px;
+      }
+      .why-media {
+        display: flex;
+        flex-direction: column;
+        gap: 2.6rem;
+      }
+      .why-media img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      /* ─── cards that arrive as pictures ───
+         three across at the width they were drawn, so they sit at 1:1 */
+      .art-card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 297px);
+        justify-content: center;
+        gap: 1.6rem;
+        margin: 0 auto;
+      }
+      .art-card-grid img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .art-card-grid.art-options {
+        gap: 1rem;
+        margin-top: 2.4rem;
+      }
+
       h1,
       h2,
       h3,
@@ -1407,6 +1479,53 @@
       .bh-headline,
       .impl-title {
         text-wrap: balance;
+      }
+
+
+      /* ─── artwork / live-markup swap ───
+         Kept last in the sheet so it settles the argument with the section
+         rules above, whichever panel it is applied to. The pictures are drawn
+         to fill a column just under 960px wide, which a 1025px window is the
+         first to offer once the page gutters are taken off. */
+      @media (max-width: 1024px) {
+        .art-wide {
+          display: none;
+        }
+        .why-layout {
+          grid-template-columns: 1fr;
+          max-width: 860px;
+        }
+        .why-media {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 1.6rem;
+          margin-top: 2.4rem;
+        }
+        /* the two source pictures stay at the size they were scanned at,
+           never blown up to fill the wider column */
+        .why-media img {
+          width: auto;
+          max-width: 100%;
+        }
+      }
+      @media (min-width: 1025px) {
+        /* the markup an artwork panel stands in for is not removed, only
+           taken out of the flow, so its words stay in the page for a screen
+           reader and for search */
+        .art-narrow {
+          position: absolute !important;
+          width: 1px !important;
+          height: 1px !important;
+          margin: -1px !important;
+          padding: 0 !important;
+          overflow: hidden !important;
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          white-space: nowrap;
+          border: 0;
+        }
       }
 
     </style>
@@ -1530,43 +1649,77 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
-        <p class="ab-body rev">
-          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה המלאכותית,
-          חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה המייצרים אי ודאות
-          מתמשכת וחוסר ביטחון תעסוקתי.
-        </p>
-        <p class="ab-body rev d1">
-          השינויים מהירים יותר מקצב ההסתגלות של העובדות והעובדים ומובילים
-          לתופעות של חרדה, ניתוק רגשי, תשישות ושחיקה.
-        </p>
-        <p class="ab-body rev d1" style="font-weight: 700; color: var(--blue)">
-          התוצאה:
-        </p>
-        <ul class="why-result rev d1">
-          <li>עומס ניהולי שמקשה על מנהיגות מאוזנת ורגועה</li>
-          <li>צוותים הפועלים מתוך הישרדות ותגובתיות, במקום חזון ותכנון</li>
-          <li>אובדן חיבור ותחושת מטרה משותפת</li>
-          <li>שחיקה בחוסן המנטלי וחיבור העבודה</li>
-        </ul>
-        <p class="ab-body rev d2" style="margin-top: 1.6rem">
-          תוכנית 16 המעלות לחברות מעניקה לארגונים שפה ערכית-רגשית משותפת, המשנה
-          את האופן שבו צוותים חושבים, פועלים ושואפים ליעדים ומבססת תשתית אתית
-          ואנושית שמגבירה את הפריון, האיזון והחוסן הארגוני גם כשהמציאות סוערת.
-        </p>
-
-        <div class="stat-frame rev d3">
-          <img
-            src="assets/img/GALLUP logo.png"
-            alt="Gallup"
-            class="stat-frame-logo"
-          />
-          <div>
-            <p>
-              רמת החיבור של עובדים למקום העבודה שלהם ירדה ל-<strong>20%</strong>
-              בשנת 2025, הנמוכה ביותר מאז 2020 ועלות הירידה למשק העולמי מוערכת
-              ב-<strong>10 טריליון דולר</strong> באובדן פריון.
-              <cite>(Gallup - State of the Global Workplace 2026)</cite>
+        <div class="why-layout">
+          <div class="why-text">
+            <p class="ab-body rev">
+              ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה
+              המלאכותית, חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה
+              המייצרים אי ודאות מתמשכת וחוסר ביטחון תעסוקתי.
             </p>
+            <p class="ab-body rev d1">
+              השינויים מהירים יותר מקצב ההסתגלות של העובדות והעובדים ומובילים
+              לתופעות של חרדה, ניתוק רגשי, תשישות ושחיקה.
+            </p>
+
+            <figure class="art-figure art-result art-wide rev d1">
+              <img
+                src="assets/img/business/why-result.png"
+                alt="התוצאה: עומס ניהולי שמקשה על מנהיגות מאוזנת ורגועה; צוותים הפועלים מתוך הישרדות ותגובתיות, במקום חזון ותכנון; אובדן חיבור ותחושת מטרה משותפת; שחיקה בחוסן המנטלי וחיבור העבודה"
+              />
+            </figure>
+            <p
+              class="ab-body rev d1 art-narrow"
+              style="font-weight: 700; color: var(--blue)"
+            >
+              התוצאה:
+            </p>
+            <ul class="why-result rev d1 art-narrow">
+              <li>עומס ניהולי שמקשה על מנהיגות מאוזנת ורגועה</li>
+              <li>צוותים הפועלים מתוך הישרדות ותגובתיות, במקום חזון ותכנון</li>
+              <li>אובדן חיבור ותחושת מטרה משותפת</li>
+              <li>שחיקה בחוסן המנטלי וחיבור העבודה</li>
+            </ul>
+
+            <p class="ab-body rev d2" style="margin-top: 1.6rem">
+              תוכנית 16 המעלות לחברות מעניקה לארגונים שפה ערכית-רגשית משותפת,
+              המשנה את האופן שבו צוותים חושבים, פועלים ושואפים ליעדים ומבססת
+              תשתית אתית ואנושית שמגבירה את הפריון, האיזון והחוסן הארגוני גם
+              כשהמציאות סוערת.
+            </p>
+
+            <figure class="art-figure art-gallup art-wide rev d3">
+              <img
+                src="assets/img/business/why-gallup.png"
+                alt="Gallup: רמת החיבור של עובדים למקום העבודה שלהם ירדה ל-20% בשנת 2025, הנמוכה ביותר מאז 2020, ועלות הירידה למשק העולמי מוערכת ב-10 טריליון דולר באובדן פריון (Gallup - State of the Global Workplace 2026)"
+              />
+            </figure>
+            <div class="stat-frame rev d3 art-narrow">
+              <img
+                src="assets/img/GALLUP logo.png"
+                alt="Gallup"
+                class="stat-frame-logo"
+              />
+              <div>
+                <p>
+                  רמת החיבור של עובדים למקום העבודה שלהם ירדה
+                  ל-<strong>20%</strong> בשנת 2025, הנמוכה ביותר מאז 2020 ועלות
+                  הירידה למשק העולמי מוערכת ב-<strong>10 טריליון דולר</strong>
+                  באובדן פריון.
+                  <cite>(Gallup - State of the Global Workplace 2026)</cite>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-media rev d1">
+            <img
+              src="assets/img/business/why-ai.png"
+              alt="The Human Side of the AI Revolution, 2026 Report"
+            />
+            <img
+              src="assets/img/business/why-chart.png"
+              alt="In 2025, global employee engagement declined for a second year to its lowest level since 2020. אחוז העובדים המחוברים לעבודתם, 2009 עד 2025"
+            />
           </div>
         </div>
       </div>
@@ -1583,7 +1736,39 @@
             שלכם.
           </p>
         </div>
-        <div class="persona-grid">
+        <div class="art-card-grid art-personas art-wide">
+          <img
+            class="rev"
+            src="assets/img/business/persona-change.png"
+            alt="ארגונים בתהליך שינוי: שימור והתאמה של התרבות הארגונית בזמן מיזוגים, משברים או צמיחה מהירה לצד בניית חוסן ארגוני מבפנים. תוצאה: הסתגלות אפקטיבית לשינויים ושימור עובדים לאורך זמן."
+          />
+          <img
+            class="rev d1"
+            src="assets/img/business/persona-purpose.png"
+            alt="ארגונים מונחי-מטרה: עבור עמותות ומיזמים שבהם המטרה היא ה-DNA הארגוני, המעניקים לצוותים שפה מעשית שהופכת ערכים גבוהים לשגרת עבודה מעשית, חיה ונושמת. תוצאה: הלימה מלאה בין ה'למה' שלכם לבין הפרקטיקה בשטח."
+          />
+          <img
+            class="rev d2"
+            src="assets/img/business/persona-global.png"
+            alt="צוותים גלובליים ורב-תרבותיים: ערכים אוניברסליים החוצים הבדלי תרבות וגיאוגרפיה. יצירת שפה משותפת ומאחדת, השומרת על הייחוד והגיוון של כל חבר צוות. תוצאה: לכידות ארגונית חוצת גבולות ורקעים."
+          />
+          <img
+            class="rev"
+            src="assets/img/business/persona-exec.png"
+            alt="הנהלה בכירה: הובלה אפקטיבית בתנאי אי-ודאות תוך שמירה על רוח הארגון. בניית תרבות ניהולית צומחת, הצולחת משברים ומחזקת את החוסן הארגוני. תוצאה: בהירות אסטרטגית ויציבות רגשית ברגעי אמת."
+          />
+          <img
+            class="rev d1"
+            src="assets/img/business/persona-mid.png"
+            alt="מנהלים בדרג ביניים: ביסוס אמון ותקשורת, הפחתת חיכוכים וניהול קונפליקטים מתוך אמפתיה וחוסן. העצמת המנהל/ת להובלת הצוות מתוך מנהיגות מעוררת השראה. תוצאה: צוותים מלוכדים וחזקים יותר לצד ירידה בתחלופת עובדים."
+          />
+          <img
+            class="rev d2"
+            src="assets/img/business/persona-hr.png"
+            alt="אנשי משאבי אנוש (HR): ארגז כלים מודולרי להטמעה פשוטה בתוכניות הפיתוח הקיימות בארגון. התוצאה: חיזוק התרבות ומעורבות העובדים."
+          />
+        </div>
+        <div class="persona-grid art-narrow">
           <!-- Row 1 — ארגונים -->
           <div class="persona-card row-orgs rev">
             <h3>ארגונים בתהליך שינוי</h3>
@@ -1672,7 +1857,24 @@
         </div>
 
         <h3 class="impl-title rev">אפשרויות לעבוד עם התוכנית</h3>
-        <div class="impl-grid">
+        <div class="art-card-grid art-options art-wide">
+          <img
+            class="rev"
+            src="assets/img/business/option-intro.png"
+            alt="סדנת הכירות: מתאימה לצוותי הנהלה כאשר נשקל מהלך נרחב עם התוכנית בחברה. הסדנה הינה בת שעתיים."
+          />
+          <img
+            class="rev d1"
+            src="assets/img/business/option-full.png"
+            alt="יישום ארגוני מלא: יישום מותאם אישית ורב-שכבתי בכל הארגון. כולל אפשרות להכשרת מנחים פנים-ארגוניים."
+          />
+          <img
+            class="rev d2"
+            src="assets/img/business/option-lang.png"
+            alt="שפות: מועבר בעברית ובאנגלית."
+          />
+        </div>
+        <div class="impl-grid art-narrow">
           <div class="impl-card rev">
             <h4>סדנת הכירות</h4>
             <p>

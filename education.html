@@ -620,8 +620,8 @@
         border-radius: 50%;
         background: var(--gold);
       }
-      /* the figure sits in a raised capsule; the World Health Organization
-         mark stands at its left end, in its own column so it covers nothing */
+      /* the figure sits in a raised capsule, with the marks of the studies
+         behind it carried inside the same capsule, under the text */
       .stat-frame {
         max-width: 880px;
         margin: 2.6rem auto 0;
@@ -641,16 +641,10 @@
       .stat-frame > div {
         flex: 1;
       }
-      .stat-frame-logo {
-        flex-shrink: 0;
-        width: 86px;
-        height: auto;
-      }
       /* the studies behind the figure, all set to one height and kept on a
-         single line */
+         single line at the foot of the capsule */
       .study-logos {
-        max-width: 880px;
-        margin: 1.4rem auto 0;
+        margin: 1.8rem 0 0;
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -1254,10 +1248,13 @@
          artwork, so it is carried as an image: white for the sentence and
          gold for מתעוררות, both of which read on the deep footer.
          The box behind it stays faint so it blends into the footer. */
+      /* the slogan and the panel around it are both carried at 75% of the
+         size they were first set at, so the whole block sits quieter in the
+         footer while keeping its proportions */
       .footer-motto {
-        max-width: 780px;
+        max-width: 585px;
         margin: 0 auto 2.6rem;
-        padding: 1.9rem 2.2rem;
+        padding: 1.43rem 1.65rem;
         text-align: center;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(72, 217, 211, 0.35);
@@ -1266,7 +1263,7 @@
       }
       .motto-img {
         width: 100%;
-        max-width: 620px;
+        max-width: 465px;
         height: auto;
         margin: 0 auto;
       }
@@ -1594,11 +1591,6 @@
         </ul>
 
         <div class="stat-frame rev d2">
-          <img
-            src="assets/img/World Health Organization - Logo.png"
-            alt="World Health Organization"
-            class="stat-frame-logo"
-          />
           <div>
             <p>
               כ-<strong>31%</strong> מבני הנוער בישראל מדווחים על רווחה נפשית
@@ -1609,16 +1601,16 @@
                 בר-אילן, 2023)</cite
               >
             </p>
+            <div class="study-logos">
+              <img src="assets/img/HSBC - לוגו.png" alt="HBSC" />
+              <img src="assets/img/משרד החינוך - לוגו.png" alt="משרד החינוך" />
+              <img src="assets/img/משרד הבריאות - לוגו.png" alt="משרד הבריאות" />
+              <img
+                src="assets/img/World Health Organization - Logo.png"
+                alt="World Health Organization"
+              />
+            </div>
           </div>
-        </div>
-        <div class="study-logos rev d2">
-          <img src="assets/img/HSBC - לוגו.png" alt="HBSC" />
-          <img src="assets/img/משרד החינוך - לוגו.png" alt="משרד החינוך" />
-          <img src="assets/img/משרד הבריאות - לוגו.png" alt="משרד הבריאות" />
-          <img
-            src="assets/img/World Health Organization - Logo.png"
-            alt="World Health Organization"
-          />
         </div>
 
         <p class="pill-note rev d3">
