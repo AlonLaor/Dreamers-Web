@@ -30,6 +30,12 @@
         --g-main: linear-gradient(140deg, #002952 0%, #004378 55%, #0c6080 100%);
         --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
         --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+        /* the four theme colours of the printed 16-virtues chart */
+        --v-think: #2dc0d2;
+        --v-act: #79b850;
+        --v-relate: #7791cc;
+        --v-meaning: #faa33a;
+        --v-card: #ebeeee;
       }
       *,
       *::before,
@@ -402,12 +408,12 @@
           0 5px 14px rgba(0, 0, 0, 0.45),
           0 18px 38px rgba(0, 0, 0, 0.3);
       }
+      /* set in the same face, weight and size as the title above it, so the
+         two read as one block. Only the colour is its own. */
       .bh-headline {
-        font-family: "Playfair Display", Georgia, serif;
-        font-style: italic;
-        font-weight: 700;
-        font-size: clamp(2rem, 4.6vw, 3.4rem);
-        line-height: 1.28;
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
         color: var(--teal-lt);
         margin-bottom: 1.6rem;
         text-shadow:
@@ -436,6 +442,10 @@
       }
       .ab-sec.bg-grey {
         background: linear-gradient(160deg, #f4f6f8 0%, #eef1f4 100%);
+      }
+      /* the same light-blue ground the home page gives "מהן 16 המעלות" */
+      .ab-sec.bg-sky {
+        background: linear-gradient(160deg, #e8f6ff 0%, #f0fbfb 40%, #eaf3ff 100%);
       }
       /* headings sit centred, the copy under them stays right-aligned —
          the same split the home page uses */
@@ -483,8 +493,9 @@
         padding-inline-start: 1.6rem;
         margin-bottom: 0.7rem;
         color: var(--text-mid);
-        font-size: 1.02rem;
-        line-height: 1.7;
+        /* the same size as the body copy on either side of the box */
+        font-size: 1.06rem;
+        line-height: 1.8;
       }
       .why-result li::before {
         content: "";
@@ -496,38 +507,33 @@
         border-radius: 50%;
         background: var(--gold);
       }
+      /* the Gallup panel: the wordmark holds the inline-end (left) side in
+         its own column, the quote reads down the rest. The panel grows to
+         whatever height the quote needs at its reading size. */
       .stat-frame {
         position: relative;
-        max-width: 860px;
-        margin: 2.6rem 0 0;
-        /* the inline-end (left, in RTL) padding reserves room for the
-           Gallup logo so it never sits on top of the text */
-        padding-block: 2.2rem;
-        padding-inline-start: 2.4rem;
-        padding-inline-end: 19rem;
+        margin: 1.7rem 0 0;
+        padding: 1.6rem 1.7rem;
         border-radius: 22px;
         background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
         border: 1px solid rgba(245, 166, 35, 0.3);
         box-shadow: 0 20px 50px rgba(245, 166, 35, 0.12);
-        min-height: 220px;
         display: flex;
-        gap: 1.4rem;
+        flex-direction: row-reverse;
+        gap: 1.5rem;
         align-items: center;
       }
       /* Height is 18% of the box height, proportions preserved.
          Absolute positioning keeps it clear of the text. */
       .stat-frame-logo {
-        position: absolute;
-        inset-inline-end: 2.4rem;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 18%;
-        width: auto;
+        flex-shrink: 0;
+        width: 138px;
+        height: auto;
         object-fit: contain;
       }
       .stat-frame p {
-        font-size: 1.02rem;
-        line-height: 1.85;
+        font-size: 1.12rem;
+        line-height: 1.9;
         color: var(--text);
         font-weight: 500;
       }
@@ -536,10 +542,151 @@
       }
       .stat-frame cite {
         display: block;
-        margin-top: 0.6rem;
+        margin-top: 0.7rem;
         font-style: normal;
-        font-size: 0.82rem;
+        font-size: 0.92rem;
         color: var(--text-lt);
+      }
+
+/* ═══ THE 16 VIRTUES — flip cards ═══ */
+      /* the same board as the programme page: the printed chart, with every
+         tile turning over on hover to show what the virtue means */
+      .virtues-board {
+        max-width: 1080px;
+        margin: 2.6rem auto 0;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.1),
+          0 22px 55px rgba(0, 67, 120, 0.22);
+      }
+      .vb-head {
+        background: var(--blue);
+        color: #fff;
+        text-align: center;
+        padding: 1.1rem 1rem;
+        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+        font-weight: 900;
+        letter-spacing: 0.01em;
+      }
+      .vb-body {
+        background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
+        padding: 1.6rem 1.2rem 1.9rem;
+      }
+      /* The board is one grid filled column by column, not row by row: the
+         four tiles of a family are written in directly under their own
+         column title. Keeping it a single grid is what holds the four
+         titles, and then each row of tiles, to a common height. It is also
+         what makes the phone layout fall out for free: drop back to
+         row flow in one column and every family arrives whole, title first,
+         its own four tiles beneath it, in its own colour. */
+      .vb-grid {
+        display: grid;
+        grid-auto-flow: column;
+        /* one title + four tiles per column */
+        grid-template-rows: repeat(5, auto);
+        /* the minimum of 0 is what lets a column narrow past the longest
+           word in its title; without it the four hold their widest text and
+           the board runs off the side of a tablet */
+        grid-auto-columns: minmax(0, 1fr);
+        gap: 0.9rem;
+      }
+      .vb-col-title {
+        border-radius: 12px;
+        color: #fff;
+        font-weight: 700;
+        font-size: clamp(0.95rem, 1.45vw, 1.16rem);
+        line-height: 1.35;
+        text-align: center;
+        padding: 0.9rem 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4.9rem;
+        box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
+      }
+      .vb-hint {
+        margin: 0 0 1.1rem;
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--blue);
+        opacity: 0.75;
+        text-align: center;
+      }
+      .vcard {
+        perspective: 900px;
+        /* matches the proportions of the meaning artwork on the back face */
+        aspect-ratio: 2.4 / 1;
+        min-height: 4.6rem;
+        cursor: pointer;
+        background: none;
+        border: 0;
+        padding: 0;
+        font: inherit;
+        display: block;
+        width: 100%;
+      }
+      .vcard-inner {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.62s cubic-bezier(0.4, 0.1, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+      /* Hover only turns a tile where hovering is real. On a touch screen
+         a tap leaves :hover stuck on the tile it landed on, which is what
+         used to leave a second meaning showing beside the one just opened;
+         there the class the script sets is the only thing that turns it. */
+      @media (hover: hover) and (pointer: fine) {
+        .vcard:hover .vcard-inner {
+          transform: rotateY(180deg);
+        }
+      }
+      .vcard:focus-visible .vcard-inner,
+      .vcard.flipped .vcard-inner {
+        transform: rotateY(180deg);
+      }
+      .vcard-face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .vcard-front {
+        background: var(--v-card);
+        border: 3px solid var(--vc, var(--v-think));
+        color: var(--blue-dk);
+        font-weight: 700;
+        font-size: clamp(1.1rem, 1.8vw, 1.42rem);
+        box-shadow: 0 5px 12px rgba(0, 40, 70, 0.16);
+      }
+      /* the meaning artwork carries its own frame, so the back face adds
+         none of its own — otherwise the border reads doubled */
+      .vcard-back {
+        transform: rotateY(180deg);
+        background: transparent;
+        filter: drop-shadow(0 5px 10px rgba(0, 40, 70, 0.18));
+      }
+      .vcard-back img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .vcard:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 13px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .vcard-inner {
+          transition: none;
+        }
       }
 
       /* ═══ PERSONA CARDS ═══ */
@@ -1272,7 +1419,6 @@
         gap: 1rem;
       }
 
-      /* ═══ RESPONSIVE ═══ */
       @media (max-width: 1024px) {
         .persona-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -1345,6 +1491,10 @@
         .bh-content {
           padding: 0 1.4rem;
         }
+        .vb-grid {
+          /* two families to a column, each still whole */
+          grid-template-rows: repeat(10, auto);
+        }
         .persona-grid {
           grid-template-columns: 1fr;
         }
@@ -1357,22 +1507,15 @@
         .form-row {
           grid-template-columns: 1fr;
         }
+        /* on narrow screens the wordmark stacks above the quote instead of
+           sitting beside it */
         .stat-frame {
           flex-direction: column;
           text-align: center;
           align-items: center;
-          min-height: 0;
-          padding-inline-start: 1.6rem;
-          padding-inline-end: 1.6rem;
-          padding-top: 1.6rem;
           gap: 1rem;
         }
-        /* on narrow screens the logo stacks above the text instead of
-           sitting beside it, so it still never covers any copy */
         .stat-frame-logo {
-          position: static;
-          transform: none;
-          height: auto;
           width: 150px;
           order: -1;
         }
@@ -1390,6 +1533,13 @@
       @media (max-width: 520px) {
         .ab-sec {
           padding: 4.5rem 1.1rem;
+        }
+        .vb-grid {
+          /* one family at a time: its title, then its own four tiles,
+             in its own colour */
+          grid-auto-flow: row;
+          grid-template-rows: none;
+          grid-template-columns: 1fr;
         }
         .contact-form {
           padding: 1.6rem;
@@ -1418,39 +1568,80 @@
         height: auto;
       }
       /* ─── למה עכשיו ───
-         the copy runs down the right column and the two source pictures down
-         the left, the way the panel was drawn. Both columns are held at the
-         width their pictures came at, so none of them is ever upsampled. */
-      .why-layout {
-        display: grid;
-        grid-template-columns: 553px 338px;
-        gap: 2.4rem;
-        max-width: 927px;
-        margin: 0 auto;
-        align-items: start;
-      }
-      .why-text .art-figure {
-        margin: 1.8rem 0 2rem;
-      }
-      /* drawn 359px across and set flush with the start edge of the column,
-         exactly as it sits in the layout */
-      .art-result {
-        max-width: 359px;
-        margin-inline-start: 0;
-        margin-inline-end: auto;
-      }
-      .art-gallup {
-        max-width: 553px;
-      }
-      .why-media {
+         Two bands, each a block of copy with the source picture that belongs
+         to it beside it. The picture is stretched to the height of its own
+         band and keeps its own proportions, so the first ends level with the
+         foot of "התוצאה" and the second runs from the top of the paragraph
+         beside it down to the foot of the Gallup panel, the way the panel was
+         drawn. The height leads and the width follows from it, which is why
+         the picture is sized by aspect-ratio rather than by a column. */
+      .why-row {
         display: flex;
-        flex-direction: column;
+        align-items: stretch;
         gap: 2.6rem;
+        /* both bands are held to one width so their edges line up: the full
+           width the page gives a section once it reaches its 1240px cap */
+        max-width: 1176px;
+        margin: 0 auto;
       }
-      .why-media img {
+      .why-row + .why-row {
+        margin-top: 2.6rem;
+      }
+      .why-text {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .why-text > *:last-child {
+        margin-bottom: 0;
+      }
+      .why-fig {
+        flex: 0 0 auto;
+        align-self: stretch;
+        margin: 0;
+        min-width: 0;
+      }
+      /* Each picture is given the width at which its own proportions make it
+         exactly as tall as the copy beside it, which is what puts its top
+         and bottom edges on the same lines. That is above the size the two
+         were scanned at, which is also what the panel asks for: the pictures
+         are meant to read larger here than they did. */
+      .why-fig-ai {
+        flex-basis: 454px;
+        aspect-ratio: 330 / 307;
+      }
+      .why-fig-chart {
+        flex-basis: 420px;
+        aspect-ratio: 338 / 261;
+      }
+      .why-fig img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: contain;
+      }
+      /* "התוצאה" sits in its own quiet box, a shade off the ground behind it
+         with a fine line around it, and is set in the same size as the copy
+         above and below it */
+      .result-box {
+        margin-top: 1.7rem;
+        padding: 1.5rem 1.8rem;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.66);
+        border: 1px solid rgba(0, 67, 120, 0.16);
+        box-shadow: 0 6px 18px rgba(0, 67, 120, 0.06);
+      }
+      .result-title {
+        margin: 0 0 0.5rem;
+        font-size: 1.06rem;
+        line-height: 1.9;
+        font-weight: 700;
+        color: var(--blue);
+      }
+      .result-box .why-result {
+        margin: 0;
+      }
+      .result-box .why-result li:last-child {
+        margin-bottom: 0;
       }
       /* ─── cards that arrive as pictures ───
          three across at the width they were drawn, so they sit at 1:1 */
@@ -1482,32 +1673,42 @@
       }
 
 
+      /* The two bands only pair up while the section is at the full width
+         they are measured for: the 1176px a .wrap gives once the page is
+         wide enough to hold its 1240px cap, which with a scrollbar in the
+         way first happens at a 1280px window. Below that the picture drops
+         under the copy it belongs to, at the size it was scanned at rather
+         than blown up. */
+      @media (max-width: 1279.98px) {
+        .why-row {
+          flex-direction: column;
+          align-items: center;
+          gap: 1.8rem;
+          max-width: 700px;
+        }
+        .why-text {
+          width: 100%;
+        }
+        .why-fig {
+          align-self: center;
+          flex-basis: auto;
+          aspect-ratio: auto;
+        }
+        .why-fig img {
+          width: auto;
+          height: auto;
+          max-width: 100%;
+        }
+      }
+      /* ═══ RESPONSIVE ═══ */
       /* ─── artwork / live-markup swap ───
          Kept last in the sheet so it settles the argument with the section
          rules above, whichever panel it is applied to. The pictures are drawn
          to fill a column just under 960px wide, which a 1025px window is the
          first to offer once the page gutters are taken off. */
-      @media (max-width: 1024px) {
+      @media (max-width: 1024.98px) {
         .art-wide {
           display: none;
-        }
-        .why-layout {
-          grid-template-columns: 1fr;
-          max-width: 860px;
-        }
-        .why-media {
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-          align-items: flex-start;
-          gap: 1.6rem;
-          margin-top: 2.4rem;
-        }
-        /* the two source pictures stay at the size they were scanned at,
-           never blown up to fill the wider column */
-        .why-media img {
-          width: auto;
-          max-width: 100%;
         }
       }
       @media (min-width: 1025px) {
@@ -1624,12 +1825,46 @@
           למנהיגות ערכית כבר קיים בתוך הארגון ומסייעים להביא למימושו.
         </p>
 
-        <figure class="virtues-map rev d2">
-          <img
-            src="assets/img/16 המעלות - 110826.png"
-            alt="16 המעלות: ארבעה נושאי ליבה — הדרך בה אנו חושבים, פועלים, מתייחסים לזולת ומוצאים משמעות — וארבע מעלות בכל נושא"
-          />
-        </figure>
+        <div class="virtues-board rev d2">
+          <div class="vb-head">16 המעלות</div>
+          <div class="vb-body">
+            <p class="vb-hint">
+              העבירו את העכבר על כל מעלה כדי לגלות את משמעותה
+            </p>
+            <div class="vb-grid">
+              <!-- ─── column titles ─── -->
+              <div
+                class="vb-col-title"
+                data-family="think"
+                style="background: linear-gradient(150deg, #1a97a8, var(--v-think))"
+              >
+                הדרך בה אנו חושבות.ים
+              </div>
+              <div
+                class="vb-col-title"
+                data-family="act"
+                style="background: linear-gradient(150deg, #4f8f33, var(--v-act))"
+              >
+                הדרך בה אנו פועלות.ים
+              </div>
+              <div
+                class="vb-col-title"
+                data-family="relate"
+                style="background: linear-gradient(150deg, #4a63a3, var(--v-relate))"
+              >
+                הדרך בה אנו מתייחסות.ים לזולת
+              </div>
+              <div
+                class="vb-col-title"
+                data-family="meaning"
+                style="background: linear-gradient(150deg, #d0791a, var(--v-meaning))"
+              >
+                הדרך בה אנו מוצאות.ים משמעות
+              </div>
+              <!-- the 16 tiles are written in by the script at the foot -->
+            </div>
+          </div>
+        </div>
 
         <p class="ab-body rev d3">
           החזון העומד בבסיס תכנית 16 המעלות לחברות הוא יחד הן יוצרות עולם עבודה
@@ -1644,56 +1879,50 @@
     </section>
 
     <!-- ════════════ WHY NOW ════════════ -->
-    <section class="ab-sec bg-grey">
+    <section class="ab-sec bg-sky">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
-        <div class="why-layout">
-          <div class="why-text">
-            <p class="ab-body rev">
+
+        <div class="why-row">
+          <div class="why-text rev">
+            <p class="ab-body">
               ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה
               המלאכותית, חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה
               המייצרים אי ודאות מתמשכת וחוסר ביטחון תעסוקתי.
             </p>
-            <p class="ab-body rev d1">
+            <p class="ab-body">
               השינויים מהירים יותר מקצב ההסתגלות של העובדות והעובדים ומובילים
               לתופעות של חרדה, ניתוק רגשי, תשישות ושחיקה.
             </p>
+            <div class="result-box">
+              <p class="result-title">התוצאה:</p>
+              <ul class="why-result">
+                <li>עומס ניהולי שמקשה על מנהיגות מאוזנת ורגועה</li>
+                <li>צוותים הפועלים מתוך הישרדות ותגובתיות, במקום חזון ותכנון</li>
+                <li>אובדן חיבור ותחושת מטרה משותפת</li>
+                <li>שחיקה בחוסן המנטלי וחיבור העבודה</li>
+              </ul>
+            </div>
+          </div>
+          <figure class="why-fig why-fig-ai rev d1">
+            <img
+              src="assets/img/business/why-ai.png"
+              alt="The Human Side of the AI Revolution, 2026 Report"
+            />
+          </figure>
+        </div>
 
-            <figure class="art-figure art-result art-wide rev d1">
-              <img
-                src="assets/img/business/why-result.png"
-                alt="התוצאה: עומס ניהולי שמקשה על מנהיגות מאוזנת ורגועה; צוותים הפועלים מתוך הישרדות ותגובתיות, במקום חזון ותכנון; אובדן חיבור ותחושת מטרה משותפת; שחיקה בחוסן המנטלי וחיבור העבודה"
-              />
-            </figure>
-            <p
-              class="ab-body rev d1 art-narrow"
-              style="font-weight: 700; color: var(--blue)"
-            >
-              התוצאה:
-            </p>
-            <ul class="why-result rev d1 art-narrow">
-              <li>עומס ניהולי שמקשה על מנהיגות מאוזנת ורגועה</li>
-              <li>צוותים הפועלים מתוך הישרדות ותגובתיות, במקום חזון ותכנון</li>
-              <li>אובדן חיבור ותחושת מטרה משותפת</li>
-              <li>שחיקה בחוסן המנטלי וחיבור העבודה</li>
-            </ul>
-
-            <p class="ab-body rev d2" style="margin-top: 1.6rem">
+        <div class="why-row">
+          <div class="why-text rev d2">
+            <p class="ab-body">
               תוכנית 16 המעלות לחברות מעניקה לארגונים שפה ערכית-רגשית משותפת,
               המשנה את האופן שבו צוותים חושבים, פועלים ושואפים ליעדים ומבססת
               תשתית אתית ואנושית שמגבירה את הפריון, האיזון והחוסן הארגוני גם
               כשהמציאות סוערת.
             </p>
-
-            <figure class="art-figure art-gallup art-wide rev d3">
-              <img
-                src="assets/img/business/why-gallup.png"
-                alt="Gallup: רמת החיבור של עובדים למקום העבודה שלהם ירדה ל-20% בשנת 2025, הנמוכה ביותר מאז 2020, ועלות הירידה למשק העולמי מוערכת ב-10 טריליון דולר באובדן פריון (Gallup - State of the Global Workplace 2026)"
-              />
-            </figure>
-            <div class="stat-frame rev d3 art-narrow">
+            <div class="stat-frame">
               <img
                 src="assets/img/GALLUP logo.png"
                 alt="Gallup"
@@ -1710,17 +1939,12 @@
               </div>
             </div>
           </div>
-
-          <div class="why-media rev d1">
-            <img
-              src="assets/img/business/why-ai.png"
-              alt="The Human Side of the AI Revolution, 2026 Report"
-            />
+          <figure class="why-fig why-fig-chart rev d3">
             <img
               src="assets/img/business/why-chart.png"
               alt="In 2025, global employee engagement declined for a second year to its lowest level since 2020. אחוז העובדים המחוברים לעבודתם, 2009 עד 2025"
             />
-          </div>
+          </figure>
         </div>
       </div>
     </section>
@@ -2212,6 +2436,114 @@
     <!-- ════════════ JS ════════════ -->
     <script>
       (function () {
+        /* Turns every tile on a board face-down again. */
+        function flipBoardBack(grid) {
+          grid.querySelectorAll(".vcard.flipped").forEach((c) =>
+            c.classList.remove("flipped")
+          );
+        }
+
+        /* ═══════════════════════════════════════════════════════════
+           The 16 virtues board — the same chart, and the same turn on
+           hover, as the programme page. Each tile is a button so it
+           works by keyboard and on touch as well as under a pointer.
+           Column order follows the chart, right to left: thinking,
+           acting, relating, meaning.
+           ═══════════════════════════════════════════════════════════ */
+        const VIRTUES = [
+          // { name, image, family }  — four rows of four, read right to left
+          ["ענווה", "assets/img/virtues/humility.png", "think"],
+          ["טוב לב", "assets/img/virtues/kindness.png", "act"],
+          ["כבוד", "assets/img/virtues/respect.png", "relate"],
+          ["שאיפות", "assets/img/virtues/aspirations.png", "meaning"],
+
+          ["סבלנות", "assets/img/virtues/patience.png", "think"],
+          ["יושרה", "assets/img/virtues/integrity.png", "act"],
+          ["סליחה", "assets/img/virtues/forgiveness.png", "relate"],
+          ["עקרונות", "assets/img/virtues/principles.png", "meaning"],
+
+          ["שביעות רצון", "assets/img/virtues/contentment.png", "think"],
+          ["נדיבות", "assets/img/virtues/generosity.png", "act"],
+          ["הכרת תודה", "assets/img/virtues/gratitude.png", "relate"],
+          ["שירות", "assets/img/virtues/service.png", "meaning"],
+
+          ["חדווה", "assets/img/virtues/joy.png", "think"],
+          ["דיבור מיטיב", "assets/img/virtues/kind-speech.png", "act"],
+          ["נאמנות", "assets/img/virtues/loyalty.png", "relate"],
+          ["אומץ", "assets/img/virtues/courage.png", "meaning"],
+        ];
+        const FAMILY_COLOR = {
+          think: "var(--v-think)",
+          act: "var(--v-act)",
+          relate: "var(--v-relate)",
+          meaning: "var(--v-meaning)",
+        };
+        const vbGrid = document.querySelector(".vb-grid");
+        if (vbGrid) {
+          /* Filled column by column: each family's four tiles are written in
+             right under their own column title, which is the order the
+             column-major grid (and the single-column phone layout) both
+             read. */
+          ["think", "act", "relate", "meaning"].forEach((family) => {
+            const title = vbGrid.querySelector(
+              '.vb-col-title[data-family="' + family + '"]'
+            );
+            if (!title) return;
+            let after = title;
+            VIRTUES.filter((v) => v[2] === family).forEach(([name, file]) => {
+              const card = document.createElement("button");
+              card.type = "button";
+              card.className = "vcard";
+              card.style.setProperty("--vc", FAMILY_COLOR[family]);
+              card.setAttribute("aria-label", name + " — הצגת המשמעות");
+              card.innerHTML =
+                '<span class="vcard-inner">' +
+                '<span class="vcard-face vcard-front">' +
+                name +
+                "</span>" +
+                '<span class="vcard-face vcard-back">' +
+                '<img src="' +
+                file +
+                '" alt="' +
+                name +
+                ' — המשמעות" loading="lazy" />' +
+                "</span>" +
+                "</span>";
+              /* A tap turns the tile over, since a touch screen has no
+                 hover. Only one tile may be face-up at a time: opening a
+                 second one turns the first back, so the board never shows
+                 two meanings at once. */
+              card.addEventListener("click", () => {
+                const wasOpen = card.classList.contains("flipped");
+                flipBoardBack(vbGrid);
+                if (!wasOpen) card.classList.add("flipped");
+              });
+              after.insertAdjacentElement("afterend", card);
+              after = card;
+            });
+          });
+        }
+
+
+        if (vbGrid) {
+          /* On a phone a tap is the only way in, so a tile stays face-up
+             until something else is chosen. Touching the board outside a
+             tile, or anywhere else on the page, closes the open one. */
+          document.addEventListener("click", (e) => {
+            if (!e.target.closest(".vcard")) flipBoardBack(vbGrid);
+          });
+          /* Under a pointer the flip is a hover, so a tile left face-up by
+             an earlier tap would sit on top of it. Moving onto any other
+             tile closes it. */
+          vbGrid.addEventListener("pointerover", (e) => {
+            if (e.pointerType !== "mouse") return;
+            const over = e.target.closest(".vcard");
+            vbGrid.querySelectorAll(".vcard.flipped").forEach((c) => {
+              if (c !== over) c.classList.remove("flipped");
+            });
+          });
+        }
+
         const nav = document.getElementById("nav");
         const burger = nav.querySelector(".nav-burger");
         burger.addEventListener("click", () => {

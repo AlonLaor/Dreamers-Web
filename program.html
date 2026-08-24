@@ -738,48 +738,25 @@
       }
 
       /* ═══ HERO ═══ */
+      /* One photograph, edge to edge, with the copy set over it. It used to
+         be two layers, the sharp photo held to its own proportions over a
+         blown-up blurred copy of itself, and the line where one gave way to
+         the other showed. There is nothing to line up now. The header is
+         given room to be tall enough that the bird stays whole in the crop
+         at the widths a laptop and a desktop actually open at. */
       #prog-hero {
         position: relative;
         padding: 13rem 0 7rem;
+        min-height: min(88vh, 820px);
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
       }
-      /* The sky behind the bird is the photograph itself, blown up to fill
-         the header and blurred right down. Mixing a gradient by hand meant
-         re-tuning it every time the photo changed, and the seam showed the
-         moment the two drifted apart; drawn from the same file, the colours
-         match by construction and the sharp photo can dissolve into it. */
       .ph-bg {
         position: absolute;
         inset: 0;
-        background: url("assets/img/שחף 2-1.png") center / cover no-repeat;
-        /* scaled up so the blur has pixels to reach for at the edges
-           instead of bleeding to transparent */
-        transform: scale(1.18);
-        filter: blur(46px) saturate(1.06) brightness(1.02);
-      }
-      /* The gull itself. The layer keeps the photograph's own proportions at
-         the full height of the hero, so the whole bird is in frame — no wing
-         tip is cut — and it reads far smaller than the old full-bleed crop.
-         Its right edge dissolves into the gradient above. */
-      .ph-photo {
-        position: absolute;
-        /* the strip left above the photo hides behind the fixed navigation
-           bar, which is what lets the whole bird clear it */
-        top: 5.6rem;
-        left: 0;
-        height: 80%;
-        aspect-ratio: 1474 / 1067;
-        background: url("assets/img/שחף 2-1.png") center / cover no-repeat;
-        -webkit-mask-image:
-          linear-gradient(to right, #000 0 56%, rgba(0, 0, 0, 0) 95%),
-          linear-gradient(to bottom, #000 0 72%, rgba(0, 0, 0, 0) 99%);
-        -webkit-mask-composite: source-in;
-        mask-image:
-          linear-gradient(to right, #000 0 56%, rgba(0, 0, 0, 0) 95%),
-          linear-gradient(to bottom, #000 0 72%, rgba(0, 0, 0, 0) 99%);
-        mask-composite: intersect;
+        /* framed a little above centre: that is where the bird flies */
+        background: url("assets/img/שחף 2-1.png") center 20% / cover no-repeat;
       }
       /* the copy sits on the right, so the tint deepens on that side and
          leaves the open sky and the bird on the left clear */
@@ -983,7 +960,7 @@
       /* ═══ THE 16 VIRTUES — flip cards ═══ */
       .virtues-board {
         max-width: 1080px;
-        margin: 2.6rem 0 0;
+        margin: 2.6rem auto 0;
         border-radius: 22px;
         overflow: hidden;
         box-shadow:
@@ -1015,7 +992,10 @@
         grid-auto-flow: column;
         /* one title + four tiles per column */
         grid-template-rows: repeat(5, auto);
-        grid-auto-columns: 1fr;
+        /* the minimum of 0 is what lets a column narrow past the longest
+           word in its title; without it the four hold their widest text and
+           the board runs off the side of a tablet */
+        grid-auto-columns: minmax(0, 1fr);
         gap: 0.9rem;
       }
       /* the type here matches the printed 16-virtues chart used on the
@@ -1065,7 +1045,15 @@
         transition: transform 0.62s cubic-bezier(0.4, 0.1, 0.2, 1);
         transform-style: preserve-3d;
       }
-      .vcard:hover .vcard-inner,
+      /* Hover only turns a tile where hovering is real. On a touch screen
+         a tap leaves :hover stuck on the tile it landed on, which is what
+         used to leave a second meaning showing beside the one just opened;
+         there the class the script sets is the only thing that turns it. */
+      @media (hover: hover) and (pointer: fine) {
+        .vcard:hover .vcard-inner {
+          transform: rotateY(180deg);
+        }
+      }
       .vcard:focus-visible .vcard-inner,
       .vcard.flipped .vcard-inner {
         transform: rotateY(180deg);
@@ -1153,16 +1141,25 @@
       /* ═══ JOURNEY — "מה קורה בדרך" ═══ */
       /* The pair breaks out of the text column and runs the full width of
          the screen, so the two photographs read as one band across the page. */
+      /* the pair runs the full width of the screen, centred, rather than
+         sitting in the right-hand part of the text column. 100vw counts the
+         scrollbar, which the page does not have room for, so the section
+         clips the few pixels that reach past its edge. */
+      .bleed-host {
+        overflow-x: clip;
+      }
       .journey-bleed {
         width: 100vw;
         margin-inline: calc(50% - 50vw);
         margin-top: 2.6rem;
-        padding: 0 1.2rem;
+        padding: 0 2rem;
       }
       .journey-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.4rem;
+        gap: 1.8rem;
+        max-width: 1720px;
+        margin: 0 auto;
       }
       /* each card is split down the middle: the copy sits on the right, the
          photograph on the left — in RTL the first cell lands on the right */
@@ -1190,18 +1187,18 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 2.8rem 2.4rem;
+        padding: 3.2rem 2.8rem;
       }
       .journey-media {
-        min-height: 320px;
+        min-height: 360px;
         background-size: cover;
         background-position: center;
       }
       .journey-card h3 {
         color: var(--blue-dk);
-        font-size: clamp(1.05rem, 1.5vw, 1.24rem);
+        font-size: clamp(1.3rem, 1.9vw, 1.7rem);
         font-weight: 800;
-        margin-bottom: 1.1rem;
+        margin-bottom: 1.3rem;
       }
       .journey-card .why-result {
         max-width: none;
@@ -1209,6 +1206,9 @@
       .journey-card .why-result li {
         color: var(--blue-dk);
         font-weight: 600;
+        font-size: clamp(1.05rem, 1.35vw, 1.24rem);
+        line-height: 1.75;
+        margin-bottom: 0.85rem;
       }
 
       /* ═══ FINISHED ARTWORK PANELS ═══
@@ -1231,37 +1231,32 @@
       }
       /* the picture never scales past the width it was drawn at, so it can
          only ever be shown at 1:1 or smaller, never upsampled */
-      .art-journey {
-        max-width: 856px;
-      }
-      .art-audience {
-        /* squared to the body copy above it. The artwork is drawn 849px
-           across, so matching the 860px column stretches it by barely one
-           percent and costs it nothing */
-        max-width: 860px;
-        margin-inline: 0;
-      }
       /* all four stage cards are drawn to the same 848px, so one width holds
-         their edges flush down the column */
+         their edges flush down the column. They are carried a little wider
+         than that, which is the only way type baked into a picture can be
+         made to read larger, and they are centred on the column. */
       .art-stage {
-        max-width: 848px;
-        margin-top: 1.6rem;
+        max-width: 1000px;
+        margin: 1.6rem auto 0;
       }
       /* ═══ AUDIENCE ═══ */
-      .aud-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.7rem;
-        margin-top: 2rem;
+      /* the five finished chips, run across the full width of the column and
+         centred on it rather than gathered at the right edge. Each is held
+         at the width it was drawn at, so none is blown up. */
+      /* the five run across the full width of the column on one line, giving
+         up a few pixels each rather than breaking it, and are centred on it */
+      .aud-chips {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 224px));
+        justify-content: center;
+        align-items: center;
+        gap: 1.1rem;
+        margin-top: 2.6rem;
       }
-      .aud-tag {
-        background: rgba(72, 217, 211, 0.16);
-        border: 1px solid rgba(0, 67, 120, 0.12);
-        color: var(--blue-dk);
-        border-radius: 50px;
-        padding: 0.6rem 1.25rem;
-        font-size: 0.94rem;
-        font-weight: 600;
+      .aud-chips img {
+        display: block;
+        width: 100%;
+        height: auto;
       }
 
       /* ═══ STAGES ═══ */
@@ -1303,13 +1298,13 @@
         color: var(--blue);
         border-radius: 50px;
         padding: 0.35rem 1rem;
-        font-size: 0.82rem;
+        font-size: 0.92rem;
         font-weight: 800;
         margin-bottom: 0.8rem;
       }
       .stage h3 {
         color: var(--blue);
-        font-size: 1.16rem;
+        font-size: 1.3rem;
         font-weight: 800;
         margin-bottom: 0.9rem;
       }
@@ -1319,13 +1314,13 @@
       .stage dt {
         font-weight: 800;
         color: var(--blue-dk);
-        font-size: 0.95rem;
+        font-size: 1.06rem;
         margin-top: 0.9rem;
       }
       .stage dd {
         margin: 0.25rem 0 0;
         color: var(--text-mid);
-        font-size: 0.98rem;
+        font-size: 1.08rem;
         line-height: 1.85;
       }
       .stage-track {
@@ -1432,6 +1427,9 @@
         .journey-media {
           min-height: 260px;
         }
+        .aud-chips {
+          grid-template-columns: repeat(3, minmax(0, 224px));
+        }
         .fac-outer {
           --fac-per-view: 4;
         }
@@ -1439,32 +1437,15 @@
       @media (max-width: 768px) {
         #prog-hero {
           padding: 9.5rem 0 5rem;
+          min-height: min(78vh, 620px);
         }
         .ph-content {
           padding: 0 1.4rem;
         }
-        /* On a phone the header is taller than it is wide, so holding the
-           photograph to its own proportions pushes most of the bird off the
-           side of the screen. Here it fills the header instead and is framed
-           on the bird, with only a fade at the foot; the copy then sits over
-           a plain vertical scrim rather than the side tint the wide layout
-           uses. */
-        .ph-photo {
-          top: 0;
-          height: 100%;
-          width: 100%;
-          aspect-ratio: auto;
+        /* On a phone the header is taller than it is wide, so the crop is
+           moved onto the bird rather than the open sky beside it */
+        .ph-bg {
           background-position: 38% 38%;
-          -webkit-mask-image: linear-gradient(
-            to bottom,
-            #000 0 72%,
-            rgba(0, 0, 0, 0) 99%
-          );
-          mask-image: linear-gradient(
-            to bottom,
-            #000 0 72%,
-            rgba(0, 0, 0, 0) 99%
-          );
         }
         .ph-tint {
           background: linear-gradient(
@@ -1498,6 +1479,9 @@
         }
       }
       @media (max-width: 520px) {
+        .aud-chips {
+          grid-template-columns: repeat(2, minmax(0, 224px));
+        }
         /* side by side, the copy is left with a column barely two words
            wide, so the photograph moves above it and each takes the full
            width */
@@ -1660,7 +1644,9 @@
       /* ─── artwork / live-markup swap ───
          Kept last in the sheet so it settles the argument with the section
          rules above, whichever panel it is applied to. */
-      @media (max-width: 860px) {
+      /* a viewport width can land on a fraction, so the two halves of the
+         swap meet rather than leave a gap between them */
+      @media (max-width: 860.98px) {
         .art-wide {
           display: none;
         }
@@ -1743,7 +1729,6 @@
     <!-- ════════════ HERO ════════════ -->
     <header id="prog-hero">
       <div class="ph-bg"></div>
-      <div class="ph-photo"></div>
       <div class="ph-tint"></div>
       <div class="ph-content">
         <h1 class="ph-title rev">
@@ -1872,7 +1857,7 @@
     </section>
 
     <!-- ════════════ מה קורה בדרך ════════════ -->
-    <section class="ab-sec bg-mist" id="journey">
+    <section class="ab-sec bg-mist bleed-host" id="journey">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">מה קורה בדרך</h2>
@@ -1882,14 +1867,7 @@
           אחרים.ות.
         </p>
 
-        <figure class="art-figure art-journey art-wide rev d1">
-          <img
-            src="assets/img/program/journey.png"
-            alt="שני לוחות: מתוך ההיכרות הזאת מתאפשרת: פריצת תפיסות עצמיות מגבילות, שיפור מערכות יחסים, מציאת שלוות-נפש וחוסן מנטלי, קבלת החלטות טובה יותר. ולצידו שיח על המעלות ותרגול מעשי: מייצר תחושת שייכות, מקדם תחושת מסוגלות ורווחה נפשית, מעצים יכולת לדיאלוג מקרב"
-          />
-        </figure>
-
-        <div class="journey-bleed art-narrow">
+        <div class="journey-bleed">
           <div class="journey-grid">
             <div class="journey-card rev d1">
               <div class="journey-body">
@@ -1945,19 +1923,27 @@
           קשובים, משמעותיים ומאושרים יותר ולקדם חברה סבלנית, חומלת וסולידרית
           יותר.
         </p>
-        <figure class="art-figure art-audience art-wide rev d1">
+        <div class="aud-chips rev d1">
           <img
-            src="assets/img/program/audience.png"
-            alt="אנשי ונשות חינוך, אנשי ונשות טיפול, אנשי ונשות עסקים, מובילי קהילות, מובילי ארגונים"
+            src="assets/img/program/audience-education.png"
+            alt="אנשי ונשות חינוך"
           />
-        </figure>
-
-        <div class="aud-tags art-narrow rev d1">
-          <span class="aud-tag">אנשי ונשות חינוך</span>
-          <span class="aud-tag">אנשי ונשות טיפול</span>
-          <span class="aud-tag">אנשי ונשות עסקים</span>
-          <span class="aud-tag">מובילי קהילות</span>
-          <span class="aud-tag">מובילי ארגונים</span>
+          <img
+            src="assets/img/program/audience-therapy.png"
+            alt="אנשי ונשות טיפול"
+          />
+          <img
+            src="assets/img/program/audience-business.png"
+            alt="אנשי ונשות עסקים"
+          />
+          <img
+            src="assets/img/program/audience-community.png"
+            alt="מובילי קהילות"
+          />
+          <img
+            src="assets/img/program/audience-orgs.png"
+            alt="מובילי ארגונים"
+          />
         </div>
       </div>
     </section>
@@ -2363,6 +2349,7 @@
     <!-- ════════════ JS ════════════ -->
     <script>
       (function () {
+
         const nav = document.getElementById("nav");
         const burger = nav.querySelector(".nav-burger");
         burger.addEventListener("click", () => {
@@ -2499,6 +2486,13 @@
            well as on hover. Column order follows the programme chart,
            right to left: thinking, acting, relating, meaning.
            ═══════════════════════════════════════════════════════════ */
+        /* Turns every tile on a board face-down again. */
+        function flipBoardBack(board) {
+          board.querySelectorAll(".vcard.flipped").forEach((c) =>
+            c.classList.remove("flipped")
+          );
+        }
+
         const VIRTUES = [
           // { name, image, family }  — four rows of four, read right to left
           ["ענווה", "assets/img/virtues/humility.png", "think"],
@@ -2559,12 +2553,36 @@
                 ' — המשמעות" loading="lazy" />' +
                 "</span>" +
                 "</span>";
-              // tap on a touch screen flips it, since there is no hover there
+              /* A tap turns the tile over, since a touch screen has no
+                 hover. Only one tile may be face-up at a time: opening a
+                 second one turns the first back, so the board never shows
+                 two meanings at once. */
               card.addEventListener("click", () => {
-                card.classList.toggle("flipped");
+                const wasOpen = card.classList.contains("flipped");
+                flipBoardBack(grid);
+                if (!wasOpen) card.classList.add("flipped");
               });
               after.insertAdjacentElement("afterend", card);
               after = card;
+            });
+          });
+        }
+
+        if (grid) {
+          /* On a phone a tap is the only way in, so a tile stays face-up
+             until something else is chosen. Touching anywhere off a tile
+             closes the open one. */
+          document.addEventListener("click", (e) => {
+            if (!e.target.closest(".vcard")) flipBoardBack(grid);
+          });
+          /* Under a pointer the flip is a hover, so a tile left face-up by
+             an earlier tap would sit on top of it. Moving onto any other
+             tile closes it. */
+          grid.addEventListener("pointerover", (e) => {
+            if (e.pointerType !== "mouse") return;
+            const over = e.target.closest(".vcard");
+            grid.querySelectorAll(".vcard.flipped").forEach((c) => {
+              if (c !== over) c.classList.remove("flipped");
             });
           });
         }
