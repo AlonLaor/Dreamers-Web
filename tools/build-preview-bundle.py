@@ -9,13 +9,16 @@ into an iframe via srcdoc, which keeps the four stylesheets from colliding.
 Cross-page links are intercepted and routed through the location hash, so the
 browser Back button behaves normally.
 """
-import base64, hashlib, io, mimetypes, os, re, subprocess, sys
+import base64, datetime, hashlib, io, mimetypes, os, re, subprocess, sys
 
 # resolve against the repo root so the script runs from anywhere
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".preview-cache")
 PAGES = ["index", "program", "business", "education", "about", "contact"]
-OUT_NAME = "Dreamers-Site-Preview.html"
+# every build is dated (DDMMYY, matching this project's own commit-message and
+# working-doc convention) so a new preview never silently overwrites the one
+# handed over for a previous round of review
+OUT_NAME = "Dreamers-Site-Preview-%s.html" % datetime.date.today().strftime("%d%m%y")
 
 os.chdir(ROOT)
 os.makedirs(CACHE, exist_ok=True)

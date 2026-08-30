@@ -47,6 +47,11 @@
       html {
         scroll-behavior: smooth;
       }
+      @media (min-width: 769px) {
+        html {
+          font-size: 17px;
+        }
+      }
       body {
         font-family: "Heebo", system-ui, sans-serif;
         direction: rtl;
@@ -178,7 +183,7 @@
         color: #fff;
       }
       .logo-img {
-        height: 58px;
+        height: 87px;
         display: block;
         border-radius: 50%;
         transition: opacity 0.3s;
@@ -221,6 +226,19 @@
       .nav-cta:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+      .nav-slogan {
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: center;
+        opacity: 0.92;
+      }
+      @media (max-width: 1024px) {
+        .nav-slogan {
+          display: none;
+        }
       }
       .nav-burger {
         display: none;
@@ -1289,7 +1307,7 @@
         background: url("assets/img/Gradient blue.png") center / cover no-repeat
           var(--blue-dk);
         color: #fff;
-        padding: 5rem 2rem 2.5rem;
+        padding: 2.8rem 2rem 1.6rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
       }
       .footer-inner {
@@ -1302,18 +1320,26 @@
         align-items: flex-start;
         flex-wrap: wrap;
         gap: 3rem;
-        margin-bottom: 3.5rem;
+        margin-bottom: 1.8rem;
       }
       .footer-logo-img {
-        height: 80px;
+        height: 200px;
         display: block;
+      }
+      .footer-brand {
+        flex: 1 1 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
       .footer-desc {
         font-size: 1rem;
         line-height: 1.8;
         color: rgba(255, 255, 255, 0.85);
-        max-width: 340px;
-        margin-top: 1rem;
+        max-width: 320px;
+        margin: 1rem auto 0;
+        text-align: center;
       }
       .footer-nav {
         list-style: none;
@@ -1365,51 +1391,27 @@
         margin-top: 1.4rem;
       }
       .fsoc {
-        width: 46px;
-        height: 46px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.12);
+        width: 42px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
-        font-size: 1rem;
-        font-weight: 700;
-        transition: all 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.25);
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .fsoc img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
       }
       .fsoc:hover {
-        background: var(--teal);
-        color: var(--blue-dk);
         transform: translateY(-3px);
-        border-color: var(--teal);
-      }
-      /* The slogan is set in the multi-gender typeface, which exists only as
-         artwork, so it is carried as an image: white for the sentence and
-         gold for מתעוררות, both of which read on the deep footer.
-         The box behind it stays faint so it blends into the footer. */
-      /* the slogan and the panel around it are both carried at 75% of the
-         size they were first set at, so the whole block sits quieter in the
-         footer while keeping its proportions */
-      .footer-motto {
-        max-width: 585px;
-        margin: 0 auto 2.6rem;
-        padding: 1.43rem 1.65rem;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(72, 217, 211, 0.35);
-        border-radius: 22px;
-        box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
-      }
-      .motto-img {
-        width: 100%;
-        max-width: 465px;
-        height: auto;
-        margin: 0 auto;
+        opacity: 0.85;
       }
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.18);
-        padding-top: 2rem;
+        padding-top: 1.2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1781,6 +1783,7 @@
           </li>
         </ul>
       </div>
+      <div class="nav-slogan">כשחולמים לבד, חולמים.<br />כשחולמים ביחד - מתעוררים.</div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -2365,33 +2368,34 @@
               class="footer-logo-img"
             />
             <p class="footer-desc">
-              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+              עמותת בית חולמים -<br />
+              לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
             <div class="socials">
-              <a
-                href="https://www.youtube.com/@dreamers.16g"
-                class="fsoc"
-                title="YouTube"
-                target="_blank"
-                rel="noopener"
-              >▷</a
-              >
-              <a
-                href="https://www.facebook.com/Dreamers.Home.Israel/"
-                class="fsoc"
-                title="Facebook"
-                target="_blank"
-                rel="noopener"
-              >f</a
-              >
               <a
                 href="https://www.instagram.com/dreamers_home_il/"
                 class="fsoc"
                 title="Instagram"
                 target="_blank"
                 rel="noopener"
-              >▶</a
-              >
+                ><img src="assets/img/Instegram Logo.png" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/YouTube Logo.png" alt="YouTube"
+              /></a>
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Facebook Logo.png" alt="Facebook"
+              /></a>
             </div>
           </div>
           <div>
@@ -2419,13 +2423,6 @@
               >
             </p>
           </div>
-        </div>
-        <div class="footer-motto">
-          <img
-            src="assets/img/The Slogan - Light.png"
-            alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות."
-            class="motto-img"
-          />
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>

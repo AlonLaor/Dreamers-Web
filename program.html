@@ -46,6 +46,11 @@
       html {
         scroll-behavior: smooth;
       }
+      @media (min-width: 769px) {
+        html {
+          font-size: 17px;
+        }
+      }
       body {
         font-family: "Heebo", system-ui, sans-serif;
         direction: rtl;
@@ -177,7 +182,7 @@
         color: #fff;
       }
       .logo-img {
-        height: 58px;
+        height: 87px;
         display: block;
         border-radius: 50%;
         transition: opacity 0.3s;
@@ -220,6 +225,19 @@
       .nav-cta:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+      .nav-slogan {
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: center;
+        opacity: 0.92;
+      }
+      @media (max-width: 1024px) {
+        .nav-slogan {
+          display: none;
+        }
       }
       .nav-burger {
         display: none;
@@ -588,7 +606,7 @@
         background: url("assets/img/Gradient blue.png") center / cover no-repeat
           var(--blue-dk);
         color: #fff;
-        padding: 5rem 2rem 2.5rem;
+        padding: 2.8rem 2rem 1.6rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
       }
       .footer-inner {
@@ -601,18 +619,26 @@
         align-items: flex-start;
         flex-wrap: wrap;
         gap: 3rem;
-        margin-bottom: 3.5rem;
+        margin-bottom: 1.8rem;
       }
       .footer-logo-img {
-        height: 80px;
+        height: 200px;
         display: block;
+      }
+      .footer-brand {
+        flex: 1 1 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
       .footer-desc {
         font-size: 1rem;
         line-height: 1.8;
         color: rgba(255, 255, 255, 0.85);
-        max-width: 340px;
-        margin-top: 1rem;
+        max-width: 320px;
+        margin: 1rem auto 0;
+        text-align: center;
       }
       .footer-nav {
         list-style: none;
@@ -664,51 +690,27 @@
         margin-top: 1.4rem;
       }
       .fsoc {
-        width: 46px;
-        height: 46px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.12);
+        width: 42px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
-        font-size: 1rem;
-        font-weight: 700;
-        transition: all 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.25);
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .fsoc img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
       }
       .fsoc:hover {
-        background: var(--teal);
-        color: var(--blue-dk);
         transform: translateY(-3px);
-        border-color: var(--teal);
-      }
-      /* The slogan is set in the multi-gender typeface, which exists only as
-         artwork, so it is carried as an image: white for the sentence and
-         gold for מתעוררות, both of which read on the deep footer.
-         The box behind it stays faint so it blends into the footer. */
-      /* the slogan and the panel around it are both carried at 75% of the
-         size they were first set at, so the whole block sits quieter in the
-         footer while keeping its proportions */
-      .footer-motto {
-        max-width: 585px;
-        margin: 0 auto 2.6rem;
-        padding: 1.43rem 1.65rem;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(72, 217, 211, 0.35);
-        border-radius: 22px;
-        box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
-      }
-      .motto-img {
-        width: 100%;
-        max-width: 465px;
-        height: auto;
-        margin: 0 auto;
+        opacity: 0.85;
       }
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.18);
-        padding-top: 2rem;
+        padding-top: 1.2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -958,8 +960,17 @@
       }
 
       /* ═══ THE 16 VIRTUES — flip cards ═══ */
+      /* full-bleed positioning lives on the outer wrapper (same technique
+         as .journey-bleed) so the inner board just centres normally inside
+         it — a board wider than .wrap can't centre itself directly against
+         .wrap's own narrower box without the two ending up unevenly hung */
+      .virtues-board-bleed {
+        width: 100vw;
+        margin-inline: calc(50% - 50vw);
+        padding: 0 3vw;
+      }
       .virtues-board {
-        max-width: 1080px;
+        max-width: 1560px;
         margin: 2.6rem auto 0;
         border-radius: 22px;
         overflow: hidden;
@@ -1158,8 +1169,15 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.8rem;
-        max-width: 1720px;
+        max-width: 1240px;
         margin: 0 auto;
+      }
+      /* keeps the intro line's right edge flush with the text inside the
+         card below it (journey-body's own inner padding), so the two read
+         as one aligned column instead of the paragraph sitting slightly
+         left of the card's text */
+      #journey .ab-body {
+        padding-right: 2.8rem;
       }
       /* each card is split down the middle: the copy sits on the right, the
          photograph on the left — in RTL the first cell lands on the right */
@@ -1247,7 +1265,7 @@
          up a few pixels each rather than breaking it, and are centred on it */
       .aud-chips {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 224px));
+        grid-template-columns: repeat(4, minmax(0, 224px));
         justify-content: center;
         align-items: center;
         gap: 1.1rem;
@@ -1265,20 +1283,21 @@
          the training track keeps the gold it already had */
       .stage {
         position: relative;
-        background: linear-gradient(150deg, #edfafb 0%, #dcf1f6 100%);
-        border: 1px solid rgba(0, 67, 120, 0.1);
+        max-width: 1000px;
+        margin: 1.6rem auto 0;
+        background: linear-gradient(150deg, #0a3f6e 0%, #072c4e 100%);
+        border: 1px solid rgba(72, 217, 211, 0.25);
         border-radius: 22px;
         padding: 2rem 2rem 1.8rem;
-        margin-top: 1.6rem;
         box-shadow:
-          0 2px 4px rgba(0, 67, 120, 0.07),
-          0 16px 40px rgba(0, 67, 120, 0.13);
+          0 3px 6px rgba(0, 20, 45, 0.2),
+          0 24px 55px rgba(0, 20, 45, 0.4);
       }
       .stage-2 {
-        background: linear-gradient(150deg, #ebf5fc 0%, #d8eaf7 100%);
+        background: linear-gradient(150deg, #073259 0%, #051f3a 100%);
       }
       .stage-3 {
-        background: linear-gradient(150deg, #e7f0fa 0%, #d3e3f3 100%);
+        background: linear-gradient(150deg, #052544 0%, #03142a 100%);
       }
       .stage::before {
         content: "";
@@ -1294,8 +1313,8 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        background: rgba(0, 67, 120, 0.08);
-        color: var(--blue);
+        background: rgba(72, 217, 211, 0.16);
+        color: var(--teal-lt);
         border-radius: 50px;
         padding: 0.35rem 1rem;
         font-size: 0.92rem;
@@ -1303,23 +1322,24 @@
         margin-bottom: 0.8rem;
       }
       .stage h3 {
-        color: var(--blue);
+        color: #fff;
         font-size: 1.3rem;
         font-weight: 800;
         margin-bottom: 0.9rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
       .stage dl {
         margin: 0;
       }
       .stage dt {
         font-weight: 800;
-        color: var(--blue-dk);
+        color: var(--teal-lt);
         font-size: 1.06rem;
         margin-top: 0.9rem;
       }
       .stage dd {
         margin: 0.25rem 0 0;
-        color: var(--text-mid);
+        color: rgba(255, 255, 255, 0.85);
         font-size: 1.08rem;
         line-height: 1.85;
       }
@@ -1719,6 +1739,7 @@
           </li>
         </ul>
       </div>
+      <div class="nav-slogan">כשחולמים לבד, חולמים.<br />כשחולמים ביחד - מתעוררים.</div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1732,21 +1753,21 @@
       <div class="ph-tint"></div>
       <div class="ph-content">
         <h1 class="ph-title rev">
-          חכמה לחיים של משמעות<br />
+          16 המעלות לחיים בעלי ערך<br />
           בעולם משתנה
         </h1>
         <p class="ph-sub rev d1">
-          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
-          אוניברסליים וחיים בעלי משמעות
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
         </p>
         <div class="rev d2">
-          <a href="#program" class="btn btn-gold">לפרטים נוספים</a>
+          <a href="#program" class="btn btn-gold">למידע נוסף</a>
         </div>
       </div>
     </header>
 
     <!-- ════════════ תוכנית 16 המעלות ════════════ -->
-    <section class="ab-sec bg-calm" id="program">
+    <section class="ab-sec bg-calm bleed-host" id="program">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">תוכנית 16 המעלות</h2>
@@ -1768,12 +1789,10 @@
           כל אחד מארבעת נושאי הליבה כולל 4 ערכים אוניברסליים (מעלות)
         </p>
 
+        <div class="virtues-board-bleed">
         <div class="virtues-board rev d2">
           <div class="vb-head">16 המעלות</div>
           <div class="vb-body">
-            <p class="vb-hint">
-              העבירו את העכבר על כל מעלה כדי לגלות את משמעותה
-            </p>
             <div class="vb-grid">
               <!-- ─── column titles ─── -->
               <div
@@ -1807,6 +1826,7 @@
               <!-- the 16 tiles are written in by assets/js — see program script -->
             </div>
           </div>
+        </div>
         </div>
 
         <p class="ab-body rev d3" style="margin-top: 2.6rem">
@@ -1916,7 +1936,7 @@
     <section class="ab-sec bg-calm" id="audience">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">למי זה מיועד</h2>
+          <h2 class="h3d rev">למי מיועדת התוכנית</h2>
         </div>
         <p class="ab-body rev">
           לכולם! ליחידים, לקבוצות ולארגונים המעוניינים לחיות חיים שלווים,
@@ -1937,12 +1957,8 @@
             alt="אנשי ונשות עסקים"
           />
           <img
-            src="assets/img/program/audience-community.png"
-            alt="מובילי קהילות"
-          />
-          <img
             src="assets/img/program/audience-orgs.png"
-            alt="מובילי ארגונים"
+            alt="מובילות ומובילי ארגונים"
           />
         </div>
       </div>
@@ -1952,7 +1968,7 @@
     <section class="ab-sec bg-deep" id="impact">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">האימפקט</h2>
+          <h2 class="h3d rev">בית החולמים במספרים</h2>
         </div>
         <p class="ab-body rev">
           עמותת בית חולמים הביאה את התוכנית לישראל בשנת 2020, והיא הנציגה של
@@ -1981,13 +1997,10 @@
         </div>
 
         <p class="ab-body rev d2" style="margin-top: 2.4rem">
-          התוכנית מוכרת על ידי משרד החינוך ונכנסה למערכת החינוך בשנת תשפ"ג
-          (בתוכנית גפ"ן), ומאז השתתפו בה מאות תלמידים, מורים והורים.
-        </p>
-        <p class="ab-body rev d3">
-          16 המעלות היא תוכנית הדגל במנהל חינוך של עיריית ת"א-יפו, ופועלת גם
-          במרכז הממשלתי לבריאות הנפש בבאר-שבע, במרכז הממשלתי לבריאות הנפש לב
-          השרון, בחברות במגזר העסקי ועוד.
+          התוכנית מוכרת גם במערכת גפ"ן של משרד החינוך (תוכנית מספר 63554),
+          היא תוכנית הדגל במנהל חינוך של עיריית ת"א-יפו ופועלת גם במרכז
+          הממשלתי לבריאות הנפש בבאר-שבע, במרכז הממשלתי לבריאות הנפש לב השרון,
+          בחברות במגזר העסקי ועוד.
         </p>
       </div>
       <div class="wave-foot" aria-hidden="true">
@@ -2008,22 +2021,15 @@
     <section class="ab-sec bg-mist" id="stages">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">שלבי התוכנית והסמכה</h2>
+          <h2 class="h3d rev">שלבי התוכנית והסמכה להנחיה</h2>
         </div>
         <p class="ab-body rev">
           הלמידה מובנית במודל מודולרי הדרגתי. השלמת כל שלב מקנה תעודה בינלאומית
           מטעם בית חולמים וארגון FDCW הבינלאומי. התוכנית בנויה מ-3 שלבים
-          ולאחריה יכולים/ות המתאימים/ות להמשיך להכשרת מנחים/ות.
+          ולאחריה יכולים/ות המתאימים/ות להמשיך להכשרת מנחים.ות.
         </p>
 
-        <figure class="art-figure art-stage art-stage-1 art-wide rev d1">
-          <img
-            src="assets/img/program/stage-1.png"
-            alt="שלב 1 - יסודות 16 המעלות. מה לומדים: היכרות חווייתית עם ארבעת נושאי הליבה ו-16 המעלות והבסיס המדעי והפילוסופי שלהן, תרגול מיינדפולנס וכלים מעשיים להתמודדות עם אתגרי היומיום. מבנה: שני פורמטים אפשריים, 12 שעות לימוד או פורמט &quot;שלב 1 לארגונים&quot; בן 8 שעות. כולל: ערכת קלפי המעלות ותעודה בינלאומית."
-          />
-        </figure>
-
-        <div class="stage art-narrow rev d1">
+        <div class="stage rev d1">
           <span class="stage-badge">🔹 שלב 1</span>
           <h3>יסודות 16 המעלות</h3>
           <dl>
@@ -2035,26 +2041,15 @@
             </dd>
             <dt>מבנה</dt>
             <dd>
-              שני פורמטים אפשריים: (א) 12 שעות לימוד הנלמדות ב-2 ימים מלאים או
-              ב-4 מפגשים של 3 שעות. (ב) במקרים בהם מתקיים שיתוף פעולה עם ארגון
-              כלשהו (בדרך כלל מהמגזר הציבורי או העסקי), ישנו גם פורמט של "שלב 1
-              לארגונים" — פורמט בן 8 שעות, הנלמדות ב-2 מפגשים בני 4 שעות כל
-              אחד. כל אחד מהפורמטים מזכה בתעודה המוכרת גם על-ידי הארגון
-              הבינלאומי, המאפשרת להמשיך לשלב 2.
+              (א) 12 שעות לימוד.<br />
+              (ב) "שלב 1 לארגונים": 2 מפגשים של 4 שעות.
             </dd>
             <dt>כולל</dt>
             <dd>ערכת קלפי המעלות ותעודה בינלאומית.</dd>
           </dl>
         </div>
 
-        <figure class="art-figure art-stage art-stage-2 art-wide rev d2">
-          <img
-            src="assets/img/program/stage-2.png"
-            alt="שלב 2 - העמקה והטמעה ביומיום. מה לומדים: העמקה בתכנים והטמעת הכלים שנלמדו בשלב 1, ביסוס התרגול האישי בשגרה והיכרות ראשונית עם צד ה&quot;צל&quot;. מבנה: 5 מפגשים מונחים של שעתיים וחצי, אחת לשבועיים. כולל: גרסה דיגיטלית של ספר התוכנית, חומרים כתובים ומוקלטים ותעודה בינלאומית."
-          />
-        </figure>
-
-        <div class="stage art-narrow stage-2 rev d2">
+        <div class="stage stage-2 rev d2">
           <span class="stage-badge">🔹 שלב 2</span>
           <h3>העמקה והטמעה ביומיום</h3>
           <dl>
@@ -2066,11 +2061,7 @@
               אישיות וקבוצתיות להתמודדות עם אתגרים אלה.
             </dd>
             <dt>מבנה</dt>
-            <dd>
-              5 מפגשים מונחים של שעתיים וחצי (כ-15 שעות), אחת לשבועיים. בין
-              המפגשים מתבצע גם לימוד ואימון אישי (כחצי שעה בשבוע) באמצעות דפי
-              הנחיה וחומרים מוקלטים ותוך ליווי של צמד המנחים/ות.
-            </dd>
+            <dd>15 שעות לימוד.</dd>
             <dt>כולל</dt>
             <dd>
               גרסה דיגיטלית של ספר התוכנית, חומרים כתובים ומוקלטים לטובת התנסות
@@ -2079,38 +2070,24 @@
           </dl>
         </div>
 
-        <figure class="art-figure art-stage art-stage-3 art-wide rev d3">
-          <img
-            src="assets/img/program/stage-3.png"
-            alt="שלב 3 - הרחבה פילוסופית ומדעית. מה לומדים: העמקה בצד ה&quot;צל&quot; של 16 המעלות והרחבה תאורטית בבסיס הפילוסופי והמדעי, ובהם טבע התודעה, פסיכולוגיית העצמי, התהוות גומלין, נוירוני מראה ועוד. מבנה: 2 ימים מלאים או 4 מפגשים של 3 שעות (12 שעות)."
-          />
-        </figure>
-
-        <div class="stage art-narrow stage-3 rev d3">
+        <div class="stage stage-3 rev d3">
           <span class="stage-badge">🔹 שלב 3</span>
           <h3>הרחבה פילוסופית ומדעית</h3>
           <dl>
             <dt>מה לומדים</dt>
             <dd>
-              העמקה בצד ה"צל" של 16 המעלות והרחבה תאורטית בבסיס הפילוסופי והמדעי
-              שהוצג בשלבים קודמים, ובהם טבע התודעה, פסיכולוגיית העצמי, התהוות
-              גומלין, נוירוני מראה ועוד.
+              העמקה בצד ה"צל" של 16 המעלות והרחבת הבסיס המדעי והפילוסופי שהוצג
+              בשלבים הקודמים, תוך תרגול מעשי. התמקדות בטבע התודעה, פסיכולוגית
+              העצמי, התהוות גומלין, נוירוני מראה ועוד.
             </dd>
             <dt>מבנה</dt>
-            <dd>2 ימים מלאים או 4 מפגשים של 3 שעות (12 שעות).</dd>
+            <dd>12 שעות לימוד.</dd>
           </dl>
         </div>
 
-        <figure class="art-figure art-stage art-stage-track art-wide rev d3">
-          <img
-            src="assets/img/program/stage-track.png"
-            alt="מסלול הכשרת מנחים/ות. למי מיועד: למי שהשלימו את 3 השלבים ונמצאו מתאימים להנחות סדנאות וקבוצות מטעם העמותה. מה לומדים: פיתוח ביטחון בהנחיה, ארגון סדנאות, הטמעת תרגול המיינדפולנס ויתר הכלים של התוכנית והיכרות עם סגנון ההנחיה ברוח תוכנית 16 המעלות."
-          />
-        </figure>
-
-        <div class="stage art-narrow stage-track rev d3">
+        <div class="stage stage-track rev d3">
           <span class="stage-badge">🎓 מסלול הכשרה</span>
-          <h3>הכשרת מנחים/ות</h3>
+          <h3>הכשרת מנחים.ות</h3>
           <dl>
             <dt>למי מיועד</dt>
             <dd>
@@ -2173,7 +2150,7 @@
           <p class="sub rev">
             רוצים לשמוע עוד על תוכנית 16 המעלות?<br />
             השאירו פרטים ונחזור אליכם עם כל המידע על הסדנה הקרובה ועל התאמת
-            התוכנית לארגון או לקהילה שלכם.
+            התוכנית לכם ו/או לארגון שלכם.
           </p>
 
           <form
@@ -2232,8 +2209,8 @@
                     לקהילה</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="מסלול הכשרת מנחים" />מסלול
-                    הכשרת מנחים/ות</label
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="הכשרת מנחים.ות" />הכשרת
+                    מנחים.ות</label
                   >
                   <label class="ms-opt"
                     ><input type="checkbox" id="msOtherCheck" name="מה הביא אתכם אלינו" value="אחר" />אחר</label
@@ -2278,33 +2255,34 @@
               class="footer-logo-img"
             />
             <p class="footer-desc">
-              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+              עמותת בית חולמים -<br />
+              לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
             <div class="socials">
-              <a
-                href="https://www.youtube.com/@dreamers.16g"
-                class="fsoc"
-                title="YouTube"
-                target="_blank"
-                rel="noopener"
-              >▷</a
-              >
-              <a
-                href="https://www.facebook.com/Dreamers.Home.Israel/"
-                class="fsoc"
-                title="Facebook"
-                target="_blank"
-                rel="noopener"
-              >f</a
-              >
               <a
                 href="https://www.instagram.com/dreamers_home_il/"
                 class="fsoc"
                 title="Instagram"
                 target="_blank"
                 rel="noopener"
-              >▶</a
-              >
+                ><img src="assets/img/Instegram Logo.png" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/YouTube Logo.png" alt="YouTube"
+              /></a>
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Facebook Logo.png" alt="Facebook"
+              /></a>
             </div>
           </div>
           <div>
@@ -2332,13 +2310,6 @@
               >
             </p>
           </div>
-        </div>
-        <div class="footer-motto">
-          <img
-            src="assets/img/The Slogan - Light.png"
-            alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות."
-            class="motto-img"
-          />
         </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>

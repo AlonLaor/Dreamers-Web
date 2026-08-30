@@ -46,6 +46,11 @@
       html {
         scroll-behavior: smooth;
       }
+      @media (min-width: 769px) {
+        html {
+          font-size: 17px;
+        }
+      }
       body {
         font-family: "Heebo", system-ui, sans-serif;
         direction: rtl;
@@ -183,7 +188,7 @@
         color: #fff;
       }
       .logo-img {
-        height: 58px;
+        height: 87px;
         display: block;
         border-radius: 50%;
         transition: opacity 0.3s;
@@ -222,6 +227,19 @@
         transform: translateY(-2px);
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
       }
+      .nav-slogan {
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: center;
+        opacity: 0.92;
+      }
+      @media (max-width: 1024px) {
+        .nav-slogan {
+          display: none;
+        }
+      }
       .nav-burger {
         display: none;
         flex-direction: column;
@@ -253,11 +271,92 @@
         transform: translateY(-8px) rotate(-45deg);
       }
 
+      /* ─── Activities dropdown ─── */
+      .has-dropdown {
+        position: relative;
+      }
+      .dd-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .dd-arrow {
+        display: inline-block;
+        font-size: 0.62em;
+        transition: transform 0.3s ease;
+      }
+      .has-dropdown:hover .dd-arrow,
+      .has-dropdown:focus-within .dd-arrow {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        list-style: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        right: -0.5rem;
+        min-width: 260px;
+        padding: 0.55rem;
+        border-radius: 18px;
+        background: linear-gradient(
+          160deg,
+          rgba(0, 41, 82, 0.98) 0%,
+          rgba(0, 67, 120, 0.98) 100%
+        );
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(72, 217, 211, 0.18);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 1.9rem;
+        width: 12px;
+        height: 12px;
+        background: rgba(0, 41, 82, 0.98);
+        transform: rotate(45deg);
+        border-radius: 3px 0 0 0;
+      }
+      .has-dropdown:hover .dropdown-menu,
+      .has-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu li + li {
+        margin-top: 2px;
+      }
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.25s ease;
+      }
+      .dropdown-menu a:hover {
+        background: rgba(72, 217, 211, 0.15);
+        color: var(--teal);
+        padding-right: 1.4rem;
+      }
+
       /* ═══ PAGE HEADER ═══ */
       /* the night sky carries the header, under a deep blue scrim that keeps
          the white title readable over the bright aurora */
       #page-header {
         padding: 11rem 2rem 5.5rem;
+        min-height: min(88vh, 820px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         background:
           linear-gradient(
             180deg,
@@ -265,7 +364,8 @@
             rgba(0, 28, 60, 0.58) 45%,
             rgba(0, 22, 50, 0.8) 100%
           ),
-          url("assets/img/Sky with Starts.jpg") center / cover no-repeat,
+          url("assets/img/BackGround-light-sky with starts.jpg") center /
+            cover no-repeat,
           var(--blue-dk);
         position: relative;
         overflow: hidden;
@@ -336,6 +436,22 @@
       .ab-sec.bg-blue-gray {
         background: linear-gradient(160deg, #f2f8ff 0%, #eef9f9 100%);
       }
+      .ab-sec.bg-deep {
+        background:
+          radial-gradient(
+            ellipse 70% 60% at 78% 30%,
+            rgba(72, 217, 211, 0.22) 0%,
+            rgba(72, 217, 211, 0) 62%
+          ),
+          var(--g-main);
+        color: #fff;
+      }
+      .ab-sec.bg-deep .h3d {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.3),
+          0 4px 14px rgba(0, 0, 0, 0.35);
+      }
       .ab-hdr {
         text-align: center;
         margin-bottom: 3rem;
@@ -350,6 +466,9 @@
         color: var(--text-mid);
         max-width: 800px;
         margin: 0 auto 1.3rem;
+      }
+      .ab-body-center {
+        text-align: center;
       }
       .ab-split {
         display: grid;
@@ -375,35 +494,80 @@
         height: 100%;
         object-fit: cover;
       }
-      /* a heading that lives inside a text column rather than across the
-         section, so it stays in scale with the copy beside it */
-      .ab-split .ab-sub-h {
+      /* 40% smaller than the standard split image */
+      .ab-split-img-sm {
+        height: 252px;
+        max-width: 60%;
+        margin: 0 auto;
+      }
+      /* a demoted, subheading-level heading — used inside a text column so
+         it stays in scale with the copy beside it, and on its own as a
+         section header one step quieter than the page's main headings */
+      .ab-sub-h {
         font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+      }
+      .ab-split .ab-sub-h {
         margin: 2.4rem 0 1rem;
       }
-      /* the association's goals */
+      /* the association's goals — a small grid of raised, glass-edged
+         panels on the deep-blue field, standing out rather than a plain
+         bulleted list */
       .goal-list {
-        max-width: 800px;
+        max-width: 1080px;
         margin: 0 auto;
         list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.3rem;
       }
       .goal-list li {
         position: relative;
-        padding-inline-start: 1.8rem;
-        margin-bottom: 0.9rem;
-        font-size: 1.06rem;
-        line-height: 1.85;
-        color: var(--text-mid);
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+        padding: 1.5rem 1.7rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(
+          155deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.03) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 18px;
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.18) inset,
+          0 8px 0 -3px rgba(0, 12, 30, 0.25),
+          0 22px 40px rgba(0, 12, 30, 0.35);
+        transition:
+          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s;
       }
-      .goal-list li::before {
-        content: "";
-        position: absolute;
-        inset-inline-start: 0;
-        top: 0.72rem;
-        width: 10px;
-        height: 10px;
+      .goal-list li:hover {
+        transform: translateY(-6px);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.22) inset,
+          0 12px 0 -3px rgba(0, 12, 30, 0.28),
+          0 30px 50px rgba(0, 12, 30, 0.42);
+      }
+      .goal-list li:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      .goal-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
         border-radius: 50%;
-        background: var(--gold);
+        background: rgba(245, 166, 35, 0.22);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) inset;
+        font-size: 1.25rem;
       }
 
       /* ═══ TEAM CARDS / CAROUSEL ═══ */
@@ -484,6 +648,18 @@
         border: 4px solid #fff;
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
       }
+      .team-photo-lg {
+        width: 168px;
+        height: 168px;
+      }
+      /* the board, shown in full rather than paged through a carousel */
+      .team-grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.7rem;
+      }
       .team-name {
         font-weight: 800;
         color: var(--blue);
@@ -559,6 +735,12 @@
         flex: 0 1 calc((100% - 3.4rem) / 3);
         min-width: 250px;
       }
+      /* the academic forum's portraits, 50% larger than the standard
+         team-card photo */
+      .acad-grid .team-photo {
+        width: 174px;
+        height: 174px;
+      }
 
       /* ═══ CLOSING QUOTE ═══ */
       #quote-band {
@@ -596,7 +778,7 @@
         background: url("assets/img/Gradient blue.png") center / cover no-repeat
           var(--blue-dk);
         color: #fff;
-        padding: 5rem 2rem 2.5rem;
+        padding: 2.8rem 2rem 1.6rem;
         border-top: 2px solid rgba(72, 217, 211, 0.3);
       }
       .footer-inner {
@@ -609,18 +791,26 @@
         align-items: flex-start;
         flex-wrap: wrap;
         gap: 3rem;
-        margin-bottom: 3.5rem;
+        margin-bottom: 1.8rem;
       }
       .footer-logo-img {
-        height: 80px;
+        height: 200px;
         display: block;
+      }
+      .footer-brand {
+        flex: 1 1 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
       .footer-desc {
         font-size: 1rem;
         line-height: 1.8;
         color: rgba(255, 255, 255, 0.85);
-        max-width: 340px;
-        margin-top: 1rem;
+        max-width: 320px;
+        margin: 1rem auto 0;
+        text-align: center;
       }
       .footer-nav {
         list-style: none;
@@ -672,51 +862,27 @@
         margin-top: 1.4rem;
       }
       .fsoc {
-        width: 46px;
-        height: 46px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.12);
+        width: 42px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
-        font-size: 1rem;
-        font-weight: 700;
-        transition: all 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.25);
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .fsoc img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
       }
       .fsoc:hover {
-        background: var(--teal);
-        color: var(--blue-dk);
         transform: translateY(-3px);
-        border-color: var(--teal);
-      }
-      /* The slogan is set in the multi-gender typeface, which exists only as
-         artwork, so it is carried as an image: white for the sentence and
-         gold for מתעוררות, both of which read on the deep footer.
-         The box behind it stays faint so it blends into the footer. */
-      /* the slogan and the panel around it are both carried at 75% of the
-         size they were first set at, so the whole block sits quieter in the
-         footer while keeping its proportions */
-      .footer-motto {
-        max-width: 585px;
-        margin: 0 auto 2.6rem;
-        padding: 1.43rem 1.65rem;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(72, 217, 211, 0.35);
-        border-radius: 22px;
-        box-shadow: 0 14px 40px rgba(0, 20, 40, 0.25);
-      }
-      .motto-img {
-        width: 100%;
-        max-width: 465px;
-        height: auto;
-        margin: 0 auto;
+        opacity: 0.85;
       }
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.18);
-        padding-top: 2rem;
+        padding-top: 1.2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -735,6 +901,13 @@
         .ab-split-img {
           height: 280px;
         }
+        .ab-split-img-sm {
+          height: 168px;
+          max-width: 60%;
+        }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
         .acad-grid {
           max-width: 480px;
         }
@@ -745,6 +918,12 @@
           grid-template-columns: 1fr;
           max-width: 420px;
           margin: 0 auto;
+        }
+        .goal-list {
+          grid-template-columns: 1fr;
+        }
+        .goal-list li:last-child:nth-child(odd) {
+          max-width: none;
         }
       }
       @media (max-width: 768px) {
@@ -780,8 +959,31 @@
           text-align: center;
           padding: 0.7rem 1.5rem;
         }
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          backdrop-filter: none;
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 12px;
+          margin: 0.2rem 1.2rem 0.5rem;
+          padding: 0.3rem;
+          display: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .has-dropdown.dd-open .dropdown-menu {
+          display: block;
+        }
+        .has-dropdown.dd-open .dd-arrow {
+          transform: rotate(180deg);
+        }
         #page-header {
           padding: 9rem 1.5rem 4rem;
+          min-height: min(78vh, 620px);
         }
         .footer-top {
           flex-direction: column;
@@ -797,6 +999,10 @@
       @media (max-width: 520px) {
         .ab-sec {
           padding: 5rem 1.1rem;
+        }
+        .team-grid {
+          grid-template-columns: 1fr;
+          max-width: 320px;
         }
       }
       /* No text block may end on a line holding a single word.
@@ -835,12 +1041,40 @@
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html" class="active">אודות</a></li>
           <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="index.html#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בבריאות הנפש</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >16 המעלות בקהילה</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                  >קבוצות תרגול וסדנאות פרטיות</a
+                >
+              </li>
+            </ul>
+          </li>
           <li><a href="index.html#activities">אזור למידה</a></li>
           <li>
             <a href="contact.html?from=home" class="nav-cta">צרו איתנו קשר</a>
           </li>
         </ul>
       </div>
+      <div class="nav-slogan">כשחולמים לבד, חולמים.<br />כשחולמים ביחד - מתעוררים.</div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -859,13 +1093,9 @@
       <div class="wrap">
         <div class="ab-split">
           <div>
-            <p class="ab-body rev">
-              אנחנו חיים בזמנים יוצאי-דופן בהיסטוריה האנושית, ומתמודדים עם
-              אתגרים שדורות קודמים לא ניצבו בפניהם. אלה ימים שקוראים לכולנו
-              להשתנות בעצמנו, ולסייע זה לזו להשתנות, בדרך להחלמת ותיקון חברה
-              ועולם.
-            </p>
-            <h2 class="h3d ab-sub-h rev d1">מי אנחנו</h2>
+            <h2 class="h3d ab-sub-h rev" style="margin-top: 0">
+              על עמותת בית חולמים
+            </h2>
             <p class="ab-body rev d1">
               עמותת בית חולמים פועלת בתחומי הרוח והחברה לבנייה מחדש של
               הסולידריות החברתית. באמצעות שילוב של פילוסופיות ופרקטיקות
@@ -887,21 +1117,38 @@
     </section>
 
     <!-- ════════════ GOALS ════════════ -->
-    <section class="ab-sec bg-sky">
+    <section class="ab-sec bg-deep">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">מטרות העמותה</h2>
         </div>
         <ul class="goal-list rev">
           <li>
-            להקים רשת של "בתי חולמים": מרכזים רוחניים לריפוי והחלמת גוף-נפש
+            <span class="goal-icon">🏛️</span>
+            <span
+              >להקים רשת של "בתי חולמים": מרכזים רוחניים לריפוי והחלמת
+              גוף-נפש</span
+            >
           </li>
-          <li>לפעול לטיפוח תרבות של חמלה ואי-אלימות</li>
-          <li>לפעול ליצירת שיח מקרב ומגשר בין הדתות</li>
           <li>
-            לפעול למען צדק חברתי ולשמירה על ערכי דמוקרטיה וזכויות אדם
+            <span class="goal-icon">💗</span>
+            <span>לפעול לטיפוח תרבות של חמלה ואי-אלימות</span>
           </li>
-          <li>לחנך לאורח חיים בריא ולשמירה על איכות הסביבה</li>
+          <li>
+            <span class="goal-icon">🕊️</span>
+            <span>לפעול ליצירת שיח מקרב ומגשר בין הדתות</span>
+          </li>
+          <li>
+            <span class="goal-icon">⚖️</span>
+            <span
+              >לפעול למען צדק חברתי ולשמירה על ערכי דמוקרטיה וזכויות
+              אדם</span
+            >
+          </li>
+          <li>
+            <span class="goal-icon">🌿</span>
+            <span>לחנך לאורח חיים בריא ולשמירה על איכות הסביבה</span>
+          </li>
         </ul>
       </div>
     </section>
@@ -912,14 +1159,18 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">תוכנית 16 המעלות</h2>
         </div>
-        <p class="ab-body rev">
-          עמותת בית חולמים הביאה את התוכנית הבינלאומית "16 המעלות" לישראל בשנת
-          2020, והפכה להיות הנציגה הרשמית של התוכנית בארץ.
+        <p class="ab-body ab-body-center rev">
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
+          אוניברסליים וחיים בעלי משמעות.
         </p>
-        <p class="ab-body rev d1">
+        <p class="ab-body ab-body-center rev d1">
           התוכנית פותחה על ידי הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW -
           Foundation for Developing Compassion and Wisdom), שהוקם בשנת 2005.
           כיום נגישה התוכנית בכל העולם, עם מנחים ומנחות מוסמכים ב-22 מדינות.
+        </p>
+        <p class="ab-body ab-body-center rev d2">
+          עמותת בית חולמים הביאה את התוכנית הבינלאומית "16 המעלות" לישראל בשנת
+          2020, והפכה להיות הנציגה הרשמית של התוכנית בארץ.
         </p>
       </div>
     </section>
@@ -928,7 +1179,7 @@
     <section class="ab-sec bg-sky" id="fdcw">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">על ארגון FDCW</h2>
+          <h2 class="h3d ab-sub-h rev">על ארגון FDCW</h2>
         </div>
         <div class="ab-split">
           <div>
@@ -940,132 +1191,115 @@
               לאחרים - וכך, בהדרגה, נבנית תחושה של אחריות כלפי עצמנו, כלפי
               הזולת וכלפי הסביבה.
             </p>
+            <div class="rev d3" style="margin-top: 1.6rem">
+              <a href="program.html" class="btn btn-blue"
+                >מידע נוסף על התוכנית</a
+              >
+            </div>
           </div>
-          <div class="ab-split-img rev d2">
+          <div class="ab-split-img ab-split-img-sm rev d2">
             <img src="assets/img/About us - Pic 2.png" alt="על ארגון FDCW" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ════════════ MANAGEMENT — CAROUSEL ════════════ -->
+    <!-- ════════════ MANAGEMENT ════════════ -->
     <section class="ab-sec bg-warm" id="management">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">וועד ההנהלה</h2>
-          <p class="sub rev">האנשים שמובילים את החזון של בית חולמים</p>
         </div>
 
-        <div class="carousel rev" id="car-mgmt">
-          <div class="carousel-viewport">
-            <div class="carousel-track">
-              <div class="carousel-page cols-3">
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/niv_agam.jpg"
-                    alt="ניב אגם"
-                  />
-                  <div class="team-name">ניב אגם</div>
-                  <div class="team-role">
-                    פסיכולוג קליני-מדריך, מייסד ויו"ר העמותה והמנהל המקצועי שלה
-                  </div>
-                </div>
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/miran_brodbar.jpg"
-                    alt="מירן ברודבר"
-                  />
-                  <div class="team-name">מירן ברודבר</div>
-                  <div class="team-role">מומחה לחדשנות טכנולוגית</div>
-                </div>
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/tania_amer.png"
-                    alt="טניה עמר"
-                  />
-                  <div class="team-name">טניה עמר</div>
-                  <div class="team-role">מייסדת ומנכ"לית CXP Consulting</div>
-                </div>
-              </div>
-              <div class="carousel-page cols-3">
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/yael_kaminski.jpg"
-                    alt="יעל קמינסקי"
-                  />
-                  <div class="team-name">יעל קמינסקי</div>
-                  <div class="team-role">
-                    פסיכולוגית קלינית ו-HR Business Partner ב-Wix
-                  </div>
-                </div>
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/nitzan_aviv.jpg"
-                    alt="ניצן אביב"
-                  />
-                  <div class="team-name">ניצן אביב</div>
-                  <div class="team-role">
-                    סגן מנהל מחוז מרכז של החברה למתנ"סים
-                  </div>
-                </div>
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/noya_shila.jpg"
-                    alt="ד״ר נויה שילה"
-                  />
-                  <div class="team-name">ד״ר נויה שילה</div>
-                  <div class="team-role">
-                    רופאה פנימאית בכירה ומנהלת מרכז שבים לחיים, שיבא
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-page cols-3">
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/avir_fedaus.avif"
-                    alt="עביר פדעוס"
-                  />
-                  <div class="team-name">עביר פדעוס</div>
-                  <div class="team-role">
-                    מורה ומחנכת במשרד החינוך; מטפלת ברפואה אינטגרטיבית מאחדת
-                  </div>
-                </div>
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/ran_hofer.avif"
-                    alt="רן הופר"
-                  />
-                  <div class="team-name">רן הופר</div>
-                  <div class="team-role">מנכ"ל מרכז גוף-נפש ברמת-השרון</div>
-                </div>
-                <div class="team-card">
-                  <img
-                    class="team-photo"
-                    src="assets/team/nadav_pari.jpg"
-                    alt="נדב פארי"
-                  />
-                  <div class="team-name">נדב פארי</div>
-                  <div class="team-role">מנהל המערך העסקי, Lineup Games</div>
-                </div>
-              </div>
+        <div class="team-grid rev">
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/niv_agam.jpg"
+              alt="ניב אגם"
+            />
+            <div class="team-name">ניב אגם</div>
+            <div class="team-role">
+              פסיכולוג קליני-מדריך, מייסד ויו"ר העמותה והמנהל המקצועי שלה
             </div>
           </div>
-          <div class="carousel-nav">
-            <button class="car-btn car-prev" aria-label="הקודם">›</button>
-            <div class="car-dots">
-              <button class="car-dot active" aria-label="שקופית 1"></button>
-              <button class="car-dot" aria-label="שקופית 2"></button>
-              <button class="car-dot" aria-label="שקופית 3"></button>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/miran_brodbar.jpg"
+              alt="מירן ברודבר"
+            />
+            <div class="team-name">מירן ברודבר</div>
+            <div class="team-role">מומחה לחדשנות טכנולוגית</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/tania_amer.jpg"
+              alt="טניה עמר"
+            />
+            <div class="team-name">טניה עמר</div>
+            <div class="team-role">מייסדת ומנכ"לית CXP Consulting</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/yael_kaminski.jpg"
+              alt="יעל קמינסקי"
+            />
+            <div class="team-name">יעל קמינסקי</div>
+            <div class="team-role">
+              פסיכולוגית קלינית ו-HR Business Partner ב-Wix
             </div>
-            <button class="car-btn car-next" aria-label="הבא">‹</button>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/nitzan_aviv.jpg"
+              alt="ניצן אביב"
+            />
+            <div class="team-name">ניצן אביב</div>
+            <div class="team-role">סגן מנהל מחוז מרכז של החברה למתנ"סים</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/noya_shila.jpg"
+              alt="ד״ר נויה שילה"
+            />
+            <div class="team-name">ד״ר נויה שילה</div>
+            <div class="team-role">
+              רופאה פנימאית בכירה ומנהלת מרכז שבים לחיים, שיבא
+            </div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/avir_fedaus.jpg"
+              alt="עביר פדעוס"
+            />
+            <div class="team-name">עביר פדעוס</div>
+            <div class="team-role">
+              מורה ומחנכת במשרד החינוך; מטפלת ברפואה אינטגרטיבית מאחדת
+            </div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/ran_hofer.jpg"
+              alt="רן הופר"
+            />
+            <div class="team-name">רן הופר</div>
+            <div class="team-role">מנכ"ל מרכז גוף-נפש ברמת-השרון</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/nadav_pari.jpg"
+              alt="נדב פארי"
+            />
+            <div class="team-name">נדב פארי</div>
+            <div class="team-role">מנהל המערך העסקי, Lineup Games</div>
           </div>
         </div>
       </div>
@@ -1076,7 +1310,6 @@
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">צוות</h2>
-          <p class="sub rev">האנשים שמריצים את העמותה יום-יום</p>
         </div>
 
         <div class="carousel rev" id="car-staff">
@@ -1193,21 +1426,9 @@
         </div>
 
         <div style="text-align: center; margin-top: 3.2rem" class="rev">
-          <p class="ab-body" style="margin-bottom: 1.6rem">
-            מנחי תוכנית 16 המעלות בישראל עברו הכשרה והוסמכו על ידי עמותת בית
-            חולמים ו-FDCW, וממשיכים ללמוד ביחד במסגרת הקהילה המקומית
-            והבינלאומית.
-          </p>
           <a href="contact.html?from=home" class="btn btn-blue">צרו איתנו קשר</a>
         </div>
       </div>
-    </section>
-
-    <!-- ════════════ CLOSING QUOTE ════════════ -->
-    <section id="quote-band">
-      <p class="quote-text rev">
-        "כשחולמים לבד, חולמים. כשחולמים יחד — מתעוררים."
-      </p>
     </section>
 
     <!-- ════════════ FOOTER ════════════ -->
@@ -1221,33 +1442,34 @@
               class="footer-logo-img"
             />
             <p class="footer-desc">
-              עמותת בית חולמים — לחיים שלווים, משמעותיים ומאושרים יותר.
+              עמותת בית חולמים -<br />
+              לחיים שלווים, משמעותיים ומאושרים יותר.
             </p>
             <div class="socials">
-              <a
-                href="https://www.youtube.com/@dreamers.16g"
-                class="fsoc"
-                title="YouTube"
-                target="_blank"
-                rel="noopener"
-              >▷</a
-              >
-              <a
-                href="https://www.facebook.com/Dreamers.Home.Israel/"
-                class="fsoc"
-                title="Facebook"
-                target="_blank"
-                rel="noopener"
-              >f</a
-              >
               <a
                 href="https://www.instagram.com/dreamers_home_il/"
                 class="fsoc"
                 title="Instagram"
                 target="_blank"
                 rel="noopener"
-              >▶</a
-              >
+                ><img src="assets/img/Instegram Logo.png" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/YouTube Logo.png" alt="YouTube"
+              /></a>
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Facebook Logo.png" alt="Facebook"
+              /></a>
             </div>
           </div>
           <div>
@@ -1275,13 +1497,6 @@
             </p>
           </div>
         </div>
-        <div class="footer-motto">
-          <img
-            src="assets/img/The Slogan - Light.png"
-            alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות."
-            class="motto-img"
-          />
-        </div>
         <div class="footer-bottom">
           <span>© 2026 by Dreamers Home</span>
         </div>
@@ -1298,12 +1513,23 @@
           const open = nav.classList.toggle("nav-open");
           burger.setAttribute("aria-expanded", open);
         });
-        nav.querySelectorAll(".nav-links a").forEach((a) =>
+        nav.querySelectorAll(".nav-links a").forEach((a) => {
+          if (a.classList.contains("dd-trigger")) return;
           a.addEventListener("click", () => {
             nav.classList.remove("nav-open");
             burger.setAttribute("aria-expanded", "false");
-          }),
-        );
+          });
+        });
+        const ddParent = nav.querySelector(".has-dropdown");
+        const ddTrigger = ddParent.querySelector(".dd-trigger");
+        ddTrigger.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            ddParent.classList.toggle("dd-open");
+          } else {
+            nav.classList.remove("nav-open");
+          }
+        });
 
         /* Scroll reveal */
         const io = new IntersectionObserver(
@@ -1352,7 +1578,6 @@
           startAuto();
         }
 
-        initCarousel("car-mgmt", 3, 6000);
       })();
     </script>
     <script src="assets/js/no-orphans.js?v=2" defer></script>
