@@ -235,6 +235,9 @@
         text-align: center;
         opacity: 0.92;
       }
+      .nav-slogan .ns-accent {
+        color: #d15810;
+      }
       @media (max-width: 1024px) {
         .nav-slogan {
           display: none;
@@ -1323,14 +1326,20 @@
         margin-bottom: 1.8rem;
       }
       .footer-logo-img {
-        height: 200px;
+        height: 150px;
         display: block;
       }
       .footer-brand {
-        flex: 1 1 50%;
+        flex: 1 1 0;
+        min-width: 220px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
+      }
+      .footer-nav-col {
+        flex: 1 1 0;
+        min-width: 220px;
         text-align: center;
       }
       .footer-desc {
@@ -1345,6 +1354,7 @@
         list-style: none;
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 0.75rem;
         margin-top: 0.5rem;
       }
@@ -1370,6 +1380,11 @@
         border-bottom: 2px solid rgba(72, 217, 211, 0.5);
         padding-bottom: 0.5rem;
         display: inline-block;
+      }
+      .footer-contact {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
       }
       .footer-contact p {
         font-size: 1rem;
@@ -1783,7 +1798,7 @@
           </li>
         </ul>
       </div>
-      <div class="nav-slogan">כשחולמים לבד, חולמים.<br />כשחולמים ביחד - מתעוררים.</div>
+      <div class="nav-slogan">כשחולמות לבד, חולמות.<br />כשחולמות יחד - <span class="ns-accent">מתעוררות.</span></div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -2398,7 +2413,7 @@
               /></a>
             </div>
           </div>
-          <div>
+          <div class="footer-nav-col">
             <div class="footer-col-title">ניווט</div>
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>

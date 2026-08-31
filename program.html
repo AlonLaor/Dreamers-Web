@@ -234,6 +234,9 @@
         text-align: center;
         opacity: 0.92;
       }
+      .nav-slogan .ns-accent {
+        color: #d15810;
+      }
       @media (max-width: 1024px) {
         .nav-slogan {
           display: none;
@@ -374,6 +377,11 @@
         max-width: 860px;
         margin: 0 0 1.3rem;
         text-align: right;
+      }
+      .ab-body-center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
 
       /* ═══ WHY NOW ═══ */
@@ -622,14 +630,20 @@
         margin-bottom: 1.8rem;
       }
       .footer-logo-img {
-        height: 200px;
+        height: 150px;
         display: block;
       }
       .footer-brand {
-        flex: 1 1 50%;
+        flex: 1 1 0;
+        min-width: 220px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
+      }
+      .footer-nav-col {
+        flex: 1 1 0;
+        min-width: 220px;
         text-align: center;
       }
       .footer-desc {
@@ -644,6 +658,7 @@
         list-style: none;
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 0.75rem;
         margin-top: 0.5rem;
       }
@@ -669,6 +684,11 @@
         border-bottom: 2px solid rgba(72, 217, 211, 0.5);
         padding-bottom: 0.5rem;
         display: inline-block;
+      }
+      .footer-contact {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
       }
       .footer-contact p {
         font-size: 1rem;
@@ -925,40 +945,6 @@
         height: 100%;
       }
 
-      /* ═══ FOUR CORE THEMES ═══ */
-      /* a plain bulleted list; each dot keeps the colour its theme carries
-         in the board below, so the two still read as one family */
-      .core-list {
-        max-width: 860px;
-        margin: 2rem 0 0;
-        list-style: none;
-      }
-      .core-list li {
-        position: relative;
-        padding-inline-start: 1.7rem;
-        margin-bottom: 0.85rem;
-        color: var(--blue-dk);
-        font-size: 1.08rem;
-        font-weight: 600;
-        line-height: 1.7;
-      }
-      .core-list li::before {
-        content: "";
-        position: absolute;
-        inset-inline-start: 0;
-        top: 0.6rem;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: var(--bullet, var(--blue));
-      }
-      .core-note {
-        margin: 1.6rem 0 0;
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--blue);
-      }
-
       /* ═══ THE 16 VIRTUES — flip cards ═══ */
       /* full-bleed positioning lives on the outer wrapper (same technique
          as .journey-bleed) so the inner board just centres normally inside
@@ -977,15 +963,6 @@
         box-shadow:
           0 4px 10px rgba(0, 67, 120, 0.1),
           0 22px 55px rgba(0, 67, 120, 0.22);
-      }
-      .vb-head {
-        background: var(--blue);
-        color: #fff;
-        text-align: center;
-        padding: 1.1rem 1rem;
-        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
-        font-weight: 900;
-        letter-spacing: 0.01em;
       }
       .vb-body {
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
@@ -1172,12 +1149,18 @@
         max-width: 1240px;
         margin: 0 auto;
       }
+      /* the single remaining journey card, shrunk 25% (box + image) from
+         the original two-card grid's per-card size */
+      .journey-grid-single {
+        grid-template-columns: 1fr;
+        max-width: 930px;
+      }
       /* keeps the intro line's right edge flush with the text inside the
          card below it (journey-body's own inner padding), so the two read
          as one aligned column instead of the paragraph sitting slightly
          left of the card's text */
       #journey .ab-body {
-        padding-right: 2.8rem;
+        padding-right: 2.1rem;
       }
       /* each card is split down the middle: the copy sits on the right, the
          photograph on the left — in RTL the first cell lands on the right */
@@ -1205,10 +1188,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 3.2rem 2.8rem;
+        padding: 2.4rem 2.1rem;
       }
       .journey-media {
-        min-height: 360px;
+        min-height: 270px;
         background-size: cover;
         background-position: center;
       }
@@ -1281,9 +1264,13 @@
       /* each stage carries its own tint drawn from the page palette and
          deepens from teal towards brand blue as the programme advances;
          the training track keeps the gold it already had */
+      .stages-intro {
+        max-width: 750px;
+        margin: 0 auto 1.3rem;
+      }
       .stage {
         position: relative;
-        max-width: 1000px;
+        max-width: 750px;
         margin: 1.6rem auto 0;
         background: linear-gradient(150deg, #0a3f6e 0%, #072c4e 100%);
         border: 1px solid rgba(72, 217, 211, 0.25);
@@ -1316,9 +1303,9 @@
         background: rgba(72, 217, 211, 0.16);
         color: var(--teal-lt);
         border-radius: 50px;
-        padding: 0.35rem 1rem;
-        font-size: 0.92rem;
-        font-weight: 800;
+        padding: 0.45rem 1.2rem;
+        font-size: 1.12rem;
+        font-weight: 900;
         margin-bottom: 0.8rem;
       }
       .stage h3 {
@@ -1327,6 +1314,7 @@
         font-weight: 800;
         margin-bottom: 0.9rem;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
       }
       .stage dl {
         margin: 0;
@@ -1343,16 +1331,74 @@
         font-size: 1.08rem;
         line-height: 1.85;
       }
+      /* stage 1's "מבנה": two raised, glass-edged panels standing side by
+         side rather than a plain (א)/(ב) text list */
+      .s1-structure {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 0.4rem;
+      }
+      .s1-box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        background: linear-gradient(
+          150deg,
+          rgba(72, 217, 211, 0.22) 0%,
+          rgba(72, 217, 211, 0.06) 100%
+        );
+        border: 1px solid rgba(72, 217, 211, 0.32);
+        border-radius: 16px;
+        padding: 1.1rem 1.1rem 1.3rem;
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.15) inset,
+          0 8px 0 -3px rgba(0, 12, 30, 0.35),
+          0 20px 34px rgba(0, 12, 30, 0.45);
+        transition:
+          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s;
+      }
+      .s1-box:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.2) inset,
+          0 12px 0 -3px rgba(0, 12, 30, 0.4),
+          0 26px 44px rgba(0, 12, 30, 0.5);
+      }
+      .s1-box-title {
+        font-weight: 800;
+        color: var(--teal-lt);
+        font-size: 0.98rem;
+      }
+      .s1-box-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
       .stage-track {
-        background: linear-gradient(150deg, #fffdf6 0%, #fdf3df 60%, #fbeace 100%);
-        border-color: rgba(245, 166, 35, 0.28);
+        position: relative;
+        background: var(--g-gold);
+        border-color: rgba(245, 166, 35, 0.4);
       }
       .stage-track::before {
-        background: var(--g-gold);
+        background: var(--blue);
       }
-      .stage-track .stage-badge {
-        background: rgba(245, 166, 35, 0.2);
-        color: #8a5a06;
+      .stage-track h3,
+      .stage-track dt,
+      .stage-track dd {
+        color: var(--blue-dk);
+        text-shadow: none;
+      }
+      .stage-track-icon {
+        position: absolute;
+        top: 1.7rem;
+        inset-inline-start: 1.8rem;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        box-shadow: 0 4px 14px rgba(0, 40, 80, 0.25);
       }
       .cta-pair {
         display: flex;
@@ -1496,6 +1542,14 @@
         }
         .stage {
           padding: 1.6rem 1.4rem;
+        }
+        .s1-structure {
+          grid-template-columns: 1fr;
+        }
+        .stage-track-icon {
+          position: static;
+          display: block;
+          margin: 0 auto 0.8rem;
         }
       }
       @media (max-width: 520px) {
@@ -1739,7 +1793,7 @@
           </li>
         </ul>
       </div>
-      <div class="nav-slogan">כשחולמים לבד, חולמים.<br />כשחולמים ביחד - מתעוררים.</div>
+      <div class="nav-slogan">כשחולמות לבד, חולמות.<br />כשחולמות יחד - <span class="ns-accent">מתעוררות.</span></div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1753,8 +1807,8 @@
       <div class="ph-tint"></div>
       <div class="ph-content">
         <h1 class="ph-title rev">
-          16 המעלות לחיים בעלי ערך<br />
-          בעולם משתנה
+          תוכנית 16 המעלות -<br />
+          לחיים בעלי ערך בעולם משתנה
         </h1>
         <p class="ph-sub rev d1">
           16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
@@ -1773,25 +1827,13 @@
           <h2 class="h3d rev">תוכנית 16 המעלות</h2>
         </div>
 
-        <p class="ab-body rev">
-          תוכנית 16 המעלות נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו
-          ומבוססת על ארבעה נושאי ליבה:
-        </p>
-
-        <ul class="core-list rev d1">
-          <li style="--bullet: var(--v-think)">הדרך שאנו חושבות.ים</li>
-          <li style="--bullet: var(--v-act)">הדרך שאנו פועלות.ים</li>
-          <li style="--bullet: var(--v-relate)">הדרך שאנו מתייחסות.ים לזולת</li>
-          <li style="--bullet: var(--v-meaning)">הדרך שאנו מוצאות.ים משמעות</li>
-        </ul>
-
-        <p class="core-note rev d2">
-          כל אחד מארבעת נושאי הליבה כולל 4 ערכים אוניברסליים (מעלות)
+        <p class="ab-body ab-body-center rev">
+          התוכנית מבוססת על ארבעה נושאי ליבה אשר כוללים 16 ערכים אוניברסליים
+          (מעלות)
         </p>
 
         <div class="virtues-board-bleed">
         <div class="virtues-board rev d2">
-          <div class="vb-head">16 המעלות</div>
           <div class="vb-body">
             <div class="vb-grid">
               <!-- ─── column titles ─── -->
@@ -1829,10 +1871,11 @@
         </div>
         </div>
 
-        <p class="ab-body rev d3" style="margin-top: 2.6rem">
-          באמצעות שילוב בין פילוסופיות מזרחיות ומדע מערבי, בין חכמה עתיקה
-          להתפתחויות מודרניות, התוכנית מייצרת שפה משותפת וסוללת דרך לחיים
-          שלווים, משמעותיים ומאושרים יותר ליחידים, משפחות, קהילות ולחברה כולה.
+        <p class="ab-body ab-body-center rev d3" style="margin-top: 2.6rem">
+          התוכנית נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו באמצעות
+          שילוב בין פילוסופיות מזרחיות ומדע מערבי, בין חכמה עתיקה להתפתחויות
+          מודרניות, התוכנית מייצרת שפה משותפת וסוללת דרך לחיים שלווים,
+          משמעותיים ומאושרים יותר ליחידים, משפחות, קהילות ולחברה כולה.
         </p>
 
         <div class="rev d3" style="margin-top: 2rem">
@@ -1888,7 +1931,7 @@
         </p>
 
         <div class="journey-bleed">
-          <div class="journey-grid">
+          <div class="journey-grid journey-grid-single">
             <div class="journey-card rev d1">
               <div class="journey-body">
                 <h3>מתוך ההיכרות הזאת מתאפשרת</h3>
@@ -1898,17 +1941,7 @@
                   <li>מציאת שלוות-נפש וחוסן מנטלי</li>
                   <li>קבלת החלטות טובה יותר</li>
                 </ul>
-              </div>
-              <div
-                class="journey-media"
-                style="background-image: url('assets/img/16 מעלות.png')"
-                role="img"
-                aria-label="שובר גלים של אבנים המוליך אל עבר השקיעה"
-              ></div>
-            </div>
-            <div class="journey-card rev d2">
-              <div class="journey-body">
-                <h3>שיח על המעלות ותרגול מעשי</h3>
+                <h3 style="margin-top: 1.5rem">שיח על המעלות ותרגול מעשי</h3>
                 <ul class="why-result" style="margin: 0">
                   <li>מייצר תחושת שייכות</li>
                   <li>מקדם תחושת מסוגלות ורווחה נפשית</li>
@@ -1917,9 +1950,9 @@
               </div>
               <div
                 class="journey-media"
-                style="background-image: url('assets/img/hands square.png')"
+                style="background-image: url('assets/img/16 מעלות.png')"
                 role="img"
-                aria-label="כפות ידיים מונחות זו על גבי זו"
+                aria-label="שובר גלים של אבנים המוליך אל עבר השקיעה"
               ></div>
             </div>
           </div>
@@ -1970,7 +2003,7 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">בית החולמים במספרים</h2>
         </div>
-        <p class="ab-body rev">
+        <p class="ab-body ab-body-center rev">
           עמותת בית חולמים הביאה את התוכנית לישראל בשנת 2020, והיא הנציגה של
           הארגון הבינלאומי FDCW בישראל.
         </p>
@@ -1996,7 +2029,7 @@
           </div>
         </div>
 
-        <p class="ab-body rev d2" style="margin-top: 2.4rem">
+        <p class="ab-body ab-body-center rev d2" style="margin-top: 2.4rem">
           התוכנית מוכרת גם במערכת גפ"ן של משרד החינוך (תוכנית מספר 63554),
           היא תוכנית הדגל במנהל חינוך של עיריית ת"א-יפו ופועלת גם במרכז
           הממשלתי לבריאות הנפש בבאר-שבע, במרכז הממשלתי לבריאות הנפש לב השרון,
@@ -2023,7 +2056,7 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">שלבי התוכנית והסמכה להנחיה</h2>
         </div>
-        <p class="ab-body rev">
+        <p class="ab-body stages-intro rev">
           הלמידה מובנית במודל מודולרי הדרגתי. השלמת כל שלב מקנה תעודה בינלאומית
           מטעם בית חולמים וארגון FDCW הבינלאומי. התוכנית בנויה מ-3 שלבים
           ולאחריה יכולים/ות המתאימים/ות להמשיך להכשרת מנחים.ות.
@@ -2041,11 +2074,20 @@
             </dd>
             <dt>מבנה</dt>
             <dd>
-              (א) 12 שעות לימוד.<br />
-              (ב) "שלב 1 לארגונים": 2 מפגשים של 4 שעות.
+              <div class="s1-structure">
+                <div class="s1-box">
+                  <span class="s1-box-title">שלב 1 לארגונים</span>
+                  <span class="s1-box-text">2 מפגשים של 4 שעות כל מפגש</span>
+                </div>
+                <div class="s1-box">
+                  <span class="s1-box-title">שלב 1 לקהל הרחב</span>
+                  <span class="s1-box-text"
+                    >12 שעות הנלמדות או ב-2 ימים מלאים או ב-4 מפגשים של 3
+                    שעות</span
+                  >
+                </div>
+              </div>
             </dd>
-            <dt>כולל</dt>
-            <dd>ערכת קלפי המעלות ותעודה בינלאומית.</dd>
           </dl>
         </div>
 
@@ -2061,12 +2103,7 @@
               אישיות וקבוצתיות להתמודדות עם אתגרים אלה.
             </dd>
             <dt>מבנה</dt>
-            <dd>15 שעות לימוד.</dd>
-            <dt>כולל</dt>
-            <dd>
-              גרסה דיגיטלית של ספר התוכנית, חומרים כתובים ומוקלטים לטובת התנסות
-              בתרגול עצמי, ותעודה בינלאומית עבור השלמת שלב 2.
-            </dd>
+            <dd>5 שעות הנלמדות ב-5 מפגשים מונחים של שעתיים וחצי.</dd>
           </dl>
         </div>
 
@@ -2081,13 +2118,18 @@
               העצמי, התהוות גומלין, נוירוני מראה ועוד.
             </dd>
             <dt>מבנה</dt>
-            <dd>12 שעות לימוד.</dd>
+            <dd>12 שעות הנלמדות ב-2 ימים מלאים או ב-4 מפגשים של 3 שעות.</dd>
           </dl>
         </div>
 
         <div class="stage stage-track rev d3">
-          <span class="stage-badge">🎓 מסלול הכשרה</span>
-          <h3>הכשרת מנחים.ות</h3>
+          <img
+            class="stage-track-icon"
+            src="assets/img/program/stage-track-icon.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <h3>מסלול הכשרת מנחים.ות</h3>
           <dl>
             <dt>למי מיועד</dt>
             <dd>
@@ -2107,7 +2149,7 @@
             >להרשמה לסדנת שלב 1 הקרובה</a
           >
           <a href="#contact-form" class="btn btn-gold"
-            >לתיאום סדנה מותאמת לארגון / קהילה</a
+            >לתיאום סדנה מותאמת לארגון</a
           >
         </div>
       </div>
@@ -2285,7 +2327,7 @@
               /></a>
             </div>
           </div>
-          <div>
+          <div class="footer-nav-col">
             <div class="footer-col-title">ניווט</div>
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
