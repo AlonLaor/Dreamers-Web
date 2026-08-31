@@ -367,8 +367,7 @@
             rgba(0, 28, 60, 0.58) 45%,
             rgba(0, 22, 50, 0.8) 100%
           ),
-          url("assets/img/הצעה של דפנה לתמונה ראשית.jpg") center / cover
-            no-repeat,
+          url("assets/img/Sky with Starts.jpg") center / cover no-repeat,
           var(--blue-dk);
         position: relative;
         overflow: hidden;
@@ -503,6 +502,12 @@
         max-width: 60%;
         margin: 0 auto;
       }
+      /* 25% smaller than the standard split image */
+      .ab-split-img-orchard {
+        height: 315px;
+        max-width: 75%;
+        margin: 0 auto;
+      }
       /* a demoted, subheading-level heading — used inside a text column so
          it stays in scale with the copy beside it, and on its own as a
          section header one step quieter than the page's main headings */
@@ -533,18 +538,18 @@
         font-size: 1.05rem;
         line-height: 1.7;
         font-weight: 600;
-        color: var(--text);
-        background: #fff;
-        border: 1px solid rgba(0, 67, 120, 0.08);
+        color: #fff;
+        background: linear-gradient(150deg, var(--blue) 0%, var(--blue-dk) 100%);
+        border: 1px solid rgba(72, 217, 211, 0.2);
         border-radius: 18px;
-        box-shadow: 0 14px 34px var(--shadow);
+        box-shadow: 0 14px 34px rgba(0, 41, 82, 0.35);
         transition:
           transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
           box-shadow 0.35s;
       }
       .goal-list li:hover {
         transform: translateY(-6px);
-        box-shadow: 0 22px 46px var(--shadow);
+        box-shadow: 0 22px 46px rgba(0, 41, 82, 0.45);
       }
       .goal-list li:last-child:nth-child(odd) {
         grid-column: 1 / -1;
@@ -623,7 +628,7 @@
       .team-photo {
         width: 116px;
         height: 116px;
-        border-radius: 50%;
+        border-radius: 18px;
         object-fit: cover;
         object-position: center top;
         margin: 0 auto 1.5rem;
@@ -1102,7 +1107,7 @@
               ה-21, ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.
             </p>
           </div>
-          <div class="ab-split-img rev d2">
+          <div class="ab-split-img ab-split-img-orchard rev d2">
             <img src="assets/img/מטע 2.png" alt="בית חולמים" />
           </div>
         </div>
@@ -1214,24 +1219,6 @@
           <div class="team-card">
             <img
               class="team-photo team-photo-lg"
-              src="assets/img/Faces/UPD 1/miran_brodbar.jpg"
-              alt="מירן ברודבר"
-            />
-            <div class="team-name">מירן ברודבר</div>
-            <div class="team-role">מומחה לחדשנות טכנולוגית</div>
-          </div>
-          <div class="team-card">
-            <img
-              class="team-photo team-photo-lg"
-              src="assets/img/Faces/UPD 1/tania_amer.jpg"
-              alt="טניה עמר"
-            />
-            <div class="team-name">טניה עמר</div>
-            <div class="team-role">מייסדת ומנכ"לית CXP Consulting</div>
-          </div>
-          <div class="team-card">
-            <img
-              class="team-photo team-photo-lg"
               src="assets/img/Faces/UPD 1/yael_kaminski.jpg"
               alt="יעל קמינסקי"
             />
@@ -1239,6 +1226,15 @@
             <div class="team-role">
               פסיכולוגית קלינית ו-HR Business Partner ב-Wix
             </div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/miran_brodbar.jpg"
+              alt="מירן ברודבר"
+            />
+            <div class="team-name">מירן ברודבר</div>
+            <div class="team-role">מומחה לחדשנות טכנולוגית</div>
           </div>
           <div class="team-card">
             <img
@@ -1283,6 +1279,15 @@
           <div class="team-card">
             <img
               class="team-photo team-photo-lg"
+              src="assets/img/Faces/UPD 1/tania_amer.jpg"
+              alt="טניה עמר"
+            />
+            <div class="team-name">טניה עמר</div>
+            <div class="team-role">מייסדת ומנכ"לית CXP Consulting</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo team-photo-lg"
               src="assets/img/Faces/UPD 1/nadav_pari.jpg"
               alt="נדב פארי"
             />
@@ -1307,7 +1312,7 @@
                 <div class="team-card">
                   <img
                     class="team-photo"
-                    src="assets/team/adi_ben_paz.jpg"
+                    src="assets/img/Faces/UPD 1/adi_ben_paz.jpg"
                     alt="עדי בן פזי"
                   />
                   <div class="team-name">עדי בן פזי</div>
@@ -1316,7 +1321,7 @@
                 <div class="team-card">
                   <img
                     class="team-photo"
-                    src="assets/team/gilad_kadmi.jpg"
+                    src="assets/img/Faces/UPD 1/gilad_kadmi.jpg"
                     alt="רו״ח גלעד קדמי"
                   />
                   <div class="team-name">רו״ח גלעד קדמי</div>
@@ -1325,7 +1330,7 @@
                 <div class="team-card">
                   <img
                     class="team-photo"
-                    src="assets/team/yana_posukhov.jpg"
+                    src="assets/img/Faces/UPD 1/yana_posukhov.jpg"
                     alt="יאנה פוסוכוב"
                   />
                   <div class="team-name">יאנה פוסוכוב</div>
@@ -1356,7 +1361,7 @@
           <div class="team-card rev">
             <img
               class="team-photo"
-              src="assets/team/ricardo_tarrasch.avif"
+              src="assets/img/Faces/UPD 1/ricardo_tarrasch.jpg"
               alt="פרופ׳ ריקרדו טרש"
             />
             <div class="team-name">פרופ׳ ריקרדו טרש</div>
@@ -1368,7 +1373,7 @@
           <div class="team-card rev d1">
             <img
               class="team-photo"
-              src="assets/team/michal_al_yagon.jpg"
+              src="assets/img/Faces/UPD 1/michal_al_yagon.jpg"
               alt="פרופ׳ מיכל אל-יגון"
             />
             <div class="team-name">פרופ׳ מיכל אל-יגון</div>
@@ -1379,7 +1384,7 @@
           <div class="team-card rev d2">
             <img
               class="team-photo"
-              src="assets/team/pninit_russo_netzer.jpg"
+              src="assets/img/Faces/UPD 1/pninit_russo_netzer.jpg"
               alt="פרופ׳ פנינית רוסו-נצר"
             />
             <div class="team-name">פרופ׳ פנינית רוסו-נצר</div>
@@ -1391,7 +1396,7 @@
           <div class="team-card rev d1">
             <img
               class="team-photo"
-              src="assets/img/Faces/נאוה לויט בן-נון.png"
+              src="assets/img/Faces/UPD 1/נאוה לויט בן-נון - 2.png"
               alt="פרופ׳ נאוה לויט בן-נון"
             />
             <div class="team-name">פרופ׳ נאוה לויט בן-נון</div>
@@ -1402,7 +1407,7 @@
           <div class="team-card rev d2">
             <img
               class="team-photo"
-              src="assets/img/Faces/מיכל ארליך.png"
+              src="assets/img/Faces/UPD 1/michal erlich.jpg"
               alt="ד״ר מיכל ארליך"
             />
             <div class="team-name">ד״ר מיכל ארליך</div>

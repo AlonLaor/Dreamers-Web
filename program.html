@@ -123,6 +123,17 @@
           0 8px 15px rgba(0, 0, 0, 0.3),
           0 16px 35px rgba(0, 0, 0, 0.18);
       }
+      /* full-bleed dark-navy title band, edge to edge */
+      .h3d-band {
+        width: 100vw;
+        margin-inline: calc(50% - 50vw);
+        background: var(--blue);
+        color: #fff;
+        text-shadow: none;
+        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+        padding: 1.1rem 1rem;
+        margin-bottom: 0;
+      }
       .sub {
         font-size: 1.06rem;
         line-height: 1.9;
@@ -159,6 +170,15 @@
       .btn-gold:hover {
         transform: translateY(-5px) scale(1.04);
         box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+      .btn-teal-dk {
+        background: linear-gradient(140deg, #073d42 0%, #0c565c 55%, #128a94 100%);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(10, 80, 88, 0.45);
+      }
+      .btn-teal-dk:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(10, 80, 88, 0.55);
       }
 
       /* ═══ NAV ═══ */
@@ -382,6 +402,11 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+      }
+      /* matches the journey card's own width (.journey-grid-single), so the
+         paragraphs above and below it share its exact left/right edges */
+      .journey-text-aligned {
+        max-width: 930px;
       }
 
       /* ═══ WHY NOW ═══ */
@@ -1246,6 +1271,11 @@
          at the width it was drawn at, so none is blown up. */
       /* the five run across the full width of the column on one line, giving
          up a few pixels each rather than breaking it, and are centred on it */
+      /* matches .aud-chips' own rendered width (4 × 224px + 3 gaps), so the
+         intro paragraph shares its exact left/right edges */
+      .audience-text-aligned {
+        max-width: 950px;
+      }
       .aud-chips {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 224px));
@@ -1299,14 +1329,18 @@
       .stage-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.55rem;
         background: rgba(72, 217, 211, 0.16);
         color: var(--teal-lt);
         border-radius: 50px;
-        padding: 0.45rem 1.2rem;
+        padding: 0.4rem 1.3rem;
         font-size: 1.12rem;
         font-weight: 900;
         margin-bottom: 0.8rem;
+      }
+      .stage-badge-icon {
+        width: 24px;
+        height: 24px;
       }
       .stage h3 {
         color: #fff;
@@ -1824,7 +1858,7 @@
     <section class="ab-sec bg-calm bleed-host" id="program">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">תוכנית 16 המעלות</h2>
+          <h2 class="h3d h3d-band rev">תוכנית 16 המעלות</h2>
         </div>
 
         <p class="ab-body ab-body-center rev">
@@ -1925,7 +1959,7 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">מה קורה בדרך</h2>
         </div>
-        <p class="ab-body rev">
+        <p class="ab-body ab-body-center journey-text-aligned rev">
           באמצעות חקירת 16 המעלות מתאפשרת הכרות מעמיקה יותר עם עצמנו ועם
           אחרים.ות.
         </p>
@@ -1958,8 +1992,12 @@
           </div>
         </div>
 
-        <p class="ab-body rev d3" style="margin-top: 2.2rem">
-          הטמעת המעלות מקדמת חיים חברתיים וקהילתיים משותפים גם בזמנים מורכבים.
+        <p
+          class="ab-body ab-body-center journey-text-aligned rev d3"
+          style="margin-top: 2.2rem"
+        >
+          הטמעת המעלות מקדמת חיים חברתיים וקהילתיים משותפים גם בזמנים
+          מורכבים.<br />
           השיח והתרגול מתקיימים בקבוצות, בזוגות ובאופן אישי.
         </p>
       </div>
@@ -1971,7 +2009,7 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">למי מיועדת התוכנית</h2>
         </div>
-        <p class="ab-body rev">
+        <p class="ab-body ab-body-center audience-text-aligned rev">
           לכולם! ליחידים, לקבוצות ולארגונים המעוניינים לחיות חיים שלווים,
           קשובים, משמעותיים ומאושרים יותר ולקדם חברה סבלנית, חומלת וסולידרית
           יותר.
@@ -2063,7 +2101,14 @@
         </p>
 
         <div class="stage rev d1">
-          <span class="stage-badge">🔹 שלב 1</span>
+          <span class="stage-badge"
+            ><img
+              class="stage-badge-icon"
+              src="assets/img/אייקון שלב 1.png"
+              alt=""
+              aria-hidden="true"
+            />שלב 1</span
+          >
           <h3>יסודות 16 המעלות</h3>
           <dl>
             <dt>מה לומדים</dt>
@@ -2092,7 +2137,14 @@
         </div>
 
         <div class="stage stage-2 rev d2">
-          <span class="stage-badge">🔹 שלב 2</span>
+          <span class="stage-badge"
+            ><img
+              class="stage-badge-icon"
+              src="assets/img/אייקון שלב 2.png"
+              alt=""
+              aria-hidden="true"
+            />שלב 2</span
+          >
           <h3>העמקה והטמעה ביומיום</h3>
           <dl>
             <dt>מה לומדים</dt>
@@ -2108,7 +2160,14 @@
         </div>
 
         <div class="stage stage-3 rev d3">
-          <span class="stage-badge">🔹 שלב 3</span>
+          <span class="stage-badge"
+            ><img
+              class="stage-badge-icon"
+              src="assets/img/אייקון שלב 3.png"
+              alt=""
+              aria-hidden="true"
+            />שלב 3</span
+          >
           <h3>הרחבה פילוסופית ומדעית</h3>
           <dl>
             <dt>מה לומדים</dt>
@@ -2148,7 +2207,7 @@
           <a href="#contact-form" class="btn btn-blue"
             >להרשמה לסדנת שלב 1 הקרובה</a
           >
-          <a href="#contact-form" class="btn btn-gold"
+          <a href="#contact-form" class="btn btn-teal-dk"
             >לתיאום סדנה מותאמת לארגון</a
           >
         </div>
