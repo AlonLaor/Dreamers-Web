@@ -829,6 +829,18 @@
            head clears the headline that sits on the right in RTL */
         background: url("assets/img/שחף 2-1.png") 30% 20% / cover no-repeat;
       }
+      /* At this width the hero is wide and short enough that "cover" alone
+         leaves no horizontal room to pan (the image's rendered width just
+         matches the container's, since the container is far wider than it
+         is tall), so the beak used to sit flush against the headline text.
+         A size beyond cover creates that room, and the position then pulls
+         the beak clear of the text with a real gap between them. */
+      @media (min-width: 769px) {
+        .ph-bg {
+          background: url("assets/img/שחף 2-1.png") 66% 21% / 124% auto
+            no-repeat;
+        }
+      }
       /* the copy sits on the right, so the tint deepens on that side and
          leaves the open sky and the bird on the left clear */
       .ph-tint {
@@ -995,17 +1007,10 @@
       }
 
       /* ═══ THE 16 VIRTUES — flip cards ═══ */
-      /* full-bleed positioning lives on the outer wrapper (same technique
-         as .journey-bleed) so the inner board just centres normally inside
-         it — a board wider than .wrap can't centre itself directly against
-         .wrap's own narrower box without the two ending up unevenly hung */
-      .virtues-board-bleed {
-        width: 100vw;
-        margin-inline: calc(50% - 50vw);
-        padding: 0 3vw;
-      }
+      /* same size as the matching board on the companies page, it was
+         run too large here before, out of step with the rest of the site */
       .virtues-board {
-        max-width: 1560px;
+        max-width: 1080px;
         margin: 2.6rem auto 0;
         border-radius: 22px;
         overflow: hidden;
@@ -1057,8 +1062,12 @@
       .vb-grid {
         display: grid;
         grid-auto-flow: column;
-        /* one title + four tiles per column */
-        grid-template-rows: repeat(5, auto);
+        /* four tiles per column. The title above them is pulled out of
+           flow (.vb-col-title-hidden is position:absolute, since the
+           poster image carries it visually), so it no longer takes a row
+           of its own; counting it here would push the fifth card of each
+           column into the top of the next one over */
+        grid-template-rows: repeat(4, auto);
         /* the minimum of 0 is what lets a column narrow past the longest
            word in its title; without it the four hold their widest text and
            the board runs off the side of a tablet */
@@ -1613,8 +1622,9 @@
           );
         }
         .vb-grid {
-          /* two families to a column, each still whole */
-          grid-template-rows: repeat(10, auto);
+          /* two families to a column (8 cards, no title rows: see the
+             base rule above) */
+          grid-template-rows: repeat(8, auto);
         }
         .fac-outer {
           flex-wrap: wrap;
@@ -1920,7 +1930,6 @@
           אשר כוללים 16 ערכים אוניברסליים (מעלות)
         </p>
 
-        <div class="virtues-board-bleed">
         <div class="virtues-board rev d2">
           <img
             class="vb-poster"
@@ -1964,7 +1973,6 @@
               <!-- the 16 tiles are written in by assets/js — see program script -->
             </div>
           </div>
-        </div>
         </div>
 
         <p class="ab-body ab-body-center rev d3" style="margin-top: 2.6rem">
