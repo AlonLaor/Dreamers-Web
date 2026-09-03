@@ -1022,35 +1022,16 @@
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
         padding: 1.6rem 1.2rem 1.9rem;
       }
-      /* the finished "16 המעלות" poster the board now carries as its own
-         header, flush against the board's rounded top corners (the board's
-         own overflow:hidden clips it to match) */
+      /* only the navy "16 המעלות" title bar, cropped from the original
+         poster artwork, flush against the board's rounded top corners (the
+         board's own overflow:hidden clips it to match). The four coloured
+         value boxes that used to be baked into that same artwork are now
+         drawn live below instead (.vb-col-title), so their size can be
+         matched exactly to the virtue tiles under them */
       .vb-poster {
         display: block;
         width: 100%;
         height: auto;
-      }
-      /* the four column titles stay in the DOM — the tile-population script
-         anchors each family's cards to its own title element — but the
-         poster image above now carries them visually, so they collapse to
-         nothing here rather than repeating the same banner twice */
-      .vb-col-title-hidden {
-        /* absolute positioning pulls it out of the grid's track-sizing
-           entirely (a plain width/height collapse instead squeezed every
-           tile in its column down to a sliver, since the four equal-fr
-           columns still had to make room for it) */
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        min-height: 0;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        box-shadow: none;
-        overflow: hidden;
-        opacity: 0;
-        pointer-events: none;
-        font-size: 0;
       }
       /* The board is one grid filled column by column, not row by row: the
          four tiles of a family are written in directly under their own
@@ -1062,21 +1043,24 @@
       .vb-grid {
         display: grid;
         grid-auto-flow: column;
-        /* four tiles per column. The title above them is pulled out of
-           flow (.vb-col-title-hidden is position:absolute, since the
-           poster image carries it visually), so it no longer takes a row
-           of its own; counting it here would push the fifth card of each
-           column into the top of the next one over */
-        grid-template-rows: repeat(4, auto);
+        /* one title + four tiles per column */
+        grid-template-rows: repeat(5, auto);
         /* the minimum of 0 is what lets a column narrow past the longest
            word in its title; without it the four hold their widest text and
            the board runs off the side of a tablet */
         grid-auto-columns: minmax(0, 1fr);
         gap: 0.9rem;
       }
-      /* the type here matches the printed 16-virtues chart used on the
-         companies page — the earlier sizes read far too small beside it */
+      /* same aspect-ratio and min-height as .vcard below, so the value box
+         reads as exactly the same size as its own virtue tiles instead of
+         an oversized header sitting above undersized tiles. margin-bottom
+         triples the gap beneath the title row specifically: the 0.9rem grid
+         gap plus 1.8rem margin makes 2.7rem, three times the 0.9rem gap
+         between the virtue rows underneath */
       .vb-col-title {
+        aspect-ratio: 2.4 / 1;
+        min-height: 4.6rem;
+        margin-bottom: 1.8rem;
         border-radius: 12px;
         color: #fff;
         font-weight: 700;
@@ -1087,7 +1071,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 4.9rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
       .vb-hint {
@@ -1356,7 +1339,10 @@
       /* ═══ STAGES ═══ */
       /* each stage carries its own tint drawn from the page palette and
          deepens from teal towards brand blue as the programme advances;
-         the training track keeps the gold it already had */
+         the training track keeps the gold it already had. Stage 2 is the
+         reference tone; stage 1 is stepped up noticeably lighter and
+         stage 3 down noticeably darker, all still within the blue family,
+         so the three-stage progression reads clearly at a glance */
       .stages-intro {
         max-width: 750px;
         margin: 0 auto 1.3rem;
@@ -1365,7 +1351,7 @@
         position: relative;
         max-width: 750px;
         margin: 1.6rem auto 0;
-        background: linear-gradient(150deg, #0a3f6e 0%, #072c4e 100%);
+        background: linear-gradient(150deg, #1f6fa8 0%, #0a3f6e 100%);
         border: 1px solid rgba(72, 217, 211, 0.25);
         border-radius: 22px;
         padding: 2rem 2rem 1.8rem;
@@ -1377,7 +1363,7 @@
         background: linear-gradient(150deg, #073259 0%, #051f3a 100%);
       }
       .stage-3 {
-        background: linear-gradient(150deg, #052544 0%, #03142a 100%);
+        background: linear-gradient(150deg, #03182e 0%, #010a16 100%);
       }
       .stage::before {
         content: "";
@@ -1622,9 +1608,9 @@
           );
         }
         .vb-grid {
-          /* two families to a column (8 cards, no title rows: see the
-             base rule above) */
-          grid-template-rows: repeat(8, auto);
+          /* two families to a column, each with its own title row (10
+             rows: 2 titles + 8 tiles) */
+          grid-template-rows: repeat(10, auto);
         }
         .fac-outer {
           flex-wrap: wrap;
@@ -1933,38 +1919,34 @@
         <div class="virtues-board rev d2">
           <img
             class="vb-poster"
-            src="assets/img/Poster - HEADER.png"
+            src="assets/img/Poster - HEADER Only.png"
             alt="16 המעלות"
           />
           <div class="vb-body">
             <div class="vb-grid">
-              <!-- ─── column titles: kept for the tile-population script
-                   below (it anchors each family's cards to its own title
-                   element by data-family) but visually collapsed, since the
-                   poster image above now carries this banner ─── -->
               <div
-                class="vb-col-title vb-col-title-hidden"
+                class="vb-col-title"
                 data-family="think"
                 style="background: linear-gradient(150deg, #1a97a8, var(--v-think))"
               >
                 הדרך בה אנו חושבות.ים
               </div>
               <div
-                class="vb-col-title vb-col-title-hidden"
+                class="vb-col-title"
                 data-family="act"
                 style="background: linear-gradient(150deg, #4f8f33, var(--v-act))"
               >
                 הדרך בה אנו פועלות.ים
               </div>
               <div
-                class="vb-col-title vb-col-title-hidden"
+                class="vb-col-title"
                 data-family="relate"
                 style="background: linear-gradient(150deg, #4a63a3, var(--v-relate))"
               >
                 הדרך בה אנו מתייחסות.ים לזולת
               </div>
               <div
-                class="vb-col-title vb-col-title-hidden"
+                class="vb-col-title"
                 data-family="meaning"
                 style="background: linear-gradient(150deg, #d0791a, var(--v-meaning))"
               >
@@ -1996,16 +1978,16 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">מקורות התוכנית</h2>
         </div>
-        <p class="ab-body rev">
+        <p class="ab-body ab-body-center rev">
           התוכנית מבוססת על טקסט שכתב מלך מהמאה ה-7, שרצה להשכין שלום בממלכה
           ולייצר קוד אתי שהאזרחים והאזרחיות יוכלו לחיות על-פיו.
         </p>
-        <p class="ab-body rev d1">
+        <p class="ab-body ab-body-center rev d1">
           בשנת 2005 הוקם הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW - Foundation
           for Developing Compassion and Wisdom) אשר תרגם והתאים את הטקסט העתיק
           לעולם של ימינו ופיתח את תוכנית 16 המעלות כפי שהיא פועלת כיום.
         </p>
-        <p class="ab-body rev d2">
+        <p class="ab-body ab-body-center rev d2">
           התוכנית נגישה בכל העולם עם מנחים.ות מוסמכים.ות ב-22 מדינות.
         </p>
       </div>
