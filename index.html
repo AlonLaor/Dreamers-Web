@@ -451,27 +451,26 @@
       .h-gold {
         color: #ffe8a0;
       }
+      /* a definition line, not a button: no fill, no pill shape, no drop
+         shadow, just a gold accent bar carrying the weight this phrase
+         actually has (it's the definition of the whole programme) */
       .h-sub {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        font-size: clamp(1rem, 1.9vw, 1.3rem);
+        font-size: clamp(1.18rem, 2.3vw, 1.55rem);
         font-weight: 600;
-        color: var(--blue-dk);
-        background: linear-gradient(
-          135deg,
-          rgba(255, 232, 160, 0.97) 0%,
-          rgba(245, 166, 35, 0.92) 100%
-        );
-        padding: 0.75rem 1.7rem;
-        border-radius: 50px;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+        color: #fff;
+        border-inline-start: 4px solid #ffcf6b;
+        padding-inline-start: 1.1rem;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.3),
+          0 4px 14px rgba(0, 0, 0, 0.35);
         margin-bottom: 2.2rem;
         animation: fadU 0.9s ease 0.3s both;
       }
       .h-sub strong {
         font-weight: 900;
-        color: var(--blue-dk);
+        color: #ffe8a0;
       }
       .btn {
         display: inline-flex;
@@ -1973,15 +1972,6 @@
           </div>
         </div>
 
-        <p class="intro-body intro-body-wide rev d3">
-          באמצעות לימוד ותרגול של ארבעת נושאי הליבה ו-16 המעלות, מתאפשרת הכרות
-          מעמיקה יותר עם עצמנו, שיפור מערכות היחסים שלנו, קבלת החלטות טובות
-          יותר ומציאת שלוות-נפש וחוסן. הטמעת הערכים מקדמת חיים חברתיים
-          וקהילתיים משותפים באקלים מיטבי גם בזמנים מורכבים. שיח על המעלות הללו
-          ותרגול מעשי תהליכי בקבוצות, בזוגות ובאופן אישי מייצר תחושת שייכות,
-          מקדם תחושת מסוגלות ורווחה נפשית ומפתח יכולת לדיאלוג מקרב.
-        </p>
-
         <div class="intro-join-box intro-join-box-bold rev d3">
           <p class="ijb-text ijb-text-bold">
             עמותת בית חולמים היא הנציגה הרשמית של התוכנית בישראל
@@ -1989,7 +1979,9 @@
         </div>
 
         <div style="margin-top: 1.8rem; text-align: center" class="rev d3">
-          <a href="#virtues" class="btn btn-blue">למידע נוסף</a>
+          <a href="#virtues" class="btn btn-blue"
+            >למידע נוסף על תוכנית 16 המעלות</a
+          >
         </div>
       </div>
     </section>
@@ -2047,6 +2039,34 @@
       </div>
     </section>
 
+    <!-- ════════════ MISSION ════════════ -->
+    <section id="mission">
+      <div class="wrap">
+        <div class="mission-grid">
+          <h2 class="h3d mission-title rev">עמותת בית חולמים</h2>
+          <div class="m-img-w rev">
+            <img
+              src="assets/img/בית חולמים- המשימה שלנו.png"
+              alt="עמותת בית חולמים"
+            />
+          </div>
+          <div class="mission-copy rev d1">
+            <p class="mission-body">
+              עמותה פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות החברתית.
+              באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות ומודלים
+              מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
+              לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
+            </p>
+            <p class="mission-body">
+              המטרה שלנו היא לסייע לאנשים מכל שכבות החברה לטפח את מעלותיהם
+              הפנימיות ולהגשים את הפוטנציאל האנושי העצום הטמון בהםן כדי לחיות
+              חיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════ ACTIVITIES ════════════ -->
     <section id="activities">
       <div class="wrap">
@@ -2078,7 +2098,7 @@
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בחברות</div>
-              <a href="business.html" class="ac-link">מידע נוסף →</a>
+              <a href="business.html" class="ac-link">מידע נוסף ←</a>
             </div>
           </div>
 
@@ -2093,7 +2113,7 @@
             </div>
             <div class="ac-body">
               <div class="ac-title">16 המעלות בחינוך</div>
-              <a href="education.html" class="ac-link">מידע נוסף →</a>
+              <a href="education.html" class="ac-link">מידע נוסף ←</a>
             </div>
           </div>
 
@@ -2111,7 +2131,7 @@
               <a
                 href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
                 class="ac-link"
-                >מידע נוסף →</a
+                >מידע נוסף ←</a
               >
             </div>
           </div>
@@ -2130,7 +2150,7 @@
               <a
                 href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
                 class="ac-link"
-                >מידע נוסף →</a
+                >מידע נוסף ←</a
               >
             </div>
           </div>
@@ -2222,7 +2242,7 @@
                 </p>
                 <div class="tc-author">
                   <img
-                    src="assets/img/עודד ארבל.png"
+                    src="assets/img/Faces/team/דר עודד ארבל.png"
                     alt="ד״ר עודד ארבל"
                     class="tc-av"
                   />
@@ -2356,34 +2376,6 @@
         <!-- dots are generated by the carousel script, so their count
              follows how many testimonials fit on the current screen -->
         <div class="car-dots">
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════ MISSION ════════════ -->
-    <section id="mission">
-      <div class="wrap">
-        <div class="mission-grid">
-          <h2 class="h3d mission-title rev">עמותת בית חולמים</h2>
-          <div class="m-img-w rev">
-            <img
-              src="assets/img/בית חולמים- המשימה שלנו.png"
-              alt="עמותת בית חולמים"
-            />
-          </div>
-          <div class="mission-copy rev d1">
-            <p class="mission-body">
-              עמותה פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות החברתית.
-              באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות ומודלים
-              מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
-              לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
-            </p>
-            <p class="mission-body">
-              המטרה שלנו היא לסייע לאנשים מכל שכבות החברה לטפח את מעלותיהם
-              הפנימיות ולהגשים את הפוטנציאל האנושי העצום הטמון בהםן כדי לחיות
-              חיים שלווים, משמעותיים ומאושרים יותר.
-            </p>
-          </div>
         </div>
       </div>
     </section>

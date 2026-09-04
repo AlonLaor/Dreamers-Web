@@ -426,6 +426,13 @@
         margin-right: auto;
         text-align: center;
       }
+      /* the line above the "16 המעלות" title was reading too quiet next to
+         the bold poster header below it */
+      .ab-body-lead {
+        font-size: 1.28rem;
+        font-weight: 800;
+        color: var(--blue-dk);
+      }
       /* matches the journey card's own width (.journey-grid-single), so the
          paragraphs above and below it share its exact left/right edges */
       .journey-text-aligned {
@@ -1335,6 +1342,35 @@
         width: 100%;
         height: auto;
       }
+      /* "מנהלות ומנהלים בארגונים" and "הקהל הרחב" are drawn live rather than
+         as finished artwork like their neighbours, since their text needed
+         to change and, unlike the PNGs, their icons can be told apart at a
+         glance. Matches the PNG chips' own size (224 × 74) and colour
+         (#3b5975, sampled from audience-orgs.png) so the row still reads as
+         one consistent set. */
+      .aud-chip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        width: 100%;
+        aspect-ratio: 224 / 74;
+        background: #3b5975;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.86rem;
+        line-height: 1.25;
+        border-radius: 50px;
+        padding: 0.6rem 1.15rem;
+        box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
+      }
+      .aud-chip-icon {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+        color: #fff;
+        opacity: 0.9;
+      }
 
       /* ═══ STAGES ═══ */
       /* each stage carries its own tint drawn from the page palette and
@@ -1363,7 +1399,10 @@
         background: linear-gradient(150deg, #073259 0%, #051f3a 100%);
       }
       .stage-3 {
-        background: linear-gradient(150deg, #03182e 0%, #010a16 100%);
+        /* darker than stage 2, but kept a clearly saturated navy rather
+           than crossing into looking black, per the site owner's
+           2026-09-04 correction */
+        background: linear-gradient(150deg, #0a2748 0%, #05162b 100%);
       }
       .stage::before {
         content: "";
@@ -1477,7 +1516,7 @@
       .stage-track-icon {
         position: absolute;
         top: 1.7rem;
-        inset-inline-start: 1.8rem;
+        inset-inline-end: 1.8rem;
         width: 52px;
         height: 52px;
         border-radius: 50%;
@@ -1898,9 +1937,6 @@
           16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
         </p>
-        <div class="rev d2">
-          <a href="#program" class="btn btn-gold">למידע נוסף</a>
-        </div>
       </div>
     </header>
 
@@ -1911,7 +1947,7 @@
           <h2 class="h3d sr-only">תוכנית 16 המעלות</h2>
         </div>
 
-        <p class="ab-body ab-body-center rev">
+        <p class="ab-body ab-body-center ab-body-lead rev">
           התוכנית מבוססת על ארבעה נושאי ליבה<br class="core-intro-break" />
           אשר כוללים 16 ערכים אוניברסליים (מעלות)
         </p>
@@ -1960,13 +1996,23 @@
         <p class="ab-body ab-body-center rev d3" style="margin-top: 2.6rem">
           התוכנית נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו באמצעות
           שילוב בין פילוסופיות מזרחיות ומדע מערבי, בין חכמה עתיקה להתפתחויות
-          מודרניות, התוכנית מייצרת שפה משותפת וסוללת דרך לחיים שלווים,
-          משמעותיים ומאושרים יותר ליחידים, משפחות, קהילות ולחברה כולה.
+          מודרניות.<br />
+          התוכנית מייצרת שפה משותפת וסוללת דרך לחיים שלווים, משמעותיים
+          ומאושרים יותר ליחידים, משפחות, קהילות ולחברה כולה.
+        </p>
+
+        <p class="ab-body ab-body-center rev d3">
+          באמצעות לימוד ותרגול של ארבעת נושאי הליבה ו-16 המעלות, מתאפשרת הכרות
+          מעמיקה יותר עם עצמנו, שיפור מערכות היחסים שלנו, קבלת החלטות טובות
+          יותר ומציאת שלוות-נפש וחוסן. הטמעת הערכים מקדמת חיים חברתיים
+          וקהילתיים משותפים באקלים מיטבי גם בזמנים מורכבים. שיח על המעלות הללו
+          ותרגול מעשי תהליכי בקבוצות, בזוגות ובאופן אישי מייצר תחושת שייכות,
+          מקדם תחושת מסוגלות ורווחה נפשית ומפתח יכולת לדיאלוג מקרב.
         </p>
 
         <div class="rev d3" style="margin-top: 2rem">
           <a href="#contact-form" class="btn btn-blue"
-            >לתיאום סדנא לארגונים ולפרטיים</a
+            >לקבלת פרטים על הסדנאות הקרובות</a
           >
         </div>
       </div>
@@ -2079,14 +2125,43 @@
             src="assets/img/program/audience-business.png"
             alt="אנשי ונשות עסקים"
           />
-          <img
-            src="assets/img/program/audience-orgs.png"
-            alt="מנהלות ומנהלים"
-          />
-          <img
-            src="assets/img/program/audience-individuals.png"
-            alt="אנשים פרטיים"
-          />
+          <div class="aud-chip">
+            <span>מנהלות ומנהלים בארגונים</span>
+            <svg
+              class="aud-chip-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="9" cy="8" r="3" />
+              <path d="M4.5 19c0-2.8 2-4.5 4.5-4.5s4.5 1.7 4.5 4.5" />
+              <rect x="15.6" y="4.6" width="4" height="4" rx="0.8" />
+              <circle cx="17.8" cy="16.4" r="2.2" />
+              <path d="M12.3 8.6h2.6M14.6 12.6l2 1.8" />
+            </svg>
+          </div>
+          <div class="aud-chip">
+            <span>הקהל הרחב</span>
+            <svg
+              class="aud-chip-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="8" cy="8" r="2.6" />
+              <path d="M3.2 18c0-2.6 2-4.4 4.8-4.4s4.8 1.8 4.8 4.4" />
+              <circle cx="16.5" cy="7.5" r="2.2" />
+              <path d="M13 18c0.3-2.3 1.8-3.8 3.5-3.8s3.4 1.5 3.7 3.8" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>
@@ -2095,12 +2170,8 @@
     <section class="ab-sec bg-deep" id="impact">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">בית החולמים במספרים</h2>
+          <h2 class="h3d rev">תוכנית 16 המעלות במספרים</h2>
         </div>
-        <p class="ab-body ab-body-center rev">
-          עמותת בית חולמים הביאה את התוכנית לישראל בשנת 2020, והיא הנציגה של
-          הארגון הבינלאומי FDCW בישראל.
-        </p>
 
         <div class="fact-grid rev d1">
           <div class="fact">
@@ -2124,10 +2195,12 @@
         </div>
 
         <p class="ab-body ab-body-center rev d2" style="margin-top: 2.4rem">
-          התוכנית מוכרת גם במערכת גפ"ן של משרד החינוך (תוכנית מספר 63554),
-          היא תוכנית הדגל במנהל חינוך של עיריית ת"א-יפו ופועלת גם במרכז
-          הממשלתי לבריאות הנפש בבאר-שבע, במרכז הממשלתי לבריאות הנפש לב השרון,
-          בחברות במגזר העסקי ועוד.
+          תכנית 16 המעלות היא תכנית הדגל במנהל חינוך של עיריית ת"א-יפו ומוכרת
+          גם במערכת גפ"ן של משרד החינוך (תוכנית מספר 63554).
+        </p>
+        <p class="ab-body ab-body-center rev d2">
+          בנוסף, התכנית פועלת במרכז הממשלתי לבריאות הנפש בבאר-שבע, במרכז
+          הממשלתי לבריאות הנפש לב השרון, בחברות במגזר העסקי ועוד.
         </p>
       </div>
       <div class="wave-foot" aria-hidden="true">
@@ -2150,10 +2223,10 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">שלבי התוכנית והסמכה להנחיה</h2>
         </div>
-        <p class="ab-body stages-intro rev">
-          הלמידה מובנית במודל מודולרי הדרגתי. השלמת כל שלב מקנה תעודה בינלאומית
-          מטעם בית חולמים וארגון FDCW הבינלאומי. התוכנית בנויה מ-3 שלבים
-          ולאחריה יכולים/ות המתאימים/ות להמשיך להכשרת מנחים.ות.
+        <p class="ab-body ab-body-center stages-intro rev">
+          הלמידה בתכנית בנויה באופן מודולרי והדרגתי לפי שלבים. השלמת כל שלב
+          מקנה תעודה בינלאומית מטעם בית חולמים וארגון FDCW הבינלאומי. בסיום 3
+          שלבי התכנית, יכולים/ות המתאימים/ות להמשיך להכשרת מנחים.ות.
         </p>
 
         <div class="stage rev d1">
@@ -2183,8 +2256,7 @@
                 <div class="s1-box">
                   <span class="s1-box-title">שלב 1 לקהל הרחב</span>
                   <span class="s1-box-text"
-                    >12 שעות הנלמדות או ב-2 ימים מלאים או ב-4 מפגשים של 3
-                    שעות</span
+                    >2 מפגשים של 6 שעות או 4 מפגשים של 3 שעות</span
                   >
                 </div>
               </div>
@@ -2208,10 +2280,11 @@
               העמקה בתכנים והטמעת הכלים שנלמדו בשלב 1, ביסוס התרגול האישי
               בשגרה, היכרות ראשונית עם צד ה"צל" של נושאי הליבה ו-16 המעלות.
               היכרות עם סוגיות של טראומה, בדידות ואתגרים חברתיים ולמידת דרכים
-              אישיות וקבוצתיות להתמודדות עם אתגרים אלה.
+              אישיות וקבוצתיות להתמודדות עם אתגרים אלה. בשלב זה יינתנו
+              תרגולים עצמיים לצורך יישום והפנמת התכנים בין המפגשים המונחים.
             </dd>
             <dt>מבנה</dt>
-            <dd>5 שעות הנלמדות ב-5 מפגשים מונחים של שעתיים וחצי.</dd>
+            <dd>5 מפגשים של שעתיים וחצי</dd>
           </dl>
         </div>
 
@@ -2233,7 +2306,7 @@
               העצמי, התהוות גומלין, נוירוני מראה ועוד.
             </dd>
             <dt>מבנה</dt>
-            <dd>12 שעות הנלמדות ב-2 ימים מלאים או ב-4 מפגשים של 3 שעות.</dd>
+            <dd>2 מפגשים של 6 שעות או 4 מפגשים של 3 שעות</dd>
           </dl>
         </div>
 
@@ -2303,7 +2376,7 @@
     <section id="contact-form">
       <div class="wrap">
         <div class="contact-inner">
-          <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
+          <h2 class="h3d h3d-white rev">בואו נדבר</h2>
           <p class="sub rev">
             רוצים לשמוע עוד על תוכנית 16 המעלות?<br />
             השאירו פרטים ונחזור אליכם עם כל המידע על הסדנה הקרובה ועל התאמת
@@ -2327,13 +2400,13 @@
                 <input class="form-input" type="text" name="שם" required />
               </div>
               <div class="form-field">
-                <label class="form-label">ארגון / קהילה (אופציונלי)</label>
+                <label class="form-label">ארגון / קהילה</label>
                 <input class="form-input" type="text" name="ארגון / קהילה" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">תפקיד (אופציונלי)</label>
+                <label class="form-label">תפקיד</label>
                 <input class="form-input" type="text" name="תפקיד" />
               </div>
               <div class="form-field">
@@ -2343,34 +2416,32 @@
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">טלפון (אופציונלי)</label>
-                <input class="form-input" type="tel" name="טלפון" />
+                <label class="form-label"
+                  >טלפון <span class="req">*</span></label
+                >
+                <input class="form-input" type="tel" name="טלפון" required />
               </div>
               <div class="form-field ms-field">
-                <label class="form-label">מה הביא אתכם אלינו?</label>
+                <label class="form-label">מה היית רוצה לדעת?</label>
                 <button type="button" class="ms-trigger" id="msTrigger">
                   <span id="msTriggerText">בחרו אפשרות אחת או יותר</span>
                   <span class="dd-arrow">▾</span>
                 </button>
                 <div class="ms-panel" id="msPanel">
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="הרשמה לסדנת שלב 1" />הרשמה
-                    לסדנת שלב 1</label
+                    ><input type="checkbox" name="מה היית רוצה לדעת" value="פרטים לגבי סדנת שלב 1 הקרובה" />פרטים
+                    לגבי סדנת שלב 1 הקרובה</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="סדנה לארגון" />סדנה
-                    לארגון</label
+                    ><input type="checkbox" name="מה היית רוצה לדעת" value="התאמת התכנית לארגון שלי" />התאמת
+                    התכנית לארגון שלי</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="סדנה לקהילה" />סדנה
-                    לקהילה</label
+                    ><input type="checkbox" name="מה היית רוצה לדעת" value="מידע נוסף על שלבי התוכנית" />מידע
+                    נוסף על שלבי התוכנית</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="הכשרת מנחים.ות" />הכשרת
-                    מנחים.ות</label
-                  >
-                  <label class="ms-opt"
-                    ><input type="checkbox" id="msOtherCheck" name="מה הביא אתכם אלינו" value="אחר" />אחר</label
+                    ><input type="checkbox" id="msOtherCheck" name="מה היית רוצה לדעת" value="אחר" />אחר</label
                   >
                 </div>
               </div>
@@ -2385,7 +2456,7 @@
               ></textarea>
             </div>
             <div class="form-field full" style="margin-top: 1.1rem">
-              <label class="form-label">הודעה (אופציונלי)</label>
+              <label class="form-label">הודעה</label>
               <textarea class="form-textarea" name="הודעה"></textarea>
             </div>
 

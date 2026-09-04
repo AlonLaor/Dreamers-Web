@@ -401,6 +401,9 @@
       #page-header .h3d {
         position: relative;
         z-index: 2;
+        /* the title was reading too small against the hero strip behind
+           it; 50% larger than the site's normal h3d size */
+        font-size: clamp(2.85rem, 5.25vw, 4.35rem);
       }
       #page-header .sub {
         position: relative;
@@ -517,16 +520,21 @@
       .ab-split .ab-sub-h {
         margin: 2.4rem 0 1rem;
       }
-      /* the association's goals — a small grid of raised, glass-edged
-         panels on the deep-blue field, standing out rather than a plain
-         bulleted list */
+      /* the association's goals, drawn as flat, square-cornered tiles,
+         deliberately not styled like a CTA button (no pill radius, no floating-button
+         shadow, no hover lift). Flex-wrap + justify-content:center means
+         however many end up on the last row, they sit centred rather than
+         stranded to one side, so 5 tiles never break into a lopsided
+         2-over-2-over-1 stack. Every tile is the same fixed size, so the
+         grid stays exactly symmetric regardless of how much text is in it. */
       .goal-list {
         max-width: 1080px;
         margin: 0 auto;
         list-style: none;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.3rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
       }
       .goal-list li {
         position: relative;
@@ -534,27 +542,17 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 1.5rem 1.7rem;
-        font-size: 1.05rem;
-        line-height: 1.7;
+        width: 205px;
+        height: 190px;
+        padding: 1.3rem 1.4rem;
+        font-size: 0.98rem;
+        line-height: 1.55;
         font-weight: 600;
         color: #fff;
-        background: linear-gradient(150deg, var(--blue) 0%, var(--blue-dk) 100%);
-        border: 1px solid rgba(72, 217, 211, 0.2);
-        border-radius: 18px;
-        box-shadow: 0 14px 34px rgba(0, 41, 82, 0.35);
-        transition:
-          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-          box-shadow 0.35s;
-      }
-      .goal-list li:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 22px 46px rgba(0, 41, 82, 0.45);
-      }
-      .goal-list li:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-        max-width: 560px;
-        margin: 0 auto;
+        background: var(--blue-dk);
+        border: 1px solid rgba(72, 217, 211, 0.3);
+        border-radius: 10px;
+        box-shadow: 0 6px 16px rgba(0, 41, 82, 0.25);
       }
 
       /* ═══ TEAM CARDS / CAROUSEL ═══ */
@@ -918,11 +916,9 @@
           max-width: 420px;
           margin: 0 auto;
         }
-        .goal-list {
-          grid-template-columns: 1fr;
-        }
-        .goal-list li:last-child:nth-child(odd) {
-          max-width: none;
+        .goal-list li {
+          width: 100%;
+          max-width: 340px;
         }
       }
       @media (max-width: 768px) {
@@ -1092,7 +1088,7 @@
         <div class="ab-split">
           <div>
             <h2 class="h3d ab-sub-h rev" style="margin-top: 0">
-              על עמותת בית חולמים
+              מטרות עמותת בית חולמים
             </h2>
             <p class="ab-body rev d1">
               עמותת בית חולמים פועלת בתחומי הרוח והחברה לבנייה מחדש של
@@ -1143,6 +1139,11 @@
             <span>לחנך לאורח חיים בריא ולשמירה על איכות הסביבה</span>
           </li>
         </ul>
+        <div class="rev d3" style="margin-top: 2rem; text-align: center">
+          <a href="program.html" class="btn btn-blue"
+            >מידע נוסף על התוכנית</a
+          >
+        </div>
       </div>
     </section>
 
@@ -1184,11 +1185,6 @@
               לאחרים - וכך, בהדרגה, נבנית תחושה של אחריות כלפי עצמנו, כלפי
               הזולת וכלפי הסביבה.
             </p>
-            <div class="rev d3" style="margin-top: 1.6rem">
-              <a href="program.html" class="btn btn-blue"
-                >מידע נוסף על התוכנית</a
-              >
-            </div>
           </div>
           <div class="ab-split-img ab-split-img-sm rev d2">
             <img src="assets/img/About us - Pic 2.png" alt="על ארגון FDCW" />
