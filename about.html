@@ -526,7 +526,9 @@
          however many end up on the last row, they sit centred rather than
          stranded to one side, so 5 tiles never break into a lopsided
          2-over-2-over-1 stack. Every tile is the same fixed size, so the
-         grid stays exactly symmetric regardless of how much text is in it. */
+         grid stays exactly symmetric regardless of how much text is in it.
+         Sized so all 5 fit on one row at desktop width instead of running
+         4-over-1. */
       .goal-list {
         max-width: 1080px;
         margin: 0 auto;
@@ -534,7 +536,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 1.2rem;
+        gap: 0.9rem;
       }
       .goal-list li {
         position: relative;
@@ -542,11 +544,11 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        width: 205px;
+        width: 180px;
         height: 190px;
-        padding: 1.3rem 1.4rem;
-        font-size: 0.98rem;
-        line-height: 1.55;
+        padding: 1.1rem 1.1rem;
+        font-size: 1.05rem;
+        line-height: 1.5;
         font-weight: 600;
         color: #fff;
         background: var(--blue-dk);
@@ -1140,7 +1142,7 @@
           </li>
         </ul>
         <div class="rev d3" style="margin-top: 2rem; text-align: center">
-          <a href="program.html" class="btn btn-blue"
+          <a href="program.html" class="btn btn-gold"
             >מידע נוסף על התוכנית</a
           >
         </div>
