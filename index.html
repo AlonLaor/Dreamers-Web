@@ -302,15 +302,14 @@
         transform: none;
       }
       .nav-slogan {
-        color: #fff;
-        font-size: 0.85rem;
-        font-weight: 600;
-        line-height: 1.5;
-        text-align: center;
+        display: flex;
+        align-items: center;
         opacity: 0.92;
       }
-      .nav-slogan .ns-accent {
-        color: #d15810;
+      .nav-slogan img {
+        height: 2.55rem;
+        width: auto;
+        display: block;
       }
       @media (max-width: 1024px) {
         .nav-slogan {
@@ -361,8 +360,8 @@
       .h-photo {
         position: absolute;
         inset: 0;
-        background: url("assets/Videos/hero-waves-poster.jpg") center center /
-          cover;
+        background: url("assets/Videos/hero-waves-8-2-poster.jpg") center
+          center / cover;
         transform: scale(1.08);
         will-change: transform;
       }
@@ -437,19 +436,24 @@
         max-width: 680px;
       }
       .h-title {
-        font-size: clamp(1.69rem, 4.225vw, 3.25rem); /* 65% of original */
+        font-size: clamp(2.28rem, 5.7vw, 4.39rem); /* 35% bigger, per the site owner's 2026-09-05 request */
         font-weight: 900;
         line-height: 1.15;
         margin-bottom: 0.9rem;
         animation: fadU 0.9s ease 0.15s both;
         text-shadow:
-          0 2px 0 rgba(0, 0, 0, 0.28),
-          0 5px 12px rgba(0, 0, 0, 0.38),
-          0 18px 38px rgba(0, 0, 0, 0.22);
+          0 2px 0 rgba(255, 255, 255, 0.5),
+          0 5px 14px rgba(255, 255, 255, 0.4),
+          0 2px 10px rgba(0, 0, 0, 0.22);
       }
-      /* Same yellow as the "16 המעלות" words in the sub-line below */
+      /* darker blue in place of the old yellow, and the plain white line
+         moved to turquoise, so the title stays legible against the new,
+         brighter hero video (per the site owner's 2026-09-05 request) */
       .h-gold {
-        color: #ffe8a0;
+        color: var(--blue-dk);
+      }
+      .h-teal {
+        color: var(--teal-lt);
       }
       /* a definition line, not a button: no fill, no pill shape, no drop
          shadow, just a gold accent bar carrying the weight this phrase
@@ -457,20 +461,21 @@
       .h-sub {
         display: inline-flex;
         align-items: center;
-        font-size: clamp(1.18rem, 2.3vw, 1.55rem);
+        font-size: clamp(1.53rem, 3vw, 2.02rem); /* 30% bigger, per the site owner's 2026-09-05 request */
         font-weight: 600;
-        color: #fff;
+        color: var(--teal-lt);
         border-inline-start: 4px solid #ffcf6b;
         padding-inline-start: 1.1rem;
         text-shadow:
-          0 1px 0 rgba(0, 0, 0, 0.3),
-          0 4px 14px rgba(0, 0, 0, 0.35);
+          0 1px 0 rgba(255, 255, 255, 0.35),
+          0 4px 14px rgba(0, 0, 0, 0.28);
         margin-bottom: 2.2rem;
         animation: fadU 0.9s ease 0.3s both;
       }
       .h-sub strong {
         font-weight: 900;
-        color: #ffe8a0;
+        color: var(--blue-dk);
+        white-space: nowrap;
       }
       .btn {
         display: inline-flex;
@@ -566,12 +571,6 @@
         padding: 7rem 2rem;
         background: var(--white);
       }
-      .intro-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5.5rem;
-        align-items: center;
-      }
       .intro-body {
         font-size: 1.07rem;
         line-height: 1.9;
@@ -627,119 +626,15 @@
         font-weight: 800;
         line-height: 1.6;
       }
-      /* ─── 4 core themes, shown as a small stacked-depth card grid rather
-         than a bullet list ─── */
-      .core-themes {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1.5rem;
-        margin: 3rem 0 0;
-      }
-      .core-themes-2col {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin: 0;
-      }
-      .ct-card {
-        position: relative;
-        background: linear-gradient(155deg, var(--ct-a) 0%, var(--ct-b) 100%);
-        border-radius: 18px;
-        padding: 1.3rem 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        min-height: 108px;
-        color: #fff;
-        box-shadow:
-          0 1px 0 rgba(255, 255, 255, 0.3) inset,
-          0 9px 0 -3px rgba(0, 20, 45, 0.14),
-          0 20px 36px rgba(0, 20, 45, 0.24);
-        transition:
-          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-          box-shadow 0.35s;
-      }
-      .ct-card:hover {
-        transform: translateY(-8px) scale(1.03);
-        box-shadow:
-          0 1px 0 rgba(255, 255, 255, 0.35) inset,
-          0 13px 0 -3px rgba(0, 20, 45, 0.16),
-          0 32px 50px rgba(0, 20, 45, 0.32);
-      }
-      .ct-label {
-        display: block;
-        font-weight: 800;
-        font-size: 1.02rem;
-        line-height: 1.4;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      }
-      /* the subsection heading beneath the programme's main title —
-         demoted a step so "תוכנית 16 המעלות" alone reads as the header */
-      .vhdr-sub {
-        font-size: clamp(1.3rem, 2vw, 1.7rem);
-        margin-bottom: 0.4rem;
-      }
-
-      /* ═══════════════════════════════
-         16 VIRTUES
-      ═══════════════════════════════ */
-      #virtues {
-        padding: 8rem 2rem;
-        background: linear-gradient(
-          160deg,
-          #e8f6ff 0%,
-          #f0fbfb 40%,
-          #eaf3ff 100%
-        );
-        position: relative;
-        overflow: hidden;
-      }
-      #virtues::before {
-        content: "";
-        position: absolute;
-        top: -80px;
-        right: -80px;
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(72, 217, 211, 0.12),
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-      #virtues::after {
-        content: "";
-        position: absolute;
-        bottom: -60px;
-        left: -60px;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(245, 166, 35, 0.08),
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-      .vhdr {
-        text-align: center;
-        margin-bottom: 4.5rem;
-        position: relative;
-        z-index: 2;
-      }
-      .vhdr .sub {
-        margin: 0 auto;
-        text-align: center;
-      }
-
+      /* ─── the 4 value-family photo cards, moved up directly under the
+         programme intro paragraph so they read as one continuous section
+         instead of a separate "מהן 16 המעלות" block further down ─── */
       .pgrid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
+        margin-top: 2.8rem;
         position: relative;
-        z-index: 2;
       }
       .pc {
         border-radius: 26px;
@@ -1160,38 +1055,27 @@
       /* ═══════════════════════════════
          NUMBERS
       ═══════════════════════════════ */
+      /* dark navy card, like the matching "תוכנית 16 המעלות במספרים"
+         section on the program page, per the site owner's 2026-09-05
+         request */
       #numbers {
         padding: 6rem 2rem;
-        background: linear-gradient(
-          135deg,
-          #fffbf0 0%,
-          #fff8e8 50%,
-          #fffcf2 100%
-        );
-        border-top: 1px solid rgba(245, 166, 35, 0.15);
-        border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+        background:
+          radial-gradient(
+            ellipse 70% 60% at 78% 30%,
+            rgba(72, 217, 211, 0.22) 0%,
+            rgba(72, 217, 211, 0) 62%
+          ),
+          var(--g-main);
         position: relative;
         overflow: hidden;
-      }
-      #numbers::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 600px;
-        height: 600px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(245, 166, 35, 0.07),
-          transparent 70%
-        );
-        pointer-events: none;
       }
       .num-hdr {
         text-align: center;
         margin-bottom: 3.5rem;
+      }
+      .num-hdr .h3d {
+        color: #fff;
       }
       .num-grid {
         display: grid;
@@ -1204,28 +1088,29 @@
       }
       .nc {
         text-align: center;
-        padding: 2.5rem 1rem;
-        border-right: 1px solid rgba(245, 166, 35, 0.2);
+        padding: 1.8rem 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 18px;
+        backdrop-filter: blur(8px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
-      .nc:last-child {
-        border-right: none;
+      .nc:hover {
+        transform: translateY(-6px);
       }
       .nn {
         display: block;
-        font-size: clamp(2.8rem, 4.5vw, 4rem);
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
         font-weight: 900;
         line-height: 1;
-        background: linear-gradient(135deg, #e08000, #f5a623, #ffd166);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        filter: drop-shadow(0 3px 6px rgba(180, 100, 0, 0.25));
+        color: var(--teal-lt);
         margin-bottom: 0.6rem;
       }
       .nl {
         font-size: 0.92rem;
-        color: var(--text-mid);
+        color: rgba(255, 255, 255, 0.9);
         line-height: 1.5;
+        font-weight: 500;
       }
 
       /* ═══════════════════════════════
@@ -1355,33 +1240,6 @@
       }
 
       /* Featured testimonial — dark blue card, bold prominent text */
-      .tc-featured {
-        background: var(--g-main);
-        box-shadow:
-          0 10px 38px rgba(0, 41, 82, 0.45),
-          0 4px 8px rgba(0, 0, 0, 0.15),
-          0 20px 40px rgba(0, 41, 82, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      }
-      .tc-featured .tc-q {
-        color: var(--teal);
-        opacity: 0.55;
-      }
-      .tc-featured .tc-text {
-        color: #fff;
-        font-weight: 700;
-        font-style: normal;
-      }
-      .tc-featured .tc-name {
-        color: #fff;
-      }
-      .tc-featured .tc-role {
-        color: var(--teal-lt);
-      }
-      .tc-featured .tc-av {
-        border-color: rgba(255, 255, 255, 0.5);
-      }
-
       /* ═══════════════════════════════
          MISSION
       ═══════════════════════════════ */
@@ -1395,21 +1253,10 @@
         gap: 0 6rem;
         align-items: center;
       }
-      /* Desktop: image occupies one column (both rows), title + copy stack
-         in the other — keeps the side-by-side look with the title first in DOM */
-      .mission-grid .m-img-w {
-        grid-column: 1;
-        grid-row: 1 / 3;
-      }
+      /* heading now sits centred above the grid, like the "תוכנית 16
+         המעלות" heading above it, instead of squeezed beside the image */
       .mission-title {
-        grid-column: 2;
-        grid-row: 1;
-        align-self: end;
-      }
-      .mission-copy {
-        grid-column: 2;
-        grid-row: 2;
-        align-self: start;
+        margin-bottom: 2rem;
       }
       .m-img-w {
         border-radius: 24px;
@@ -1661,9 +1508,6 @@
          RESPONSIVE
       ═══════════════════════════════ */
       @media (max-width: 1024px) {
-        .core-themes {
-          grid-template-columns: repeat(2, 1fr);
-        }
         .carousel-outer {
           --car-per-view: 2;
         }
@@ -1745,20 +1589,10 @@
           padding: 0.7rem 1rem;
           font-size: 0.95rem;
         }
-        .intro-grid {
-          grid-template-columns: 1fr;
-        }
         /* Mission stacks: title → image → text */
         .mission-grid {
           grid-template-columns: 1fr;
           gap: 1.5rem;
-        }
-        .mission-grid .m-img-w,
-        .mission-title,
-        .mission-copy {
-          grid-column: auto;
-          grid-row: auto;
-          align-self: auto;
         }
         .m-img-w {
           height: 300px;
@@ -1775,6 +1609,11 @@
         }
         .footer-top {
           flex-direction: column;
+          align-items: center;
+        }
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
         }
         .h-content {
           right: 5%;
@@ -1884,7 +1723,7 @@
           </li>
         </ul>
       </div>
-      <div class="nav-slogan">כשחולמות לבד, חולמות.<br />כשחולמות יחד - <span class="ns-accent">מתעוררות.</span></div>
+      <div class="nav-slogan"><img src="assets/img/The Slogan 1.png" alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות." /></div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1902,11 +1741,10 @@
           loop
           playsinline
           preload="auto"
-          poster="assets/Videos/hero-waves-poster.jpg"
+          poster="assets/Videos/hero-waves-8-2-poster.jpg"
           aria-hidden="true"
         >
-          <source src="assets/Videos/hero-waves.webm" type="video/webm" />
-          <source src="assets/Videos/hero-waves.mp4" type="video/mp4" />
+          <source src="assets/Videos/Hero Waves -8-2.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="h-wash"></div>
@@ -1917,7 +1755,7 @@
         <h1 class="h-title">
           <span class="h-gold">הדרך שלך לחיים שלווים,</span><br />
           <span class="h-gold">משמעותיים ומאושרים יותר</span><br />
-          מתחילה כאן
+          <span class="h-teal">מתחילה כאן</span>
         </h1>
         <p class="h-sub">
           <strong>16 המעלות</strong> - תוכנית הדגל של עמותת בית חולמים
@@ -1946,29 +1784,48 @@
           אוניברסליים וחיים בעלי משמעות
         </p>
 
-        <div class="intro-grid">
-          <div>
-            <p class="intro-body intro-body-center rev d1">
-              התוכנית מבוססת על ארבעה נושאי ליבה ומספקת כלים מעשיים להטמעתם
-              בחיי היומיום. בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר
-              מייצרות שפה לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות,
-              קהילות, ובחברה כולה.
-            </p>
+        <p class="intro-body intro-body-center intro-body-wide rev d1">
+          התוכנית מבוססת על ארבעה נושאי ליבה ומספקת כלים מעשיים להטמעתם<br />
+          בחיי היומיום. בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר
+          מייצרות שפה לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות,
+          קהילות, ובחברה כולה.
+        </p>
+
+        <div class="pgrid rev d2" id="virtues">
+          <div class="pc pc-img" id="pc0">
+            <img
+              src="assets/img/1.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה"
+            />
           </div>
 
-          <div class="core-themes core-themes-2col rev d2">
-            <div class="ct-card" style="--ct-a: #3fd0e0; --ct-b: #146a76">
-              <span class="ct-label">הדרך שאנו חושבות.ים</span>
-            </div>
-            <div class="ct-card" style="--ct-a: #8fcf5f; --ct-b: #3f6b26">
-              <span class="ct-label">הדרך שאנו פועלות.ים</span>
-            </div>
-            <div class="ct-card" style="--ct-a: #8ea2dd; --ct-b: #3d4f82">
-              <span class="ct-label">הדרך שאנו מתייחסות.ים לזולת</span>
-            </div>
-            <div class="ct-card" style="--ct-a: #ffbb5c; --ct-b: #b56a12">
-              <span class="ct-label">הדרך שאנו מוצאות.ים משמעות</span>
-            </div>
+          <div class="pc pc-img" id="pc1">
+            <img
+              src="assets/img/2.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו פועלים: טוב לב, יושרה, נדיבות, דיבור מיטיב"
+            />
+          </div>
+
+          <div class="pc pc-img" id="pc2">
+            <img
+              src="assets/img/3.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות"
+            />
+          </div>
+
+          <div class="pc pc-img" id="pc3">
+            <img
+              src="assets/img/4.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ"
+            />
           </div>
         </div>
 
@@ -1979,62 +1836,9 @@
         </div>
 
         <div style="margin-top: 1.8rem; text-align: center" class="rev d3">
-          <a href="#virtues" class="btn btn-blue"
+          <a href="#activities" class="btn btn-blue"
             >למידע נוסף על תוכנית 16 המעלות</a
           >
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════ 16 VIRTUES ════════════ -->
-    <section id="virtues">
-      <div class="wrap">
-        <div class="vhdr">
-          <h2 class="h3d vhdr-sub rev" style="text-align: center">
-            מהן 16 המעלות
-          </h2>
-        </div>
-
-        <div class="pgrid">
-          <div class="pc pc-img rev" id="pc0">
-            <img
-              src="assets/img/1.png"
-              loading="lazy"
-              decoding="async"
-              alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה"
-            />
-          </div>
-
-          <div class="pc pc-img rev d1" id="pc1">
-            <img
-              src="assets/img/2.png"
-              loading="lazy"
-              decoding="async"
-              alt="הדרך בה אנו פועלים: טוב לב, יושרה, נדיבות, דיבור מיטיב"
-            />
-          </div>
-
-          <div class="pc pc-img rev d2" id="pc2">
-            <img
-              src="assets/img/3.png"
-              loading="lazy"
-              decoding="async"
-              alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות"
-            />
-          </div>
-
-          <div class="pc pc-img rev d3" id="pc3">
-            <img
-              src="assets/img/4.png"
-              loading="lazy"
-              decoding="async"
-              alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ"
-            />
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem" class="rev">
-          <a href="#activities" class="btn btn-blue">למידע נוסף</a>
         </div>
       </div>
     </section>
@@ -2042,8 +1846,10 @@
     <!-- ════════════ MISSION ════════════ -->
     <section id="mission">
       <div class="wrap">
+        <h2 class="h3d mission-title rev" style="text-align: center">
+          עמותת בית חולמים
+        </h2>
         <div class="mission-grid">
-          <h2 class="h3d mission-title rev">עמותת בית חולמים</h2>
           <div class="m-img-w rev">
             <img
               src="assets/img/בית חולמים- המשימה שלנו.png"
@@ -2052,7 +1858,7 @@
           </div>
           <div class="mission-copy rev d1">
             <p class="mission-body">
-              עמותה פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות החברתית.
+              העמותה פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות החברתית.
               באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות ומודלים
               מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
               לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
@@ -2074,7 +1880,7 @@
           <h2 class="h3d rev" style="text-align: center">הפעילות שלנו</h2>
         </div>
         <div class="act-desc rev">
-          <p>
+          <p style="font-weight: 700">
             נדרשת שפה ערכית, חומלת וסבלנית יותר. אתיקה אוניברסלית לעולם שלם.
           </p>
           <p style="margin-top: 1rem">
@@ -2090,15 +1896,19 @@
           <div class="ac rev">
             <div class="ac-img-w">
               <img
-                src="assets/img/תמונת חברות.jpg"
-                alt="16 המעלות בחברות"
+                src="assets/img/תמונות בריאות הנפש .jpg"
+                alt="16 המעלות בבריאות הנפש"
                 class="ac-img"
               />
               <div class="ac-ov"></div>
             </div>
             <div class="ac-body">
-              <div class="ac-title">16 המעלות בחברות</div>
-              <a href="business.html" class="ac-link">מידע נוסף ←</a>
+              <div class="ac-title">16 המעלות בבריאות הנפש</div>
+              <a
+                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
+                class="ac-link"
+                >מידע נוסף ←</a
+              >
             </div>
           </div>
 
@@ -2120,25 +1930,6 @@
           <div class="ac rev d2">
             <div class="ac-img-w">
               <img
-                src="assets/img/תמונות בריאות הנפש .jpg"
-                alt="16 המעלות בבריאות הנפש"
-                class="ac-img"
-              />
-              <div class="ac-ov"></div>
-            </div>
-            <div class="ac-body">
-              <div class="ac-title">16 המעלות בבריאות הנפש</div>
-              <a
-                href="https://www.dreamers.org.il/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%99%D7%95%D7%AA-%D7%95%D7%A1%D7%93%D7%A0%D7%90%D7%95%D7%AA"
-                class="ac-link"
-                >מידע נוסף ←</a
-              >
-            </div>
-          </div>
-
-          <div class="ac rev d3">
-            <div class="ac-img-w">
-              <img
                 src="assets/img/תמונות סדנה.jpg"
                 alt="קבוצות תרגול וסדנאות פרטיות"
                 class="ac-img"
@@ -2154,6 +1945,21 @@
               >
             </div>
           </div>
+
+          <div class="ac rev d3">
+            <div class="ac-img-w">
+              <img
+                src="assets/img/Business Envorinment 1 Opacity 80%.png"
+                alt="16 המעלות בחברות"
+                class="ac-img"
+              />
+              <div class="ac-ov"></div>
+            </div>
+            <div class="ac-body">
+              <div class="ac-title">16 המעלות בחברות</div>
+              <a href="business.html" class="ac-link">מידע נוסף ←</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2162,7 +1968,9 @@
     <section id="numbers">
       <div class="wrap">
         <div class="num-hdr">
-          <h2 class="h3d rev" style="text-align: center">בית חולמים במספרים</h2>
+          <h2 class="h3d rev" style="text-align: center">
+            תוכנית 16 המעלות במספרים
+          </h2>
         </div>
         <div class="num-grid">
           <div class="nc rev">
@@ -2206,11 +2014,12 @@
                 </div>
                 <div class="tc-q">"</div>
                 <p class="tc-text">
-                  מציאות של מגפות, מלחמות וקיטוב חברתי מחייבת שפה משותפת של
-                  ערכים אנושיים אוניברסליים, שנוכל לחיות ולחנך על פיהם. תוכנית
-                  "16 המעלות" מעניקה כלים מעשיים לפיתוח חוסן רגשי וחברתי בקרב
-                  צוותי חינוך, תלמידים וקהילות, ולכן נבחרה כתוכנית הדגל של מנהל
-                  החינוך בעיריית תל אביב-יפו.
+                  אני מאמינה שחינוך לקשב ולטיפוח ערכים אנושיים אוניברסליים הם
+                  מהיסודות החשובים ביותר של החינוך כיום. תוכנית 16 המעלות
+                  מעניקה לצוותי החינוך, לתלמידים, לתלמידות ולקהילות כלים
+                  פשוטים, מעשיים וישימים, שהופכים את הערכים האלה לחלק בלתי
+                  נפרד מהעשייה היומיומית. מתוך האמונה הזו בחרנו ב-16 המעלות
+                  להיות תוכנית הדגל של מנהל החינוך בעיריית תל אביב-יפו.
                 </p>
                 <div class="tc-author">
                   <img
@@ -2236,7 +2045,7 @@
                 </div>
                 <div class="tc-q">"</div>
                 <p class="tc-text">
-                  העבודה עם תוכנית 16 המעלות מחזירה את מימד הערכים והרוח לשיח
+                  העבודה עם תוכנית 16 המעלות מנכיחה את מימד הערכים והרוח בשיח
                   היומיומי באופן נגיש, פשוט וישים לכל אדם. בעיניי, זהו מרכיב
                   קריטי בתהליכי שיקום, הן ברמה האישית והן ברמה החברתית.
                 </p>
@@ -2256,8 +2065,36 @@
                 </div>
               </div>
 
-              <!-- 3. חאלד שקרא -->
+              <!-- 3. יעל קמינסקי -->
               <div class="tc rev d2">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  מהפכת ה-AI היא בעלת פוטנציאל בלתי נתפס, אך גם מייצרת מציאות
+                  של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות העצומה של
+                  טיפוח המרכיב האנושי. תוכנית 16 המעלות עוזרת למנהלים.ות
+                  ולעובדים.ות לפתח חוסן אישי וצוותי, ולייצר מצפן ניהולי בתוך
+                  ההתמודדות עם חוסר הוודאות ועם הצורך המתמיד להשתנות.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/יעל קמינסקי.jpeg"
+                    alt="יעל קמינסקי"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">יעל קמינסקי</div>
+                    <div class="tc-role">פסיכולוגית קלינית ו-HR ב-WIX</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. חאלד שקרא -->
+              <div class="tc rev">
                 <div class="tc-stars">
                   <span class="star">★</span><span class="star">★</span
                   ><span class="star">★</span><span class="star">★</span
@@ -2267,8 +2104,9 @@
                 <p class="tc-text">
                   סדנת 16 המעלות חיזקה את תחושת השייכות, הלכידות והתקשורת בצוות
                   רב-תרבותי. אני רואה ב-16 המעלות תוכנית שמצליחה לגעת גם ברמה
-                  האנושית וגם ברמה המקצועית, ולתת לצוותי חינוך שפה משותפת שמחברת
-                  בין אנשים ולא מטשטשת את השונות ביניהם.
+                  האנושית וגם ברמה המקצועית, ולתת לצוותי חינוך שפה משותפת
+                  שמחברת בין אנשים מרקעים שונים מבלי לטשטש את הייחוד של כל אחד
+                  ואחת.
                 </p>
                 <div class="tc-author">
                   <img
@@ -2283,8 +2121,42 @@
                 </div>
               </div>
 
-              <!-- 4. תומר גביש -->
-              <div class="tc rev">
+              <!-- 5. חן וינשטיין -->
+              <div class="tc rev d1">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  מה שהפתיע אותי במסלול ההכשרה של 16 המעלות הוא עד כמה הוא עמוק
+                  - ועד כמה הוא פשוט ומשולב בחיים עצמם. לא הייתי צריכה לעצור את
+                  החיים כדי לעבור תהליך; התהליך קרה בתוכם. למדתי לפתח שפה
+                  פנימית של ערכים וחוסן בתוך שגרת החיים - בעבודה, במשפחה
+                  ובמערכות היחסים. אחד הדברים המשמעותיים ביותר עבורי הוא תחושת
+                  השייכות לקהילה של אנשים שבוחרים, בתקופה מאתגרת ומורכבת, לטפח
+                  יחד ערכים אנושיים, הקשבה וחוסן פנימי - לא כסיסמה, אלא כדרך
+                  חיים.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/חן ווינשטיין.jpeg"
+                    alt="חן וינשטיין"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">חן וינשטיין</div>
+                    <div class="tc-role">
+                      פסיכותרפיסטית ויועצת ארגונית, מנחה מוסמכת של תוכנית 16
+                      המעלות
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. תומר גביש -->
+              <div class="tc rev d2">
                 <div class="tc-stars">
                   <span class="star">★</span><span class="star">★</span
                   ><span class="star">★</span><span class="star">★</span
@@ -2306,61 +2178,6 @@
                   <div>
                     <div class="tc-name">תומר גביש</div>
                     <div class="tc-role">מנהל בי"ס עירוני י"א בתל-אביב</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 5. חן ווינשטיין -->
-              <div class="tc rev d1">
-                <div class="tc-stars">
-                  <span class="star">★</span><span class="star">★</span
-                  ><span class="star">★</span><span class="star">★</span
-                  ><span class="star">★</span>
-                </div>
-                <div class="tc-q">"</div>
-                <p class="tc-text">
-                  תוכנית 16 המעלות שינתה לי את הדרך שבה אני מתייחסת לעצמי
-                  ולסביבתי. לראשונה הרגשתי שיש לי כלים אמיתיים, לא טיפים, לא
-                  עצות. כלים שאני לוקחת איתי לכל מקום.
-                </p>
-                <div class="tc-author">
-                  <img
-                    src="assets/img/חן ווינשטיין.jpeg"
-                    alt="חן ווינשטיין"
-                    class="tc-av"
-                  />
-                  <div>
-                    <div class="tc-name">חן ווינשטיין</div>
-                    <div class="tc-role">מנחת סדנאות</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 6. יעל קמינסקי -->
-              <div class="tc tc-featured rev d2">
-                <div class="tc-stars">
-                  <span class="star">★</span><span class="star">★</span
-                  ><span class="star">★</span><span class="star">★</span
-                  ><span class="star">★</span>
-                </div>
-                <div class="tc-q">"</div>
-                <p class="tc-text">
-                  מהפכת הבינה המלאכותית היא בעלת פוטנציאל בלתי נתפס, אך גם
-                  מייצרת מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות
-                  של טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים
-                  לגבש שפה ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים
-                  משמעותיות, חוסן אישי וקבוצתי, ומאפשרת לארגונים גלובליים
-                  להתמודד בהצלחה עם אי-הוודאות של ימינו.
-                </p>
-                <div class="tc-author">
-                  <img
-                    src="assets/img/יעל קמינסקי.jpeg"
-                    alt="יעל קמינסקי"
-                    class="tc-av"
-                  />
-                  <div>
-                    <div class="tc-name">יעל קמינסקי</div>
-                    <div class="tc-role">מנהלת משאבי אנוש, WIX</div>
                   </div>
                 </div>
               </div>
@@ -2396,12 +2213,12 @@
             </p>
             <div class="socials">
               <a
-                href="https://www.instagram.com/dreamers_home_il/"
+                href="https://www.instagram.com/dreamers_home_il/?hl=en"
                 class="fsoc"
                 title="Instagram"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/Instegram Logo.png" alt="Instagram"
+                ><img src="assets/img/Instegram Logo 1.png" alt="Instagram"
               /></a>
               <a
                 href="https://www.youtube.com/@dreamers.16g"
@@ -2409,15 +2226,15 @@
                 title="YouTube"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/YouTube Logo.png" alt="YouTube"
+                ><img src="assets/img/YouTube Logo 1.png" alt="YouTube"
               /></a>
               <a
-                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                href="https://www.facebook.com/Dreamers.Home.Israel"
                 class="fsoc"
                 title="Facebook"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/Facebook Logo.png" alt="Facebook"
+                ><img src="assets/img/Facebook Logo 1.png" alt="Facebook"
               /></a>
             </div>
           </div>

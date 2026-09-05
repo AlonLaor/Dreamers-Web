@@ -270,15 +270,14 @@
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
       }
       .nav-slogan {
-        color: #fff;
-        font-size: 0.85rem;
-        font-weight: 600;
-        line-height: 1.5;
-        text-align: center;
+        display: flex;
+        align-items: center;
         opacity: 0.92;
       }
-      .nav-slogan .ns-accent {
-        color: #d15810;
+      .nav-slogan img {
+        height: 2.55rem;
+        width: auto;
+        display: block;
       }
       @media (max-width: 1024px) {
         .nav-slogan {
@@ -433,12 +432,6 @@
         font-weight: 800;
         color: var(--blue-dk);
       }
-      /* matches the journey card's own width (.journey-grid-single), so the
-         paragraphs above and below it share its exact left/right edges */
-      .journey-text-aligned {
-        max-width: 930px;
-      }
-
       /* ═══ WHY NOW ═══ */
       .why-result {
         max-width: 860px;
@@ -1205,89 +1198,34 @@
       }
 
       /* ═══ JOURNEY — "מה קורה בדרך" ═══ */
-      /* The pair breaks out of the text column and runs the full width of
-         the screen, so the two photographs read as one band across the page. */
-      /* the pair runs the full width of the screen, centred, rather than
-         sitting in the right-hand part of the text column. 100vw counts the
-         scrollbar, which the page does not have room for, so the section
-         clips the few pixels that reach past its edge. */
+      /* same split layout as "על ארגון FDCW" on the About page: plain text
+         column (no coloured box) on the right, photo on the left */
       .bleed-host {
         overflow-x: clip;
       }
-      .journey-bleed {
-        width: 100vw;
-        margin-inline: calc(50% - 50vw);
-        margin-top: 2.6rem;
-        padding: 0 2rem;
-      }
-      .journey-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.8rem;
-        max-width: 1240px;
-        margin: 0 auto;
-      }
-      /* the single remaining journey card, shrunk 25% (box + image) from
-         the original two-card grid's per-card size */
-      .journey-grid-single {
-        grid-template-columns: 1fr;
-        max-width: 930px;
-      }
-      /* keeps the intro line's right edge flush with the text inside the
-         card below it (journey-body's own inner padding), so the two read
-         as one aligned column instead of the paragraph sitting slightly
-         left of the card's text */
-      #journey .ab-body {
-        padding-right: 2.1rem;
-      }
-      /* each card is split down the middle: the copy sits on the right, the
-         photograph on the left — in RTL the first cell lands on the right */
-      .journey-card {
-        position: relative;
+      .ab-split {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        overflow: hidden;
-        border-radius: 26px;
-        background: linear-gradient(150deg, #7fdbe2 0%, #63cfdd 55%, #4bc0d5 100%);
-        box-shadow:
-          0 3px 6px rgba(0, 67, 120, 0.1),
-          0 22px 55px rgba(0, 67, 120, 0.22);
+        gap: 3.5rem;
+        align-items: center;
       }
-      /* the fine light frame drawn inside the card, across both halves */
-      .journey-card::after {
-        content: "";
-        position: absolute;
-        inset: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.55);
-        border-radius: 18px;
-        pointer-events: none;
-      }
-      .journey-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 2.4rem 2.1rem;
-      }
-      .journey-media {
-        min-height: 270px;
-        background-size: cover;
-        background-position: center;
-      }
-      .journey-card h3 {
-        color: var(--blue-dk);
-        font-size: clamp(1.3rem, 1.9vw, 1.7rem);
-        font-weight: 800;
-        margin-bottom: 1.3rem;
-      }
-      .journey-card .why-result {
+      .ab-split .ab-body {
         max-width: none;
+        margin: 0 0 1.3rem;
       }
-      .journey-card .why-result li {
-        color: var(--blue-dk);
-        font-weight: 600;
-        font-size: clamp(1.05rem, 1.35vw, 1.24rem);
-        line-height: 1.75;
-        margin-bottom: 0.85rem;
+      .ab-split .ab-body:last-child {
+        margin-bottom: 0;
+      }
+      .ab-split-img {
+        border-radius: 22px;
+        overflow: hidden;
+        height: 420px;
+        box-shadow: 0 30px 70px var(--shadow);
+      }
+      .ab-split-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       /* ═══ FINISHED ARTWORK PANELS ═══
@@ -1351,7 +1289,8 @@
       .aud-chip {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        text-align: center;
         gap: 0.5rem;
         width: 100%;
         aspect-ratio: 224 / 74;
@@ -1364,13 +1303,6 @@
         padding: 0.6rem 1.15rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
-      .aud-chip-icon {
-        width: 30px;
-        height: 30px;
-        flex-shrink: 0;
-        color: #fff;
-        opacity: 0.9;
-      }
 
       /* ═══ STAGES ═══ */
       /* each stage carries its own tint drawn from the page palette and
@@ -1382,6 +1314,9 @@
       .stages-intro {
         max-width: 750px;
         margin: 0 auto 1.3rem;
+      }
+      .stage-stack {
+        display: contents;
       }
       .stage {
         position: relative;
@@ -1396,7 +1331,7 @@
           0 24px 55px rgba(0, 20, 45, 0.4);
       }
       .stage-2 {
-        background: linear-gradient(150deg, #073259 0%, #051f3a 100%);
+        background: linear-gradient(150deg, #0d84c4 0%, #041b33 100%);
       }
       .stage-3 {
         /* darker than stage 2, but kept a clearly saturated navy rather
@@ -1415,20 +1350,22 @@
         background: var(--g-teal);
       }
       .stage-badge {
-        display: inline-flex;
+        display: flex;
+        width: fit-content;
         align-items: center;
-        gap: 0.55rem;
+        justify-content: center;
+        gap: 1.2rem;
         background: rgba(72, 217, 211, 0.16);
         color: var(--teal-lt);
         border-radius: 50px;
-        padding: 0.4rem 1.3rem;
-        font-size: 1.12rem;
+        padding: 0.88rem 2.86rem;
+        font-size: 2.46rem;
         font-weight: 900;
-        margin-bottom: 0.8rem;
+        margin: 0 auto 0.8rem;
       }
       .stage-badge-icon {
-        width: 24px;
-        height: 24px;
+        width: 53px;
+        height: 53px;
       }
       .stage h3 {
         color: #fff;
@@ -1513,15 +1450,6 @@
         color: var(--blue-dk);
         text-shadow: none;
       }
-      .stage-track-icon {
-        position: absolute;
-        top: 1.7rem;
-        inset-inline-end: 1.8rem;
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        box-shadow: 0 4px 14px rgba(0, 40, 80, 0.25);
-      }
       .cta-pair {
         display: flex;
         flex-wrap: wrap;
@@ -1565,9 +1493,14 @@
         min-width: 0;
         text-align: center;
       }
+      /* fixed at the same 170px every headshot on the About page uses
+         (management, staff, academic forum), rather than sized off the
+         carousel column, so a photo is the same size everywhere it
+         appears on the site */
       .fac-photo {
-        width: 100%;
-        aspect-ratio: 1 / 1;
+        width: 170px;
+        height: 170px;
+        margin: 0 auto;
         object-fit: cover;
         border-radius: 50%;
         border: 4px solid #fff;
@@ -1609,11 +1542,11 @@
 
       /* ═══ RESPONSIVE — page specific ═══ */
       @media (max-width: 1024px) {
-        .journey-grid {
+        .ab-split {
           grid-template-columns: 1fr;
         }
-        .journey-media {
-          min-height: 260px;
+        .ab-split-img {
+          height: 260px;
         }
         .aud-chips {
           grid-template-columns: repeat(3, minmax(0, 224px));
@@ -1663,16 +1596,27 @@
         .cta-pair .btn {
           flex: 1 1 100%;
         }
+        /* one stage card in view at a time, swiped horizontally, instead of
+           all four squeezed to the phone's width one under the other */
+        .stage-stack {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          gap: 1rem;
+          margin: 1.6rem -2rem 0;
+          padding: 0 1.2rem 0.6rem;
+        }
+        .stage-stack .stage {
+          flex: 0 0 94%;
+          max-width: none;
+          scroll-snap-align: center;
+          margin: 0;
+        }
         .stage {
           padding: 1.6rem 1.4rem;
         }
         .s1-structure {
           grid-template-columns: 1fr;
-        }
-        .stage-track-icon {
-          position: static;
-          display: block;
-          margin: 0 auto 0.8rem;
         }
       }
       @media (max-width: 520px) {
@@ -1682,15 +1626,9 @@
         /* side by side, the copy is left with a column barely two words
            wide, so the photograph moves above it and each takes the full
            width */
-        .journey-card {
-          grid-template-columns: 1fr;
-        }
-        .journey-media {
+        #journey .ab-split-img {
           order: -1;
-          min-height: 190px;
-        }
-        .journey-body {
-          padding: 1.8rem 1.6rem 2rem;
+          height: 190px;
         }
         .vb-grid {
           /* one family at a time: its title, then its own four tiles,
@@ -1803,14 +1741,27 @@
            sitting beside it, so it still never covers any copy */
         .footer-top {
           flex-direction: column;
+          align-items: center;
+        }
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
         }
       }
       @media (max-width: 520px) {
         .ab-sec {
           padding: 4.5rem 1.1rem;
         }
+        /* #contact-form isn't an .ab-sec, so its side padding never shrank
+           on a phone like every other section's does; matched here, then
+           the form itself bleeds past .wrap's own gutter too, so it reads
+           at close to full screen width like the stage cards above it */
+        #contact-form {
+          padding-inline: 1.1rem;
+        }
         .contact-form {
-          padding: 1.6rem;
+          margin: 0 -1.1rem;
+          padding: 1.6rem 1.2rem;
         }
       }
       /* No text block may end on a line holding a single word.
@@ -1916,7 +1867,7 @@
           </li>
         </ul>
       </div>
-      <div class="nav-slogan">כשחולמות לבד, חולמות.<br />כשחולמות יחד - <span class="ns-accent">מתעוררות.</span></div>
+      <div class="nav-slogan"><img src="assets/img/The Slogan 1.png" alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות." /></div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1994,23 +1945,14 @@
         </div>
 
         <p class="ab-body ab-body-center rev d3" style="margin-top: 2.6rem">
-          התוכנית נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו באמצעות
+          התוכנית נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו. באמצעות
           שילוב בין פילוסופיות מזרחיות ומדע מערבי, בין חכמה עתיקה להתפתחויות
-          מודרניות.<br />
+          מודרניות,<br />
           התוכנית מייצרת שפה משותפת וסוללת דרך לחיים שלווים, משמעותיים
           ומאושרים יותר ליחידים, משפחות, קהילות ולחברה כולה.
         </p>
 
-        <p class="ab-body ab-body-center rev d3">
-          באמצעות לימוד ותרגול של ארבעת נושאי הליבה ו-16 המעלות, מתאפשרת הכרות
-          מעמיקה יותר עם עצמנו, שיפור מערכות היחסים שלנו, קבלת החלטות טובות
-          יותר ומציאת שלוות-נפש וחוסן. הטמעת הערכים מקדמת חיים חברתיים
-          וקהילתיים משותפים באקלים מיטבי גם בזמנים מורכבים. שיח על המעלות הללו
-          ותרגול מעשי תהליכי בקבוצות, בזוגות ובאופן אישי מייצר תחושת שייכות,
-          מקדם תחושת מסוגלות ורווחה נפשית ומפתח יכולת לדיאלוג מקרב.
-        </p>
-
-        <div class="rev d3" style="margin-top: 2rem">
+        <div class="rev d3" style="margin-top: 2rem; text-align: center">
           <a href="#contact-form" class="btn btn-blue"
             >לקבלת פרטים על הסדנאות הקרובות</a
           >
@@ -2052,52 +1994,36 @@
     </section>
 
     <!-- ════════════ מה קורה בדרך ════════════ -->
-    <section class="ab-sec bg-mist bleed-host" id="journey">
+    <section class="ab-sec bg-mist" id="journey">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">מה קורה בדרך</h2>
         </div>
-        <p class="ab-body ab-body-center journey-text-aligned rev">
-          באמצעות חקירת 16 המעלות מתאפשרת הכרות מעמיקה יותר עם עצמנו ועם
-          אחרים.ות.
-        </p>
-
-        <div class="journey-bleed">
-          <div class="journey-grid journey-grid-single">
-            <div class="journey-card rev d1">
-              <div class="journey-body">
-                <h3>מתוך ההיכרות הזאת מתאפשרת</h3>
-                <ul class="why-result" style="margin: 0">
-                  <li>פריצת תפיסות עצמיות מגבילות</li>
-                  <li>שיפור מערכות יחסים</li>
-                  <li>מציאת שלוות-נפש וחוסן מנטלי</li>
-                  <li>קבלת החלטות טובה יותר</li>
-                </ul>
-                <h3 style="margin-top: 1.5rem">שיח על המעלות ותרגול מעשי</h3>
-                <ul class="why-result" style="margin: 0">
-                  <li>מייצר תחושת שייכות</li>
-                  <li>מקדם תחושת מסוגלות ורווחה נפשית</li>
-                  <li>מעצים יכולת לדיאלוג מקרב</li>
-                </ul>
-              </div>
-              <div
-                class="journey-media"
-                style="background-image: url('assets/img/16 מעלות.png')"
-                role="img"
-                aria-label="שובר גלים של אבנים המוליך אל עבר השקיעה"
-              ></div>
-            </div>
+        <div class="ab-split">
+          <div>
+            <p class="ab-body rev">
+              באמצעות לימוד ותרגול של ארבעת נושאי הליבה ו-16 המעלות, מתאפשרים:
+            </p>
+            <ul class="why-result" style="margin-top: 1rem">
+              <li>הכרות מעמיקה עם עצמנו</li>
+              <li>שיפור מערכות יחסים</li>
+              <li>קבלת החלטות טובה יותר</li>
+              <li>מציאת שלוות נפש וחוסן מנטלי</li>
+            </ul>
+            <p class="ab-body rev" style="margin-top: 1.3rem">
+              הטמעת הערכים מקדמת חיים חברתיים וקהילתיים משותפים באקלים מיטבי
+              גם בזמנים מורכבים. שיח על המעלות הללו ותרגול מעשי תהליכי
+              בקבוצות, בזוגות ובאופן אישי מייצר תחושת שייכות, מקדם תחושת
+              מסוגלות ורווחה נפשית ומפתח יכולת לדיאלוג מקרב.
+            </p>
+          </div>
+          <div class="ab-split-img rev d2">
+            <img
+              src="assets/img/16 מעלות.png"
+              alt="שובר גלים של אבנים המוליך אל עבר השקיעה"
+            />
           </div>
         </div>
-
-        <p
-          class="ab-body ab-body-center journey-text-aligned rev d3"
-          style="margin-top: 2.2rem"
-        >
-          הטמעת המעלות מקדמת חיים חברתיים וקהילתיים משותפים גם בזמנים
-          מורכבים.<br />
-          השיח והתרגול מתקיימים בקבוצות, בזוגות ובאופן אישי.
-        </p>
       </div>
     </section>
 
@@ -2127,40 +2053,9 @@
           />
           <div class="aud-chip">
             <span>מנהלות ומנהלים בארגונים</span>
-            <svg
-              class="aud-chip-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <circle cx="9" cy="8" r="3" />
-              <path d="M4.5 19c0-2.8 2-4.5 4.5-4.5s4.5 1.7 4.5 4.5" />
-              <rect x="15.6" y="4.6" width="4" height="4" rx="0.8" />
-              <circle cx="17.8" cy="16.4" r="2.2" />
-              <path d="M12.3 8.6h2.6M14.6 12.6l2 1.8" />
-            </svg>
           </div>
           <div class="aud-chip">
             <span>הקהל הרחב</span>
-            <svg
-              class="aud-chip-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <circle cx="8" cy="8" r="2.6" />
-              <path d="M3.2 18c0-2.6 2-4.4 4.8-4.4s4.8 1.8 4.8 4.4" />
-              <circle cx="16.5" cy="7.5" r="2.2" />
-              <path d="M13 18c0.3-2.3 1.8-3.8 3.5-3.8s3.4 1.5 3.7 3.8" />
-            </svg>
           </div>
         </div>
       </div>
@@ -2229,6 +2124,7 @@
           שלבי התכנית, יכולים/ות המתאימים/ות להמשיך להכשרת מנחים.ות.
         </p>
 
+        <div class="stage-stack">
         <div class="stage rev d1">
           <span class="stage-badge"
             ><img
@@ -2311,12 +2207,6 @@
         </div>
 
         <div class="stage stage-track rev d3">
-          <img
-            class="stage-track-icon"
-            src="assets/img/program/stage-track-icon.png"
-            alt=""
-            aria-hidden="true"
-          />
           <h3>הכשרת מנחים.ות</h3>
           <dl>
             <dt>למי מיועד</dt>
@@ -2324,12 +2214,17 @@
               למי שהשלימו את 3 השלבים ונמצאו מתאימים להנחות סדנאות וקבוצות מטעם
               העמותה.
             </dd>
+            <dt>מבנה</dt>
+            <dd>
+              6 מפגשים מונחים של 3 שעות ובנוסף כ-15 שעות למידה במערכת מקוונת
+            </dd>
             <dt>מה לומדים</dt>
             <dd>
               פיתוח ביטחון בהנחיה, ארגון סדנאות, הטמעת תרגול המיינדפולנס ויתר
               הכלים של התוכנית והיכרות עם סגנון ההנחיה ברוח תוכנית 16 המעלות.
             </dd>
           </dl>
+        </div>
         </div>
 
         <div class="cta-pair rev">
@@ -2349,10 +2244,10 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">על המנחות והמנחים שלנו</h2>
         </div>
-        <p class="ab-body rev">
+        <p class="ab-body ab-body-center rev">
           מנחי ומנחות תוכנית 16 המעלות בישראל עברו הכשרה והוסמכו על ידי עמותת
-          בית חולמים. המנחים והמנחות ממשיכים ללמוד יחד במסגרת הקהילה המקומית
-          והבינלאומית.
+          בית חולמים.<br />
+          המנחים והמנחות ממשיכים ללמוד יחד במסגרת הקהילה המקומית והבינלאומית.
         </p>
 
         <div class="fac-outer rev d1">
@@ -2488,12 +2383,12 @@
             </p>
             <div class="socials">
               <a
-                href="https://www.instagram.com/dreamers_home_il/"
+                href="https://www.instagram.com/dreamers_home_il/?hl=en"
                 class="fsoc"
                 title="Instagram"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/Instegram Logo.png" alt="Instagram"
+                ><img src="assets/img/Instegram Logo 1.png" alt="Instagram"
               /></a>
               <a
                 href="https://www.youtube.com/@dreamers.16g"
@@ -2501,15 +2396,15 @@
                 title="YouTube"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/YouTube Logo.png" alt="YouTube"
+                ><img src="assets/img/YouTube Logo 1.png" alt="YouTube"
               /></a>
               <a
-                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                href="https://www.facebook.com/Dreamers.Home.Israel"
                 class="fsoc"
                 title="Facebook"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/Facebook Logo.png" alt="Facebook"
+                ><img src="assets/img/Facebook Logo 1.png" alt="Facebook"
               /></a>
             </div>
           </div>

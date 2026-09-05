@@ -228,15 +228,14 @@
         box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
       }
       .nav-slogan {
-        color: #fff;
-        font-size: 0.85rem;
-        font-weight: 600;
-        line-height: 1.5;
-        text-align: center;
+        display: flex;
+        align-items: center;
         opacity: 0.92;
       }
-      .nav-slogan .ns-accent {
-        color: #d15810;
+      .nav-slogan img {
+        height: 2.55rem;
+        width: auto;
+        display: block;
       }
       @media (max-width: 1024px) {
         .nav-slogan {
@@ -499,10 +498,11 @@
         height: 100%;
         object-fit: cover;
       }
-      /* 40% smaller than the standard split image */
+      /* 30% bigger than a plain 40%-smaller crop, per the site owner's
+         2026-09-05 request for the FDCW photo specifically */
       .ab-split-img-sm {
-        height: 252px;
-        max-width: 60%;
+        height: 328px;
+        max-width: 78%;
         margin: 0 auto;
       }
       /* 25% smaller than the standard split image */
@@ -625,19 +625,19 @@
       .team-card:hover::after {
         opacity: 1;
       }
+      /* one fixed size for every headshot on the page — management,
+         staff and the academic forum — per the site owner's 2026-09-05
+         request; also matched on the facilitators carousel in
+         program.html so a photo is the same size everywhere it appears */
       .team-photo {
-        width: 116px;
-        height: 116px;
+        width: 170px;
+        height: 170px;
         border-radius: 18px;
         object-fit: cover;
         object-position: center top;
         margin: 0 auto 1.5rem;
         border: 4px solid #fff;
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
-      }
-      .team-photo-lg {
-        width: 168px;
-        height: 168px;
       }
       /* the board, shown in full rather than paged through a carousel */
       .team-grid {
@@ -722,13 +722,6 @@
         flex: 0 1 calc((100% - 3.4rem) / 3);
         min-width: 250px;
       }
-      /* the academic forum's portraits, 50% larger than the standard
-         team-card photo */
-      .acad-grid .team-photo {
-        width: 174px;
-        height: 174px;
-      }
-
       /* ═══ CLOSING QUOTE ═══ */
       #quote-band {
         padding: 5.5rem 2rem;
@@ -901,8 +894,8 @@
           height: 280px;
         }
         .ab-split-img-sm {
-          height: 168px;
-          max-width: 60%;
+          height: 218px;
+          max-width: 78%;
         }
         .team-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -984,6 +977,11 @@
         }
         .footer-top {
           flex-direction: column;
+          align-items: center;
+        }
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
         }
       }
       @media (max-width: 640px) {
@@ -1071,7 +1069,7 @@
           </li>
         </ul>
       </div>
-      <div class="nav-slogan">כשחולמות לבד, חולמות.<br />כשחולמות יחד - <span class="ns-accent">מתעוררות.</span></div>
+      <div class="nav-slogan"><img src="assets/img/The Slogan 1.png" alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות." /></div>
       <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1090,7 +1088,7 @@
         <div class="ab-split">
           <div>
             <h2 class="h3d ab-sub-h rev" style="margin-top: 0">
-              מטרות עמותת בית חולמים
+              אודות עמותת בית חולמים
             </h2>
             <p class="ab-body rev d1">
               עמותת בית חולמים פועלת בתחומי הרוח והחברה לבנייה מחדש של
@@ -1116,7 +1114,7 @@
     <section class="ab-sec bg-sky">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">התוכנית הבינלאומית 16 המעלות</h2>
+          <h2 class="h3d rev">מטרות העמותה</h2>
         </div>
         <ul class="goal-list rev">
           <li>
@@ -1141,11 +1139,6 @@
             <span>לחנך לאורח חיים בריא ולשמירה על איכות הסביבה</span>
           </li>
         </ul>
-        <div class="rev d3" style="margin-top: 2rem; text-align: center">
-          <a href="program.html" class="btn btn-gold"
-            >מידע נוסף על התוכנית</a
-          >
-        </div>
       </div>
     </section>
 
@@ -1168,6 +1161,11 @@
           עמותת בית חולמים הביאה את התוכנית הבינלאומית "16 המעלות" לישראל בשנת
           2020, והפכה להיות הנציגה הרשמית של התוכנית בארץ.
         </p>
+        <div class="rev d3" style="margin-top: 2rem; text-align: center">
+          <a href="program.html" class="btn btn-gold"
+            >מידע נוסף על התוכנית</a
+          >
+        </div>
       </div>
     </section>
 
@@ -1205,7 +1203,7 @@
         <div class="team-grid rev">
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/niv_agam.jpg"
               alt="ניב אגם"
             />
@@ -1216,7 +1214,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/yael_kaminski.jpg"
               alt="יעל קמינסקי"
             />
@@ -1227,7 +1225,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/miran_brodbar.jpg"
               alt="מירן ברודבר"
             />
@@ -1236,7 +1234,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/nitzan_aviv.jpg"
               alt="ניצן אביב"
             />
@@ -1245,7 +1243,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/noya_shila.jpg"
               alt="ד״ר נויה שילה"
             />
@@ -1256,7 +1254,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/avir_fedaus.jpg"
               alt="עביר פדעוס"
             />
@@ -1267,7 +1265,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/ran_hofer.jpg"
               alt="רן הופר"
             />
@@ -1276,7 +1274,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/tania_amer.jpg"
               alt="טניה עמר"
             />
@@ -1285,7 +1283,7 @@
           </div>
           <div class="team-card">
             <img
-              class="team-photo team-photo-lg"
+              class="team-photo"
               src="assets/img/Faces/UPD 1/nadav_pari.jpg"
               alt="נדב פארי"
             />
@@ -1438,12 +1436,12 @@
             </p>
             <div class="socials">
               <a
-                href="https://www.instagram.com/dreamers_home_il/"
+                href="https://www.instagram.com/dreamers_home_il/?hl=en"
                 class="fsoc"
                 title="Instagram"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/Instegram Logo.png" alt="Instagram"
+                ><img src="assets/img/Instegram Logo 1.png" alt="Instagram"
               /></a>
               <a
                 href="https://www.youtube.com/@dreamers.16g"
@@ -1451,15 +1449,15 @@
                 title="YouTube"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/YouTube Logo.png" alt="YouTube"
+                ><img src="assets/img/YouTube Logo 1.png" alt="YouTube"
               /></a>
               <a
-                href="https://www.facebook.com/Dreamers.Home.Israel/"
+                href="https://www.facebook.com/Dreamers.Home.Israel"
                 class="fsoc"
                 title="Facebook"
                 target="_blank"
                 rel="noopener"
-                ><img src="assets/img/Facebook Logo.png" alt="Facebook"
+                ><img src="assets/img/Facebook Logo 1.png" alt="Facebook"
               /></a>
             </div>
           </div>
