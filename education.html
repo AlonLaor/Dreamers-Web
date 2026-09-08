@@ -461,34 +461,6 @@
         margin: 0 auto 1.3rem;
       }
 
-      /* ═══ 4 CORE THEMES ═══ */
-      /* a plain bulleted list; each dot keeps the colour its theme carries
-         in the board below, so the two read as one family */
-      .core-list {
-        max-width: 800px;
-        margin: 1.6rem auto 0;
-        list-style: none;
-      }
-      .core-list li {
-        position: relative;
-        padding-inline-start: 1.7rem;
-        margin-bottom: 0.85rem;
-        color: var(--blue-dk);
-        font-size: 1.08rem;
-        font-weight: 600;
-        line-height: 1.7;
-      }
-      .core-list li::before {
-        content: "";
-        position: absolute;
-        inset-inline-start: 0;
-        top: 0.6rem;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: var(--bullet, var(--blue));
-      }
-
       /* ═══ 16 המעלות בחינוך — text right, photo in the left third ═══ */
       .edu-intro-grid {
         display: grid;
@@ -501,10 +473,6 @@
       /* the column's own text no longer needs to centre or cap its width */
       .edu-intro-text .ab-body {
         margin: 0 0 1.3rem;
-        max-width: none;
-      }
-      .edu-intro-text .core-list {
-        margin: 1.6rem 0 0;
         max-width: none;
       }
       .edu-intro-photo {
@@ -546,7 +514,11 @@
       }
       .vb-body {
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
-        padding: 1.6rem 1.2rem 1.9rem;
+        /* matches the programme page's board exactly, per the site owner's
+           2026-09-08 request: the extra 1.8rem that used to sit as
+           .vb-col-title's own margin-bottom now lives in this top padding
+           instead, so the title row moves down while the tiles stay put */
+        padding: 3.4rem 1.2rem 1.9rem;
       }
       /* The board is one grid filled column by column, not row by row: the
          four tiles of a family are written in directly under their own
@@ -569,7 +541,9 @@
       .vb-col-title {
         border-radius: 12px;
         color: #fff;
-        font-weight: 700;
+        /* Heebo Black, matching the programme page's board (2026-09-08
+           fix: font-weight 700 read visibly thinner than intended) */
+        font-weight: 900;
         font-size: clamp(0.95rem, 1.45vw, 1.16rem);
         line-height: 1.35;
         text-align: center;
@@ -582,7 +556,6 @@
            tile beneath it, matching the programme page's board */
         aspect-ratio: 2.4 / 1;
         min-height: 4.6rem;
-        margin-bottom: 1.8rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
       .vcard {
@@ -662,9 +635,10 @@
       }
 
       /* ═══ WHY NOW ═══ */
-      /* each consequence sits on its own tile behind a raised 3D badge,
-         matching the tilt-on-hover language used for cards on the other
-         pages (about.html's stat cards, business.html's badge rows) */
+      /* each consequence sits on its own tile, matching the tilt-on-hover
+         language used for cards on the other pages (about.html's stat
+         cards) - per the site owner's 2026-09-08 request the badge icons
+         were dropped and the text set bold instead */
       .impact-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -693,40 +667,12 @@
           0 6px 14px rgba(0, 67, 120, 0.1),
           0 24px 50px rgba(0, 67, 120, 0.2);
       }
-      /* a glossy raised sphere: the radial highlight top-left plus the
-         inset shadow bottom-right is what reads as a 3D badge rather than
-         a flat coloured dot */
-      .impact-badge {
-        flex-shrink: 0;
-        width: 3.2rem;
-        height: 3.2rem;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background:
-          radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.55), transparent 45%),
-          linear-gradient(150deg, var(--blue) 0%, var(--blue-dk) 100%);
-        box-shadow:
-          inset 0 2px 3px rgba(255, 255, 255, 0.35),
-          inset 0 -6px 10px rgba(0, 0, 0, 0.28),
-          0 8px 16px rgba(0, 40, 70, 0.35);
-      }
-      .impact-badge svg {
-        width: 1.5rem;
-        height: 1.5rem;
-        fill: none;
-        stroke: #fff;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
       .impact-tile p {
         margin: 0;
         font-size: 0.94rem;
         line-height: 1.6;
         color: var(--text-mid);
-        font-weight: 600;
+        font-weight: 700;
       }
       @media (max-width: 600px) {
         .impact-grid {
@@ -797,7 +743,7 @@
         padding: 0.9rem 1.4rem;
       }
       .study-logos img {
-        height: 44px;
+        height: 53px; /* 44px + 20%, per the site owner's 2026-09-08 request */
         width: auto;
         object-fit: contain;
         opacity: 0.92;
@@ -836,7 +782,7 @@
           gap: 1.1rem;
         }
         .study-logos img {
-          height: 40px;
+          height: 48px; /* 40px + 20% */
         }
       }
       .stat-frame p {
@@ -1636,20 +1582,7 @@
               והוכנסה גם לבתי-ספר בנתניה, במועצת מטה יהודה ועוד.
             </p>
 
-            <p class="ab-body rev d2" style="margin-bottom: 0">
-              התוכנית מבוססת על ארבעה נושאי ליבה:
-            </p>
-            <ul class="core-list rev d2">
-              <li style="--bullet: var(--v-think)">הדרך שאנו חושבות.ים</li>
-              <li style="--bullet: var(--v-act)">הדרך שאנו פועלות.ים</li>
-              <li style="--bullet: var(--v-relate)">
-                הדרך שאנו מתייחסות.ים לזולת
-              </li>
-              <li style="--bullet: var(--v-meaning)">
-                הדרך שאנו מוצאות.ים משמעות
-              </li>
-            </ul>
-            <p class="ab-body rev d2" style="margin-top: 1.6rem">
+            <p class="ab-body rev d2">
               בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות
               שפה חברתית-רגשית-ערכית אוניברסלית, המתאימה לכל שכבות הגיל ובכל
               מגזרי החינוך.
@@ -1674,28 +1607,28 @@
                 data-family="think"
                 style="background: var(--v-think)"
               >
-                הדרך בה אנו חושבות.ים
+                הדרך בה אנו חושבת
               </div>
               <div
                 class="vb-col-title"
                 data-family="act"
                 style="background: var(--v-act)"
               >
-                הדרך בה אנו פועלות.ים
+                הדרך בה אנו פועלת
               </div>
               <div
                 class="vb-col-title"
                 data-family="relate"
                 style="background: var(--v-relate)"
               >
-                הדרך בה אנו מתייחסות.ים לזולת
+                הדרך בה אנו מתייחסת לזולת
               </div>
               <div
                 class="vb-col-title"
                 data-family="meaning"
                 style="background: var(--v-meaning)"
               >
-                הדרך בה אנו מוצאות.ים משמעות
+                הדרך בה אנו מוצאת משמעות
               </div>
               <!-- the 16 tiles are written in by the script at the foot -->
             </div>
@@ -1725,48 +1658,18 @@
         </p>
         <div class="impact-grid rev d1">
           <div class="impact-tile">
-            <span class="impact-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" />
-                <circle cx="9" cy="10" r="1" fill="#fff" stroke="none" />
-                <circle cx="15" cy="10" r="1" fill="#fff" stroke="none" />
-                <path d="M8 16c1.2-1.5 2.6-2.2 4-2.2s2.8.7 4 2.2" />
-              </svg>
-            </span>
             <p>עלייה במצוקה הרגשית ובתחושת הבדידות</p>
           </div>
           <div class="impact-tile">
-            <span class="impact-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z" />
-                <path d="M12 8v4" />
-                <path d="M12 15h.01" />
-              </svg>
-            </span>
             <p>ירידה בתחושת השייכות והמוגנות בבית הספר</p>
           </div>
           <div class="impact-tile">
-            <span class="impact-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 2c-1 3-4 4-4 8a4 4 0 0 0 8 0c0-1.5-.8-2.3-1.3-3.3.9.4 2.3 1.7 2.3 4.3a5 5 0 0 1-10 0c0-4 3-6 5-9z"
-                />
-              </svg>
-            </span>
             <p>
               שחיקה של צוותי החינוך, שמתקשים להכיל את הצרכים הרגשיים של
               התלמידים
             </p>
           </div>
           <div class="impact-tile">
-            <span class="impact-badge" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
-                />
-                <line x1="2" y1="20" x2="20" y2="4" stroke-width="2" />
-              </svg>
-            </span>
             <p>קושי גובר ביצירת שיח משותף בין תלמידים, הורים ומורים</p>
           </div>
         </div>

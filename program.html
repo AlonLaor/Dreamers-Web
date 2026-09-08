@@ -1020,7 +1020,12 @@
       }
       .vb-body {
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
-        padding: 1.6rem 1.2rem 1.9rem;
+        /* top padding carries the 1.8rem taken off .vb-col-title's own
+           margin-bottom below, per the site owner's 2026-09-08 follow-up:
+           the title row moves down (bigger gap under "16 המעלות") while the
+           virtue tiles stay put (title-to-tile gap now matches the 0.9rem
+           grid gap between tile rows, instead of 3x it) */
+        padding: 3.4rem 1.2rem 1.9rem;
       }
       /* just the navy "16 המעלות" title bar now, flush against the board's
          rounded top corners (the board's own overflow:hidden clips it to
@@ -1055,13 +1060,20 @@
         gap: 0.9rem;
       }
       /* the type here matches the printed 16-virtues chart used on the
-         companies page. The extra margin-bottom, on top of the grid's own
-         0.9rem row gap, brings the gap under the title to 2.7rem - 3x the
-         gap between tile rows, per the site owner's (repeated) request. */
+         companies page. Per the site owner's 2026-09-08 follow-up, the
+         gap under the title row now matches the grid's own 0.9rem row gap
+         (same as the gap between tile rows) instead of 3x it - the extra
+         space that used to sit here as margin-bottom moved up into
+         .vb-body's own top padding instead, so the title row moves down
+         while the tiles below stay put. */
       .vb-col-title {
         border-radius: 12px;
         color: #fff;
-        font-weight: 700;
+        /* Heebo Black - matches the weight of the old baked "Poster -
+           HEADER.png" artwork these boxes replaced (2026-09-08 report:
+           font-weight: 700 here reads visibly thinner than that poster's
+           own bold type, which the site owner wants restored) */
+        font-weight: 900;
         font-size: clamp(0.95rem, 1.45vw, 1.16rem);
         line-height: 1.35;
         text-align: center;
@@ -1076,7 +1088,6 @@
            2026-09-08 follow-up ("also height, not just width") */
         aspect-ratio: 2.4 / 1;
         min-height: 4.6rem;
-        margin-bottom: 1.8rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
       .vb-hint {
