@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
       rel="stylesheet"
     />
 
@@ -402,6 +402,8 @@
       }
       #edu-hero .h3d {
         color: #fff;
+        /* matches the hero title size on the "תוכנית 16 המעלות" page */
+        font-size: clamp(2rem, 4.4vw, 3.5rem);
         text-shadow:
           0 2px 0 rgba(0, 0, 0, 0.3),
           0 5px 14px rgba(0, 0, 0, 0.45),
@@ -409,9 +411,10 @@
       }
       .bh-headline {
         font-family: "Playfair Display", Georgia, serif;
-        font-style: italic;
+        font-style: normal;
         font-weight: 700;
-        font-size: clamp(2rem, 4.6vw, 3.4rem);
+        /* 30% smaller than the hero title above it */
+        font-size: clamp(1.4rem, 3.08vw, 2.45rem);
         line-height: 1.28;
         color: var(--teal-lt);
         margin-bottom: 1.6rem;
@@ -486,6 +489,44 @@
         background: var(--bullet, var(--blue));
       }
 
+      /* ═══ 16 המעלות בחינוך — text right, photo in the left third ═══ */
+      .edu-intro-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2.4rem;
+        align-items: center;
+        max-width: 1140px;
+        margin: 0 auto;
+      }
+      /* the column's own text no longer needs to centre or cap its width */
+      .edu-intro-text .ab-body {
+        margin: 0 0 1.3rem;
+        max-width: none;
+      }
+      .edu-intro-text .core-list {
+        margin: 1.6rem 0 0;
+        max-width: none;
+      }
+      .edu-intro-photo {
+        border-radius: 24px;
+        overflow: hidden;
+        height: 420px;
+        box-shadow: 0 35px 80px var(--shadow);
+      }
+      .edu-intro-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      @media (max-width: 768px) {
+        .edu-intro-grid {
+          grid-template-columns: 1fr;
+        }
+        .edu-intro-photo {
+          height: 280px;
+        }
+      }
+
       /* ═══ THE 16 VIRTUES — flip cards ═══ */
       /* the same board as the programme page: the printed chart, with every
          tile turning over on hover to show what the virtue means */
@@ -498,14 +539,10 @@
           0 4px 10px rgba(0, 67, 120, 0.1),
           0 22px 55px rgba(0, 67, 120, 0.22);
       }
-      .vb-head {
-        background: var(--blue);
-        color: #fff;
-        text-align: center;
-        padding: 1.1rem 1rem;
-        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
-        font-weight: 900;
-        letter-spacing: 0.01em;
+      .vb-poster {
+        display: block;
+        width: 100%;
+        height: auto;
       }
       .vb-body {
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
@@ -540,16 +577,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 4.9rem;
+        /* same aspect-ratio as .vcard below, on the same grid-column width,
+           so the title box is exactly the same width and height as the
+           tile beneath it, matching the programme page's board */
+        aspect-ratio: 2.4 / 1;
+        min-height: 4.6rem;
+        margin-bottom: 1.8rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
-      }
-      .vb-hint {
-        margin: 0 0 1.1rem;
-        font-size: 0.86rem;
-        font-weight: 600;
-        color: var(--blue);
-        opacity: 0.75;
-        text-align: center;
       }
       .vcard {
         perspective: 900px;
@@ -628,52 +662,129 @@
       }
 
       /* ═══ WHY NOW ═══ */
-      .why-result {
-        max-width: 760px;
-        margin: 1.6rem auto 0;
-        list-style: none;
+      /* each consequence sits on its own tile behind a raised 3D badge,
+         matching the tilt-on-hover language used for cards on the other
+         pages (about.html's stat cards, business.html's badge rows) */
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        max-width: 780px;
+        margin: 1.8rem auto 0;
       }
-      .why-result li {
-        position: relative;
-        padding-inline-start: 1.6rem;
-        margin-bottom: 0.7rem;
-        color: var(--text-mid);
-        font-size: 1.02rem;
-        line-height: 1.7;
+      .impact-tile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: linear-gradient(150deg, #ffffff 0%, #f4f8fb 100%);
+        border: 1px solid rgba(0, 67, 120, 0.07);
+        border-radius: 18px;
+        padding: 1.1rem 1.3rem;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.08),
+          0 14px 30px rgba(0, 67, 120, 0.12);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
       }
-      .why-result li::before {
-        content: "";
-        position: absolute;
-        inset-inline-start: 0;
-        top: 0.55rem;
-        width: 8px;
-        height: 8px;
+      .impact-tile:hover {
+        transform: translateY(-8px) perspective(800px) rotateX(2deg);
+        box-shadow:
+          0 6px 14px rgba(0, 67, 120, 0.1),
+          0 24px 50px rgba(0, 67, 120, 0.2);
+      }
+      /* a glossy raised sphere: the radial highlight top-left plus the
+         inset shadow bottom-right is what reads as a 3D badge rather than
+         a flat coloured dot */
+      .impact-badge {
+        flex-shrink: 0;
+        width: 3.2rem;
+        height: 3.2rem;
         border-radius: 50%;
-        background: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:
+          radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.55), transparent 45%),
+          linear-gradient(150deg, var(--blue) 0%, var(--blue-dk) 100%);
+        box-shadow:
+          inset 0 2px 3px rgba(255, 255, 255, 0.35),
+          inset 0 -6px 10px rgba(0, 0, 0, 0.28),
+          0 8px 16px rgba(0, 40, 70, 0.35);
       }
-      /* the figure sits in a raised capsule, with the marks of the studies
-         behind it carried inside the same capsule, under the text */
+      .impact-badge svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .impact-tile p {
+        margin: 0;
+        font-size: 0.94rem;
+        line-height: 1.6;
+        color: var(--text-mid);
+        font-weight: 600;
+      }
+      @media (max-width: 600px) {
+        .impact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* the figure sits on the same deep-blue gradient the site uses for its
+         other high-impact panels (the testimonial and contact sections),
+         with the study logos on a light strip for contrast */
       .stat-frame {
+        position: relative;
         max-width: 880px;
         margin: 2.6rem auto 0;
-        padding: 2.2rem 2.4rem;
+        padding: 2.6rem 2.4rem;
         border-radius: 26px;
-        background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
-        border: 1px solid rgba(245, 166, 35, 0.3);
+        background: var(--g-main);
+        overflow: hidden;
+        text-align: center;
         box-shadow:
-          0 2px 4px rgba(245, 166, 35, 0.18),
-          0 20px 50px rgba(245, 166, 35, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        display: flex;
-        flex-direction: row-reverse;
-        gap: 1.8rem;
-        align-items: center;
+          0 2px 4px rgba(0, 67, 120, 0.28),
+          0 20px 50px rgba(0, 67, 120, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
-      .stat-frame > div {
-        flex: 1;
+      .stat-frame:hover {
+        transform: translateY(-6px) perspective(900px) rotateX(1deg);
+      }
+      .stat-frame-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 60% at 50% 0%,
+          rgba(72, 217, 211, 0.22),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .stat-num {
+        position: relative;
+        font-size: clamp(3rem, 7vw, 4.6rem);
+        font-weight: 900;
+        line-height: 1;
+        color: #fff;
+        direction: ltr;
+        unicode-bidi: isolate;
+        text-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 6px 16px rgba(0, 0, 0, 0.35),
+          0 18px 36px rgba(0, 0, 0, 0.25);
+        margin-bottom: 0.6rem;
+      }
+      .stat-frame-body {
+        position: relative;
+        max-width: 640px;
+        margin: 0 auto;
       }
       /* the studies behind the figure, all set to one height and kept on a
-         single line at the foot of the capsule */
+         single line, on a light strip so they stay legible on the dark card */
       .study-logos {
         margin: 1.8rem 0 0;
         display: flex;
@@ -681,12 +792,15 @@
         align-items: center;
         justify-content: center;
         gap: 1.6rem;
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: 16px;
+        padding: 0.9rem 1.4rem;
       }
       .study-logos img {
-        height: 54px;
+        height: 44px;
         width: auto;
         object-fit: contain;
-        opacity: 0.9;
+        opacity: 0.92;
       }
       /* a rounded capsule, deliberately not a box, for the closing promise */
       .pill-note {
@@ -728,18 +842,18 @@
       .stat-frame p {
         font-size: 1.02rem;
         line-height: 1.85;
-        color: var(--text);
+        color: rgba(255, 255, 255, 0.94);
         font-weight: 500;
       }
       .stat-frame strong {
-        color: var(--blue);
+        color: var(--teal-lt);
       }
       .stat-frame cite {
         display: block;
         margin-top: 0.6rem;
         font-style: normal;
         font-size: 0.82rem;
-        color: var(--text-lt);
+        color: rgba(255, 255, 255, 0.6);
       }
 
       /* ═══ PERSONA CARDS ═══ */
@@ -1393,9 +1507,7 @@
           grid-template-columns: 1fr;
         }
         .stat-frame {
-          flex-direction: column-reverse;
-          text-align: center;
-          align-items: center;
+          padding: 2.1rem 1.6rem;
         }
         .footer-top {
           flex-direction: column;
@@ -1455,6 +1567,14 @@
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
           <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
+            </ul>
+          </li>
           <li>
             <a href="contact.html?from=education" class="nav-cta"
               >צרו איתנו קשר</a
@@ -1480,16 +1600,6 @@
           לגדל ולגדול עם ערכים.<br />
           לחיות בביטחון רגשי.
         </div>
-        <p class="bh-sub rev d2">
-          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
-          אוניברסליים וחיים בעלי משמעות. התוכנית מספקת מענה עמוק ורוחבי ליעדי
-          משרד החינוך ומלמדת כישורים ומיומנויות SEEL (חינוך רגשי-חברתי-ערכי -
-          Social Emotional Ethical Learning) המותאמים לצוותי הוראה, לתלמידות
-          ותלמידים ולהורים.
-        </p>
-        <div class="rev d3">
-          <a href="#virtues-education" class="btn btn-blue">למידע נוסף</a>
-        </div>
       </div>
     </header>
 
@@ -1499,76 +1609,103 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">16 המעלות בחינוך</h2>
         </div>
-        <p class="ab-body rev">
-          העולם זקוק למערכת חינוך חדשה, כזו שתעניק לאנשים דרך חדשה ורחבה
-          להתבונן בעצמם ובעולם, שתטפח לא רק את המח, אלא גם את הלב.
-        </p>
-        <p class="ab-body rev d1">
-          באמצעות הטמעת ערכים אוניברסליים (כמו ענווה, טוב לב, סליחה ושאיפות),
-          תוכנית 16 המעלות פועלת לביסוס שפה ערכית משותפת ותרבות חינוכית
-          ערכית-קהילתית, ומסייעת לצוותי הוראה, לתלמידים ולהורים לפתח קשיבות,
-          להכיר את עצמם לעומק, לשפר את מערכות היחסים שלהם ולמצוא שלוות-נפש.
-        </p>
-        <p class="ab-body rev d1">
-          16 המעלות מוכרת במערכת גפ"ן של משרד החינוך משנת תשפ"ג (תוכנית מספר
-          63554). היא תוכנית הדגל של מנהל החינוך בעיריית תל אביב-יפו והוכנסה גם
-          לבתי-ספר בנתניה, במועצת מטה יהודה ועוד.
-        </p>
 
-        <p class="ab-body rev d2" style="margin-bottom: 0">
-          התוכנית מבוססת על ארבעה נושאי ליבה:
-        </p>
-        <ul class="core-list rev d2">
-          <li style="--bullet: var(--v-think)">הדרך שאנו חושבות.ים</li>
-          <li style="--bullet: var(--v-act)">הדרך שאנו פועלות.ים</li>
-          <li style="--bullet: var(--v-relate)">הדרך שאנו מתייחסות.ים לזולת</li>
-          <li style="--bullet: var(--v-meaning)">הדרך שאנו מוצאות.ים משמעות</li>
-        </ul>
-        <p class="ab-body rev d2" style="margin-top: 1.6rem">
-          בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות שפה
-          חברתית-רגשית-ערכית אוניברסלית, המתאימה לכל שכבות הגיל ובכל מגזרי
-          החינוך.
-        </p>
+        <div class="edu-intro-grid">
+          <div class="edu-intro-text">
+            <p class="ab-body rev">
+              העולם זקוק למערכת חינוך חדשה, כזו שתעניק לאנשים דרך חדשה ורחבה
+              להתבונן בעצמם ובעולם, שתטפח לא רק את המח, אלא גם את הלב.
+            </p>
+            <p class="ab-body rev d1">
+              16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח
+              ערכים אוניברסליים וחיים בעלי משמעות. התוכנית מספקת מענה עמוק
+              ורוחבי ליעדי משרד החינוך ומלמדת כישורים ומיומנויות SEEL (חינוך
+              רגשי-חברתי-ערכי - Social Emotional Ethical Learning) המותאמים
+              לצוותי הוראה, לתלמידות ותלמידים ולהורים.
+            </p>
+            <p class="ab-body rev d1">
+              באמצעות הטמעת ערכים אוניברסליים (כמו ענווה, טוב לב, סליחה
+              ושאיפות), תוכנית 16 המעלות פועלת לביסוס שפה ערכית משותפת ותרבות
+              חינוכית ערכית-קהילתית, ומסייעת לצוותי הוראה, לתלמידים ולהורים
+              לפתח קשיבות, להכיר את עצמם לעומק, לשפר את מערכות היחסים שלהם
+              ולמצוא שלוות-נפש.
+            </p>
+            <p class="ab-body rev d2">
+              16 המעלות מוכרת במערכת גפ"ן של משרד החינוך משנת תשפ"ג (תוכנית
+              מספר 63554). היא תוכנית הדגל של מנהל החינוך בעיריית תל אביב-יפו
+              והוכנסה גם לבתי-ספר בנתניה, במועצת מטה יהודה ועוד.
+            </p>
+
+            <p class="ab-body rev d2" style="margin-bottom: 0">
+              התוכנית מבוססת על ארבעה נושאי ליבה:
+            </p>
+            <ul class="core-list rev d2">
+              <li style="--bullet: var(--v-think)">הדרך שאנו חושבות.ים</li>
+              <li style="--bullet: var(--v-act)">הדרך שאנו פועלות.ים</li>
+              <li style="--bullet: var(--v-relate)">
+                הדרך שאנו מתייחסות.ים לזולת
+              </li>
+              <li style="--bullet: var(--v-meaning)">
+                הדרך שאנו מוצאות.ים משמעות
+              </li>
+            </ul>
+            <p class="ab-body rev d2" style="margin-top: 1.6rem">
+              בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות
+              שפה חברתית-רגשית-ערכית אוניברסלית, המתאימה לכל שכבות הגיל ובכל
+              מגזרי החינוך.
+            </p>
+          </div>
+          <div class="edu-intro-photo rev d1">
+            <img src="assets/img/תמונת חינוך.jpg" alt="תלמידות ותלמידים בפעילות 16 המעלות" />
+          </div>
+        </div>
 
         <div class="virtues-board rev d3">
-          <div class="vb-head">16 המעלות</div>
+          <img
+            class="vb-poster"
+            src="assets/img/Poster - HEADER Only.png"
+            alt="16 המעלות"
+          />
           <div class="vb-body">
-            <p class="vb-hint">
-              העבירו את העכבר על כל מעלה כדי לגלות את משמעותה
-            </p>
             <div class="vb-grid">
               <!-- ─── column titles ─── -->
               <div
                 class="vb-col-title"
                 data-family="think"
-                style="background: linear-gradient(150deg, #1a97a8, var(--v-think))"
+                style="background: var(--v-think)"
               >
                 הדרך בה אנו חושבות.ים
               </div>
               <div
                 class="vb-col-title"
                 data-family="act"
-                style="background: linear-gradient(150deg, #4f8f33, var(--v-act))"
+                style="background: var(--v-act)"
               >
                 הדרך בה אנו פועלות.ים
               </div>
               <div
                 class="vb-col-title"
                 data-family="relate"
-                style="background: linear-gradient(150deg, #4a63a3, var(--v-relate))"
+                style="background: var(--v-relate)"
               >
                 הדרך בה אנו מתייחסות.ים לזולת
               </div>
               <div
                 class="vb-col-title"
                 data-family="meaning"
-                style="background: linear-gradient(150deg, #d0791a, var(--v-meaning))"
+                style="background: var(--v-meaning)"
               >
                 הדרך בה אנו מוצאות.ים משמעות
               </div>
               <!-- the 16 tiles are written in by the script at the foot -->
             </div>
           </div>
+        </div>
+
+        <div class="rev d3" style="margin-top: 2.4rem; text-align: center">
+          <a href="program.html" class="btn btn-blue"
+            >מידע נוסף על תוכנית 16 המעלות</a
+          >
         </div>
       </div>
     </section>
@@ -1586,17 +1723,58 @@
         <p class="ab-body rev d1" style="font-weight: 700; color: var(--blue)">
           התוצאה:
         </p>
-        <ul class="why-result rev d1">
-          <li>עלייה במצוקה הרגשית ובתחושת הבדידות</li>
-          <li>ירידה בתחושת השייכות והמוגנות בבית הספר</li>
-          <li>
-            שחיקה של צוותי החינוך, שמתקשים להכיל את הצרכים הרגשיים של התלמידים
-          </li>
-          <li>קושי גובר ביצירת שיח משותף בין תלמידים, הורים ומורים</li>
-        </ul>
+        <div class="impact-grid rev d1">
+          <div class="impact-tile">
+            <span class="impact-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="9" cy="10" r="1" fill="#fff" stroke="none" />
+                <circle cx="15" cy="10" r="1" fill="#fff" stroke="none" />
+                <path d="M8 16c1.2-1.5 2.6-2.2 4-2.2s2.8.7 4 2.2" />
+              </svg>
+            </span>
+            <p>עלייה במצוקה הרגשית ובתחושת הבדידות</p>
+          </div>
+          <div class="impact-tile">
+            <span class="impact-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z" />
+                <path d="M12 8v4" />
+                <path d="M12 15h.01" />
+              </svg>
+            </span>
+            <p>ירידה בתחושת השייכות והמוגנות בבית הספר</p>
+          </div>
+          <div class="impact-tile">
+            <span class="impact-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2c-1 3-4 4-4 8a4 4 0 0 0 8 0c0-1.5-.8-2.3-1.3-3.3.9.4 2.3 1.7 2.3 4.3a5 5 0 0 1-10 0c0-4 3-6 5-9z"
+                />
+              </svg>
+            </span>
+            <p>
+              שחיקה של צוותי החינוך, שמתקשים להכיל את הצרכים הרגשיים של
+              התלמידים
+            </p>
+          </div>
+          <div class="impact-tile">
+            <span class="impact-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
+                />
+                <line x1="2" y1="20" x2="20" y2="4" stroke-width="2" />
+              </svg>
+            </span>
+            <p>קושי גובר ביצירת שיח משותף בין תלמידים, הורים ומורים</p>
+          </div>
+        </div>
 
         <div class="stat-frame rev d2">
-          <div>
+          <div class="stat-frame-glow" aria-hidden="true"></div>
+          <div class="stat-num">31%</div>
+          <div class="stat-frame-body">
             <p>
               כ-<strong>31%</strong> מבני הנוער בישראל מדווחים על רווחה נפשית
               ירודה, ושיעור הדיווח על מצוקה נפשית עולה ככל שעולה הגיל.
@@ -1629,7 +1807,7 @@
     <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">למי זה מיועד</h2>
+          <h2 class="h3d rev">למי מיועדת התוכנית</h2>
           <p class="sub rev">
             בין אם אתם בית ספר יסודי, חטיבת ביניים, תיכון או מסגרת
             חינוכית-טיפולית, הצורך בשפה אנושית ערכית משותפת זהה. 16 המעלות
@@ -1710,7 +1888,6 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">איך זה עובד</h2>
         </div>
-        <h3 class="subhead rev">מבנה התוכנית</h3>
         <p class="ab-body rev">
           16 המעלות בחינוך היא תוכנית מוכרת בגפ"ן (תוכנית 63554), המועברת
           בסדנאות לצוותי הוראה, תלמידים והורים, ומותאמת לשכבת הגיל, לאופי בית
@@ -1718,8 +1895,7 @@
         </p>
         <p class="ab-body rev d1">
           המבנה המודולרי של התוכנית, המופעלת בקבוצות של 12-22 משתתפים, מאפשר
-          למזמין גמישות רבה והתאמה לצרכיו מבחינת לוחות הזמנים ומבחינת הרכב
-          הקבוצה.
+          גמישות רבה והתאמה לצרכיו מבחינת לוחות הזמנים ומבחינת הרכב הקבוצה.
         </p>
 
         <div class="steps-cta rev d2">
@@ -1782,18 +1958,7 @@
               המנחות והמנחים שלנו הם.ן נשות ואנשי מקצוע מוסמכים.ות, עם רקע
               בחינוך, פסיכולוגיה, בפיתוח רגשי-חברתי ועוד.
             </p>
-            <a href="about.html" class="btn btn-blue btn-about">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M20 12H4M10 6l-6 6 6 6"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              לעמוד אודות
-            </a>
+            <a href="about.html" class="btn btn-blue">למידע נוסף על העמותה</a>
           </div>
         </div>
       </div>
@@ -1909,15 +2074,13 @@
     <section id="contact-form">
       <div class="wrap">
         <div class="contact-inner">
-          <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
-          <p class="sub rev">
-            מוכנים להביא את 16 המעלות לבית הספר או לרשות שלכם?<br />
-            קבעו שיחת היכרות. נלמד על הצרכים של בית הספר או הרשות שלכם ונבחן
-            יחד איזו תוכנית מתאימה עבורכם.
+          <h2 class="h3d h3d-white rev">לתיאום שיחת הכירות</h2>
+          <p class="sub rev" style="margin-bottom: 2.2rem">
+            מעוניינים.ות להביא את תכנית 16 המעלות לבית הספר או לרשות שלכם?
+            מלאו.נה את הפרטים הבאים לתיאום שיחת היכרות שבה נשיב על כל שאלה,
+            נלמד את הצרכים הייחודיים שלכם.ן ונבחן יחד איך להתאים עבורכם.ן את
+            התכנית
           </p>
-          <div class="rev" style="margin-bottom: 2.2rem">
-            <a href="#eduForm" class="btn btn-gold">שיחת הכירות</a>
-          </div>
 
           <form
             class="contact-form rev"
@@ -1936,14 +2099,14 @@
                 <input class="form-input" type="text" name="שם" required />
               </div>
               <div class="form-field">
-                <label class="form-label">בית ספר / רשות <span class="req">*</span></label>
-                <input class="form-input" type="text" name="בית ספר / רשות" required />
+                <label class="form-label">בית ספר / רשות</label>
+                <input class="form-input" type="text" name="בית ספר / רשות" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">תפקיד <span class="req">*</span></label>
-                <input class="form-input" type="text" name="תפקיד" required />
+                <label class="form-label">תפקיד</label>
+                <input class="form-input" type="text" name="תפקיד" />
               </div>
               <div class="form-field">
                 <label class="form-label">דוא"ל <span class="req">*</span></label>
@@ -1952,8 +2115,8 @@
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">טלפון</label>
-                <input class="form-input" type="tel" name="טלפון" />
+                <label class="form-label">טלפון <span class="req">*</span></label>
+                <input class="form-input" type="tel" name="טלפון" required />
               </div>
               <div class="form-field ms-field">
                 <label class="form-label">מה הביא אתכם אלינו?</label>
@@ -2206,6 +2369,18 @@
             nav.classList.remove("nav-open");
             burger.setAttribute("aria-expanded", "false");
           });
+        });
+
+        /* Activities dropdown — tap to expand on mobile, hover on desktop */
+        const ddParent = nav.querySelector(".has-dropdown");
+        const ddTrigger = ddParent.querySelector(".dd-trigger");
+        ddTrigger.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            ddParent.classList.toggle("dd-open");
+          } else {
+            nav.classList.remove("nav-open");
+          }
         });
 
         /* Scroll reveal */

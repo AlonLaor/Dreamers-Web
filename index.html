@@ -1717,6 +1717,14 @@
           <li><a href="#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
           <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+            </ul>
+          </li>
           <li>
             <a href="contact.html?from=home" class="nav-contact-link"
               >צרו איתנו קשר</a
@@ -1927,7 +1935,7 @@
           <div class="ac rev d2">
             <div class="ac-img-w">
               <img
-                src="assets/img/Business Envorinment 1 - 100%.png"
+                src="assets/img/Business Envorinment 1 - 100%- Small.png"
                 alt="16 המעלות בחברות"
                 class="ac-img"
               />
@@ -2284,6 +2292,18 @@
             nav.classList.remove("nav-open");
             burger.setAttribute("aria-expanded", "false");
           });
+        });
+
+        /* Activities dropdown — tap to expand on mobile, hover on desktop */
+        const ddParent = nav.querySelector(".has-dropdown");
+        const ddTrigger = ddParent.querySelector(".dd-trigger");
+        ddTrigger.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            ddParent.classList.toggle("dd-open");
+          } else {
+            nav.classList.remove("nav-open");
+          }
         });
 
         /* Parallax hero */
