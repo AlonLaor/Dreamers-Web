@@ -1,0 +1,1535 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>אודות | בית חולמים - Dreamers Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ─── ROOT — identical palette to the home page ─── */
+      :root {
+        --blue: #004378;
+        --blue-dk: #002952;
+        --teal: #48d9d3;
+        --teal-lt: #7de8e4;
+        --gold: #f5a623;
+        --gold-lt: #ffd166;
+        --white: #ffffff;
+        --off: #f6faff;
+        --off-warm: #fffbf3;
+        --text: #1a2d3e;
+        --text-mid: #4a637c;
+        --text-lt: #7a99b0;
+        --shadow: rgba(0, 67, 120, 0.15);
+        --g-main: linear-gradient(
+          140deg,
+          #002952 0%,
+          #004378 55%,
+          #0c6080 100%
+        );
+        --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
+        --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (min-width: 769px) {
+        html {
+          font-size: 17px;
+        }
+      }
+      body {
+        font-family: "Heebo", system-ui, sans-serif;
+        direction: rtl;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .rev {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.9rem;
+      }
+      .h3d {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--blue);
+        text-shadow:
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
+        margin-bottom: 1.1rem;
+      }
+      .h3d-white {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
+      }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 640px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: "Heebo", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
+      .btn-gold {
+        background: var(--g-gold);
+        color: #4a2800;
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+      }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+
+      /* ═══ NAV (same as home) ═══ */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 1.3rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.4s ease;
+        background: rgba(0, 25, 55, 0.96);
+        backdrop-filter: blur(20px);
+      }
+      /* Right group: logo + links together (RTL: aligned to the right edge) */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+      }
+      .logo-img {
+        height: 87px;
+        display: block;
+        border-radius: 50%;
+        transition: opacity 0.3s;
+      }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.8rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+      }
+      .nav-links a.active {
+        color: var(--teal);
+      }
+      .nav-cta {
+        background: var(--g-teal) !important;
+        color: var(--blue-dk) !important;
+        font-weight: 700 !important;
+        padding: 0.48rem 1.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s !important;
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+      .nav-slogan {
+        display: flex;
+        align-items: center;
+        opacity: 0.92;
+      }
+      .nav-slogan img {
+        height: 2.55rem;
+        width: auto;
+        display: block;
+      }
+      @media (max-width: 1024px) {
+        .nav-slogan {
+          display: none;
+        }
+      }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* ─── Activities dropdown ─── */
+      .has-dropdown {
+        position: relative;
+      }
+      .dd-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .dd-arrow {
+        display: inline-block;
+        font-size: 0.62em;
+        transition: transform 0.3s ease;
+      }
+      .has-dropdown:hover .dd-arrow,
+      .has-dropdown:focus-within .dd-arrow {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        list-style: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        right: -0.5rem;
+        min-width: 260px;
+        padding: 0.55rem;
+        border-radius: 18px;
+        background: linear-gradient(
+          160deg,
+          rgba(0, 41, 82, 0.98) 0%,
+          rgba(0, 67, 120, 0.98) 100%
+        );
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(72, 217, 211, 0.18);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 1.9rem;
+        width: 12px;
+        height: 12px;
+        background: rgba(0, 41, 82, 0.98);
+        transform: rotate(45deg);
+        border-radius: 3px 0 0 0;
+      }
+      .has-dropdown:hover .dropdown-menu,
+      .has-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu li + li {
+        margin-top: 2px;
+      }
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.25s ease;
+      }
+      .dropdown-menu a:hover {
+        background: rgba(72, 217, 211, 0.15);
+        color: var(--teal);
+        padding-right: 1.4rem;
+      }
+
+      /* ═══ PAGE HEADER ═══ */
+      /* the night sky carries the header, under a deep blue scrim that keeps
+         the white title readable over the bright aurora */
+      #page-header {
+        padding: 7.7rem 2rem 3.9rem;
+        min-height: min(62vh, 575px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 22, 50, 0.74) 0%,
+            rgba(0, 28, 60, 0.58) 45%,
+            rgba(0, 22, 50, 0.8) 100%
+          ),
+          url("assets/img/Sky with Starts.jpg") center / cover no-repeat,
+          var(--blue-dk);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      #page-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(72, 217, 211, 0.18),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .crumbs {
+        position: relative;
+        z-index: 2;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+      }
+      .crumbs a {
+        color: #ffe8a0;
+        font-weight: 600;
+      }
+      .crumbs a:hover {
+        text-decoration: underline;
+      }
+      #page-header .h3d {
+        position: relative;
+        z-index: 2;
+        /* the title was reading too small against the hero strip behind
+           it; 50% larger than the site's normal h3d size */
+        font-size: clamp(2.85rem, 5.25vw, 4.35rem);
+      }
+      #page-header .sub {
+        position: relative;
+        z-index: 2;
+        margin: 0 auto;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      /* ═══ GENERIC TEXT SECTION ═══ */
+      .ab-sec {
+        padding: 6.5rem 2rem;
+      }
+      .ab-sec.bg-white {
+        background: var(--white);
+      }
+      .ab-sec.bg-sky {
+        background: linear-gradient(
+          160deg,
+          #e8f6ff 0%,
+          #f0fbfb 40%,
+          #eaf3ff 100%
+        );
+      }
+      .ab-sec.bg-warm {
+        background: linear-gradient(
+          135deg,
+          #fffbf0 0%,
+          #fff8e8 50%,
+          #fffcf2 100%
+        );
+        border-top: 1px solid rgba(245, 166, 35, 0.15);
+        border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+      }
+      .ab-sec.bg-blue-gray {
+        background: linear-gradient(160deg, #f2f8ff 0%, #eef9f9 100%);
+      }
+      .ab-sec.bg-deep {
+        background:
+          radial-gradient(
+            ellipse 70% 60% at 78% 30%,
+            rgba(72, 217, 211, 0.22) 0%,
+            rgba(72, 217, 211, 0) 62%
+          ),
+          var(--g-main);
+        color: #fff;
+      }
+      .ab-sec.bg-deep .h3d {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.3),
+          0 4px 14px rgba(0, 0, 0, 0.35);
+      }
+      .ab-hdr {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .ab-hdr .sub {
+        margin: 0 auto;
+        text-align: center;
+      }
+      .ab-body {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 800px;
+        margin: 0 auto 1.3rem;
+      }
+      .ab-body-center {
+        text-align: center;
+      }
+      .ab-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        align-items: center;
+      }
+      .ab-split .ab-body {
+        max-width: none;
+        margin: 0 0 1.3rem;
+      }
+      .ab-split .ab-body:last-child {
+        margin-bottom: 0;
+      }
+      .ab-split-img {
+        border-radius: 22px;
+        overflow: hidden;
+        height: 420px;
+        box-shadow: 0 30px 70px var(--shadow);
+      }
+      .ab-split-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* 30% bigger than a plain 40%-smaller crop, per the site owner's
+         2026-09-05 request for the FDCW photo specifically */
+      .ab-split-img-sm {
+        height: 328px;
+        max-width: 78%;
+        margin: 0 auto;
+      }
+      /* 25% smaller than the standard split image */
+      .ab-split-img-orchard {
+        height: 315px;
+        max-width: 75%;
+        margin: 0 auto;
+      }
+      /* a demoted, subheading-level heading — used inside a text column so
+         it stays in scale with the copy beside it, and on its own as a
+         section header one step quieter than the page's main headings */
+      .ab-sub-h {
+        font-size: clamp(1.5rem, 2.6vw, 2.05rem);
+      }
+      .ab-split .ab-sub-h {
+        margin: 2.4rem 0 1rem;
+      }
+      /* the association's goals, drawn as flat, square-cornered tiles,
+         deliberately not styled like a CTA button (no pill radius, no floating-button
+         shadow, no hover lift). Flex-wrap + justify-content:center means
+         however many end up on the last row, they sit centred rather than
+         stranded to one side, so 5 tiles never break into a lopsided
+         2-over-2-over-1 stack. Every tile is the same fixed size, so the
+         grid stays exactly symmetric regardless of how much text is in it.
+         Sized so all 5 fit on one row at desktop width instead of running
+         4-over-1. */
+      .goal-list {
+        max-width: 1080px;
+        margin: 0 auto;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.9rem;
+      }
+      .goal-list li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 180px;
+        height: 190px;
+        padding: 1.1rem 1.1rem;
+        font-size: 1.05rem;
+        line-height: 1.5;
+        font-weight: 600;
+        color: #fff;
+        background: var(--blue-dk);
+        border: 1px solid rgba(72, 217, 211, 0.3);
+        border-radius: 10px;
+        box-shadow: 0 6px 16px rgba(0, 41, 82, 0.25);
+      }
+
+      /* ═══ TEAM CARDS / CAROUSEL ═══ */
+      .carousel {
+        position: relative;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .carousel-viewport {
+        overflow: hidden;
+        border-radius: 22px;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      .carousel-page {
+        flex: 0 0 100%;
+        display: grid;
+        gap: 1.7rem;
+        padding: 0.4rem;
+      }
+      .carousel-page.cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .team-card {
+        background: linear-gradient(
+          150deg,
+          #f4f9ff 0%,
+          #e7f1fb 55%,
+          #dfeef8 100%
+        );
+        border-radius: 24px;
+        padding: 2.6rem 1.6rem 2.3rem;
+        text-align: center;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.08),
+          0 18px 40px var(--shadow),
+          0 32px 70px rgba(0, 67, 120, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 67, 120, 0.07);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+      .team-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        background: var(--g-teal);
+        border-radius: 0 0 24px 24px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .team-card:hover {
+        transform: translateY(-10px) perspective(800px) rotateX(2deg);
+        box-shadow:
+          0 6px 14px rgba(0, 67, 120, 0.1),
+          0 24px 55px rgba(0, 67, 120, 0.2),
+          0 45px 90px rgba(0, 67, 120, 0.18);
+      }
+      .team-card:hover::after {
+        opacity: 1;
+      }
+      /* one fixed size for every headshot on the page — management,
+         staff and the academic forum — per the site owner's 2026-09-05
+         request; also matched on the facilitators carousel in
+         program.html so a photo is the same size everywhere it appears */
+      .team-photo {
+        width: 170px;
+        height: 170px;
+        border-radius: 18px;
+        object-fit: cover;
+        object-position: center top;
+        margin: 0 auto 1.5rem;
+        border: 4px solid #fff;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+      }
+      /* the board, shown in full rather than paged through a carousel */
+      .team-grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.7rem;
+      }
+      .team-name {
+        font-weight: 800;
+        color: var(--blue);
+        font-size: 1.05rem;
+        margin-bottom: 0.35rem;
+        margin-top: 0.3rem;
+      }
+      .team-role {
+        font-size: 0.86rem;
+        color: var(--text-mid);
+        line-height: 1.65;
+      }
+
+      .carousel-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        margin-top: 2.3rem;
+      }
+      .car-btn {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid rgba(0, 67, 120, 0.15);
+        box-shadow: 0 6px 20px var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--blue);
+        font-size: 1.15rem;
+        transition: all 0.3s;
+        flex-shrink: 0;
+      }
+      .car-btn:hover {
+        background: var(--g-teal);
+        color: var(--blue-dk);
+        transform: scale(1.08);
+      }
+      .car-dots {
+        display: flex;
+        gap: 0.55rem;
+      }
+      .car-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: rgba(0, 67, 120, 0.2);
+        cursor: pointer;
+        transition: all 0.3s;
+        border: none;
+      }
+      .car-dot.active {
+        background: var(--teal);
+        width: 24px;
+        border-radius: 5px;
+      }
+
+      /* ═══ ACADEMIC FORUM (static grid) ═══ */
+      /* three to a row, and a last row that holds fewer stays centred
+         rather than hugging the start of the line */
+      .acad-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.7rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .acad-grid > * {
+        flex: 0 1 calc((100% - 3.4rem) / 3);
+        min-width: 250px;
+      }
+      /* ═══ CLOSING QUOTE ═══ */
+      #quote-band {
+        padding: 5.5rem 2rem;
+        background: var(--g-main);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      #quote-band::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 60% at 50% 50%,
+          rgba(245, 166, 35, 0.12),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .quote-text {
+        position: relative;
+        z-index: 2;
+        font-family: "Playfair Display", Georgia, serif;
+        font-style: italic;
+        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+        color: #fff;
+        max-width: 760px;
+        margin: 0 auto;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ═══ FOOTER — identical to the home page ═══ */
+      footer {
+        background: url("assets/img/Gradient blue.png") center / cover no-repeat
+          var(--blue-dk);
+        color: #fff;
+        padding: 2.8rem 2rem 1.6rem;
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 1.8rem;
+      }
+      .footer-logo-img {
+        height: 150px;
+        display: block;
+      }
+      .footer-brand {
+        flex: 1 1 0;
+        min-width: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-nav-col {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
+      }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 320px;
+        margin: 1rem auto 0;
+        text-align: center;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--teal);
+      }
+      .footer-nav a.active {
+        color: var(--teal);
+      }
+      .footer-col-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--teal);
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .footer-contact {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
+      }
+      .footer-contact p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+      }
+      .footer-contact a {
+        color: #fff;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .fsoc img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
+      }
+      .fsoc:hover {
+        transform: translateY(-3px);
+        opacity: 0.85;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-top: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.7);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* ═══ RESPONSIVE ═══ */
+      @media (max-width: 900px) {
+        .ab-split {
+          grid-template-columns: 1fr;
+          gap: 1.8rem;
+        }
+        .ab-split-img {
+          height: 280px;
+        }
+        .ab-split-img-sm {
+          height: 218px;
+          max-width: 78%;
+        }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .acad-grid {
+          max-width: 480px;
+        }
+        .acad-grid > * {
+          flex: 0 1 100%;
+        }
+        .carousel-page.cols-3 {
+          grid-template-columns: 1fr;
+          max-width: 420px;
+          margin: 0 auto;
+        }
+        .goal-list li {
+          width: 100%;
+          max-width: 340px;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1rem;
+        }
+        .nav-links .nav-cta {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
+        }
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          backdrop-filter: none;
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 12px;
+          margin: 0.2rem 1.2rem 0.5rem;
+          padding: 0.3rem;
+          display: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .has-dropdown.dd-open .dropdown-menu {
+          display: block;
+        }
+        .has-dropdown.dd-open .dd-arrow {
+          transform: rotate(180deg);
+        }
+        #page-header {
+          padding: 6.3rem 1.5rem 2.8rem;
+          min-height: min(55vh, 435px);
+        }
+        .footer-top {
+          flex-direction: column;
+          align-items: center;
+        }
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+      @media (max-width: 640px) {
+        /* Text readability first on phones: drop the doubled side padding
+           (section + .wrap) */
+        .wrap {
+          padding: 0;
+        }
+      }
+      @media (max-width: 520px) {
+        .ab-sec {
+          padding: 5rem 1.1rem;
+        }
+        .team-grid {
+          grid-template-columns: 1fr;
+          max-width: 320px;
+        }
+      }
+      /* No text block may end on a line holding a single word.
+         `pretty` lets the browser re-balance the closing lines;
+         assets/js/no-orphans.js glues the final two words for the
+         browsers that do not support it yet. */
+      body {
+        text-wrap: pretty;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .h3d,
+      .bh-headline,
+      .impl-title {
+        text-wrap: balance;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- ════════════ NAV ════════════ -->
+    <nav id="nav">
+      <div class="nav-right">
+        <!-- Logo: far right -->
+        <a href="index.html#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <!-- Links: left of logo, RTL order -->
+        <ul class="nav-links">
+          <li><a href="index.html#hero">דף הבית</a></li>
+          <li><a href="about.html" class="active">אודות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li>
+            <a href="contact.html?from=home" class="nav-cta">צרו איתנו קשר</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-slogan"><img src="assets/img/The Slogan 1.png" alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות." /></div>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- ════════════ PAGE HEADER ════════════ -->
+    <header id="page-header">
+      <h1 class="h3d h3d-white">עמותת בית חולמים</h1>
+    </header>
+
+    <!-- ════════════ INTRO + מי אנחנו ════════════ -->
+    <section class="ab-sec bg-white">
+      <div class="wrap">
+        <div class="ab-split">
+          <div>
+            <h2 class="h3d ab-sub-h rev" style="margin-top: 0">
+              אודות עמותת בית חולמים
+            </h2>
+            <p class="ab-body rev d1">
+              עמותת בית חולמים פועלת בתחומי הרוח והחברה לבנייה מחדש של
+              הסולידריות החברתית. באמצעות שילוב של פילוסופיות ופרקטיקות
+              מזרחיות ומערביות, לצד מודלים מקצועיים חדשניים ואקטיביסטיים
+              שפיתחה, פועלת העמותה לסיוע לאוכלוסיות פגיעות בתחומי החינוך,
+              הרווחה והבריאות.
+            </p>
+            <p class="ab-body rev d2">
+              התוכניות שמפעילה העמותה משלבות חוכמה עתיקה ומודרנית כדי לסייע
+              לאנשים מכל המגזרים, הגילים ושכבות החברה, להתמודד עם אתגרי המאה
+              ה-21, ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.
+            </p>
+          </div>
+          <div class="ab-split-img ab-split-img-orchard rev d2">
+            <img src="assets/img/מטע 2.png" alt="בית חולמים" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ GOALS ════════════ -->
+    <section class="ab-sec bg-sky">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">מטרות העמותה</h2>
+        </div>
+        <ul class="goal-list rev">
+          <li>
+            <span
+              >להקים רשת של "בתי חולמים": מרכזים רוחניים לריפוי והחלמת
+              גוף-נפש</span
+            >
+          </li>
+          <li>
+            <span>לפעול לטיפוח תרבות של חמלה ואי-אלימות</span>
+          </li>
+          <li>
+            <span>לפעול ליצירת שיח מקרב ומגשר בין הדתות</span>
+          </li>
+          <li>
+            <span
+              >לפעול למען צדק חברתי ולשמירה על ערכי דמוקרטיה וזכויות
+              אדם</span
+            >
+          </li>
+          <li>
+            <span>לחנך לאורח חיים בריא ולשמירה על איכות הסביבה</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ════════════ תוכנית 16 המעלות ════════════ -->
+    <section class="ab-sec bg-white" id="program-16">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">תוכנית 16 המעלות</h2>
+        </div>
+        <p class="ab-body ab-body-center rev">
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
+          אוניברסליים וחיים בעלי משמעות.
+        </p>
+        <p class="ab-body ab-body-center rev d1">
+          התוכנית פותחה על ידי הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW -
+          Foundation for Developing Compassion and Wisdom), שהוקם בשנת 2005.
+          כיום נגישה התוכנית בכל העולם, עם מנחים ומנחות מוסמכים ב-22 מדינות.
+        </p>
+        <p class="ab-body ab-body-center rev d2">
+          עמותת בית חולמים הביאה את התוכנית הבינלאומית "16 המעלות" לישראל בשנת
+          2020, והפכה להיות הנציגה הרשמית של התוכנית בארץ.
+        </p>
+        <div class="rev d3" style="margin-top: 2rem; text-align: center">
+          <a href="contact.html" class="btn btn-gold"
+            >מידע נוסף על התוכנית</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ ABOUT FDCW ════════════ -->
+    <section class="ab-sec bg-sky" id="fdcw">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d ab-sub-h rev">על ארגון FDCW</h2>
+        </div>
+        <div class="ab-split">
+          <div>
+            <p class="ab-body rev">
+              ארגון FDCW מסייע לאנשים לפתח את החמלה והחוכמה שלהם, ולטפח חיים
+              מאושרים יותר. באמצעות הבנה מעמיקה של תודעתנו, התבוננות ברגשותינו
+              והכרה ביחסי הגומלין הרבים בינינו, מתפתחת חכמה ואכפתיות לזולת. זה
+              נותן לנו אומץ, מפתח חוסן, ומאפשר לנו להיות מקור כוח, השראה ונחמה
+              לאחרים - וכך, בהדרגה, נבנית תחושה של אחריות כלפי עצמנו, כלפי
+              הזולת וכלפי הסביבה.
+            </p>
+          </div>
+          <div class="ab-split-img ab-split-img-sm rev d2">
+            <img src="assets/img/About us - Pic 2.png" alt="על ארגון FDCW" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ MANAGEMENT ════════════ -->
+    <section class="ab-sec bg-warm" id="management">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">וועד והנהלה</h2>
+        </div>
+
+        <div class="team-grid rev">
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/niv_agam.jpg"
+              alt="ניב אגם"
+            />
+            <div class="team-name">ניב אגם</div>
+            <div class="team-role">
+              פסיכולוג קליני-מדריך, מייסד ויו"ר העמותה והמנהל המקצועי שלה
+            </div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/yael_kaminski.jpg"
+              alt="יעל קמינסקי"
+            />
+            <div class="team-name">יעל קמינסקי</div>
+            <div class="team-role">
+              פסיכולוגית קלינית ו-HR Business Partner ב-Wix
+            </div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/miran_brodbar.jpg"
+              alt="מירן ברודבר"
+            />
+            <div class="team-name">מירן ברודבר</div>
+            <div class="team-role">מומחה לחדשנות טכנולוגית</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/nitzan_aviv.jpg"
+              alt="ניצן אביב"
+            />
+            <div class="team-name">ניצן אביב</div>
+            <div class="team-role">סגן מנהל מחוז מרכז של החברה למתנ"סים</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/noya_shila.jpg"
+              alt="ד״ר נויה שילה"
+            />
+            <div class="team-name">ד״ר נויה שילה</div>
+            <div class="team-role">
+              רופאה פנימאית בכירה ומנהלת מרכז שבים לחיים, שיבא
+            </div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/avir_fedaus.jpg"
+              alt="עביר פדעוס"
+            />
+            <div class="team-name">עביר פדעוס</div>
+            <div class="team-role">
+              מורה ומחנכת במשרד החינוך; מטפלת ברפואה אינטגרטיבית מאחדת
+            </div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/ran_hofer.jpg"
+              alt="רן הופר"
+            />
+            <div class="team-name">רן הופר</div>
+            <div class="team-role">מנכ"ל מרכז גוף-נפש ברמת-השרון</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/tania_amer.jpg"
+              alt="טניה עמר"
+            />
+            <div class="team-name">טניה עמר</div>
+            <div class="team-role">מייסדת ומנכ"לית CXP Consulting</div>
+          </div>
+          <div class="team-card">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/nadav_pari.jpg"
+              alt="נדב פארי"
+            />
+            <div class="team-name">נדב פארי</div>
+            <div class="team-role">מנהל המערך העסקי, Lineup Games</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ STAFF — CAROUSEL ════════════ -->
+    <section class="ab-sec bg-blue-gray" id="staff">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">צוות</h2>
+        </div>
+
+        <div class="carousel rev" id="car-staff">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-page cols-3">
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/img/Faces/team/UPD faces/adi_ben_paz.jpg"
+                    alt="עדי בן פזי"
+                  />
+                  <div class="team-name">עדי בן פזי</div>
+                  <div class="team-role">מנהלת תפעול, עמותת בית חולמים</div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/img/Faces/team/UPD faces/gilad_kadmi.jpg"
+                    alt="רו״ח גלעד קדמי"
+                  />
+                  <div class="team-name">רו״ח גלעד קדמי</div>
+                  <div class="team-role">רואה חשבון מבקר של העמותה</div>
+                </div>
+                <div class="team-card">
+                  <img
+                    class="team-photo"
+                    src="assets/img/Faces/team/UPD faces/yana_posukhov.jpg"
+                    alt="יאנה פוסוכוב"
+                  />
+                  <div class="team-name">יאנה פוסוכוב</div>
+                  <div class="team-role">מנהלת כספים וחשבת שכר</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ ACADEMIC FORUM ════════════ -->
+    <section class="ab-sec bg-white" id="academic">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">הפורום האקדמי</h2>
+          <p class="sub rev">
+            אנחנו מאמינים שלאקדמיה אחריות חברתית כלפי הסביבה האקדמית בפרט וכלפי
+            החברה בכלל. הפורום האקדמי של העמותה נוסד על-מנת לפתח תורות למידה
+            ומודלים מקצועיים יישומיים, שיסייעו בקידום טרנספורמציות אישיות
+            וחברתיות — תוך דגש על הגשמת התורות הללו הלכה למעשה, בהוראה, בהכשרה
+            ובמחקר.
+          </p>
+        </div>
+
+        <div class="acad-grid">
+          <div class="team-card rev">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/ricardo_tarrasch.jpg"
+              alt="פרופ׳ ריקרדו טרש"
+            />
+            <div class="team-name">פרופ׳ ריקרדו טרש</div>
+            <div class="team-role">
+              יו"ר הפורום האקדמי. בית-הספר לחינוך ובית-הספר למדעי המוח,
+              אוניברסיטת תל אביב
+            </div>
+          </div>
+          <div class="team-card rev d1">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/michal_al_yagon.jpg"
+              alt="פרופ׳ מיכל אל-יגון"
+            />
+            <div class="team-name">פרופ׳ מיכל אל-יגון</div>
+            <div class="team-role">
+              ראשת בית-הספר לחינוך, אוניברסיטת תל-אביב
+            </div>
+          </div>
+          <div class="team-card rev d2">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/pninit_russo_netzer.jpg"
+              alt="פרופ׳ פנינית רוסו-נצר"
+            />
+            <div class="team-name">פרופ׳ פנינית רוסו-נצר</div>
+            <div class="team-role">
+              ראש מכון המחקר והפיתוח קהילה.משמעות.החלמה (ק.מ.ה), הפקולטה
+              לפסיכולוגיה, המכללה האקדמית אחוה
+            </div>
+          </div>
+          <div class="team-card rev d1">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/נאוה לויט בן-נון.png"
+              alt="פרופ׳ נאוה לויט בן-נון"
+            />
+            <div class="team-name">פרופ׳ נאוה לויט בן-נון</div>
+            <div class="team-role">
+              פרופסור חבר וחוקרת מוח במחלקה לפסיכולוגיה באוניברסיטת רייכמן
+            </div>
+          </div>
+          <div class="team-card rev d2">
+            <img
+              class="team-photo"
+              src="assets/img/Faces/team/UPD faces/מיכל ארליך.jpg"
+              alt="ד״ר מיכל ארליך"
+            />
+            <div class="team-name">ד״ר מיכל ארליך</div>
+            <div class="team-role">
+              פרופסור חבר בבית הספר ג׳ינדל לעניינים בינלאומיים (JSIA) ומנהלת
+              המכון ג׳ינדל להודו
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3.2rem" class="rev">
+          <a href="contact.html?from=home" class="btn btn-blue">צרו איתנו קשר</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="assets/img/logo-beit-holmim-white.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים -<br />
+              לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+            <div class="socials">
+              <a
+                href="https://www.instagram.com/dreamers_home_il/?hl=en"
+                class="fsoc"
+                title="Instagram"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Instegram Logo 1.png" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/YouTube Logo 1.png" alt="YouTube"
+              /></a>
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Facebook Logo 1.png" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+          <div class="footer-nav-col">
+            <div class="footer-col-title">ניווט</div>
+            <ul class="footer-nav">
+              <li><a href="index.html#hero">דף הבית</a></li>
+              <li><a href="about.html" class="active">אודות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <div class="footer-col-title">צרו קשר</div>
+            <p><a href="mailto:info@dreamers.com">info@dreamers.com</a></p>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+            <p style="margin-top: 1rem">
+              <a
+                href="contact.html"
+                class="btn btn-gold"
+                style="font-size: 0.85rem; padding: 0.6rem 1.4rem"
+                >לתרומה</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 by Dreamers Home</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════ JS ════════════ -->
+    <script>
+      (function () {
+        /* Mobile nav (hamburger) */
+        const nav = document.getElementById("nav");
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) => {
+          if (a.classList.contains("dd-trigger")) return;
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          });
+        });
+        /* Scroll reveal */
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* Carousel factory */
+        function initCarousel(rootId, pageCount, autoplayMs) {
+          const root = document.getElementById(rootId);
+          if (!root) return;
+          const track = root.querySelector(".carousel-track");
+          const dots = root.querySelectorAll(".car-dot");
+          let idx = 0;
+          let timer;
+
+          function go(i) {
+            idx = (i + pageCount) % pageCount;
+            track.style.transform = `translateX(${idx * 100}%)`;
+            dots.forEach((d, j) => d.classList.toggle("active", j === idx));
+          }
+
+          root
+            .querySelector(".car-next")
+            .addEventListener("click", () => go(idx + 1));
+          root
+            .querySelector(".car-prev")
+            .addEventListener("click", () => go(idx - 1));
+          dots.forEach((d, j) => d.addEventListener("click", () => go(j)));
+
+          function startAuto() {
+            clearInterval(timer);
+            timer = setInterval(() => go(idx + 1), autoplayMs);
+          }
+          function stopAuto() {
+            clearInterval(timer);
+          }
+          root.addEventListener("mouseenter", stopAuto);
+          root.addEventListener("mouseleave", startAuto);
+
+          go(0);
+          startAuto();
+        }
+
+      })();
+    </script>
+    <script src="assets/js/no-orphans.js?v=2" defer></script>
+    <script src="assets/js/accessibility-widget.js" defer></script>
+  </body>
+</html>

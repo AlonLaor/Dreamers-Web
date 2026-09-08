@@ -1,0 +1,2462 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>בית חולמים | Dreamers Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ─── ROOT ─── */
+      :root {
+        --blue: #004378;
+        --blue-dk: #002952;
+        --teal: #48d9d3;
+        --teal-lt: #7de8e4;
+        --teal-lter: #b8f3ee;
+        --teal-dk: #0b6e66;
+        /* recalibrated 2026-09-07 (later same day) to match the site
+           owner's follow-up mockup exactly */
+        --green-dk: #1b7226;
+        --cyan-bright: #66ffff;
+        --gold: #f5a623;
+        --gold-lt: #ffd166;
+        --white: #ffffff;
+        --off: #f6faff;
+        --off-warm: #fffbf3;
+        --text: #1a2d3e;
+        --text-mid: #4a637c;
+        --text-lt: #7a99b0;
+        --shadow: rgba(0, 67, 120, 0.15);
+        --g-main: linear-gradient(
+          140deg,
+          #002952 0%,
+          #004378 55%,
+          #0c6080 100%
+        );
+        --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
+        --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+        --nav-h: 130px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--nav-h);
+      }
+      @media (min-width: 769px) {
+        html {
+          font-size: 17px;
+        }
+      }
+      body {
+        font-family: "Heebo", system-ui, sans-serif;
+        direction: rtl;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        padding-top: var(--nav-h);
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      /* ─── REVEAL ─── */
+      .rev {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+      .d4 {
+        transition-delay: 0.4s;
+      }
+
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.9rem;
+      }
+      .eyebrow-gold {
+        color: var(--gold);
+      }
+
+      /* ─── 3D HEADINGS ─── */
+      .h3d {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--blue);
+        text-shadow:
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
+        margin-bottom: 1.1rem;
+      }
+      .h3d-white {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
+      }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 600px;
+      }
+
+      /* ═══════════════════════════════
+         NAV
+      ═══════════════════════════════ */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 1.3rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.4s ease;
+        background: rgba(0, 25, 55, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      #nav.on {
+        padding: 0.9rem 2.5rem;
+        box-shadow: 0 4px 45px rgba(0, 0, 0, 0.45);
+      }
+      /* Right group: logo + links together */
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .logo-img {
+        height: 87px; /* 50% bigger than original 58px */
+        display: block;
+        border-radius: 50%;
+        transition: opacity 0.3s;
+      }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .footer-logo-img {
+        height: 150px;
+        display: block;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.6rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        transition:
+          color 0.3s,
+          transform 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+        transform: translateY(-1px);
+      }
+      .nav-contact-link {
+        background: var(--g-teal);
+        color: var(--blue-dk) !important;
+        font-weight: 700 !important;
+        padding: 0.42rem 1.3rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s;
+      }
+      .nav-contact-link:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5);
+        color: var(--blue-dk) !important;
+      }
+
+      /* ─── Activities dropdown ─── */
+      .has-dropdown {
+        position: relative;
+      }
+      .dd-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .dd-arrow {
+        display: inline-block;
+        font-size: 0.62em;
+        transition: transform 0.3s ease;
+      }
+      .has-dropdown:hover .dd-arrow,
+      .has-dropdown:focus-within .dd-arrow {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        list-style: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        right: -0.5rem;
+        min-width: 260px;
+        padding: 0.55rem;
+        border-radius: 18px;
+        background: linear-gradient(
+          160deg,
+          rgba(0, 41, 82, 0.98) 0%,
+          rgba(0, 67, 120, 0.98) 100%
+        );
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(72, 217, 211, 0.18);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 1.9rem;
+        width: 12px;
+        height: 12px;
+        background: rgba(0, 41, 82, 0.98);
+        transform: rotate(45deg);
+        border-radius: 3px 0 0 0;
+      }
+      .has-dropdown:hover .dropdown-menu,
+      .has-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu li + li {
+        margin-top: 2px;
+      }
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.1rem;
+        border-radius: 12px;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.25s ease;
+      }
+      .dropdown-menu a:hover {
+        background: rgba(72, 217, 211, 0.15);
+        color: var(--teal);
+        padding-right: 1.4rem;
+        transform: none;
+      }
+      .nav-slogan {
+        display: flex;
+        align-items: center;
+        opacity: 0.92;
+      }
+      .nav-slogan img {
+        height: 2.55rem;
+        width: auto;
+        display: block;
+      }
+      @media (max-width: 1024px) {
+        .nav-slogan {
+          display: none;
+        }
+      }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* ═══════════════════════════════
+         HERO
+      ═══════════════════════════════ */
+      #hero {
+        position: relative;
+        width: 100%;
+        /* taller than the viewport, per the site owner's 2026-09-08
+           request: at the old 100vh height, object-fit: cover cropped so
+           much off the top/bottom of the 16:9 clip that the sand strip at
+           the bottom of the frame never showed, and the definition line
+           got clipped by the section's own bottom edge at 100% browser
+           zoom. A taller box needs less vertical crop to "cover" the same
+           width, so more of the clip's own height (sand included) shows,
+           and there's more room below the text before the section ends. */
+        height: calc(122vh - var(--nav-h));
+        min-height: 680px;
+        overflow: hidden;
+      }
+      .h-photo {
+        position: absolute;
+        inset: 0;
+        background: url("assets/Videos/hero-waves-8-2-poster.jpg") center
+          center / cover;
+        transform: scale(1.08);
+        will-change: transform;
+      }
+      .h-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+      /* Gold particles */
+      #pts {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .pt {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 210, 80, 0.85);
+        animation: rise linear infinite;
+      }
+      @keyframes rise {
+        0% {
+          transform: translateY(0) scale(0);
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        88% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(-90vh) scale(0.4);
+          opacity: 0;
+        }
+      }
+
+      /* Hero content: positioned right, with the last title line ("מתחילה כאן")
+         sitting just above the sea horizon (the horizon lands at ~50% of the hero) */
+      .h-content {
+        position: absolute;
+        /* raised 2cm, per the site owner's 2026-09-08 request */
+        top: calc(50% + 3.6vw - 184px - 2cm);
+        right: 15%;
+        z-index: 10;
+        text-align: right;
+        color: #fff;
+        max-width: 680px;
+      }
+      .h-title {
+        font-size: clamp(2.28rem, 5.7vw, 4.39rem); /* 35% bigger, per the site owner's 2026-09-05 request */
+        font-weight: 900;
+        line-height: 1.15;
+        margin-bottom: 0.9rem;
+        animation: fadU 0.9s ease 0.15s both;
+        text-shadow:
+          0 2px 0 rgba(255, 255, 255, 0.5),
+          0 5px 14px rgba(255, 255, 255, 0.4),
+          0 2px 10px rgba(0, 0, 0, 0.22);
+      }
+      /* darker blue in place of the old yellow, and the plain white line
+         moved to turquoise, so the title stays legible against the new,
+         brighter hero video (per the site owner's 2026-09-05 request) */
+      .h-gold {
+        color: var(--blue-dk);
+      }
+      /* white fill with a black outline, per the site owner's 2026-09-08
+         follow-up request (superseding the previous gradient/bevel
+         version), at this line's own (unchanged) font-size */
+      .h-teal {
+        color: var(--white);
+        -webkit-text-stroke: 1.5px #000;
+        paint-order: stroke fill;
+        text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.4);
+      }
+      /* a definition line, not a button: no fill, no pill shape, no drop
+         shadow, just a gold accent bar carrying the weight this phrase
+         actually has (it's the definition of the whole programme).
+         Two flex items - "16 המעלות -" and the two-line phrase beside it -
+         so align-items: center holds "16 המעלות -" vertically centered
+         between the two lines, matching the site owner's 2026-09-08
+         mockup exactly (an inline-flex row fills right-to-left here, so
+         "16 המעלות -" as the first DOM child lands on the right, per
+         [[dreamers_site_rules]]'s empirically-checked RTL fill order) */
+      .h-sub {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-size: clamp(1.53rem, 3vw, 2.02rem); /* 30% bigger, per the site owner's 2026-09-05 request */
+        font-weight: 600;
+        border-inline-start: 4px solid #ffcf6b;
+        padding-inline-start: 1.1rem;
+        margin-bottom: 2.2rem;
+        animation: fadU 0.9s ease 0.3s both;
+      }
+      /* white fill, per the site owner's 2026-09-08 request (superseding
+         the previous day's dark-green version) */
+      .h-sub strong {
+        font-weight: 900;
+        color: var(--white);
+        white-space: nowrap;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.35),
+          0 4px 14px rgba(0, 0, 0, 0.28);
+      }
+      /* bright cyan with a bold black outline, per the site owner's
+         2026-09-07 follow-up mockup, so "תוכנית הדגל של עמותת בית חולמים"
+         stays readable now that .h-wash/.h-glow are gone entirely */
+      .h-sub-lines {
+        color: var(--cyan-bright);
+        -webkit-text-stroke: 2px #000;
+        paint-order: stroke fill;
+        line-height: 1.3;
+        text-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.35),
+          0 4px 14px rgba(0, 0, 0, 0.28),
+          2px 3px 0 rgba(0, 0, 0, 0.4);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: "Heebo", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-gold {
+        background: var(--g-gold);
+        color: #4a2800;
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+      }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
+
+      .h-arrow {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        cursor: pointer;
+        animation: bob 2.5s ease infinite;
+        z-index: 10;
+      }
+      .h-arrow-line {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 200, 80, 0.6)
+        );
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(9px);
+        }
+      }
+      @keyframes fadD {
+        from {
+          opacity: 0;
+          transform: translateY(-18px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes fadU {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ═══════════════════════════════
+         PROGRAM INTRO
+      ═══════════════════════════════ */
+      #intro {
+        padding: 7rem 2rem;
+        background: var(--white);
+      }
+      .intro-body {
+        font-size: 1.07rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        margin-bottom: 1.3rem;
+      }
+      .intro-join-box {
+        margin-top: 2.5rem;
+        padding: 1.8rem 2rem;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #e8f4ff, #f0fbfb);
+        border: 1px solid rgba(72, 217, 211, 0.3);
+      }
+      .ijb-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-mid);
+        font-weight: 500;
+      }
+      .program-pitch {
+        font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+        font-weight: 800;
+        color: var(--blue-dk);
+        text-align: center;
+        max-width: 780px;
+        line-height: 1.6;
+        margin: 1.1rem auto 3rem;
+      }
+      .intro-body-center {
+        text-align: center;
+      }
+      .intro-body-wide {
+        max-width: 920px;
+        margin: 2.6rem auto 0;
+        text-align: center;
+      }
+      /* the CTA line steps up from a quiet pastel note to the site's
+         primary blue treatment, so it reads as the section's headline
+         claim rather than a footnote */
+      .intro-join-box-bold {
+        max-width: 720px;
+        margin: 2.4rem auto 0;
+        padding: 1.6rem 2.2rem;
+        text-align: center;
+        background: var(--g-main);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.32);
+      }
+      .ijb-text-bold {
+        color: #fff;
+        font-size: 1.18rem;
+        font-weight: 800;
+        line-height: 1.6;
+      }
+      /* ─── the 4 value-family photo cards, moved up directly under the
+         programme intro paragraph so they read as one continuous section
+         instead of a separate "מהן 16 המעלות" block further down ─── */
+      .pgrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 2.8rem;
+        position: relative;
+      }
+      .pc {
+        border-radius: 26px;
+        padding: 2.4rem 1.8rem 2.2rem;
+        position: relative;
+        overflow: hidden;
+        cursor: default;
+        transform-style: preserve-3d;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.4s ease;
+      }
+      .pc::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -48deg,
+          transparent,
+          transparent 18px,
+          rgba(255, 255, 255, 0.018) 18px,
+          rgba(255, 255, 255, 0.018) 19px
+        );
+        pointer-events: none;
+      }
+      .pc::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+      }
+      .pc-meaning {
+        background: linear-gradient(
+          145deg,
+          #1a0d00 0%,
+          #5c2800 40%,
+          #9a5000 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(92, 40, 0, 0.55),
+          0 0 0 1px rgba(255, 180, 60, 0.15);
+      }
+      .pc-relating {
+        background: linear-gradient(
+          145deg,
+          #001530 0%,
+          #002d6b 40%,
+          #004494 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(0, 45, 107, 0.55),
+          0 0 0 1px rgba(60, 130, 255, 0.15);
+      }
+      .pc-acting {
+        background: linear-gradient(
+          145deg,
+          #00241a 0%,
+          #005c3d 40%,
+          #007a55 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(0, 92, 61, 0.55),
+          0 0 0 1px rgba(60, 220, 120, 0.15);
+      }
+      .pc-thinking {
+        background: linear-gradient(
+          145deg,
+          #001a1a 0%,
+          #005555 40%,
+          #007a7a 100%
+        );
+        box-shadow:
+          0 22px 65px rgba(0, 85, 85, 0.55),
+          0 0 0 1px rgba(60, 220, 220, 0.15);
+      }
+      /* Full-artwork virtue cards */
+      .pc-img {
+        padding: 0;
+        box-shadow: 0 22px 65px rgba(0, 30, 60, 0.35);
+      }
+      .pc-img::before,
+      .pc-img::after {
+        content: none;
+      }
+      .pc-img img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 26px;
+      }
+      .pc-ico {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        font-size: 2rem;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .pc-ico::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        width: 32px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.22);
+        filter: blur(5px);
+      }
+      .pc-ico::after {
+        content: "";
+        position: absolute;
+        bottom: 7px;
+        right: 9px;
+        width: 18px;
+        height: 14px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.25);
+        filter: blur(4px);
+      }
+      .pc-meaning .pc-ico {
+        background: radial-gradient(
+          circle at 35% 30%,
+          #ffd166,
+          #f59e0b 55%,
+          #5c2800 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(255, 220, 80, 0.3),
+          0 12px 35px rgba(200, 120, 0, 0.65),
+          0 0 0 1px rgba(255, 200, 60, 0.25);
+        animation: glowA 3s ease infinite;
+      }
+      .pc-relating .pc-ico {
+        background: radial-gradient(
+          circle at 35% 30%,
+          #80b0ff,
+          #0055d0 55%,
+          #001840 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(130, 180, 255, 0.3),
+          0 12px 35px rgba(0, 85, 200, 0.65),
+          0 0 0 1px rgba(80, 150, 255, 0.25);
+        animation: glowB 3s ease infinite;
+      }
+      .pc-acting .pc-ico {
+        background: radial-gradient(
+          circle at 35% 30%,
+          #40f0a0,
+          #00a060 55%,
+          #002810 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(80, 255, 160, 0.3),
+          0 12px 35px rgba(0, 160, 90, 0.65),
+          0 0 0 1px rgba(60, 220, 120, 0.25);
+        animation: glowC 3s ease infinite;
+      }
+      .pc-thinking .pc-ico {
+        background: radial-gradient(
+          circle at 35% 30%,
+          #80ffee,
+          #00bbaa 55%,
+          #002020 100%
+        );
+        box-shadow:
+          inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+          inset 3px 3px 7px rgba(80, 255, 230, 0.3),
+          0 12px 35px rgba(0, 187, 170, 0.65),
+          0 0 0 1px rgba(60, 220, 210, 0.25);
+        animation: glowD 3s ease infinite;
+      }
+      @keyframes glowA {
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(255, 220, 80, 0.3),
+            0 12px 35px rgba(200, 120, 0, 0.65),
+            0 0 0 1px rgba(255, 200, 60, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(255, 220, 80, 0.3),
+            0 18px 50px rgba(200, 120, 0, 0.8),
+            0 0 30px rgba(255, 180, 0, 0.3);
+        }
+      }
+      @keyframes glowB {
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(130, 180, 255, 0.3),
+            0 12px 35px rgba(0, 85, 200, 0.65),
+            0 0 0 1px rgba(80, 150, 255, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(130, 180, 255, 0.3),
+            0 18px 50px rgba(0, 85, 200, 0.8),
+            0 0 30px rgba(60, 130, 255, 0.3);
+        }
+      }
+      @keyframes glowC {
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 160, 0.3),
+            0 12px 35px rgba(0, 160, 90, 0.65),
+            0 0 0 1px rgba(60, 220, 120, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 160, 0.3),
+            0 18px 50px rgba(0, 160, 90, 0.8),
+            0 0 30px rgba(40, 220, 100, 0.3);
+        }
+      }
+      @keyframes glowD {
+        0%,
+        100% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 230, 0.3),
+            0 12px 35px rgba(0, 187, 170, 0.65),
+            0 0 0 1px rgba(60, 220, 210, 0.25);
+        }
+        50% {
+          box-shadow:
+            inset -4px -4px 9px rgba(0, 0, 0, 0.5),
+            inset 3px 3px 7px rgba(80, 255, 230, 0.3),
+            0 18px 50px rgba(0, 187, 170, 0.8),
+            0 0 30px rgba(40, 220, 200, 0.3);
+        }
+      }
+      .pc-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        line-height: 1.35;
+        margin-bottom: 1.3rem;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      }
+      .pc-hr {
+        height: 1px;
+        margin: 1.2rem 0;
+        border: none;
+      }
+      .pc-meaning .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 200, 80, 0.35),
+          transparent
+        );
+      }
+      .pc-relating .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(80, 150, 255, 0.35),
+          transparent
+        );
+      }
+      .pc-acting .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(60, 220, 120, 0.35),
+          transparent
+        );
+      }
+      .pc-thinking .pc-hr {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(60, 220, 210, 0.35),
+          transparent
+        );
+      }
+      .vlist {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .vi {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.16rem;
+        font-weight: 500;
+      }
+      .vi-icon {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6)) brightness(1.1);
+      }
+
+      /* ═══════════════════════════════
+         ACTIVITIES
+      ═══════════════════════════════ */
+      #activities {
+        padding: 7.5rem 2rem;
+        background: var(--white);
+      }
+      .act-hdr {
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+      .act-desc {
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: var(--text-mid);
+        max-width: 720px;
+        margin: 0 auto 3.5rem;
+        text-align: center;
+      }
+      .act-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.6rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .ac {
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow:
+          0 14px 45px var(--shadow),
+          0 4px 8px rgba(0, 0, 0, 0.08),
+          0 -2px 4px rgba(255, 255, 255, 0.8);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
+        cursor: pointer;
+        transform-style: preserve-3d;
+      }
+      .ac:hover {
+        transform: perspective(900px) rotateY(-4deg) rotateX(2deg)
+          translateY(-12px);
+        box-shadow:
+          0 38px 75px rgba(0, 67, 120, 0.22),
+          8px 16px 30px rgba(0, 67, 120, 0.12);
+      }
+      .ac-img-w {
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+      }
+      .ac-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+      .ac:hover .ac-img {
+        transform: scale(1.07);
+      }
+      .ac-ov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 30, 70, 0.65) 0%,
+          transparent 55%
+        );
+      }
+      .ac-body {
+        background: #fff;
+        padding: 1.5rem;
+      }
+      .ac-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--blue);
+        margin-bottom: 0.3rem;
+      }
+      .ac-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--teal);
+        margin-top: 0.7rem;
+        transition: gap 0.3s;
+      }
+      .ac:hover .ac-link {
+        gap: 0.6rem;
+      }
+
+      /* ═══════════════════════════════
+         NUMBERS
+      ═══════════════════════════════ */
+      /* dark navy card, like the matching "תוכנית 16 המעלות במספרים"
+         section on the program page, per the site owner's 2026-09-05
+         request */
+      #numbers {
+        padding: 6rem 2rem;
+        background:
+          radial-gradient(
+            ellipse 70% 60% at 78% 30%,
+            rgba(72, 217, 211, 0.22) 0%,
+            rgba(72, 217, 211, 0) 62%
+          ),
+          var(--g-main);
+        position: relative;
+        overflow: hidden;
+      }
+      .num-hdr {
+        text-align: center;
+        margin-bottom: 3.5rem;
+      }
+      .num-hdr .h3d {
+        color: #fff;
+      }
+      .num-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+      .nc {
+        text-align: center;
+        padding: 1.8rem 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 18px;
+        backdrop-filter: blur(8px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .nc:hover {
+        transform: translateY(-6px);
+      }
+      .nn {
+        display: block;
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--teal-lt);
+        margin-bottom: 0.6rem;
+      }
+      .nl {
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+        font-weight: 500;
+      }
+
+      /* ═══════════════════════════════
+         TESTIMONIALS
+      ═══════════════════════════════ */
+      #testi {
+        padding: 7.5rem 2rem;
+        background: linear-gradient(160deg, #f2f8ff 0%, #eef9f9 100%);
+      }
+      .testi-hdr {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      .tc {
+        background: #fff;
+        border-radius: 24px;
+        padding: 2.4rem;
+        box-shadow:
+          0 10px 38px var(--shadow),
+          0 4px 8px rgba(0, 0, 0, 0.06),
+          0 20px 40px rgba(0, 67, 120, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        transform-style: preserve-3d;
+        text-align: right;
+      }
+      .tc::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        background: var(--g-teal);
+        border-radius: 0 0 24px 24px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .tc:hover {
+        transform: perspective(900px) rotateY(3deg) rotateX(-2deg)
+          translateY(-10px);
+        box-shadow:
+          0 32px 65px rgba(0, 67, 120, 0.16),
+          -6px 12px 25px rgba(0, 67, 120, 0.1);
+      }
+      .tc:hover::after {
+        opacity: 1;
+      }
+      .tc-stars {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 0.9rem;
+        justify-content: flex-start;
+      }
+      .star {
+        color: #f59e0b;
+        font-size: 0.82rem;
+      }
+      .tc-q {
+        font-size: 3.2rem;
+        font-family: "Playfair Display", Georgia, serif;
+        color: var(--teal);
+        opacity: 0.35;
+        line-height: 0.8;
+        margin-bottom: 1rem;
+      }
+      .tc-text {
+        font-size: 0.97rem;
+        line-height: 1.85;
+        color: var(--text-mid);
+        font-style: italic;
+        flex: 1;
+        margin-bottom: 1.8rem;
+        text-align: right;
+      }
+      .tc-author {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.7rem;
+        margin-top: 0.4rem;
+      }
+      .tc-av {
+        width: 168px;
+        height: 168px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 4px solid var(--off);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+        flex-shrink: 0;
+      }
+      /* Fallback initials avatar */
+      .tc-av-init {
+        width: 168px;
+        height: 168px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.6rem;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+        border: 4px solid var(--off);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+      }
+      .tc-name {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--blue);
+      }
+      .tc-role {
+        font-size: 0.76rem;
+        color: var(--text-lt);
+        margin-top: 0.1rem;
+        line-height: 1.4;
+      }
+
+      /* Featured testimonial — dark blue card, bold prominent text */
+      /* ═══════════════════════════════
+         MISSION
+      ═══════════════════════════════ */
+      #mission {
+        padding: 8rem 2rem;
+        background: var(--white);
+      }
+      .mission-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 6rem;
+        align-items: center;
+      }
+      /* heading now sits centred above the grid, like the "תוכנית 16
+         המעלות" heading above it, instead of squeezed beside the image */
+      .mission-title {
+        margin-bottom: 2rem;
+      }
+      .m-img-w {
+        border-radius: 24px;
+        overflow: hidden;
+        width: 90%; /* image sized down 10%, per the site owner's 2026-09-07 request */
+        height: 450px;
+        position: relative;
+        box-shadow: 0 35px 80px var(--shadow);
+      }
+      .m-img-w img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .m-img-w::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 41, 82, 0.4) 0%,
+          transparent 50%
+        );
+      }
+      .mission-body {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        margin-bottom: 1.3rem;
+      }
+      .mission-slogan {
+        margin-top: 2.5rem;
+        text-align: center;
+      }
+      /* carried at 75%, in step with the slogan in the footer */
+      .mission-slogan img {
+        width: 75%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* ═══════════════════════════════
+         FOOTER
+      ═══════════════════════════════ */
+      footer {
+        background: url("assets/img/Gradient blue.png") center / cover no-repeat
+          var(--blue-dk);
+        color: #fff;
+        padding: 2.8rem 2rem 1.6rem;
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 1.8rem;
+      }
+      .footer-brand {
+        flex: 1 1 0;
+        min-width: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-nav-col {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
+      }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 320px;
+        margin: 1rem auto 0;
+        text-align: center;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--teal);
+      }
+      .footer-col-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--teal);
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .footer-contact {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
+      }
+      .footer-contact p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+      }
+      .footer-contact a {
+        color: #fff;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .fsoc img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
+      }
+      .fsoc:hover {
+        transform: translateY(-3px);
+        opacity: 0.85;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-top: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.7);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* ═══════════════════════════════
+         CAROUSEL
+      ═══════════════════════════════ */
+      .carousel-outer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        /* three testimonials per view; the phone override is in the
+           responsive block near the bottom of this stylesheet */
+        --car-gap: 1.6rem;
+        --car-per-view: 3;
+      }
+      .carousel-viewport {
+        overflow: hidden;
+        flex: 1;
+      }
+      .carousel-track {
+        display: flex;
+        /* RTL so the first testimonial of each pair sits on the right */
+        direction: rtl;
+        gap: var(--car-gap);
+        transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform;
+      }
+      .carousel-track .tc {
+        flex: 0 0
+          calc(
+            (100% - (var(--car-per-view) - 1) * var(--car-gap)) /
+              var(--car-per-view)
+          );
+        min-width: 0;
+        direction: rtl;
+      }
+      .car-arrow {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 67, 120, 0.2);
+        background: #fff;
+        color: var(--blue);
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        box-shadow: 0 4px 14px var(--shadow);
+      }
+      .car-arrow:hover:not(:disabled) {
+        background: var(--blue);
+        color: #fff;
+        border-color: var(--blue);
+        transform: scale(1.1);
+      }
+      .car-arrow:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+      .car-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+        margin-top: 2rem;
+      }
+      .car-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 67, 120, 0.2);
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 0;
+      }
+      .car-dot.active {
+        background: var(--blue);
+        transform: scale(1.3);
+      }
+
+      /* ═══════════════════════════════
+         RESPONSIVE
+      ═══════════════════════════════ */
+      @media (max-width: 1024px) {
+        .carousel-outer {
+          --car-per-view: 2;
+        }
+        .pgrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .testi-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .num-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .h-content {
+          right: 8%;
+          max-width: 60%;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
+        #nav.nav-open {
+          background: rgba(0, 25, 55, 0.96);
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1.05rem;
+        }
+        .nav-links .nav-contact-link {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
+        }
+        /* Dropdown becomes an inline accordion on mobile */
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 12px;
+          margin: 0.2rem 1.2rem 0.5rem;
+          padding: 0.3rem;
+          display: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .has-dropdown.dd-open .dropdown-menu {
+          display: block;
+        }
+        .has-dropdown.dd-open .dd-arrow {
+          transform: rotate(180deg);
+        }
+        .dropdown-menu a {
+          padding: 0.7rem 1rem;
+          font-size: 0.95rem;
+        }
+        /* Mission stacks: title → image → text */
+        .mission-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .m-img-w {
+          width: 90%;
+          height: 270px;
+          margin: 0 auto;
+        }
+        .pgrid,
+        .act-grid {
+          grid-template-columns: 1fr;
+        }
+        .num-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .testi-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-top {
+          flex-direction: column;
+          align-items: center;
+        }
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
+        }
+        .h-content {
+          right: 5%;
+          left: 5%;
+          max-width: 90%;
+          top: 15%;
+        }
+      }
+      @media (max-width: 640px) {
+        /* Text readability first on phones: drop the doubled side padding
+           (section + .wrap) and slim the testimonial card padding */
+        .wrap {
+          padding: 0;
+        }
+        .tc {
+          padding: 1.8rem 1.4rem;
+        }
+        /* Arrows move below the testimonial card so text keeps full width,
+           and a phone shows one testimonial at a time instead of two */
+        .carousel-outer {
+          flex-wrap: wrap;
+          justify-content: center;
+          --car-per-view: 1;
+          --car-gap: 1.2rem;
+        }
+        .carousel-viewport {
+          flex: 0 0 100%;
+          order: -1;
+        }
+      }
+      @media (max-width: 480px) {
+        .num-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .nc {
+          padding: 1.8rem 0.5rem;
+        }
+      }
+      /* No text block may end on a line holding a single word.
+         `pretty` lets the browser re-balance the closing lines;
+         assets/js/no-orphans.js glues the final two words for the
+         browsers that do not support it yet. */
+      body {
+        text-wrap: pretty;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .h3d,
+      .bh-headline,
+      .impl-title {
+        text-wrap: balance;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- ════════════ NAV ════════════ -->
+    <nav id="nav">
+      <div class="nav-right">
+        <!-- Logo — far right -->
+        <a href="#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <!-- Links — left of logo, RTL order -->
+        <ul class="nav-links">
+          <li><a href="#hero">דף הבית</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li>
+            <a href="contact.html?from=home" class="nav-contact-link"
+              >צרו איתנו קשר</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="nav-slogan"><img src="assets/img/The Slogan 1.png" alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות." /></div>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- ════════════ HERO ════════════ -->
+    <section id="hero">
+      <div class="h-photo" id="hph">
+        <video
+          class="h-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="assets/Videos/hero-waves-8-2-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="assets/Videos/Hero Waves רקע בהיר יותר -8-2 .mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div id="pts"></div>
+
+      <div class="h-content">
+        <h1 class="h-title">
+          <span class="h-gold">הדרך שלך לחיים שלווים,</span><br />
+          <span class="h-gold">משמעותיים ומאושרים יותר</span><br />
+          <span class="h-teal">מתחילה כאן</span>
+        </h1>
+        <p class="h-sub">
+          <strong>16 המעלות -</strong>
+          <span class="h-sub-lines">תוכנית הדגל של<br />עמותת בית חולמים</span>
+        </p>
+      </div>
+
+      <div
+        class="h-arrow"
+        onclick="
+          document
+            .getElementById('intro')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
+        <div class="h-arrow-line"></div>
+        <span>גלול</span>
+      </div>
+    </section>
+
+    <!-- ════════════ PROGRAM INTRO ════════════ -->
+    <section id="intro">
+      <div class="wrap">
+        <h2 class="h3d rev" style="text-align: center">תוכנית 16 המעלות</h2>
+        <p class="program-pitch rev d1">
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
+          אוניברסליים וחיים בעלי משמעות
+        </p>
+
+        <p class="intro-body intro-body-center intro-body-wide rev d1">
+          התוכנית מבוססת על ארבעה נושאי ליבה ומספקת כלים מעשיים<br />
+          להטמעתם בחיי היומיום.<br />
+          בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר מייצרות שפה<br />
+          לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות, קהילות, ובחברה
+          כולה.
+        </p>
+
+        <div class="pgrid rev d2" id="virtues">
+          <div class="pc pc-img" id="pc0">
+            <img
+              src="assets/img/1.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה"
+            />
+          </div>
+
+          <div class="pc pc-img" id="pc1">
+            <img
+              src="assets/img/2.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו פועלים: טוב לב, יושרה, נדיבות, דיבור מיטיב"
+            />
+          </div>
+
+          <div class="pc pc-img" id="pc2">
+            <img
+              src="assets/img/3.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות"
+            />
+          </div>
+
+          <div class="pc pc-img" id="pc3">
+            <img
+              src="assets/img/4.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ"
+            />
+          </div>
+        </div>
+
+        <div class="intro-join-box intro-join-box-bold rev d3">
+          <p class="ijb-text ijb-text-bold">
+            עמותת בית חולמים היא הנציגה הרשמית של התוכנית בישראל
+          </p>
+        </div>
+
+        <div style="margin-top: 1.8rem; text-align: center" class="rev d3">
+          <a href="program.html" class="btn btn-blue"
+            >למידע נוסף על תוכנית 16 המעלות</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ MISSION ════════════ -->
+    <section id="mission">
+      <div class="wrap">
+        <h2 class="h3d mission-title rev" style="text-align: center">
+          עמותת בית חולמים
+        </h2>
+        <div class="mission-grid">
+          <div class="m-img-w rev">
+            <img
+              src="assets/img/בית חולמים- המשימה שלנו.png"
+              alt="עמותת בית חולמים"
+            />
+          </div>
+          <div class="mission-copy rev d1">
+            <p class="mission-body">
+              העמותה פועלת בתחומי הרוח והחברה לבניה מחדש של הסולידריות החברתית.
+              באמצעות שילוב של פילוסופיות ופרקטיקות מערביות ומזרחיות ומודלים
+              מקצועיים חדשניים ואקטיביסטיים שפיתחה, פועלת העמותה לסיוע
+              לאוכלוסיות פגיעות בתחומי החינוך, הרווחה והבריאות.
+            </p>
+            <p class="mission-body">
+              המטרה שלנו היא לסייע לאנשים מכל שכבות החברה לטפח את מעלותיהם
+              הפנימיות ולהגשים את הפוטנציאל האנושי העצום הטמון בהםן כדי לחיות
+              חיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ ACTIVITIES ════════════ -->
+    <section id="activities">
+      <div class="wrap">
+        <div class="act-hdr">
+          <h2 class="h3d rev" style="text-align: center">הפעילות שלנו</h2>
+        </div>
+        <div class="act-desc rev">
+          <p style="font-weight: 700">
+            נדרשת שפה ערכית, חומלת וסבלנית יותר. אתיקה אוניברסלית לעולם שלם.
+          </p>
+          <p style="margin-top: 1rem">
+            התוכניות שמפעילה העמותה משלבות לימוד של חוכמה עתיקה ומודרנית ושואבות
+            השראה מפילוסופיות מזרחיות ומערביות כאחד, על מנת לסייע לא.נשים מכל
+            המגזרים, בכל הגילים ומכל שכבות החברה, להתמודד עם האתגרים של המאה
+            ה-21 ולהפוך את התורות לכלים יישומיים בכל תחומי החיים.
+          </p>
+        </div>
+
+        <!-- 4 cards, 2 per row -->
+        <div class="act-grid">
+          <div class="ac rev">
+            <div class="ac-img-w">
+              <img
+                src="assets/img/תמונת חינוך.jpg"
+                alt="16 המעלות בחינוך"
+                class="ac-img"
+              />
+              <div class="ac-ov"></div>
+            </div>
+            <div class="ac-body">
+              <div class="ac-title">16 המעלות בחינוך</div>
+              <a href="contact.html" class="ac-link">מידע נוסף ←</a>
+            </div>
+          </div>
+
+          <div class="ac rev d1">
+            <div class="ac-img-w">
+              <img
+                src="assets/img/תמונות בריאות הנפש .jpg"
+                alt="16 המעלות בבריאות הנפש"
+                class="ac-img"
+              />
+              <div class="ac-ov"></div>
+            </div>
+            <div class="ac-body">
+              <div class="ac-title">16 המעלות בבריאות הנפש</div>
+              <a href="contact.html" class="ac-link">מידע נוסף ←</a>
+            </div>
+          </div>
+
+          <div class="ac rev d2">
+            <div class="ac-img-w">
+              <img
+                src="assets/img/Business Envorinment 1 - 100%.png"
+                alt="16 המעלות בחברות"
+                class="ac-img"
+              />
+              <div class="ac-ov"></div>
+            </div>
+            <div class="ac-body">
+              <div class="ac-title">16 המעלות בחברות</div>
+              <a href="contact.html" class="ac-link">מידע נוסף ←</a>
+            </div>
+          </div>
+
+          <div class="ac rev d3">
+            <div class="ac-img-w">
+              <img
+                src="assets/img/תמונות סדנה.jpg"
+                alt="קבוצות תרגול וסדנאות פרטיות"
+                class="ac-img"
+              />
+              <div class="ac-ov"></div>
+            </div>
+            <div class="ac-body">
+              <div class="ac-title">קבוצות תרגול וסדנאות פרטיות</div>
+              <a href="contact.html" class="ac-link">מידע נוסף ←</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ NUMBERS ════════════ -->
+    <section id="numbers">
+      <div class="wrap">
+        <div class="num-hdr">
+          <h2 class="h3d rev" style="text-align: center">
+            תוכנית 16 המעלות במספרים
+          </h2>
+        </div>
+        <div class="num-grid">
+          <div class="nc rev">
+            <span class="nn" data-t="140">0</span>
+            <span class="nl">סדנאות</span>
+          </div>
+          <div class="nc rev d1">
+            <span class="nn" data-t="2300">0</span>
+            <span class="nl">משתתפים</span>
+          </div>
+          <div class="nc rev d2">
+            <span class="nn" data-t="80" data-no-plus="true">0</span>
+            <span class="nl">מנחים</span>
+          </div>
+          <div class="nc rev d3">
+            <span class="nn" data-t="22" data-no-plus="true">0</span>
+            <span class="nl">מדינות ברחבי העולם</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ TESTIMONIALS ════════════ -->
+    <section id="testi">
+      <div class="wrap">
+        <div class="testi-hdr">
+          <h2 class="h3d rev" style="text-align: center">קולות מהשטח</h2>
+        </div>
+        <div class="carousel-outer">
+          <button class="car-arrow" id="carPrev" aria-label="הקודם">
+            &#8250;
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carTrack">
+              <!-- 1. דליה לין -->
+              <div class="tc rev">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  אני מאמינה שחינוך לקשב ולטיפוח ערכים אנושיים אוניברסליים הם
+                  מהיסודות החשובים ביותר של החינוך כיום. תוכנית 16 המעלות
+                  מעניקה לצוותי החינוך, לתלמידים, לתלמידות ולקהילות כלים
+                  פשוטים, מעשיים וישימים, שהופכים את הערכים האלה לחלק בלתי
+                  נפרד מהעשייה היומיומית. מתוך האמונה הזו בחרנו ב-16 המעלות
+                  להיות תוכנית הדגל של מנהל החינוך בעיריית תל אביב-יפו.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/דליה לין.jpeg"
+                    alt="דליה לין"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">דליה לין</div>
+                    <div class="tc-role">
+                      מנהלת מנהל חינוך בעיריית תל-אביב-יפו
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. ד"ר עודד ארבל -->
+              <div class="tc rev d1">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  העבודה עם תוכנית 16 המעלות מנכיחה את מימד הערכים והרוח בשיח
+                  היומיומי באופן נגיש, פשוט וישים לכל אדם. בעיניי, זהו מרכיב
+                  קריטי בתהליכי שיקום, הן ברמה האישית והן ברמה החברתית.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/Faces/team/דר עודד ארבל.png"
+                    alt="ד״ר עודד ארבל"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">ד"ר עודד ארבל</div>
+                    <div class="tc-role">
+                      פסיכיאטר, מנהל מחלקת טיפול יום במרכז הממשלתי לבריאות הנפש
+                      "בארות" בבאר-שבע
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. יעל קמינסקי -->
+              <div class="tc rev d2">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  מהפכת ה-AI היא בעלת פוטנציאל בלתי נתפס, אך גם מייצרת מציאות
+                  של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות העצומה של
+                  טיפוח המרכיב האנושי. תוכנית 16 המעלות עוזרת למנהלים.ות
+                  ולעובדים.ות לפתח חוסן אישי וצוותי, ולייצר מצפן ניהולי בתוך
+                  ההתמודדות עם חוסר הוודאות ועם הצורך המתמיד להשתנות.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/יעל קמינסקי.jpeg"
+                    alt="יעל קמינסקי"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">יעל קמינסקי</div>
+                    <div class="tc-role">פסיכולוגית קלינית ו-HR ב-WIX</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. חאלד שקרא -->
+              <div class="tc rev">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  סדנת 16 המעלות חיזקה את תחושת השייכות, הלכידות והתקשורת בצוות
+                  רב-תרבותי. אני רואה ב-16 המעלות תוכנית שמצליחה לגעת גם ברמה
+                  האנושית וגם ברמה המקצועית, ולתת לצוותי חינוך שפה משותפת
+                  שמחברת בין אנשים מרקעים שונים מבלי לטשטש את הייחוד של כל אחד
+                  ואחת.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/חאלד שקרא.png"
+                    alt="חאלד שקרא"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">חאלד שקרא</div>
+                    <div class="tc-role">מנהל בי"ס אג'יאל ביפו</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. חן וינשטיין -->
+              <div class="tc rev d1">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  מה שהפתיע אותי במסלול ההכשרה של 16 המעלות הוא עד כמה הוא עמוק
+                  - ועד כמה הוא פשוט ומשולב בחיים עצמם. לא הייתי צריכה לעצור את
+                  החיים כדי לעבור תהליך; התהליך קרה בתוכם. למדתי לפתח שפה
+                  פנימית של ערכים וחוסן בתוך שגרת החיים - בעבודה, במשפחה
+                  ובמערכות היחסים. אחד הדברים המשמעותיים ביותר עבורי הוא תחושת
+                  השייכות לקהילה של אנשים שבוחרים, בתקופה מאתגרת ומורכבת, לטפח
+                  יחד ערכים אנושיים, הקשבה וחוסן פנימי - לא כסיסמה, אלא כדרך
+                  חיים.
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/חן ווינשטיין.jpeg"
+                    alt="חן וינשטיין"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">חן וינשטיין</div>
+                    <div class="tc-role">
+                      פסיכותרפיסטית ויועצת ארגונית, מנחה מוסמכת של תוכנית 16
+                      המעלות
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. תומר גביש -->
+              <div class="tc rev d2">
+                <div class="tc-stars">
+                  <span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span><span class="star">★</span
+                  ><span class="star">★</span>
+                </div>
+                <div class="tc-q">"</div>
+                <p class="tc-text">
+                  התרגול של המעלה "ענווה" לימד אותי שמנהל טוב שואל לפני שהוא
+                  עונה. כשהצוות מאמץ את השפה המשותפת של 16 המעלות, אנחנו מפסיקים
+                  להיות "מומחים שיודעים מה הילד צריך" והופכים ל"שותפים שלומדים
+                  יחד עם הילד".
+                </p>
+                <div class="tc-author">
+                  <img
+                    src="assets/img/תומר גביש.png"
+                    alt="תומר גביש"
+                    class="tc-av"
+                  />
+                  <div>
+                    <div class="tc-name">תומר גביש</div>
+                    <div class="tc-role">מנהל בי"ס עירוני י"א בתל-אביב</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end carousel-track -->
+          </div>
+          <!-- end carousel-viewport -->
+          <button class="car-arrow" id="carNext" aria-label="הבא">
+            &#8249;
+          </button>
+        </div>
+        <!-- end carousel-outer -->
+        <!-- dots are generated by the carousel script, so their count
+             follows how many testimonials fit on the current screen -->
+        <div class="car-dots">
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="assets/img/logo-beit-holmim-white.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים -<br />
+              לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+            <div class="socials">
+              <a
+                href="https://www.instagram.com/dreamers_home_il/?hl=en"
+                class="fsoc"
+                title="Instagram"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Instegram Logo 1.png" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/YouTube Logo 1.png" alt="YouTube"
+              /></a>
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Facebook Logo 1.png" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+          <div class="footer-nav-col">
+            <div class="footer-col-title">ניווט</div>
+            <ul class="footer-nav">
+              <li><a href="#hero">דף הבית</a></li>
+              <li><a href="about.html">אודות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <div class="footer-col-title">צרו קשר</div>
+            <p><a href="mailto:info@dreamers.com">info@dreamers.com</a></p>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+            <p style="margin-top: 1rem">
+              <a
+                href="contact.html"
+                class="btn btn-gold"
+                style="font-size: 0.85rem; padding: 0.6rem 1.4rem"
+                >לתרומה</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 by Dreamers Home</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════ JS ════════════ -->
+    <script>
+      (function () {
+        /* Nav */
+        const nav = document.getElementById("nav");
+        window.addEventListener(
+          "scroll",
+          () => nav.classList.toggle("on", scrollY > 60),
+          { passive: true },
+        );
+
+        /* Mobile nav (hamburger) */
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) => {
+          if (a.classList.contains("dd-trigger")) return;
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        /* Parallax hero */
+        const hph = document.getElementById("hph");
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (scrollY < innerHeight)
+              hph.style.transform = `scale(1.08) translateY(${scrollY * 0.2}px)`;
+          },
+          { passive: true },
+        );
+
+        /* Gold particles */
+        const pc = document.getElementById("pts");
+        function mkP() {
+          const p = document.createElement("div");
+          p.className = "pt";
+          const sz = Math.random() * 7 + 2,
+            dur = Math.random() * 11 + 7,
+            del = Math.random() * 3;
+          p.style.cssText = `width:${sz}px;height:${sz}px;right:${Math.random() * 100}%;bottom:0;animation-duration:${dur}s;animation-delay:${del}s;opacity:${Math.random() * 0.6 + 0.3}`;
+          pc.appendChild(p);
+          setTimeout(() => p.remove(), (dur + del) * 1000);
+        }
+        for (let i = 0; i < 35; i++) mkP();
+        setInterval(mkP, 800);
+
+        /* Scroll reveal */
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* Counters — respects data-no-plus attribute */
+        const cio = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (!e.isIntersecting) return;
+              const el = e.target,
+                tg = +el.dataset.t,
+                noPlus = el.dataset.noPlus === "true",
+                dur = 2200,
+                t0 = performance.now();
+              (function tick(now) {
+                const p = Math.min((now - t0) / dur, 1),
+                  ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.floor(ease * tg);
+                if (p < 1) requestAnimationFrame(tick);
+                else
+                  el.textContent = noPlus
+                    ? tg.toLocaleString()
+                    : tg.toLocaleString() + "+";
+              })(t0);
+              cio.unobserve(el);
+            }),
+          { threshold: 0.6 },
+        );
+        document.querySelectorAll("[data-t]").forEach((el) => cio.observe(el));
+
+        /* 3D tilt — virtue cards */
+        document.querySelectorAll(".pc").forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(850px) rotateY(${x * 15}deg) rotateX(${-y * 9}deg) translateY(-10px) scale(1.02)`;
+          });
+          card.addEventListener(
+            "mouseleave",
+            () => (card.style.transform = ""),
+          );
+        });
+
+        /* 3D tilt — activity cards */
+        document.querySelectorAll(".ac").forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 5}deg) translateY(-12px)`;
+          });
+          card.addEventListener(
+            "mouseleave",
+            () => (card.style.transform = ""),
+          );
+        });
+
+        /* Testimonials carousel — two cards per view on desktop,
+           one per view on a phone. Page count and dots follow the
+           --car-per-view custom property, so CSS stays the source
+           of truth for how many fit on the current screen. */
+        const carOuter = document.querySelector(".carousel-outer");
+        const track = document.getElementById("carTrack");
+        const prevBtn = document.getElementById("carPrev");
+        const nextBtn = document.getElementById("carNext");
+        const dotsWrap = document.querySelector(".car-dots");
+        const cards = Array.from(track.querySelectorAll(".tc"));
+        let currentPage = 0;
+        let perView = 2;
+        let totalPages = 1;
+
+        function readPerView() {
+          const v = parseInt(
+            getComputedStyle(carOuter).getPropertyValue("--car-per-view"),
+            10,
+          );
+          return Number.isFinite(v) && v > 0 ? v : 1;
+        }
+
+        function buildDots() {
+          dotsWrap.innerHTML = "";
+          for (let i = 0; i < totalPages; i++) {
+            const b = document.createElement("button");
+            b.className = "car-dot" + (i === currentPage ? " active" : "");
+            b.dataset.p = i;
+            b.setAttribute("aria-label", `עמוד ${i + 1}`);
+            b.addEventListener("click", () => goToPage(i));
+            dotsWrap.appendChild(b);
+          }
+        }
+
+        function goToPage(p) {
+          currentPage = Math.max(0, Math.min(p, totalPages - 1));
+          const first = cards[currentPage * perView];
+          // the track is RTL, so offsetLeft shrinks as the index grows;
+          // shifting right by the difference brings the page into view
+          const delta = first ? cards[0].offsetLeft - first.offsetLeft : 0;
+          track.style.transform = `translateX(${delta}px)`;
+          prevBtn.disabled = currentPage === 0;
+          nextBtn.disabled = currentPage === totalPages - 1;
+          dotsWrap.querySelectorAll(".car-dot").forEach((d, i) =>
+            d.classList.toggle("active", i === currentPage),
+          );
+        }
+
+        function layout() {
+          const next = readPerView();
+          const changed = next !== perView;
+          perView = next;
+          totalPages = Math.ceil(cards.length / perView);
+          if (currentPage > totalPages - 1) currentPage = totalPages - 1;
+          if (changed || dotsWrap.children.length !== totalPages) buildDots();
+          const prevTransition = track.style.transition;
+          track.style.transition = "none";
+          goToPage(currentPage);
+          void track.offsetWidth;
+          track.style.transition = prevTransition;
+        }
+
+        prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
+        nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
+        layout();
+        let carResizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(carResizeTimer);
+          carResizeTimer = setTimeout(layout, 150);
+        });
+
+        /* 3D tilt — testimonial cards */
+        document.querySelectorAll(".tc").forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 4}deg) translateY(-10px)`;
+          });
+          card.addEventListener(
+            "mouseleave",
+            () => (card.style.transform = ""),
+          );
+        });
+      })();
+    </script>
+    <script src="assets/js/no-orphans.js?v=2" defer></script>
+    <script src="assets/js/accessibility-widget.js" defer></script>
+  </body>
+</html>
