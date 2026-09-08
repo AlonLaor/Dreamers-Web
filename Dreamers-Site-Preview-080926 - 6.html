@@ -2890,7 +2890,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@800&family=Playfair+Display:ital,wght@1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
       rel="stylesheet"
     />
 
@@ -3948,15 +3948,11 @@
       .vb-col-title {
         border-radius: 12px;
         color: #fff;
-        /* NOT Heebo: identified 2026-09-08 by calibrating candidate
-           webfonts against assets/img/Poster - HEADER.png (the original
-           baked artwork these boxes replaced) at matching ink height/width
-           - Heebo (any weight) renders visibly narrower and squarer than
-           that artwork's type, while Assistant ExtraBold (800) matches its
-           letterforms and proportions closely. Confirmed side-by-side
-           in-browser against the poster crop before landing on this. */
-        font-family: "Assistant", "Heebo", sans-serif;
-        font-weight: 800;
+        /* Heebo Black - matches the weight of the old baked "Poster -
+           HEADER.png" artwork these boxes replaced (2026-09-08 report:
+           font-weight: 700 here reads visibly thinner than that poster's
+           own bold type, which the site owner wants restored) */
+        font-weight: 900;
         font-size: clamp(0.95rem, 1.45vw, 1.16rem);
         line-height: 1.35;
         text-align: center;
@@ -9123,7 +9119,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
       rel="stylesheet"
     />
 
@@ -9657,12 +9653,9 @@
       .vb-col-title {
         border-radius: 12px;
         color: #fff;
-        /* NOT Heebo - matches the programme page's board: identified by
-           calibrating candidate webfonts against the original baked poster
-           artwork's letterforms (see program.html's board for the full
-           note); Assistant ExtraBold (800) is the match, not Heebo. */
-        font-family: "Assistant", "Heebo", sans-serif;
-        font-weight: 800;
+        /* Heebo Black, matching the programme page's board (2026-09-08
+           fix: font-weight 700 read visibly thinner than intended) */
+        font-weight: 900;
         font-size: clamp(0.95rem, 1.45vw, 1.16rem);
         line-height: 1.35;
         text-align: center;
