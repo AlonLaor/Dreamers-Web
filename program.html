@@ -1069,7 +1069,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 4.9rem;
+        /* same aspect-ratio as .vcard below, on the same grid-column width
+           (guaranteed by both being items of .vb-grid) - together these
+           two mean the title box is exactly the same width AND height as
+           the tile beneath it, at any viewport, per the site owner's
+           2026-09-08 follow-up ("also height, not just width") */
+        aspect-ratio: 2.4 / 1;
+        min-height: 4.6rem;
         margin-bottom: 1.8rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
