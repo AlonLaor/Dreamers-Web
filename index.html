@@ -313,7 +313,7 @@
         opacity: 0.92;
       }
       .nav-slogan img {
-        height: 2.55rem;
+        height: 3.825rem; /* 50% bigger, per the site owner's 2026-09-08 request */
         width: auto;
         display: block;
       }
@@ -426,7 +426,13 @@
         z-index: 10;
         text-align: right;
         color: #fff;
-        max-width: 680px;
+        /* wide enough that each of the 3 explicit <br>-separated title
+           lines below renders as one line (not a further wrap) at the
+           title's own font-size, matching the site owner's 2026-09-08
+           mockup exactly - width scales with viewport so this holds from
+           the 1024px breakpoint up, capped once the title's own
+           clamp()'d font-size stops growing past ~1232px */
+        max-width: clamp(680px, 72vw, 920px);
       }
       .h-title {
         font-size: clamp(2.28rem, 5.7vw, 4.39rem); /* 35% bigger, per the site owner's 2026-09-05 request */

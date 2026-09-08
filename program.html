@@ -275,7 +275,7 @@
         opacity: 0.92;
       }
       .nav-slogan img {
-        height: 2.55rem;
+        height: 3.825rem; /* 50% bigger, per the site owner's 2026-09-08 request */
         width: auto;
         display: block;
       }
@@ -1020,42 +1020,58 @@
       }
       .vb-body {
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
-        /* 3x the 0.9rem gap between the tile rows below (2.7rem), per the
-           site owner's 2026-09-07 request, now that the title and the 4
-           category boxes are a single baked image again instead of the
-           title being separate from live .vb-col-title boxes */
-        padding: 2.7rem 1.2rem 1.9rem;
+        padding: 1.6rem 1.2rem 1.9rem;
       }
-      /* the full poster artwork (navy "16 המעלות" title + the 4 coloured
-         category boxes, baked into one picture), flush against the board's
+      /* just the navy "16 המעלות" title bar now, flush against the board's
          rounded top corners (the board's own overflow:hidden clips it to
-         match). Per the site owner's 2026-09-07 request, this replaced an
-         earlier split where only the title was this image and the 4
-         category boxes were drawn live below (.vb-col-title) so their size
-         matched the virtue tiles exactly - that sizing guarantee is gone
-         now that they're flattened into the artwork, which is the tradeoff
-         the site owner accepted in exchange for the poster's own font. */
+         match). The 4 coloured category boxes moved back into .vb-grid
+         itself as live .vb-col-title elements, per the site owner's
+         2026-09-08 request: being real grid items (not part of a flat
+         image) is what guarantees each one is exactly the same width as,
+         and sits exactly above, the tile column beneath it - the
+         image-based version (2026-09-07 round) couldn't promise that
+         against a responsive grid. */
       .vb-poster {
         display: block;
         width: 100%;
         height: auto;
       }
-      /* The board is one grid filled column by column, not row by row: the
-         four tiles of a family are written in directly under one another.
-         Keeping it a single grid is what holds each row of tiles to a
-         common height, and lets the phone layout drop back to row flow in
-         one column with every family's 4 tiles arriving together (in their
-         own colour, via --vc) even without a title between groups. */
+      /* The board is one grid filled column by column, not row by row: each
+         family's own title, then its four tiles, are written in directly
+         under one another. Keeping it a single grid is what holds the
+         title and each row of tiles to a common per-row height, guarantees
+         every title lines up exactly over its own column's tiles, and lets
+         the phone layout drop back to row flow in one column with every
+         family arriving whole (title first, own colour) in one piece. */
       .vb-grid {
         display: grid;
         grid-auto-flow: column;
-        /* four tiles per column, one family per column */
-        grid-template-rows: repeat(4, auto);
+        /* one title + four tiles per column, one family per column */
+        grid-template-rows: repeat(5, auto);
         /* the minimum of 0 is what lets a column narrow past the longest
            word in its title; without it the four hold their widest text and
            the board runs off the side of a tablet */
         grid-auto-columns: minmax(0, 1fr);
         gap: 0.9rem;
+      }
+      /* the type here matches the printed 16-virtues chart used on the
+         companies page. The extra margin-bottom, on top of the grid's own
+         0.9rem row gap, brings the gap under the title to 2.7rem - 3x the
+         gap between tile rows, per the site owner's (repeated) request. */
+      .vb-col-title {
+        border-radius: 12px;
+        color: #fff;
+        font-weight: 700;
+        font-size: clamp(0.95rem, 1.45vw, 1.16rem);
+        line-height: 1.35;
+        text-align: center;
+        padding: 0.9rem 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4.9rem;
+        margin-bottom: 1.8rem;
+        box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
       .vb-hint {
         margin: 0 0 1.1rem;
@@ -1572,8 +1588,9 @@
           );
         }
         .vb-grid {
-          /* two families to a column, 4 tiles each (8 rows) */
-          grid-template-rows: repeat(8, auto);
+          /* two families to a column: each family's title + its 4 tiles
+             (5 rows), two families stacked (10 rows) */
+          grid-template-rows: repeat(10, auto);
         }
         .fac-outer {
           flex-wrap: wrap;
@@ -1622,9 +1639,8 @@
           height: 190px;
         }
         .vb-grid {
-          /* one family's four tiles at a time, in its own colour - the
-             poster image above still names all 4 categories, since the
-             per-family title row was removed from this grid */
+          /* one family at a time, in its own colour: its own .vb-col-title
+             first, then its four tiles, in plain source-order row flow */
           grid-auto-flow: row;
           grid-template-rows: none;
           grid-template-columns: 1fr;
@@ -1870,12 +1886,41 @@
         <div class="virtues-board rev d2">
           <img
             class="vb-poster"
-            src="assets/img/Poster - HEADER.png"
-            alt="16 המעלות: הדרך בה אנו חושבות.ים, פועלות.ים, מתייחסות.ים לזולת, מוצאות.ים משמעות"
+            src="assets/img/Poster - HEADER Only.png"
+            alt="16 המעלות"
           />
           <div class="vb-body">
             <div class="vb-grid">
-              <!-- the 16 tiles are written in by assets/js — see program script -->
+              <!-- ─── column titles ─── -->
+              <div
+                class="vb-col-title"
+                data-family="think"
+                style="background: var(--v-think)"
+              >
+                הדרך בה אנו חושבת
+              </div>
+              <div
+                class="vb-col-title"
+                data-family="act"
+                style="background: var(--v-act)"
+              >
+                הדרך בה אנו פועלת
+              </div>
+              <div
+                class="vb-col-title"
+                data-family="relate"
+                style="background: var(--v-relate)"
+              >
+                הדרך בה אנו מתייחסת לזולת
+              </div>
+              <div
+                class="vb-col-title"
+                data-family="meaning"
+                style="background: var(--v-meaning)"
+              >
+                הדרך בה אנו מוצאת משמעות
+              </div>
+              <!-- the 16 tiles are written in by the script at the foot -->
             </div>
           </div>
         </div>
@@ -2540,12 +2585,16 @@
 
         const grid = document.querySelector(".vb-grid");
         if (grid) {
-          /* Filled column by column, in family order: the 4 category
-             titles now live in the poster image above rather than as grid
-             items themselves (per the site owner's 2026-09-07 request), so
-             each family's four tiles are simply appended to the grid in
-             turn - the column-major grid still groups them correctly. */
+          /* Filled column by column: each family's four tiles are inserted
+             right after their own .vb-col-title, which is the order the
+             column-major grid (and the single-column phone layout) both
+             read. */
           ["think", "act", "relate", "meaning"].forEach((family) => {
+            const title = grid.querySelector(
+              '.vb-col-title[data-family="' + family + '"]'
+            );
+            if (!title) return;
+            let after = title;
             VIRTUES.filter((v) => v[2] === family).forEach(([name, file]) => {
               const card = document.createElement("button");
               card.type = "button";
@@ -2574,7 +2623,8 @@
                 flipBoardBack(grid);
                 if (!wasOpen) card.classList.add("flipped");
               });
-              grid.appendChild(card);
+              after.insertAdjacentElement("afterend", card);
+              after = card;
             });
           });
         }
