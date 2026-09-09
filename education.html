@@ -643,9 +643,10 @@
       .impact-tile {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 1rem;
         background: linear-gradient(150deg, #ffffff 0%, #f4f8fb 100%);
-        border: 1px solid rgba(0, 67, 120, 0.07);
+        border: 3px solid var(--blue);
         border-radius: 18px;
         padding: 1.1rem 1.3rem;
         box-shadow:
@@ -667,6 +668,7 @@
         line-height: 1.6;
         color: var(--text-mid);
         font-weight: 700;
+        text-align: center;
       }
       @media (max-width: 600px) {
         .impact-grid {
@@ -751,16 +753,14 @@
         text-align: center;
         font-size: 1.06rem;
         line-height: 1.8;
-        font-weight: 600;
-        color: var(--blue-dk);
-        background: linear-gradient(150deg, #ffffff 0%, #eaf4fb 55%, #d9ecf7 100%);
-        border: 1px solid rgba(255, 255, 255, 0.9);
+        font-weight: 700;
+        color: #fff;
+        background: var(--g-main);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         box-shadow:
-          0 2px 3px rgba(0, 67, 120, 0.12),
-          0 14px 26px rgba(0, 67, 120, 0.18),
-          0 34px 70px rgba(0, 67, 120, 0.22),
-          inset 0 2px 0 rgba(255, 255, 255, 0.95),
-          inset 0 -6px 14px rgba(0, 67, 120, 0.12);
+          0 2px 4px rgba(0, 67, 120, 0.28),
+          0 20px 50px rgba(0, 67, 120, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12);
         transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
       .pill-note:hover {
@@ -1571,15 +1571,9 @@
               ולמצוא שלוות-נפש.
             </p>
             <p class="ab-body rev d2">
-              16 המעלות מוכרת במערכת גפ"ן של משרד החינוך משנת תשפ"ג (תוכנית
-              מספר 63554). היא תוכנית הדגל של מנהל החינוך בעיריית תל אביב-יפו
-              והוכנסה גם לבתי-ספר בנתניה, במועצת מטה יהודה ועוד.
-            </p>
-
-            <p class="ab-body rev d2">
-              בכל נושא 4 ערכים, ובסך הכול 16 מעלות אוניברסליות. יחד הן יוצרות
-              שפה חברתית-רגשית-ערכית אוניברסלית, המתאימה לכל שכבות הגיל ובכל
-              מגזרי החינוך.
+              תוכנית 16 המעלות מוכרת במערכת גפ"ן של משרד החינוך משנת תשפ"ג
+              (תוכנית מספר 63554). היא תוכנית הדגל של מנהל החינוך בעיריית תל
+              אביב-יפו והוכנסה גם לבתי-ספר בנתניה, במועצת מטה יהודה ועוד.
             </p>
           </div>
           <div class="edu-intro-photo rev d1">
@@ -1669,8 +1663,8 @@
           <div class="stat-num">31%</div>
           <div class="stat-frame-body">
             <p>
-              כ-<strong>31%</strong> מבני הנוער בישראל מדווחים על רווחה נפשית
-              ירודה, ושיעור הדיווח על מצוקה נפשית עולה ככל שעולה הגיל.
+              מבני הנוער בישראל מדווחים על רווחה נפשית ירודה, ושיעור הדיווח
+              על מצוקה נפשית עולה ככל שעולה הגיל.
               <cite
                 >(הראל-פיש ואחרים, "נוער בישראל: בריאות, רווחה נפשית וחברתית
                 ודפוסי התנהגויות סיכון", משרד הבריאות, משרד החינוך ואוניברסיטת
@@ -1792,7 +1786,7 @@
         </p>
 
         <div class="steps-cta rev d2">
-          <a href="program.html" class="btn btn-blue"
+          <a href="program.html#stages" class="btn btn-blue"
             >מידע מפורט על שלבי התוכנית ניתן לקרוא כאן</a
           >
         </div>
@@ -1967,7 +1961,7 @@
     <section id="contact-form">
       <div class="wrap">
         <div class="contact-inner">
-          <h2 class="h3d h3d-white rev">לתיאום שיחת הכירות</h2>
+          <h2 class="h3d h3d-white rev">לתיאום שיחת היכרות</h2>
           <p class="sub rev" style="margin-bottom: 2.2rem">
             מעוניינים.ות להביא את תכנית 16 המעלות לבית הספר או לרשות שלכם?
             מלאו.נה את הפרטים הבאים לתיאום שיחת היכרות שבה נשיב על כל שאלה,
