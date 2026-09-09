@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@800&family=Playfair+Display:ital,wght@1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap"
       rel="stylesheet"
     />
 
@@ -1020,12 +1020,11 @@
       }
       .vb-body {
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
-        /* top padding carries the 1.8rem taken off .vb-col-title's own
-           margin-bottom below, per the site owner's 2026-09-08 follow-up:
-           the title row moves down (bigger gap under "16 המעלות") while the
-           virtue tiles stay put (title-to-tile gap now matches the 0.9rem
-           grid gap between tile rows, instead of 3x it) */
-        padding: 3.4rem 1.2rem 1.9rem;
+        /* per the site owner's 2026-09-09 follow-up, the gap under the
+           title row is back to 3x the grid's own 0.9rem row gap (2.7rem
+           total, via .vb-col-title's margin-bottom below) - this reverts
+           2026-09-08's 1x-gap change, so the top padding reverts with it */
+        padding: 1.6rem 1.2rem 1.9rem;
       }
       /* just the navy "16 המעלות" title bar now, flush against the board's
          rounded top corners (the board's own overflow:hidden clips it to
@@ -1060,38 +1059,29 @@
         gap: 0.9rem;
       }
       /* the type here matches the printed 16-virtues chart used on the
-         companies page. Per the site owner's 2026-09-08 follow-up, the
-         gap under the title row now matches the grid's own 0.9rem row gap
-         (same as the gap between tile rows) instead of 3x it - the extra
-         space that used to sit here as margin-bottom moved up into
-         .vb-body's own top padding instead, so the title row moves down
-         while the tiles below stay put. */
+         companies page. The 2.7rem gap under the title row (3x the grid's
+         own 0.9rem row gap) is restored per the site owner's 2026-09-09
+         follow-up, via this margin-bottom. */
+      /* 2026-09-09: these are back to being images, not live text. Two
+         rounds of trying to match the original baked "Poster - HEADER.png"
+         artwork's font via CSS (font-weight, then a different font-family)
+         both fell short per the site owner's own side-by-side screenshots,
+         so per their explicit request this now uses the real artwork
+         itself - each of the 4 boxes cropped tightly out of that PNG
+         (assets/img/Poster - Box <Family>.png) with object-fit: fill to
+         stretch it across the same aspect-ratio/grid-column-width box the
+         live text version used, so it still matches the tile column's
+         width AND height exactly at any viewport (same mechanism as
+         before, just an <img> instead of a styled <div> with text in it). */
       .vb-col-title {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: fill;
         border-radius: 12px;
-        color: #fff;
-        /* NOT Heebo: identified 2026-09-08 by calibrating candidate
-           webfonts against assets/img/Poster - HEADER.png (the original
-           baked artwork these boxes replaced) at matching ink height/width
-           - Heebo (any weight) renders visibly narrower and squarer than
-           that artwork's type, while Assistant ExtraBold (800) matches its
-           letterforms and proportions closely. Confirmed side-by-side
-           in-browser against the poster crop before landing on this. */
-        font-family: "Assistant", "Heebo", sans-serif;
-        font-weight: 800;
-        font-size: clamp(0.95rem, 1.45vw, 1.16rem);
-        line-height: 1.35;
-        text-align: center;
-        padding: 0.9rem 0.6rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* same aspect-ratio as .vcard below, on the same grid-column width
-           (guaranteed by both being items of .vb-grid) - together these
-           two mean the title box is exactly the same width AND height as
-           the tile beneath it, at any viewport, per the site owner's
-           2026-09-08 follow-up ("also height, not just width") */
         aspect-ratio: 2.4 / 1;
         min-height: 4.6rem;
+        margin-bottom: 1.8rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
       .vb-hint {
@@ -1921,34 +1911,30 @@
           <div class="vb-body">
             <div class="vb-grid">
               <!-- ─── column titles ─── -->
-              <div
+              <img
                 class="vb-col-title"
                 data-family="think"
-                style="background: var(--v-think)"
-              >
-                הדרך בה אנו חושבת
-              </div>
-              <div
+                src="assets/img/Poster - Box Think.png"
+                alt="הדרך בה אנו חושבת"
+              />
+              <img
                 class="vb-col-title"
                 data-family="act"
-                style="background: var(--v-act)"
-              >
-                הדרך בה אנו פועלת
-              </div>
-              <div
+                src="assets/img/Poster - Box Act.png"
+                alt="הדרך בה אנו פועלת"
+              />
+              <img
                 class="vb-col-title"
                 data-family="relate"
-                style="background: var(--v-relate)"
-              >
-                הדרך בה אנו מתייחסת לזולת
-              </div>
-              <div
+                src="assets/img/Poster - Box Relate.png"
+                alt="הדרך בה אנו מתייחסת לזולת"
+              />
+              <img
                 class="vb-col-title"
                 data-family="meaning"
-                style="background: var(--v-meaning)"
-              >
-                הדרך בה אנו מוצאת משמעות
-              </div>
+                src="assets/img/Poster - Box Meaning.png"
+                alt="הדרך בה אנו מוצאת משמעות"
+              />
               <!-- the 16 tiles are written in by the script at the foot -->
             </div>
           </div>

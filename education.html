@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
       rel="stylesheet"
     />
 
@@ -514,11 +514,8 @@
       }
       .vb-body {
         background: linear-gradient(160deg, #d5e4f1 0%, #e5f3f8 60%, #eef8fb 100%);
-        /* matches the programme page's board exactly, per the site owner's
-           2026-09-08 request: the extra 1.8rem that used to sit as
-           .vb-col-title's own margin-bottom now lives in this top padding
-           instead, so the title row moves down while the tiles stay put */
-        padding: 3.4rem 1.2rem 1.9rem;
+        /* matches the programme page's board exactly */
+        padding: 1.6rem 1.2rem 1.9rem;
       }
       /* The board is one grid filled column by column, not row by row: the
          four tiles of a family are written in directly under their own
@@ -538,27 +535,21 @@
         grid-auto-columns: minmax(0, 1fr);
         gap: 0.9rem;
       }
+      /* 2026-09-09: images again, not live text - matches the programme
+         page's board exactly (see program.html for the full note on why:
+         two rounds of CSS font-matching against the original baked poster
+         artwork fell short, so this now uses the real artwork itself,
+         cropped per box, stretched via object-fit to the same
+         aspect-ratio/grid-column-width box the live text used). */
       .vb-col-title {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: fill;
         border-radius: 12px;
-        color: #fff;
-        /* NOT Heebo - matches the programme page's board: identified by
-           calibrating candidate webfonts against the original baked poster
-           artwork's letterforms (see program.html's board for the full
-           note); Assistant ExtraBold (800) is the match, not Heebo. */
-        font-family: "Assistant", "Heebo", sans-serif;
-        font-weight: 800;
-        font-size: clamp(0.95rem, 1.45vw, 1.16rem);
-        line-height: 1.35;
-        text-align: center;
-        padding: 0.9rem 0.6rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* same aspect-ratio as .vcard below, on the same grid-column width,
-           so the title box is exactly the same width and height as the
-           tile beneath it, matching the programme page's board */
         aspect-ratio: 2.4 / 1;
         min-height: 4.6rem;
+        margin-bottom: 1.8rem;
         box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
       }
       .vcard {
@@ -1605,34 +1596,30 @@
           <div class="vb-body">
             <div class="vb-grid">
               <!-- ─── column titles ─── -->
-              <div
+              <img
                 class="vb-col-title"
                 data-family="think"
-                style="background: var(--v-think)"
-              >
-                הדרך בה אנו חושבת
-              </div>
-              <div
+                src="assets/img/Poster - Box Think.png"
+                alt="הדרך בה אנו חושבת"
+              />
+              <img
                 class="vb-col-title"
                 data-family="act"
-                style="background: var(--v-act)"
-              >
-                הדרך בה אנו פועלת
-              </div>
-              <div
+                src="assets/img/Poster - Box Act.png"
+                alt="הדרך בה אנו פועלת"
+              />
+              <img
                 class="vb-col-title"
                 data-family="relate"
-                style="background: var(--v-relate)"
-              >
-                הדרך בה אנו מתייחסת לזולת
-              </div>
-              <div
+                src="assets/img/Poster - Box Relate.png"
+                alt="הדרך בה אנו מתייחסת לזולת"
+              />
+              <img
                 class="vb-col-title"
                 data-family="meaning"
-                style="background: var(--v-meaning)"
-              >
-                הדרך בה אנו מוצאת משמעות
-              </div>
+                src="assets/img/Poster - Box Meaning.png"
+                alt="הדרך בה אנו מוצאת משמעות"
+              />
               <!-- the 16 tiles are written in by the script at the foot -->
             </div>
           </div>
