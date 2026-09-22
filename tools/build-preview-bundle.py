@@ -14,7 +14,7 @@ import base64, datetime, hashlib, io, mimetypes, os, re, subprocess, sys
 # resolve against the repo root so the script runs from anywhere
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".preview-cache")
-PAGES = ["index", "program", "business", "education", "about", "contact"]
+PAGES = ["index", "program", "business", "education", "practice", "about", "contact"]
 # every build is dated (DDMMYY, matching this project's own commit-message and
 # working-doc convention) so a new preview never silently overwrites the one
 # handed over for a previous round of review
