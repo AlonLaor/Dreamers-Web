@@ -557,12 +557,14 @@
           grid-template-columns: 1fr;
         }
       }
+      /* box shrunk 20% (2026-09-22-4 round); the GALLUP sub-box and its
+         citation shrink with it, the citation font an extra 30% on top */
       .stat-frame {
         position: relative;
-        max-width: 880px;
+        max-width: 704px;
         margin: 2.6rem auto 0;
-        padding: 2.6rem 2.4rem;
-        border-radius: 26px;
+        padding: 2.08rem 1.92rem;
+        border-radius: 21px;
         background: var(--g-main);
         overflow: hidden;
         text-align: center;
@@ -587,7 +589,7 @@
       }
       .stat-num {
         position: relative;
-        font-size: clamp(3rem, 7vw, 4.6rem);
+        font-size: clamp(2.4rem, 5.6vw, 3.68rem);
         font-weight: 900;
         line-height: 1;
         color: #fff;
@@ -601,22 +603,22 @@
       }
       .stat-frame-body {
         position: relative;
-        max-width: 640px;
+        max-width: 512px;
         margin: 0 auto;
       }
       .study-logos {
-        margin: 1.8rem 0 0;
+        margin: 1.44rem 0 0;
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
         justify-content: center;
-        gap: 1.6rem;
+        gap: 1.28rem;
         background: rgba(255, 255, 255, 0.94);
-        border-radius: 16px;
-        padding: 0.9rem 1.4rem;
+        border-radius: 13px;
+        padding: 0.72rem 1.12rem;
       }
       .study-logos img {
-        height: 53px;
+        height: 42px;
         width: auto;
         object-fit: contain;
         opacity: 0.92;
@@ -624,10 +626,10 @@
       @media (max-width: 720px) {
         .study-logos {
           flex-wrap: wrap;
-          gap: 1.1rem;
+          gap: 0.88rem;
         }
         .study-logos img {
-          height: 48px;
+          height: 38px;
         }
       }
       .stat-frame p {
@@ -643,7 +645,7 @@
         display: block;
         margin-top: 0.6rem;
         font-style: normal;
-        font-size: 0.82rem;
+        font-size: 0.57rem;
         color: rgba(255, 255, 255, 0.6);
       }
 
@@ -868,6 +870,7 @@
         font-size: 1.12rem;
         font-weight: 800;
         margin-bottom: 0.8rem;
+        text-align: center;
         position: relative;
       }
       .persona-card p {
@@ -890,8 +893,9 @@
         align-self: stretch;
         min-height: 5.4rem;
         display: flex;
+        /* centres the label+text row as a block within the panel's own
+           min-height, regardless of whether the text is 1 or 2 lines */
         align-items: center;
-        gap: 0.35em;
         position: relative;
         transform-origin: center;
         transition:
@@ -899,17 +903,25 @@
           box-shadow 0.35s;
         cursor: default;
       }
-      /* the "תוצאה:" label is its own flex item so it never wraps, and the
+      /* a separate inner row so the label-to-text alignment (flex-start,
+         below) doesn't fight the panel's own outer centring (above): the
+         "תוצאה:" label is its own flex item so it never wraps, and the
          explanation that follows is a second flex item filling the rest of
          the row - when IT wraps, every continuation line starts at the same
          inline position right after the label (not centred, not under the
-         label), so the whole thing reads as one hanging-indented paragraph
-         with "תוצאה:" as its heading */
-      .persona-result strong {
+         label), and the label itself sits level with the text's first line,
+         not centred between two wrapped lines */
+      .pr-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.35em;
+        width: 100%;
+      }
+      .pr-row strong {
         flex: 0 0 auto;
         white-space: nowrap;
       }
-      .persona-result span {
+      .pr-row span {
         flex: 1 1 auto;
       }
       .row-orgs .persona-result {
@@ -1022,12 +1034,14 @@
         font-size: 1.06rem;
         font-weight: 800;
         margin-bottom: 0.6rem;
+        text-align: center;
       }
       .impl-card p {
         position: relative;
         color: var(--text-mid);
         font-size: 0.9rem;
         line-height: 1.7;
+        text-align: center;
       }
 
       /* ═══ FEATURED QUOTE BAND ═══ */
@@ -1589,7 +1603,7 @@
           grid-template-columns: 1fr;
         }
         .stat-frame {
-          padding: 2.1rem 1.6rem;
+          padding: 1.68rem 1.28rem;
         }
         .footer-top {
           flex-direction: column;
@@ -1711,11 +1725,11 @@
         <div class="ab-hdr">
           <h2 class="h3d rev">16 המעלות בחברות</h2>
         </div>
-        <p class="ab-body rev">
+        <p class="ab-body ab-body-center rev">
           התכנית מבוססת על ארבעה נושאי ליבה אשר כוללים 16 ערכים אוניברסליים
           (מעלות) ומספקת כלים מעשיים להטמעתם בחיי היומיום ובסביבת העבודה.
         </p>
-        <p class="ab-body rev d1">
+        <p class="ab-body ab-body-center rev d1">
           הכלים המעשיים מעודדים התבוננות פנימית, מחזקים את ההבנה כי הפוטנציאל
           למנהיגות ערכית כבר קיים בתוך הארגון ומסייעים להביא למימושו.
         </p>
@@ -1779,7 +1793,7 @@
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
         <p class="ab-body ab-body-center rev">
-          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה המלאכותית,
+          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה המלאכותית,<br />
           חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה המייצרים אי
           ודאות מתמשכת וחוסר ביטחון תעסוקתי.
         </p>
@@ -1854,8 +1868,10 @@
               מהירה לצד בניית חוסן ארגוני מבפנים.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong>
-              <span>הסתגלות אפקטיבית לשינויים ושימור עובדים לאורך זמן.</span>
+              <div class="pr-row">
+                <strong>תוצאה:</strong>
+                <span>הסתגלות אפקטיבית לשינויים ושימור עובדים לאורך זמן.</span>
+              </div>
             </div>
           </div>
           <div class="persona-card row-orgs rev d1">
@@ -1865,8 +1881,10 @@
               שפה מעשית שהופכת ערכים גבוהים לשגרת עבודה מעשית, חיה ונושמת.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong>
-              <span>הלימה מלאה בין ה'למה' שלכם לבין הפרקטיקה בשטח.</span>
+              <div class="pr-row">
+                <strong>תוצאה:</strong>
+                <span>הלימה מלאה בין ה'למה' שלכם לבין הפרקטיקה בשטח.</span>
+              </div>
             </div>
           </div>
           <div class="persona-card row-orgs rev d2">
@@ -1876,8 +1894,10 @@
               ומאחדת, השומרת על הייחוד והגיוון של כל חבר צוות.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong>
-              <span>לכידות ארגונית חוצת גבולות ורקעים.</span>
+              <div class="pr-row">
+                <strong>תוצאה:</strong>
+                <span>לכידות ארגונית חוצת גבולות ורקעים.</span>
+              </div>
             </div>
           </div>
 
@@ -1889,8 +1909,10 @@
               ניהולית צומחת, הצולחת משברים ומחזקת את החוסן הארגוני.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong>
-              <span>בהירות אסטרטגית ויציבות רגשית ברגעי אמת.</span>
+              <div class="pr-row">
+                <strong>תוצאה:</strong>
+                <span>בהירות אסטרטגית ויציבות רגשית ברגעי אמת.</span>
+              </div>
             </div>
           </div>
           <div class="persona-card row-people rev d1">
@@ -1900,8 +1922,10 @@
               וחוסן. העצמת המנהל/ת להובלת הצוות מתוך מנהיגות מעוררת השראה.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong>
-              <span>צוותים מלוכדים וחזקים יותר לצד ירידה בתחלופת עובדים.</span>
+              <div class="pr-row">
+                <strong>תוצאה:</strong>
+                <span>צוותים מלוכדים וחזקים יותר לצד ירידה בתחלופת עובדים.</span>
+              </div>
             </div>
           </div>
           <div class="persona-card row-people rev d2">
@@ -1910,8 +1934,10 @@
               ארגז כלים מודולרי להטמעה פשוטה בתוכניות הפיתוח הקיימות בארגון.
             </p>
             <div class="persona-result">
-              <strong>תוצאה:</strong>
-              <span>חיזוק התרבות ומעורבות העובדים.</span>
+              <div class="pr-row">
+                <strong>תוצאה:</strong>
+                <span>חיזוק התרבות ומעורבות העובדים.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1958,7 +1984,7 @@
           </div>
         </div>
 
-        <div style="text-align: right; margin-top: 3rem" class="rev">
+        <div style="text-align: center; margin-top: 3rem" class="rev">
           <a href="#contact-form" class="btn btn-blue"
             >צרו קשר לקבלת הצעה מותאמת אישית</a
           >
