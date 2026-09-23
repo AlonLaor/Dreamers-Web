@@ -217,6 +217,9 @@
         transform: translateY(-1px);
       }
       .nav-contact-link {
+        /* one line always: with the learning page's nav item the row got
+           tight enough for this button to break in two at some widths */
+        white-space: nowrap;
         background: var(--g-teal);
         color: var(--blue-dk) !important;
         font-weight: 700 !important;
@@ -1728,6 +1731,7 @@
               <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
             </ul>
           </li>
+          <li><a href="learning.html#learn-hero">למידה</a></li>
           <li>
             <a href="contact.html?from=home" class="nav-contact-link"
               >צרו איתנו קשר</a
@@ -2248,6 +2252,7 @@
               <li><a href="#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
               <li><a href="program.html">תוכנית 16 המעלות</a></li>
+              <li><a href="learning.html">למידה</a></li>
             </ul>
           </div>
           <div class="footer-contact">

@@ -9,12 +9,12 @@ into an iframe via srcdoc, which keeps the four stylesheets from colliding.
 Cross-page links are intercepted and routed through the location hash, so the
 browser Back button behaves normally.
 """
-import base64, datetime, hashlib, io, mimetypes, os, re, subprocess, sys
+import base64, datetime, hashlib, io, json, mimetypes, os, re, subprocess, sys
 
 # resolve against the repo root so the script runs from anywhere
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".preview-cache")
-PAGES = ["index", "program", "business", "education", "practice", "about", "contact"]
+PAGES = ["index", "program", "business", "education", "practice", "learning", "about", "contact"]
 # every build is dated (DDMMYY, matching this project's own commit-message and
 # working-doc convention) so a new preview never silently overwrites the one
 # handed over for a previous round of review
@@ -117,6 +117,36 @@ def optimise_video(path):
     return out, "video/mp4"
 
 
+AUDIO_BITRATE = "16k"  # 24k came to 103 MB, past GitHub's 100 MB file limit
+# Recordings are not written into the page they play on: a page travels as one
+# srcdoc string, and tens of MB of audio there would make every visit to it
+# crawl. Each one sits in its own block in the outer shell instead, and the
+# page asks the shell for it (window.parent.__audioUrl) only when clicked.
+AUDIO_ATTR = re.compile(r'data-audio="(assets/Audio/[^"]+)"')
+audio_paths = []
+
+
+def optimise_audio(path):
+    """A spoken recording, squeezed for the offline file.
+
+    The learning page carries 17 recordings of 10-20 minutes each (~300 MB as
+    delivered). Mono AAC at a speech bitrate keeps them clear enough to review
+    while the bundle stays small enough to open and hand over; the live site
+    still serves the original files."""
+    cached = os.path.join(CACHE, cache_key(path, "-%s.m4a" % AUDIO_BITRATE))
+    if not os.path.exists(cached):
+        subprocess.run(
+            ["ffmpeg", "-y", "-v", "error", "-i", path, "-vn", "-ac", "1",
+             "-ar", "16000", "-c:a", "aac", "-b:a", AUDIO_BITRATE,
+             "-movflags", "+faststart", cached],
+            check=True,
+        )
+    raw = open(path, "rb").read()
+    out = open(cached, "rb").read()
+    log.append("  audio %-58s %7.2f MB -> %6.2f MB" % (path[-58:], len(raw) / 1e6, len(out) / 1e6))
+    return out
+
+
 _cache = {}
 
 
@@ -194,6 +224,8 @@ def build_page(name):
     # <img> from a path held in a JS array. Catch any remaining complete,
     # quoted asset path so those reach the offline file too.
     def repl_literal(m):
+        if m.group(2).startswith("assets/Audio/"):
+            return m.group(0)  # served from the shell, see AUDIO_ATTR
         uri = data_uri(m.group(2))
         return m.group(1) + uri + m.group(1) if uri else m.group(0)
 
@@ -204,6 +236,10 @@ def build_page(name):
         repl_literal,
         s,
     )
+
+    for path in AUDIO_ATTR.findall(s):
+        if path not in audio_paths and os.path.exists(path):
+            audio_paths.append(path)
 
     s = s.replace("</body>", NAV_HOOK + "</body>")
     return s
@@ -226,8 +262,21 @@ SHELL = u"""<!doctype html>
 <div id="boot">Loading&nbsp;\u2026</div>
 <iframe id="view" title="Dreamers Home preview"></iframe>
 %(blocks)s
+%(audio)s
 <script>
 (function(){
+  /* recordings for the learning page: decoded into a playable blob the
+     first time a page asks for one, then reused */
+  var AUDIO = %(audio_map)s, audioUrls = {};
+  window.__audioUrl = function(path){
+    if (audioUrls[path]) return audioUrls[path];
+    var el = document.getElementById(AUDIO[path]);
+    if (!el) return encodeURI(path);
+    var bin = atob(el.textContent), buf = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+    return (audioUrls[path] = URL.createObjectURL(new Blob([buf], {type: 'audio/mp4'})));
+  };
+
   var frame = document.getElementById('view');
   var boot  = document.getElementById('boot');
   var PAGES = %(pages)s;
@@ -284,8 +333,16 @@ for name in PAGES:
     blocks.append('<script type="text/html" id="p-%s">%s</script>' % (name, html))
     log.append("page %-14s %7.2f MB (embedded)" % (name, len(html) / 1e6))
 
+audio_blocks, audio_map = [], {}
+for i, path in enumerate(audio_paths):
+    audio_map[path] = "au-%d" % i
+    audio_blocks.append('<script type="text/plain" id="au-%d">%s</script>'
+                        % (i, base64.b64encode(optimise_audio(path)).decode("ascii")))
+
 out = SHELL % {
     "blocks": "\n".join(blocks),
+    "audio": "\n".join(audio_blocks),
+    "audio_map": json.dumps(audio_map, ensure_ascii=False),
     "pages": str(PAGES).replace("'", '"'),
 }
 

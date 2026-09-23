@@ -214,6 +214,9 @@
         color: var(--teal);
       }
       .nav-cta {
+        /* one line always: with the learning page's nav item the row got
+           tight enough for this button to break in two at some widths */
+        white-space: nowrap;
         background: var(--g-teal) !important;
         color: var(--blue-dk) !important;
         font-weight: 700 !important;
@@ -866,6 +869,7 @@
               <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
             </ul>
           </li>
+          <li><a href="learning.html#learn-hero">למידה</a></li>
           <li>
             <a href="contact.html" class="nav-cta active">צרו איתנו קשר</a>
           </li>
@@ -1018,6 +1022,7 @@
               <li><a href="education.html">16 המעלות בחינוך</a></li>
               <li><a href="business.html">16 המעלות בחברות</a></li>
               <li><a href="practice.html">קבוצות תרגול</a></li>
+              <li><a href="learning.html">למידה</a></li>
             </ul>
           </div>
           <div class="footer-contact">
@@ -1091,6 +1096,7 @@
           business: "16 המעלות בחברות",
           education: "16 המעלות בחינוך",
           practice: "קבוצות תרגול",
+          learning: "למידה",
         };
 
         function detectSource() {
@@ -1104,6 +1110,7 @@
           if (ref.indexOf("business.html") > -1) return "business";
           if (ref.indexOf("education.html") > -1) return "education";
           if (ref.indexOf("practice.html") > -1) return "practice";
+          if (ref.indexOf("learning.html") > -1) return "learning";
           return "home";
         }
 

@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>למידה | בית חולמים - Dreamers Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ─── ROOT — identical palette to the home page ─── */
+      :root {
+        --blue: #004378;
+        --blue-dk: #002952;
+        --teal: #48d9d3;
+        --teal-lt: #7de8e4;
+        --gold: #f5a623;
+        --gold-lt: #ffd166;
+        --white: #ffffff;
+        --off: #f6faff;
+        --off-warm: #fffbf3;
+        --text: #1a2d3e;
+        --text-mid: #4a637c;
+        --text-lt: #7a99b0;
+        --shadow: rgba(0, 67, 120, 0.15);
+        --g-main: linear-gradient(140deg, #002952 0%, #004378 55%, #0c6080 100%);
+        --g-teal: linear-gradient(135deg, #48d9d3 0%, #7de8e4 100%);
+        --g-gold: linear-gradient(135deg, #f5a623 0%, #ffd166 100%);
+        /* the four theme colours of the printed 16-virtues chart */
+        --v-think: #2dc0d2;
+        --v-act: #79b850;
+        --v-relate: #7791cc;
+        --v-meaning: #faa33a;
+        --v-card: #ebeeee;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (min-width: 769px) {
+        html {
+          font-size: 17px;
+        }
+      }
+      body {
+        font-family: "Heebo", system-ui, sans-serif;
+        direction: rtl;
+        background: var(--white);
+        color: var(--text);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .rev {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+        transition:
+          opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      .d1 {
+        transition-delay: 0.1s;
+      }
+      .d2 {
+        transition-delay: 0.2s;
+      }
+      .d3 {
+        transition-delay: 0.3s;
+      }
+
+      .wrap {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 0.9rem;
+      }
+      .h3d {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--blue);
+        text-shadow:
+          0 1px 0 rgba(0, 67, 120, 0.2),
+          0 3px 0 rgba(0, 67, 120, 0.13),
+          0 7px 12px rgba(0, 0, 0, 0.1),
+          0 14px 28px rgba(0, 0, 0, 0.07);
+        margin-bottom: 1.1rem;
+      }
+      .h3d-white {
+        color: #fff;
+        text-shadow:
+          0 1px 0 rgba(0, 0, 0, 0.35),
+          0 3px 0 rgba(0, 0, 0, 0.25),
+          0 8px 15px rgba(0, 0, 0, 0.3),
+          0 16px 35px rgba(0, 0, 0, 0.18);
+      }
+      .sub {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 640px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: "Heebo", sans-serif;
+        cursor: pointer;
+        border: none;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-blue {
+        background: var(--g-main);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(0, 67, 120, 0.4);
+      }
+      .btn-blue:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.5);
+      }
+      .btn-gold {
+        background: var(--g-gold);
+        color: #4a2800;
+        box-shadow: 0 10px 35px rgba(245, 166, 35, 0.5);
+      }
+      .btn-gold:hover {
+        transform: translateY(-5px) scale(1.04);
+        box-shadow: 0 22px 50px rgba(245, 166, 35, 0.6);
+      }
+
+      /* ═══ NAV ═══ */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 1.3rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.4s ease;
+        background: rgba(0, 25, 55, 0.96);
+        backdrop-filter: blur(20px);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+      }
+      .logo-img {
+        height: 87px;
+        display: block;
+        border-radius: 50%;
+        transition: opacity 0.3s;
+      }
+      .logo-img:hover {
+        opacity: 0.85;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.6rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--teal);
+      }
+      .nav-links a.active {
+        color: var(--teal);
+      }
+      .nav-cta {
+        /* one line always: with the learning page's nav item the row got
+           tight enough for this button to break in two at some widths */
+        white-space: nowrap;
+        background: var(--g-teal) !important;
+        color: var(--blue-dk) !important;
+        font-weight: 700 !important;
+        padding: 0.48rem 1.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(72, 217, 211, 0.35);
+        transition: all 0.3s !important;
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(72, 217, 211, 0.5) !important;
+      }
+      .nav-slogan {
+        display: flex;
+        align-items: center;
+        opacity: 0.92;
+      }
+      .nav-slogan img {
+        height: 3.825rem; /* 50% bigger, per the site owner's 2026-09-08 request */
+        width: auto;
+        display: block;
+      }
+      @media (max-width: 1024px) {
+        .nav-slogan {
+          display: none;
+        }
+      }
+      .nav-burger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        margin-left: auto;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+      .nav-burger span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 3px;
+        background: #fff;
+        transition: all 0.3s;
+      }
+      #nav.nav-open .nav-burger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #nav.nav-open .nav-burger span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav.nav-open .nav-burger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* ─── Activities dropdown ─── */
+      .has-dropdown {
+        position: relative;
+      }
+      .dd-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .dd-arrow {
+        display: inline-block;
+        font-size: 0.62em;
+        transition: transform 0.3s ease;
+      }
+      .has-dropdown:hover .dd-arrow,
+      .has-dropdown:focus-within .dd-arrow {
+        transform: rotate(180deg);
+      }
+      .dropdown-menu {
+        list-style: none;
+        position: absolute;
+        top: calc(100% + 16px);
+        right: -0.5rem;
+        min-width: 260px;
+        padding: 0.55rem;
+        border-radius: 18px;
+        background: linear-gradient(
+          160deg,
+          rgba(0, 41, 82, 0.98) 0%,
+          rgba(0, 67, 120, 0.98) 100%
+        );
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(72, 217, 211, 0.18);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        right: 1.9rem;
+        width: 12px;
+        height: 12px;
+        background: rgba(0, 41, 82, 0.98);
+        transform: rotate(45deg);
+        border-radius: 3px 0 0 0;
+      }
+      .has-dropdown:hover .dropdown-menu,
+      .has-dropdown:focus-within .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu li + li {
+        margin-top: 2px;
+      }
+      .dropdown-menu a {
+        display: block;
+        padding: 0.8rem 1.1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.25s ease;
+      }
+      .dropdown-menu a:hover {
+        background: rgba(72, 217, 211, 0.15);
+        color: var(--teal);
+        padding-right: 1.4rem;
+      }
+
+      /* ═══ HERO ═══ */
+      /* built like the companies hero: a photograph at full strength, the
+         copy hugging the right edge, and a tint weighted to that side */
+      /* the box is locked to the photo's own ratio (1860 / 846), the same
+         way the practice page's hero is, so background-size: cover never
+         has to crop anything - the whole picture always shows, per the
+         site owner's 2026-09-23-1 request */
+      /* It also starts below the fixed nav bar instead of underneath it
+         (the script sets --nav-h from the bar's real height), since the
+         bar would otherwise hide the top of the photo. */
+      #learn-hero {
+        position: relative;
+        width: 100%;
+        margin-top: var(--nav-h, 0px);
+        aspect-ratio: 1860 / 846;
+        overflow: hidden;
+        background: var(--blue-dk);
+        text-align: right;
+      }
+      .bh-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("assets/img/Meditation 1.png");
+        background-size: cover;
+        background-position: center;
+      }
+      /* only a side tint, deepening on the right under the title; no dark
+         top band (the photo no longer sits under the nav) and no white fade
+         at the foot, so the whole picture stays visible */
+      .bh-fade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to left,
+          rgba(0, 20, 45, 0.6) 0%,
+          rgba(0, 20, 45, 0.38) 40%,
+          rgba(0, 20, 45, 0.1) 70%,
+          rgba(0, 20, 45, 0) 100%
+        );
+      }
+      /* same width and padding as .wrap, so the hero copy lines up on the
+         same right edge as every section below it - absolutely positioned
+         and bottom-anchored now that the box's height comes from the image's
+         own ratio rather than from this content's flow */
+      .bh-content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 2rem 3rem;
+      }
+      #learn-hero .h3d {
+        color: #fff;
+        /* matches the hero title size on the "תוכנית 16 המעלות" page; the
+           floor is lower than there, because this photo is wide and short
+           and on a phone the title has to fit inside it in two lines */
+        font-size: clamp(1.3rem, 4.4vw, 3.5rem);
+        text-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 5px 14px rgba(0, 0, 0, 0.45),
+          0 18px 38px rgba(0, 0, 0, 0.3);
+      }
+      .bh-headline {
+        font-family: "Playfair Display", Georgia, serif;
+        font-style: normal;
+        font-weight: 700;
+        /* 30% smaller than the hero title above it */
+        font-size: clamp(1.4rem, 3.08vw, 2.45rem);
+        line-height: 1.28;
+        color: var(--teal-lt);
+        margin-bottom: 1.6rem;
+        text-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 5px 14px rgba(0, 0, 0, 0.5),
+          0 18px 38px rgba(0, 0, 0, 0.3);
+      }
+      .bh-sub {
+        font-size: clamp(1rem, 1.7vw, 1.16rem);
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.95);
+        max-width: 760px;
+        margin: 0 0 2.4rem;
+        font-weight: 500;
+        text-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.5),
+          0 3px 12px rgba(0, 0, 0, 0.45);
+      }
+
+      /* ═══ GENERIC TEXT SECTION ═══ */
+      .ab-sec {
+        padding: 6.5rem 2rem;
+      }
+      .ab-sec.bg-white {
+        background: var(--white);
+      }
+      .ab-sec.bg-grey {
+        background: linear-gradient(160deg, #f4f6f8 0%, #eef1f4 100%);
+      }
+      .ab-hdr {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .ab-hdr .sub {
+        margin: 0 auto;
+        text-align: center;
+      }
+      .ab-body {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        max-width: 800px;
+        margin: 0 auto 1.3rem;
+      }
+
+      /* ═══ VIRTUE-FAMILY CAROUSEL ═══ */
+      /* one photo on screen at a time, its family title above it; every
+         2 seconds the next one slides in from the left while the current
+         one leaves to the right (the direction the site owner asked for).
+         All four slides share one grid cell, so the stage takes the height
+         of the tallest without any fixed number. */
+      .lc-stage {
+        display: grid;
+        max-width: 400px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      .lc-slide {
+        grid-area: 1 / 1;
+        text-align: center;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition:
+          transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+          opacity 0.8s ease;
+      }
+      .lc-slide.is-current {
+        transform: none;
+        opacity: 1;
+      }
+      .lc-slide.is-leaving {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      /* parks a slide at the left edge without animating it there */
+      .lc-slide.no-anim {
+        transition: none;
+      }
+      .lc-slide h3 {
+        font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+        font-weight: 800;
+        line-height: 1.35;
+        margin-bottom: 1.1rem;
+        color: var(--blue);
+      }
+      .lc-slide[data-family="think"] h3 {
+        color: var(--v-think);
+      }
+      .lc-slide[data-family="act"] h3 {
+        color: var(--v-act);
+      }
+      .lc-slide[data-family="relate"] h3 {
+        color: var(--v-relate);
+      }
+      .lc-slide[data-family="meaning"] h3 {
+        color: var(--v-meaning);
+      }
+      .lc-slide img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 22px;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.1),
+          0 18px 40px var(--shadow);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .lc-slide,
+        .lc-slide.is-leaving {
+          transform: none;
+        }
+      }
+
+      /* ═══ "הרהורים מעמיקים על המעלות" ═══ */
+      /* the title, the four family headers and the mindfulness title are one
+         static picture; every virtue box is its own button laid over it at
+         the spot it holds in the original artwork, so each can be clicked,
+         lit and moved on its own. Positions are percentages of the board,
+         so the whole thing scales as one piece on every screen. */
+      .rf-board {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .rf-static {
+        width: 100%;
+        height: auto;
+      }
+      .rf-box {
+        position: absolute;
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        border-radius: 8%;
+        transition:
+          transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+          filter 0.3s;
+      }
+      .rf-box img {
+        width: 100%;
+        height: 100%;
+      }
+      .rf-box:hover {
+        transform: translateY(-3px);
+        filter: drop-shadow(0 6px 10px rgba(0, 67, 120, 0.22));
+      }
+      .rf-box:focus-visible {
+        outline: 3px solid var(--teal);
+        outline-offset: 2px;
+      }
+      /* the box whose recording is playing right now */
+      .rf-box.is-playing {
+        filter: drop-shadow(0 0 10px rgba(72, 217, 211, 0.95));
+        animation: rf-pulse 1.8s ease-in-out infinite;
+      }
+      @keyframes rf-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.04);
+        }
+      }
+      /* a box with no recording yet: a short wobble, so the click still
+         registers */
+      .rf-box.is-wobble {
+        animation: rf-wobble 0.5s ease-in-out;
+      }
+      @keyframes rf-wobble {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        25% {
+          transform: rotate(-4deg);
+        }
+        75% {
+          transform: rotate(4deg);
+        }
+      }
+      /* stop control: small and quiet in the bottom-left corner (the
+         accessibility button already holds bottom-right), and only there
+         while something is playing */
+      .rf-stop {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 950;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(0, 41, 82, 0.78);
+        box-shadow: 0 6px 18px rgba(0, 41, 82, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition:
+          opacity 0.3s,
+          transform 0.3s,
+          visibility 0.3s,
+          background 0.3s;
+      }
+      .rf-stop.show {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+      .rf-stop:hover {
+        background: rgba(0, 41, 82, 0.95);
+      }
+      .rf-stop:focus-visible {
+        outline: 3px solid var(--teal);
+        outline-offset: 2px;
+      }
+      .rf-stop span {
+        display: block;
+        width: 14px;
+        height: 14px;
+        border-radius: 2px;
+        background: #fff;
+      }
+
+      /* ═══ FOOTER — identical to the home page ═══ */
+      footer {
+        background: url("assets/img/Gradient blue.png") center / cover no-repeat
+          var(--blue-dk);
+        color: #fff;
+        padding: 2.8rem 2rem 1.6rem;
+        border-top: 2px solid rgba(72, 217, 211, 0.3);
+      }
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 1.8rem;
+      }
+      .footer-logo-img {
+        height: 150px;
+        display: block;
+      }
+      .footer-brand {
+        flex: 1 1 0;
+        min-width: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-nav-col {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
+      }
+      .footer-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 320px;
+        margin: 1rem auto 0;
+        text-align: center;
+      }
+      .footer-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .footer-nav a {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+      .footer-nav a:hover {
+        color: var(--teal);
+      }
+      .footer-nav a.active {
+        color: var(--teal);
+      }
+      .footer-col-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: var(--teal);
+        text-transform: uppercase;
+        margin-bottom: 1.1rem;
+        border-bottom: 2px solid rgba(72, 217, 211, 0.5);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .footer-contact {
+        flex: 1 1 0;
+        min-width: 220px;
+        text-align: center;
+      }
+      .footer-contact p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+      }
+      .footer-contact a {
+        color: #fff;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+      .footer-contact a:hover {
+        color: var(--teal);
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1.4rem;
+      }
+      .fsoc {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+      .fsoc img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+        display: block;
+      }
+      .fsoc:hover {
+        transform: translateY(-3px);
+        opacity: 0.85;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-top: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.7);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* ═══ RESPONSIVE ═══ */
+      @media (max-width: 768px) {
+        .nav-burger {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          padding: 0.4rem 0 1rem;
+          background: rgba(0, 25, 55, 0.97);
+          box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+        }
+        #nav.nav-open .nav-links {
+          display: flex;
+        }
+        .nav-links li {
+          width: 100%;
+        }
+        .nav-links a {
+          display: block;
+          padding: 0.85rem 2rem;
+          font-size: 1rem;
+        }
+        .nav-links .nav-cta {
+          margin: 0.6rem 2rem 0;
+          text-align: center;
+          padding: 0.7rem 1.5rem;
+        }
+        .dropdown-menu {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          backdrop-filter: none;
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 12px;
+          margin: 0.2rem 1.2rem 0.5rem;
+          padding: 0.3rem;
+          display: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .has-dropdown.dd-open .dropdown-menu {
+          display: block;
+        }
+        .has-dropdown.dd-open .dd-arrow {
+          transform: rotate(180deg);
+        }
+        .bh-content {
+          padding: 0 1.4rem 1.1rem;
+        }
+        #learn-hero .h3d {
+          margin-bottom: 0 !important;
+        }
+        .footer-top {
+          flex-direction: column;
+          align-items: center;
+        }
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+      @media (max-width: 520px) {
+        .ab-sec {
+          padding: 4.5rem 1.1rem;
+        }
+      }
+      /* No text block may end on a line holding a single word.
+         `pretty` lets the browser re-balance the closing lines;
+         assets/js/no-orphans.js glues the final two words for the
+         browsers that do not support it yet. */
+      body {
+        text-wrap: pretty;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .h3d,
+      .bh-headline,
+      .subhead {
+        text-wrap: balance;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- ════════════ NAV ════════════ -->
+    <nav id="nav">
+      <div class="nav-right">
+        <a href="index.html#hero" class="logo">
+          <img
+            src="assets/img/logo-beit-holmim-white.png"
+            alt="בית חולמים - Dreamers Home"
+            class="logo-img"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html#hero">דף הבית</a></li>
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li class="has-dropdown">
+            <a href="#activities" class="dd-trigger"
+              >הפעילויות שלנו <span class="dd-arrow">▾</span></a
+            >
+            <ul class="dropdown-menu">
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
+              <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+            </ul>
+          </li>
+          <li><a href="learning.html#learn-hero" class="active">למידה</a></li>
+          <li>
+            <a href="contact.html?from=learning" class="nav-cta"
+              >צרו איתנו קשר</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="nav-slogan"><img src="assets/img/The Slogan 1.png" alt="כשחולמות לבד, חולמות. כשחולמות ביחד – מתעוררות." /></div>
+      <button class="nav-burger" aria-label="תפריט" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- ════════════ HERO ════════════ -->
+    <header id="learn-hero">
+      <div class="bh-bg"></div>
+      <div class="bh-fade"></div>
+      <div class="bh-content">
+        <h1 class="h3d rev" style="margin: 0 0 1.6rem">
+          16 המעלות -<br />
+          לימוד הערכים והטמעתם
+        </h1>
+      </div>
+    </header>
+
+    <!-- ════════════ קרוסלת המעלות ════════════ -->
+    <section class="ab-sec bg-white">
+      <div class="wrap">
+        <div class="lc-stage rev" id="lcStage" aria-roledescription="carousel">
+          <figure class="lc-slide is-current" data-family="think">
+            <h3>הדרך בה אנו חושבים.ות</h3>
+            <img src="assets/img/learning/carousel-think.png" alt="הדרך בה אנו חושבים.ות" />
+          </figure>
+          <figure class="lc-slide" data-family="act" aria-hidden="true">
+            <h3>הדרך בה אנו פועלות.ים</h3>
+            <img src="assets/img/learning/carousel-act.png" alt="הדרך בה אנו פועלות.ים" />
+          </figure>
+          <figure class="lc-slide" data-family="relate" aria-hidden="true">
+            <h3>הדרך בה אנו מתייחסות.ים לזולת</h3>
+            <img src="assets/img/learning/carousel-relate.png" alt="הדרך בה אנו מתייחסות.ים לזולת" />
+          </figure>
+          <figure class="lc-slide" data-family="meaning" aria-hidden="true">
+            <h3>הדרך בה אנו מוצאים.ות משמעות</h3>
+            <img src="assets/img/learning/carousel-meaning.png" alt="הדרך בה אנו מוצאים.ות משמעות" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ הרהורים מעמיקים על המעלות ════════════ -->
+    <section class="ab-sec bg-grey" id="reflections">
+      <div class="wrap">
+        <div class="rf-board rev">
+          <img
+            class="rf-static"
+            src="assets/img/learning/reflections-static.png"
+            alt="הרהורים מעמיקים על המעלות: הדרך בה אנו חושבות, פועלות, מתייחסות לזולת ומוצאות משמעות. מדיטציית מיינדפולנס."
+          />
+          <!-- each box: its own picture, placed where it sits in the
+               original artwork; data-audio is the recording it plays -->
+          <button type="button" class="rf-box" style="left: 75.738%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/ענווה.m4a" aria-label="ענווה - השמעה"><img src="assets/img/learning/box-humility.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 75.738%; top: 37.653%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/סבלנות.m4a" aria-label="סבלנות - השמעה"><img src="assets/img/learning/box-patience.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 75.738%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/שביעות רצון.m4a" aria-label="שביעות רצון - השמעה"><img src="assets/img/learning/box-contentment.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 75.738%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/חדווה.m4a" aria-label="חדווה - השמעה"><img src="assets/img/learning/box-joy.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/טוב לב.m4a" aria-label="טוב לב - השמעה"><img src="assets/img/learning/box-kindness.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 37.653%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/TMP/יושרה.m4a" aria-label="יושרה - השמעה"><img src="assets/img/learning/box-integrity.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/נדיבות.m4a" aria-label="נדיבות - השמעה"><img src="assets/img/learning/box-generosity.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/דיבור מיטיב.m4a" aria-label="דיבור מיטיב - השמעה"><img src="assets/img/learning/box-right-speech.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/כבוד.m4a" aria-label="כבוד - השמעה"><img src="assets/img/learning/box-respect.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 37.653%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/סליחה.m4a" aria-label="סליחה - השמעה"><img src="assets/img/learning/box-forgiveness.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/הכרת תודה.m4a" aria-label="הכרת תודה - השמעה"><img src="assets/img/learning/box-gratitude.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/נאמנות.m4a" aria-label="נאמנות - השמעה"><img src="assets/img/learning/box-loyalty.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 0.984%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/שאיפות.m4a" aria-label="שאיפות - השמעה"><img src="assets/img/learning/box-aspirations.png" alt="" /></button>
+          <!-- no recording for עקרונות yet: the click only wobbles the box -->
+          <button type="button" class="rf-box" style="left: 0.984%; top: 37.653%; width: 22.705%; height: 10.704%" aria-label="עקרונות"><img src="assets/img/learning/box-principles.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 0.984%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/שרות.m4a" aria-label="שירות - השמעה"><img src="assets/img/learning/box-service.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 0.984%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/אומץ.m4a" aria-label="אומץ - השמעה"><img src="assets/img/learning/box-courage.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 51.885%; top: 89.296%; width: 31.066%; height: 9.577%" data-audio="assets/Audio/Folder 1/ריכוז.mp4" aria-label="ריכוז - השמעה"><img src="assets/img/learning/box-focus.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 18.443%; top: 89.296%; width: 31.066%; height: 9.577%" data-audio="assets/Audio/Folder 1/הרפיה.mp4" aria-label="הרפיה - השמעה"><img src="assets/img/learning/box-relax.png" alt="" /></button>
+        </div>
+      </div>
+    </section>
+    <button type="button" class="rf-stop" id="rfStop" aria-label="עצירת ההשמעה" title="עצירה"><span></span></button>
+
+    <!-- ════════════ FOOTER ════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="assets/img/logo-beit-holmim-white.png"
+              alt="בית חולמים - Dreamers Home"
+              class="footer-logo-img"
+            />
+            <p class="footer-desc">
+              עמותת בית חולמים -<br />
+              לחיים שלווים, משמעותיים ומאושרים יותר.
+            </p>
+            <div class="socials">
+              <a
+                href="https://www.instagram.com/dreamers_home_il/?hl=en"
+                class="fsoc"
+                title="Instagram"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Instegram Logo 1.png" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.youtube.com/@dreamers.16g"
+                class="fsoc"
+                title="YouTube"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/YouTube Logo 1.png" alt="YouTube"
+              /></a>
+              <a
+                href="https://www.facebook.com/Dreamers.Home.Israel"
+                class="fsoc"
+                title="Facebook"
+                target="_blank"
+                rel="noopener"
+                ><img src="assets/img/Facebook Logo 1.png" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+          <div class="footer-nav-col">
+            <div class="footer-col-title">ניווט</div>
+            <ul class="footer-nav">
+              <li><a href="index.html#hero">דף הבית</a></li>
+              <li><a href="about.html">אודות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
+              <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li><a href="business.html">16 המעלות בחברות</a></li>
+              <li><a href="practice.html">קבוצות תרגול</a></li>
+              <li><a href="learning.html" class="active">למידה</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <div class="footer-col-title">צרו קשר</div>
+            <p><a href="mailto:Info@dreamers.org.il">Info@dreamers.org.il</a></p>
+            <p>
+              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+            </p>
+            <p style="margin-top: 1rem">
+              <a
+                href="contact.html"
+                class="btn btn-gold"
+                style="font-size: 0.85rem; padding: 0.6rem 1.4rem"
+                >לתרומה</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 by Dreamers Home</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ════════════ JS ════════════ -->
+    <script>
+      (function () {
+        const nav = document.getElementById("nav");
+        const burger = nav.querySelector(".nav-burger");
+        burger.addEventListener("click", () => {
+          const open = nav.classList.toggle("nav-open");
+          burger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach((a) => {
+          if (a.classList.contains("dd-trigger")) return;
+          a.addEventListener("click", () => {
+            nav.classList.remove("nav-open");
+            burger.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        /* Activities dropdown — tap to expand on mobile, hover on desktop */
+        const ddParent = nav.querySelector(".has-dropdown");
+        const ddTrigger = ddParent.querySelector(".dd-trigger");
+        ddTrigger.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            ddParent.classList.toggle("dd-open");
+          } else {
+            nav.classList.remove("nav-open");
+          }
+        });
+
+        /* Scroll reveal */
+        const io = new IntersectionObserver(
+          (es) =>
+            es.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("in");
+            }),
+          { threshold: 0.1 },
+        );
+        document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* Hero sits just below the fixed nav bar, whatever its height */
+        const setNavH = () =>
+          document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+        setNavH();
+        window.addEventListener("resize", setNavH);
+
+        /* Virtue-family carousel: the next slide every 2 seconds, sliding in
+           from the left while the current one leaves to the right */
+        const lcSlides = Array.from(document.querySelectorAll(".lc-slide"));
+        let lcIndex = 0;
+        setInterval(() => {
+          const cur = lcSlides[lcIndex];
+          lcIndex = (lcIndex + 1) % lcSlides.length;
+          const next = lcSlides[lcIndex];
+          /* park the incoming slide at the left edge first, with no
+             animation, so it always enters from the same side */
+          next.classList.add("no-anim");
+          next.classList.remove("is-leaving", "is-current");
+          void next.offsetWidth;
+          next.classList.remove("no-anim");
+          cur.classList.remove("is-current");
+          cur.classList.add("is-leaving");
+          cur.setAttribute("aria-hidden", "true");
+          next.classList.add("is-current");
+          next.removeAttribute("aria-hidden");
+        }, 2000);
+
+        /* Reflection boxes: a click plays that box's recording in the
+           page's own player, once. Only one recording ever plays: a click
+           on another box stops the current one and starts the new one, and
+           repeat clicks on the same box within 4 seconds count as one. */
+        const player = new Audio();
+        player.preload = "none";
+        const stopBtn = document.getElementById("rfStop");
+        let playingBox = null;
+        let lastBox = null;
+        let lastClick = 0;
+
+        /* the offline preview bundle keeps the recordings in its outer
+           shell and hands them over on request; on the live site the
+           path is used as is */
+        function audioUrl(path) {
+          try {
+            if (window.parent !== window && window.parent.__audioUrl)
+              return window.parent.__audioUrl(path);
+          } catch (e) {}
+          return encodeURI(path);
+        }
+
+        function stopPlayback() {
+          player.pause();
+          player.removeAttribute("src");
+          player.load();
+          if (playingBox) playingBox.classList.remove("is-playing");
+          playingBox = null;
+          stopBtn.classList.remove("show");
+        }
+
+        document.querySelectorAll(".rf-box").forEach((box) => {
+          box.addEventListener("click", () => {
+            const now = Date.now();
+            const repeat = box === lastBox && now - lastClick < 4000;
+            lastBox = box;
+            lastClick = now;
+            if (repeat) return;
+
+            const path = box.dataset.audio;
+            if (!path) {
+              box.classList.remove("is-wobble");
+              void box.offsetWidth;
+              box.classList.add("is-wobble");
+              return;
+            }
+            stopPlayback();
+            player.src = audioUrl(path);
+            playingBox = box;
+            box.classList.add("is-playing");
+            stopBtn.classList.add("show");
+            player.play().catch(() => {});
+          });
+          box.addEventListener("animationend", (e) => {
+            if (e.animationName === "rf-wobble") box.classList.remove("is-wobble");
+          });
+        });
+        player.addEventListener("ended", stopPlayback);
+        stopBtn.addEventListener("click", () => {
+          stopPlayback();
+          /* a fresh click right after stopping should play again */
+          lastBox = null;
+        });
+      })();
+    </script>
+    <script src="assets/js/no-orphans.js?v=2" defer></script>
+    <script src="assets/js/accessibility-widget.js" defer></script>
+  </body>
+</html>
