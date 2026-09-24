@@ -363,10 +363,17 @@
       /* It also starts below the fixed nav bar instead of underneath it
          (the script sets --nav-h from the bar's real height), since the
          bar would otherwise hide the top of the photo. */
+      /* The copy (title, headline, pitch) is in the flow now, as on the
+         business page, and centred in the box. Where it needs more height
+         than the photo's ratio gives (a phone), the box grows to fit it and
+         cover crops the photo's sides. */
       #learn-hero {
         position: relative;
         width: 100%;
         margin-top: var(--nav-h, 0px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         aspect-ratio: 1860 / 846;
         overflow: hidden;
         background: var(--blue-dk);
@@ -398,34 +405,29 @@
          and bottom-anchored now that the box's height comes from the image's
          own ratio rather than from this content's flow */
       .bh-content {
-        position: absolute;
-        inset: 0;
+        position: relative;
         z-index: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        width: 100%;
         max-width: 1240px;
         margin: 0 auto;
-        padding: 0 2rem 3rem;
+        padding: 2rem;
       }
       #learn-hero .h3d {
         color: #fff;
-        /* matches the hero title size on the "תוכנית 16 המעלות" page; the
-           floor is lower than there, because this photo is wide and short
-           and on a phone the title has to fit inside it in two lines */
-        font-size: clamp(1.3rem, 4.4vw, 3.5rem);
+        /* the business hero's title size, which its headline matches */
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
         text-shadow:
           0 2px 0 rgba(0, 0, 0, 0.3),
           0 5px 14px rgba(0, 0, 0, 0.45),
           0 18px 38px rgba(0, 0, 0, 0.3);
       }
+      /* set in the same face, weight and size as the business page's hero
+         headline ("להנהיג בחוכמה ובאמפתיה"), per the site owner's
+         2026-09-23-2 request */
       .bh-headline {
-        font-family: "Playfair Display", Georgia, serif;
-        font-style: normal;
-        font-weight: 700;
-        /* 30% smaller than the hero title above it */
-        font-size: clamp(1.4rem, 3.08vw, 2.45rem);
-        line-height: 1.28;
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
         color: var(--teal-lt);
         margin-bottom: 1.6rem;
         text-shadow:
@@ -434,11 +436,11 @@
           0 18px 38px rgba(0, 0, 0, 0.3);
       }
       .bh-sub {
-        font-size: clamp(1rem, 1.7vw, 1.16rem);
-        line-height: 1.9;
+        font-size: clamp(1rem, 1.7vw, 1.2rem);
+        line-height: 1.8;
         color: rgba(255, 255, 255, 0.95);
-        max-width: 760px;
-        margin: 0 0 2.4rem;
+        max-width: 660px;
+        margin: 0;
         font-weight: 500;
         text-shadow:
           0 1px 2px rgba(0, 0, 0, 0.5),
@@ -843,10 +845,14 @@
           transform: rotate(180deg);
         }
         .bh-content {
-          padding: 0 1.4rem 1.1rem;
+          padding: 1.6rem 1.4rem;
         }
-        #learn-hero .h3d {
-          margin-bottom: 0 !important;
+        /* the copy needs more height than the photo's ratio gives here, so
+           the box follows the copy instead, never shorter than the photo
+           (overflow: hidden stops aspect-ratio from growing on its own) */
+        #learn-hero {
+          aspect-ratio: auto;
+          min-height: calc(100vw * 846 / 1860);
         }
         .footer-top {
           flex-direction: column;
@@ -927,10 +933,12 @@
       <div class="bh-bg"></div>
       <div class="bh-fade"></div>
       <div class="bh-content">
-        <h1 class="h3d rev" style="margin: 0 0 1.6rem">
-          16 המעלות -<br />
-          לימוד הערכים והטמעתם
-        </h1>
+        <h1 class="h3d rev" style="margin: 0 0 1.6rem">16 המעלות</h1>
+        <div class="bh-headline rev d1">לימוד הערכים, המעלות – והטמעתם</div>
+        <p class="bh-sub rev d2">
+          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
+        </p>
       </div>
     </header>
 

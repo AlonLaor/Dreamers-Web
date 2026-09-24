@@ -483,21 +483,23 @@
         margin-bottom: 2.2rem;
         animation: fadU 0.9s ease 0.3s both;
       }
-      /* white fill, per the site owner's 2026-09-08 request (superseding
-         the previous day's dark-green version) */
+      /* "16 המעלות" takes the look "תוכנית הדגל..." had until 2026-09-23-2:
+         bright cyan with a bold black outline */
       .h-sub strong {
         font-weight: 900;
-        color: var(--white);
+        color: var(--cyan-bright);
+        -webkit-text-stroke: 2px #000;
+        paint-order: stroke fill;
         white-space: nowrap;
         text-shadow:
           0 1px 0 rgba(255, 255, 255, 0.35),
-          0 4px 14px rgba(0, 0, 0, 0.28);
+          0 4px 14px rgba(0, 0, 0, 0.28),
+          2px 3px 0 rgba(0, 0, 0, 0.4);
       }
-      /* bright cyan with a bold black outline, per the site owner's
-         2026-09-07 follow-up mockup, so "תוכנית הדגל של עמותת בית חולמים"
-         stays readable now that .h-wash/.h-glow are gone entirely */
+      /* "תוכנית הדגל של עמותת בית חולמים": same outline, blue fill, so it
+         stands out more (2026-09-23-2 request; was bright cyan) */
       .h-sub-lines {
-        color: var(--cyan-bright);
+        color: var(--blue);
         -webkit-text-stroke: 2px #000;
         paint-order: stroke fill;
         line-height: 1.3;
@@ -1795,8 +1797,8 @@
       <div class="wrap">
         <h2 class="h3d rev" style="text-align: center">תוכנית 16 המעלות</h2>
         <p class="program-pitch rev d1">
-          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים
-          אוניברסליים וחיים בעלי משמעות
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
         </p>
 
         <p class="intro-body intro-body-center intro-body-wide rev d1">

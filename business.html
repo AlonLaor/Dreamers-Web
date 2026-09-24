@@ -604,13 +604,17 @@
           0 18px 36px rgba(0, 0, 0, 0.25);
         margin-bottom: 0.6rem;
       }
+      /* wide enough for the 2026-09-23-2 text to keep its three lines
+         with the enlarged figures (the longest needs ~577px); the logo
+         strip below keeps the 512px it had */
       .stat-frame-body {
         position: relative;
-        max-width: 512px;
+        max-width: 600px;
         margin: 0 auto;
       }
       .study-logos {
-        margin: 1.44rem 0 0;
+        max-width: 512px;
+        margin: 1.44rem auto 0;
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -640,6 +644,17 @@
         line-height: 1.85;
         color: rgba(255, 255, 255, 0.94);
         font-weight: 500;
+      }
+      /* the two figures inside the text, enlarged in place of the "20%"
+         headline the panel used to carry (2026-09-23-2): 20% by 100%,
+         "10 טריליון דולר" by 90% */
+      .stat-frame strong.stat-pct {
+        font-size: 2em;
+        line-height: 1.1;
+      }
+      .stat-frame strong.stat-sum {
+        font-size: 1.9em;
+        line-height: 1.1;
       }
       .stat-frame strong {
         color: var(--teal-lt);
@@ -1064,6 +1079,11 @@
           transparent 70%
         );
         pointer-events: none;
+      }
+      /* above the band's glow, like the card */
+      .qf-hdr {
+        position: relative;
+        z-index: 2;
       }
       .qf-card {
         position: relative;
@@ -1714,12 +1734,9 @@
           לבסס ארגונים יציבים בעולם משתנה
         </div>
         <p class="bh-sub rev d2">
-          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח
-          ערכים אוניברסליים וחיים בעלי משמעות.
+          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
-        <div class="rev d3">
-          <a href="#contact-form" class="btn btn-blue">בואו ונבנה תוכנית עבודה</a>
-        </div>
       </div>
     </header>
 
@@ -1777,13 +1794,15 @@
         </div>
 
         <p class="ab-body ab-body-center rev d3">
-          החזון העומד בבסיס תכנית 16 המעלות לחברות הוא יחד הן יוצרות עולם עבודה
-          חדש הכולל<br />
+          החזון העומד בבסיס תכנית 16 המעלות לחברות הוא ליצור יחד עולם עבודה חדש
+          הכולל<br />
           שפה ערכית משותפת ותרבות ארגונית אנושית ומיטיבה.
         </p>
         <p class="ab-body ab-body-center rev d3">
-          בעולם העבודה החדש הזה, אנשים פועלים מתוך מיקוד, רוגע וחוסן, ואף חווים
-          אושר ומשמעות בעבודתם.<br />
+          בעולם העבודה החדש הזה, אנשים פועלים מתוך מיקוד, רוגע וחוסן,<br />
+          ואף חווים אושר ומשמעות בעבודתם.
+        </p>
+        <p class="ab-body ab-body-center rev d3">
           זהו עולם המאפשר חיבור אנושי וחמלה הדדית, גם בסביבה דינמית ובעומס שגרת
           היומיום.
         </p>
@@ -1798,12 +1817,13 @@
         </div>
         <p class="ab-body ab-body-center rev">
           ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה המלאכותית,<br />
-          חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה המייצרים אי
-          ודאות מתמשכת וחוסר ביטחון תעסוקתי.
+          חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה המייצרים<br />
+          אי ודאות מתמשכת וחוסר ביטחון תעסוקתי.
         </p>
         <p class="ab-body ab-body-center rev d1">
           השינויים מהירים יותר מקצב ההסתגלות של העובדות והעובדים ומובילים
-          לתופעות של חרדה, ניתוק רגשי, תשישות ושחיקה.
+          לתופעות<br />
+          של חרדה, ניתוק רגשי, בדידות ושחיקה.
         </p>
         <p
           class="ab-body ab-body-center rev d1"
@@ -1822,7 +1842,7 @@
             <p>אובדן חיבור ותחושת מטרה משותפת</p>
           </div>
           <div class="impact-tile">
-            <p>שחיקה בחוסן המנטלי וחיבור העבודה</p>
+            <p>שחיקה בחוסן המנטלי ובתחושת המחוברות</p>
           </div>
         </div>
 
@@ -1835,12 +1855,15 @@
 
         <div class="stat-frame rev d2">
           <div class="stat-frame-glow" aria-hidden="true"></div>
-          <div class="stat-num">20%</div>
           <div class="stat-frame-body">
             <p>
-              רמת החיבור של עובדים למקום העבודה שלהם ירדה
-              ל-<strong>20%</strong> בשנת 2025, הנמוכה ביותר מאז 2020 ועלות
-              הירידה למשק העולמי מוערכת ב-<strong>10 טריליון דולר</strong>
+              רמת המחוברות של עובדים למקום העבודה שלהם ירדה
+              ל-<strong class="stat-pct">20%</strong> בשנת 2025,<br />
+              הרמה הנמוכה ביותר מאז 2020.<br />
+              עלות הירידה הזו למשק העולמי מוערכת ב-<strong
+                class="stat-sum"
+                >10 טריליון דולר</strong
+              >
               באובדן פריון.
               <cite>(Gallup - State of the Global Workplace 2026)</cite>
             </p>
@@ -1961,15 +1984,15 @@
         </div>
 
         <div class="steps-cta rev">
-          <a href="index.html#virtues" class="btn btn-blue"
+          <a href="program.html#stages" class="btn btn-blue"
             >מידע מפורט על שלבי התוכנית ניתן לקרוא כאן</a
           >
         </div>
 
-        <h3 class="impl-title rev">אפשרויות לעבוד עם התוכנית</h3>
+        <h3 class="impl-title rev">אפשרויות נוספות לעבוד עם התוכנית</h3>
         <div class="impl-grid">
           <div class="impl-card rev">
-            <h4>סדנת הכירות</h4>
+            <h4>סדנת היכרות</h4>
             <p>
               מתאימה לצוותי הנהלה כאשר נשקל מהלך נרחב עם התוכנית בחברה. הסדנה
               הינה בת שעתיים.
@@ -1999,6 +2022,9 @@
     <!-- ════════════ FEATURED QUOTE ════════════ -->
     <section id="quote-feature">
       <div class="wrap">
+        <div class="ab-hdr qf-hdr">
+          <h2 class="h3d h3d-white rev">מה אומרים עלינו</h2>
+        </div>
         <div class="qf-card rev">
           <div class="qf-mark">"</div>
           <p class="qf-text">
@@ -2126,7 +2152,7 @@
     <section id="contact-form">
       <div class="wrap">
         <div class="contact-inner">
-          <h2 class="h3d h3d-white rev">בואו נתחיל שיחה</h2>
+          <h2 class="h3d h3d-white rev">בואו נדבר</h2>
           <p class="sub rev">
             מוכנים להביא את 16 המעלות לארגון שלכם?<br />
             קבעו שיחת היכרות. נלמד על הצרכים של הארגון שלכם ונבחן יחד איזו

@@ -361,9 +361,19 @@
          to crop anything - the whole picture always shows, per the site
          owner's 2026-09-22-4 request, even though that makes this hero
          taller than the fixed-height ones on the other pages */
+      /* The copy is in the flow and centred in the box, so on a phone,
+         where it needs more height than the photo's ratio gives, the box
+         grows to fit it (cover then crops the photo's sides) instead of the
+         copy running off the top. */
       #prac-hero {
         position: relative;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* starts below the fixed nav bar (the script sets --nav-h), so the
+           bar hides none of the photo and "the middle" is the photo's */
+        margin-top: var(--nav-h, 0px);
         aspect-ratio: 1672 / 941;
         overflow: hidden;
         background: var(--blue-dk);
@@ -404,16 +414,20 @@
          same right edge as every section below it - absolutely positioned
          and bottom-anchored now that the box's height comes from the image's
          own ratio rather than from this content's flow */
+      /* the copy sits at the photo's vertical middle, on the same right
+         edge as before (2026-09-23-2 request) */
       .bh-content {
-        position: absolute;
-        inset: 0;
+        position: relative;
         z-index: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        width: 100%;
         max-width: 1240px;
         margin: 0 auto;
-        padding: 0 2rem 3rem;
+        padding: 2rem;
+      }
+      /* the last line carries no bottom margin, so "middle" is the true
+         middle of the text block */
+      #prac-hero .bh-headline {
+        margin-bottom: 0;
       }
       #prac-hero .h3d {
         color: #fff;
@@ -424,13 +438,13 @@
           0 5px 14px rgba(0, 0, 0, 0.45),
           0 18px 38px rgba(0, 0, 0, 0.3);
       }
+      /* set in the same face, weight and size as the business page's hero
+         headline ("להנהיג בחוכמה ובאמפתיה"), per the site owner's
+         2026-09-23-2 request */
       .bh-headline {
-        font-family: "Playfair Display", Georgia, serif;
-        font-style: normal;
-        font-weight: 700;
-        /* 30% smaller than the hero title above it */
-        font-size: clamp(1.4rem, 3.08vw, 2.45rem);
-        line-height: 1.28;
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
         color: var(--teal-lt);
         margin-bottom: 1.6rem;
         text-shadow:
@@ -1037,7 +1051,14 @@
           transform: rotate(180deg);
         }
         .bh-content {
-          padding: 0 1.4rem 2rem;
+          padding: 1.6rem 1.4rem;
+        }
+        /* the copy needs more height than the photo's ratio gives here, so
+           the box follows the copy instead, never shorter than the photo
+           (overflow: hidden stops aspect-ratio from growing on its own) */
+        #prac-hero {
+          aspect-ratio: auto;
+          min-height: calc(100vw * 941 / 1672);
         }
         .form-row {
           grid-template-columns: 1fr;
@@ -1135,11 +1156,11 @@
       </div>
     </header>
 
-    <!-- ════════════ קבוצות תרגול ו-המשך הדרך ════════════ -->
+    <!-- ════════════ קבוצות תרגול והמשך הדרך ════════════ -->
     <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">קבוצות תרגול ו-המשך הדרך</h2>
+          <h2 class="h3d rev">קבוצות תרגול והמשך הדרך</h2>
         </div>
         <p class="ab-body rev">
           הדרך שלנו עם 16 המעלות לא מסתיימת בסדנאות.<br />
@@ -1484,6 +1505,12 @@
             nav.classList.remove("nav-open");
           }
         });
+
+        /* Hero sits just below the fixed nav bar, whatever its height */
+        const setNavH = () =>
+          document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+        setNavH();
+        window.addEventListener("resize", setNavH);
 
         /* Scroll reveal */
         const io = new IntersectionObserver(

@@ -889,6 +889,20 @@
           0 5px 14px rgba(0, 0, 0, 0.45),
           0 18px 38px rgba(0, 0, 0, 0.3);
       }
+      /* same treatment as the business page's hero headline
+         ("להנהיג בחוכמה ובאמפתיה"), per the site owner's 2026-09-23-2
+         request: the title stays white, this line takes that look */
+      .ph-headline {
+        font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--teal-lt);
+        margin-bottom: 1.6rem;
+        text-shadow:
+          0 2px 0 rgba(0, 0, 0, 0.3),
+          0 5px 14px rgba(0, 0, 0, 0.5),
+          0 18px 38px rgba(0, 0, 0, 0.3);
+      }
       .ph-sub {
         font-size: clamp(1rem, 1.7vw, 1.22rem);
         line-height: 1.85;
@@ -1885,10 +1899,8 @@
       <div class="ph-bg"></div>
       <div class="ph-tint"></div>
       <div class="ph-content">
-        <h1 class="ph-title rev">
-          תוכנית 16 המעלות -<br />
-          לחיים בעלי ערך בעולם משתנה
-        </h1>
+        <h1 class="ph-title rev">תוכנית 16 המעלות</h1>
+        <div class="ph-headline rev d1">לחיים בעלי ערך בעולם משתנה</div>
         <p class="ph-sub rev d1">
           16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות

@@ -177,6 +177,15 @@ NAV_HOOK = """
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if(!a) return;
     var href = a.getAttribute('href') || '';
+    /* a same-page anchor (#contact-form) would resolve against the shell's
+       own address inside a srcdoc frame and reload the shell there instead
+       of scrolling, so scroll to it here */
+    if(href.charAt(0) === '#' && href.length > 1){
+      var t = document.getElementById(decodeURIComponent(href.slice(1)));
+      e.preventDefault();
+      if(t) t.scrollIntoView({behavior: 'smooth'});
+      return;
+    }
     /* a query string has to survive the hop: contact.html?from=... is how the
        contact page knows which set of choices to offer */
     var m = href.match(/^([A-Za-z0-9_-]+)\\.html(\\?[^#]*)?(#.*)?$/);
