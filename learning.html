@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>למידה | בית חולמים - Dreamers Home</title>
+    <title>מרחב למידה ותרגול | בית חולמים - Dreamers Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -203,10 +203,35 @@
         align-items: center;
       }
       .nav-links a {
+        white-space: nowrap;
         color: rgba(255, 255, 255, 0.85);
         font-size: 0.9rem;
         font-weight: 600;
         transition: color 0.3s;
+      }
+      /* every item on one line: "מרחב למידה ותרגול" (2026-09-28-1) made
+         the row long enough for items to break in two at mid widths,
+         so there the gaps close up and the text steps down a little */
+      @media (min-width: 769px) and (max-width: 1360px) {
+        .nav-links {
+          gap: 1.05rem;
+        }
+        .nav-links a {
+          font-size: 0.86rem;
+        }
+      }
+      @media (min-width: 769px) and (max-width: 960px) {
+        .nav-links {
+          gap: 0.8rem;
+        }
+        .nav-links a {
+          font-size: 0.8rem;
+        }
+      }
+      @media (min-width: 769px) and (max-width: 840px) {
+        .nav-links {
+          gap: 0.55rem;
+        }
       }
       .nav-links a:hover {
         color: var(--teal);
@@ -240,7 +265,9 @@
         width: auto;
         display: block;
       }
-      @media (max-width: 1024px) {
+      /* 1190, not 1024: with "מרחב למידה ותרגול" in the bar the links
+         would run into the slogan below this width (2026-09-28-1) */
+      @media (max-width: 1190px) {
         .nav-slogan {
           display: none;
         }
@@ -473,6 +500,75 @@
         margin: 0 auto 1.3rem;
       }
 
+      /* ═══ מרחב הלמידה: text box + photo ═══ */
+      /* the box is the practice page's card (light blue, teal top edge);
+         in RTL the first child, the box, sits on the right */
+      .li-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .li-box {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(150deg, #f4f9ff 0%, #e7f1fb 55%, #dfeef8 100%);
+        border-radius: 22px;
+        padding: 2.4rem 2.2rem;
+        border: 1px solid rgba(0, 67, 120, 0.07);
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.08),
+          0 18px 40px var(--shadow);
+      }
+      .li-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        background: var(--g-teal);
+      }
+      .li-box p {
+        font-size: 1.06rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        margin-bottom: 1.1rem;
+      }
+      .li-box p:last-child {
+        margin-bottom: 0;
+      }
+      .li-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 22px;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.1),
+          0 18px 40px var(--shadow);
+      }
+      /* a call to action in words only, no button shape */
+      .li-call {
+        margin: 3.2rem auto 0;
+        max-width: 760px;
+        text-align: center;
+        font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+        font-weight: 800;
+        line-height: 1.5;
+        color: var(--blue);
+      }
+      @media (max-width: 860px) {
+        .li-grid {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+        .li-box {
+          padding: 2rem 1.5rem;
+        }
+      }
+
       /* ═══ VIRTUE-FAMILY CAROUSEL ═══ */
       /* one photo on screen at a time, its family title above it; every
          2 seconds the next one slides in from the left while the current
@@ -551,6 +647,25 @@
         position: relative;
         max-width: 1000px;
         margin: 0 auto;
+        container-type: inline-size;
+      }
+      /* the explanation line under each of the two titles in the artwork
+         ("הרהורים מעמיקים על המעלות", "מדיטציית מיינדפולנס"): 40% smaller
+         than those titles (about 56px on the picture's own 1220px width,
+         so 34px there = 2.8% of the board), centred beneath them. The
+         picture (reflections-static-2.png) has a clear 60px strip under
+         each title for this line; the original, without the strips, is
+         reflections-static.png in git history. */
+      .rf-note {
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin: 0;
+        text-align: center;
+        font-size: max(11px, 2.8cqw);
+        font-weight: 500;
+        line-height: 1.3;
+        color: var(--blue);
       }
       .rf-static {
         width: 100%;
@@ -718,6 +833,20 @@
       }
       .footer-nav a:hover {
         color: var(--teal);
+      }
+      /* the activities under "הפעילויות שלנו", as in the top bar's
+         dropdown, so the footer carries every link the top bar does */
+      .footer-subnav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+      }
+      .footer-subnav a {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
       }
       .footer-nav a.active {
         color: var(--teal);
@@ -912,7 +1041,7 @@
               <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
             </ul>
           </li>
-          <li><a href="learning.html#learn-hero" class="active">למידה</a></li>
+          <li><a href="learning.html#learn-hero" class="active">מרחב למידה ותרגול</a></li>
           <li>
             <a href="contact.html?from=learning" class="nav-cta"
               >צרו איתנו קשר</a
@@ -934,13 +1063,45 @@
       <div class="bh-fade"></div>
       <div class="bh-content">
         <h1 class="h3d rev" style="margin: 0 0 1.6rem">16 המעלות</h1>
-        <div class="bh-headline rev d1">לימוד הערכים, המעלות – והטמעתם</div>
+        <div class="bh-headline rev d1">לתרגל ולהטמיע את 16 המעלות</div>
         <p class="bh-sub rev d2">
           תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
       </div>
     </header>
+
+    <!-- ════════════ מרחב הלמידה ════════════ -->
+    <!-- text in a box on the right, the photo on the left, and a line
+         under both that invites the reader into the practices below -->
+    <section class="ab-sec bg-grey" id="learn-intro">
+      <div class="wrap">
+        <div class="li-grid">
+          <div class="li-box rev">
+            <p>
+              הלמידה של 16&nbsp;המעלות ממשיכה בין מפגשי הסדנה ומעמיקה דרך
+              ההתבוננות&nbsp;והתרגול&nbsp;בחיי&nbsp;היומיום. במרחב הלמידה הזה תמצאו מדיטציות
+              מוקלטות, הרהורים ואתגרי תרגול שיאפשרו לכם להעמיק את תהליך
+              הלמידה בין המפגשים, להתנסות בכלים נוספים ולתרגל את
+              המעלות&nbsp;בשגרת&nbsp;החיים&nbsp;שלכם.
+            </p>
+            <p>
+              המרחב פתוח גם למי שטרם השתתפו בסדנאות ומזמין להכיר ולהתנסות
+              בחלק מכלי התרגול&nbsp;של&nbsp;תכנית&nbsp;16&nbsp;המעלות.
+            </p>
+          </div>
+          <div class="li-photo rev d1">
+            <img
+              src="assets/img/learning/learning-space.jpg"
+              alt="מחברת פתוחה, כוס תה וטלפון עם מדיטציה מוקלטת על שולחן עץ"
+            />
+          </div>
+        </div>
+        <p class="li-call rev d2">
+          הקדישו לעצמכם כמה דקות ובחרו את התרגול שמתאים לכם&nbsp;עכשיו
+        </p>
+      </div>
+    </section>
 
     <!-- ════════════ קרוסלת המעלות ════════════ -->
     <section class="ab-sec bg-white">
@@ -972,30 +1133,34 @@
         <div class="rf-board rev">
           <img
             class="rf-static"
-            src="assets/img/learning/reflections-static.png"
+            src="assets/img/learning/reflections-static-2.png"
             alt="הרהורים מעמיקים על המעלות: הדרך בה אנו חושבות, פועלות, מתייחסות לזולת ומוצאות משמעות. מדיטציית מיינדפולנס."
           />
+          <!-- a line of explanation under each baked-in title, set in the
+               strip the artwork leaves open for it -->
+          <p class="rf-note" style="top: 5.907%">מדיטציות אנליטיות על כל אחת מהמעלות</p>
+          <p class="rf-note" style="top: 83.291%">מדיטציות ריכוז והרפיה (10 דקות)</p>
           <!-- each box: its own picture, placed where it sits in the
                original artwork; data-audio is the recording it plays -->
-          <button type="button" class="rf-box" style="left: 75.738%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/ענווה.m4a" aria-label="ענווה - השמעה"><img src="assets/img/learning/box-humility.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 75.738%; top: 37.653%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/סבלנות.m4a" aria-label="סבלנות - השמעה"><img src="assets/img/learning/box-patience.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 75.738%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/שביעות רצון.m4a" aria-label="שביעות רצון - השמעה"><img src="assets/img/learning/box-contentment.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 75.738%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/חדווה.m4a" aria-label="חדווה - השמעה"><img src="assets/img/learning/box-joy.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/טוב לב.m4a" aria-label="טוב לב - השמעה"><img src="assets/img/learning/box-kindness.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 37.653%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/TMP/יושרה.m4a" aria-label="יושרה - השמעה"><img src="assets/img/learning/box-integrity.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/נדיבות.m4a" aria-label="נדיבות - השמעה"><img src="assets/img/learning/box-generosity.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/דיבור מיטיב.m4a" aria-label="דיבור מיטיב - השמעה"><img src="assets/img/learning/box-right-speech.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/כבוד.m4a" aria-label="כבוד - השמעה"><img src="assets/img/learning/box-respect.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 37.653%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/סליחה.m4a" aria-label="סליחה - השמעה"><img src="assets/img/learning/box-forgiveness.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/הכרת תודה.m4a" aria-label="הכרת תודה - השמעה"><img src="assets/img/learning/box-gratitude.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/נאמנות.m4a" aria-label="נאמנות - השמעה"><img src="assets/img/learning/box-loyalty.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 0.984%; top: 24.789%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/שאיפות.m4a" aria-label="שאיפות - השמעה"><img src="assets/img/learning/box-aspirations.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 75.738%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/ענווה.m4a" aria-label="ענווה - השמעה"><img src="assets/img/learning/box-humility.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 75.738%; top: 38.903%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/סבלנות.m4a" aria-label="סבלנות - השמעה"><img src="assets/img/learning/box-patience.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 75.738%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/שביעות רצון.m4a" aria-label="שביעות רצון - השמעה"><img src="assets/img/learning/box-contentment.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 75.738%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/חדווה.m4a" aria-label="חדווה - השמעה"><img src="assets/img/learning/box-joy.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/טוב לב.m4a" aria-label="טוב לב - השמעה"><img src="assets/img/learning/box-kindness.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 38.903%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/TMP/יושרה.m4a" aria-label="יושרה - השמעה"><img src="assets/img/learning/box-integrity.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/נדיבות.m4a" aria-label="נדיבות - השמעה"><img src="assets/img/learning/box-generosity.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 50.902%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/דיבור מיטיב.m4a" aria-label="דיבור מיטיב - השמעה"><img src="assets/img/learning/box-right-speech.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/כבוד.m4a" aria-label="כבוד - השמעה"><img src="assets/img/learning/box-respect.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 38.903%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/סליחה.m4a" aria-label="סליחה - השמעה"><img src="assets/img/learning/box-forgiveness.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/הכרת תודה.m4a" aria-label="הכרת תודה - השמעה"><img src="assets/img/learning/box-gratitude.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 25.82%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/נאמנות.m4a" aria-label="נאמנות - השמעה"><img src="assets/img/learning/box-loyalty.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 0.984%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/שאיפות.m4a" aria-label="שאיפות - השמעה"><img src="assets/img/learning/box-aspirations.png" alt="" /></button>
           <!-- no recording for עקרונות yet: the click only wobbles the box -->
-          <button type="button" class="rf-box" style="left: 0.984%; top: 37.653%; width: 22.705%; height: 10.704%" aria-label="עקרונות"><img src="assets/img/learning/box-principles.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 0.984%; top: 50.516%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/שרות.m4a" aria-label="שירות - השמעה"><img src="assets/img/learning/box-service.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 0.984%; top: 63.474%; width: 22.705%; height: 10.704%" data-audio="assets/Audio/Folder 1/אומץ.m4a" aria-label="אומץ - השמעה"><img src="assets/img/learning/box-courage.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 51.885%; top: 89.296%; width: 31.066%; height: 9.577%" data-audio="assets/Audio/Folder 1/ריכוז.mp4" aria-label="ריכוז - השמעה"><img src="assets/img/learning/box-focus.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 18.443%; top: 89.296%; width: 31.066%; height: 9.577%" data-audio="assets/Audio/Folder 1/הרפיה.mp4" aria-label="הרפיה - השמעה"><img src="assets/img/learning/box-relax.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 0.984%; top: 38.903%; width: 22.705%; height: 9.62%" aria-label="עקרונות"><img src="assets/img/learning/box-principles.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 0.984%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/שרות.m4a" aria-label="שירות - השמעה"><img src="assets/img/learning/box-service.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 0.984%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/אומץ.m4a" aria-label="אומץ - השמעה"><img src="assets/img/learning/box-courage.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 51.885%; top: 90.38%; width: 31.066%; height: 8.607%" data-audio="assets/Audio/Folder 1/ריכוז.mp4" aria-label="ריכוז - השמעה"><img src="assets/img/learning/box-focus.png" alt="" /></button>
+          <button type="button" class="rf-box" style="left: 18.443%; top: 90.38%; width: 31.066%; height: 8.607%" data-audio="assets/Audio/Folder 1/הרפיה.mp4" aria-label="הרפיה - השמעה"><img src="assets/img/learning/box-relax.png" alt="" /></button>
         </div>
       </div>
     </section>
@@ -1048,17 +1213,23 @@
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
               <li><a href="program.html">תוכנית 16 המעלות</a></li>
-              <li><a href="education.html">16 המעלות בחינוך</a></li>
-              <li><a href="business.html">16 המעלות בחברות</a></li>
-              <li><a href="practice.html">קבוצות תרגול</a></li>
-              <li><a href="learning.html" class="active">למידה</a></li>
+              <li>
+                <a href="index.html#activities">הפעילויות שלנו</a>
+                <ul class="footer-subnav">
+                  <li><a href="education.html">16 המעלות בחינוך</a></li>
+                  <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
+                  <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+                </ul>
+              </li>
+              <li><a href="learning.html#learn-hero" class="active">מרחב למידה ותרגול</a></li>
+              <li><a href="contact.html?from=learning">צרו איתנו קשר</a></li>
             </ul>
           </div>
           <div class="footer-contact">
             <div class="footer-col-title">צרו קשר</div>
             <p><a href="mailto:Info@dreamers.org.il">Info@dreamers.org.il</a></p>
             <p>
-              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+              <a href="https://wa.me/972522968584" target="_blank" rel="noopener">WhatsApp: 052-296-8584</a>
             </p>
             <p style="margin-top: 1rem">
               <a

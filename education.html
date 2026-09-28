@@ -203,10 +203,35 @@
         align-items: center;
       }
       .nav-links a {
+        white-space: nowrap;
         color: rgba(255, 255, 255, 0.85);
         font-size: 0.9rem;
         font-weight: 600;
         transition: color 0.3s;
+      }
+      /* every item on one line: "מרחב למידה ותרגול" (2026-09-28-1) made
+         the row long enough for items to break in two at mid widths,
+         so there the gaps close up and the text steps down a little */
+      @media (min-width: 769px) and (max-width: 1360px) {
+        .nav-links {
+          gap: 1.05rem;
+        }
+        .nav-links a {
+          font-size: 0.86rem;
+        }
+      }
+      @media (min-width: 769px) and (max-width: 960px) {
+        .nav-links {
+          gap: 0.8rem;
+        }
+        .nav-links a {
+          font-size: 0.8rem;
+        }
+      }
+      @media (min-width: 769px) and (max-width: 840px) {
+        .nav-links {
+          gap: 0.55rem;
+        }
       }
       .nav-links a:hover {
         color: var(--teal);
@@ -240,7 +265,9 @@
         width: auto;
         display: block;
       }
-      @media (max-width: 1024px) {
+      /* 1190, not 1024: with "מרחב למידה ותרגול" in the bar the links
+         would run into the slogan below this width (2026-09-28-1) */
+      @media (max-width: 1190px) {
         .nav-slogan {
           display: none;
         }
@@ -1294,6 +1321,20 @@
       .footer-nav a:hover {
         color: var(--teal);
       }
+      /* the activities under "הפעילויות שלנו", as in the top bar's
+         dropdown, so the footer carries every link the top bar does */
+      .footer-subnav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+      }
+      .footer-subnav a {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
       .footer-nav a.active {
         color: var(--teal);
       }
@@ -1520,7 +1561,7 @@
               <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
             </ul>
           </li>
-          <li><a href="learning.html#learn-hero">למידה</a></li>
+          <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>
           <li>
             <a href="contact.html?from=education" class="nav-cta"
               >צרו איתנו קשר</a
@@ -2114,17 +2155,23 @@
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
               <li><a href="program.html">תוכנית 16 המעלות</a></li>
-              <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
-              <li><a href="business.html">16 המעלות בחברות</a></li>
-              <li><a href="practice.html">קבוצות תרגול</a></li>
-              <li><a href="learning.html">למידה</a></li>
+              <li>
+                <a href="index.html#activities">הפעילויות שלנו</a>
+                <ul class="footer-subnav">
+                  <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
+                  <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
+                  <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+                </ul>
+              </li>
+              <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>
+              <li><a href="contact.html?from=education">צרו איתנו קשר</a></li>
             </ul>
           </div>
           <div class="footer-contact">
             <div class="footer-col-title">צרו קשר</div>
             <p><a href="mailto:Info@dreamers.org.il">Info@dreamers.org.il</a></p>
             <p>
-              <a href="https://wa.me/972522968584">WhatsApp: 052-296-8584</a>
+              <a href="https://wa.me/972522968584" target="_blank" rel="noopener">WhatsApp: 052-296-8584</a>
             </p>
             <p style="margin-top: 1rem">
               <a
@@ -2360,7 +2407,7 @@
                 throw new Error("Submit failed");
               }
             } catch (err) {
-              btn.textContent = "שגיאה — נסו שוב או כתבו ל-Info@dreamers.org.il";
+              btn.textContent = "שגיאה - נסו שוב או כתבו ל-Info@dreamers.org.il";
             } finally {
               btn.disabled = false;
               setTimeout(() => {

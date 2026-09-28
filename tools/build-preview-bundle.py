@@ -177,6 +177,14 @@ NAV_HOOK = """
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if(!a) return;
     var href = a.getAttribute('href') || '';
+    /* the footer's e-mail address: hand it to the top window, so the
+       device's default mail app opens with the address in To: rather than
+       the page's own frame trying to navigate to it */
+    if(/^mailto:/i.test(href)){
+      e.preventDefault();
+      try { window.top.location.href = href; } catch(err) { window.open(href); }
+      return;
+    }
     /* a same-page anchor (#contact-form) would resolve against the shell's
        own address inside a srcdoc frame and reload the shell there instead
        of scrolling, so scroll to it here */
