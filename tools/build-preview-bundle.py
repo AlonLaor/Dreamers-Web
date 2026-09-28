@@ -14,7 +14,7 @@ import base64, datetime, hashlib, io, json, mimetypes, os, re, subprocess, sys
 # resolve against the repo root so the script runs from anywhere
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".preview-cache")
-PAGES = ["index", "program", "business", "education", "practice", "learning", "about", "contact"]
+PAGES = ["index", "program", "business", "education", "mental-health", "practice", "learning", "about", "contact"]
 # every build is dated (DDMMYY, matching this project's own commit-message and
 # working-doc convention) so a new preview never silently overwrites the one
 # handed over for a previous round of review
@@ -202,6 +202,18 @@ NAV_HOOK = """
       parent.__nav(m[1], (m[2] || '') + (m[3] || ''));
     }
   }, true);
+  /* an outside link meant for the same tab (the mental-health page's
+     source link on a phone) would load inside this frame, where many sites
+     refuse to show; send the whole tab there instead so "back" returns.
+     Listens on the way back up, after the page has set the link's target. */
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if(!a || e.defaultPrevented) return;
+    var href = a.getAttribute('href') || '';
+    if(!/^https?:/i.test(href) || a.getAttribute('target') === '_blank') return;
+    e.preventDefault();
+    try { window.top.location.href = href; } catch(err) { window.open(href); }
+  });
 })();
 </script>
 """

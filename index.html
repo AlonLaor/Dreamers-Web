@@ -1787,6 +1787,7 @@
             >
             <ul class="dropdown-menu">
               <li><a href="education.html">16 המעלות בחינוך</a></li>
+              <li><a href="mental-health.html#mh-hero">16 המעלות בבריאות הנפש</a></li>
               <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
               <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
             </ul>
@@ -1985,19 +1986,18 @@
           </div>
 
           <div class="ac rev d1">
-            <div class="ac-img-w">
+            <a href="mental-health.html#mh-hero" class="ac-img-w" aria-label="16 המעלות בבריאות הנפש">
               <img
                 src="assets/img/תמונות בריאות הנפש .jpg"
                 alt="16 המעלות בבריאות הנפש"
                 class="ac-img"
               />
               <div class="ac-ov"></div>
-            </div>
-            <!-- no page for this one yet: a click on the text box only tilts the card -->
-            <div class="ac-body ac-tilt-only">
+            </a>
+            <a href="mental-health.html#mh-hero" class="ac-body">
               <div class="ac-title">16 המעלות בבריאות הנפש</div>
-              <a href="contact.html" class="ac-link">מידע נוסף ←</a>
-            </div>
+              <span class="ac-link">מידע נוסף ←</span>
+            </a>
           </div>
 
           <div class="ac rev d2">
@@ -2317,6 +2317,7 @@
                 <a href="#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">
                   <li><a href="education.html">16 המעלות בחינוך</a></li>
+                  <li><a href="mental-health.html#mh-hero">16 המעלות בבריאות הנפש</a></li>
                   <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
                   <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
                 </ul>
@@ -2474,8 +2475,9 @@
           );
         });
 
-        /* the one activity card with no page yet: a click on its text
-           box (outside the "מידע נוסף" link) only tilts the card */
+        /* an activity card with no page yet (class "ac-tilt-only" on its
+           text box; none since the mental-health page arrived, 2026-09-28-2):
+           a click on the box (outside any link) only tilts the card */
         document.querySelectorAll(".ac-tilt-only").forEach((box) => {
           const card = box.closest(".ac");
           box.addEventListener("click", (e) => {
