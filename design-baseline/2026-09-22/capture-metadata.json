@@ -1,0 +1,400 @@
+[
+  {
+    "page": "index",
+    "size": "desktop",
+    "capturedAt": "2026-09-22T17:37:49.545Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 6616,
+    "dpr": 1.2366666793823242,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "70.24px",
+        "lineHeight": "80.776px",
+        "text": "הדרך שלך לחיים שלווים,\n          משמעותיים ומאושרים יותר\n          מתחילה כאן"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 1000,
+    "rootFontSize": "16px",
+    "scrollWidth": 1425,
+    "scrollY": 0,
+    "unloadedImages": [],
+    "unrevealed": 3,
+    "width": 1440
+  },
+  {
+    "page": "program",
+    "size": "desktop",
+    "capturedAt": "2026-09-22T17:37:56.681Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 9112,
+    "dpr": 1.2366666793823242,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "56px",
+        "lineHeight": "68.32px",
+        "text": "תוכנית 16 המעלות -\n          לחיים בעלי ערך בעולם משתנה"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 1000,
+    "rootFontSize": "16px",
+    "scrollWidth": 1425,
+    "scrollY": 0,
+    "unloadedImages": [
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/דליה לין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/דניאלה שחר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/דפנה לין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/הילה אפללו.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/חן וינשטיין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/טניה עמר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/יניב שטיין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/ליאב בן נעים.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/לירון אוזר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/מיכל ארליך.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/מירב זיו.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/מירן ברודבר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/נוחי טל שטרית.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/נטלי שכטר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/ניב אגם.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/ניר בלפר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/נעמה סקלי.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/סיגל מיכאלי דונלי.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/עודד אורלי.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/רונית פייגנבלט.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/שירן מרדלר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תומר גביש.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תמי בן יקר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תמי ליבנה.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תמר תשבי.jpg"
+      }
+    ],
+    "unrevealed": 0,
+    "width": 1440
+  },
+  {
+    "page": "program",
+    "size": "mobile",
+    "capturedAt": "2026-09-22T17:39:57.909Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 11931,
+    "dpr": 1.0000000146532102,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "32px",
+        "lineHeight": "39.04px",
+        "text": "תוכנית 16 המעלות -\n          לחיים בעלי ערך בעולם משתנה"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 844,
+    "rootFontSize": "16px",
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "unloadedImages": [
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/דליה ויצמן.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/דליה לין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/דניאלה שחר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/דפנה לין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/הילה אפללו.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/חן וינשטיין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/טניה עמר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/יניב שטיין.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/ליאב בן נעים.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/לירון אוזר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/מיכל ארליך.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/מירב זיו.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/מירן ברודבר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/נוחי טל שטרית.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/נטלי שכטר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/ניב אגם.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/ניר בלפר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/נעמה סקלי.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/סיגל מיכאלי דונלי.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/עודד אורלי.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/רונית פייגנבלט.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/שירן מרדלר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תומר גביש.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תמי בן יקר.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תמי ליבנה.jpg"
+      },
+      {
+        "loading": "lazy",
+        "src": "assets/img/Faces/team/מנחים/תמר תשבי.jpg"
+      }
+    ],
+    "unrevealed": 3,
+    "width": 390
+  },
+  {
+    "page": "business",
+    "size": "mobile",
+    "capturedAt": "2026-09-22T17:40:13.238Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 14793,
+    "dpr": 1.0000000146532102,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "30.4px",
+        "lineHeight": "36.48px",
+        "text": "16 המעלות בחברות"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 844,
+    "rootFontSize": "16px",
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "unloadedImages": [],
+    "unrevealed": 0,
+    "width": 390
+  },
+  {
+    "page": "education",
+    "size": "mobile",
+    "capturedAt": "2026-09-22T17:40:35.300Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 14004,
+    "dpr": 1.0000000146532102,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "32px",
+        "lineHeight": "38.4px",
+        "text": "16 המעלות בחינוך"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 844,
+    "rootFontSize": "16px",
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "unloadedImages": [],
+    "unrevealed": 0,
+    "width": 390
+  },
+  {
+    "page": "practice",
+    "size": "mobile",
+    "capturedAt": "2026-09-22T17:40:44.305Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 7417,
+    "dpr": 1.0000000146532102,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "32px",
+        "lineHeight": "38.4px",
+        "text": "קבוצות תרגול"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 844,
+    "rootFontSize": "16px",
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "unloadedImages": [],
+    "unrevealed": 0,
+    "width": 390
+  },
+  {
+    "page": "about",
+    "size": "mobile",
+    "capturedAt": "2026-09-22T17:41:01.109Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 12200,
+    "dpr": 1.0000000146532102,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "45.6px",
+        "lineHeight": "54.72px",
+        "text": "עמותת בית חולמים"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 844,
+    "rootFontSize": "16px",
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "unloadedImages": [],
+    "unrevealed": 0,
+    "width": 390
+  },
+  {
+    "page": "contact",
+    "size": "mobile",
+    "capturedAt": "2026-09-22T17:41:06.295Z",
+    "bodyFont": "Heebo, system-ui, sans-serif",
+    "documentHeight": 2365,
+    "dpr": 1.0000000146532102,
+    "fontStatus": "loaded",
+    "h1": [
+      {
+        "fontSize": "30.4px",
+        "lineHeight": "36.48px",
+        "text": "בואו נתחיל שיחה"
+      }
+    ],
+    "heeboLoaded": true,
+    "height": 844,
+    "rootFontSize": "16px",
+    "scrollWidth": 375,
+    "scrollY": 0,
+    "unloadedImages": [],
+    "unrevealed": 0,
+    "width": 390
+  }
+]

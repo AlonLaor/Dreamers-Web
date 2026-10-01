@@ -29,3 +29,6 @@ assets/Videos/Archive/
 
 # Working files, not part of the site
 .Github ignore/
+# Local shortcuts and personal machine reports, not part of the site
+*.lnk
+disk-health-reports/
